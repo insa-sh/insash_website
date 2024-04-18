@@ -1,7 +1,8 @@
 # RECAP - Site web 0.0.0
 ## Présentation de la maquette 
 Maquette: [Lien vers le figma (view)](https://www.figma.com/proto/Kwez0pIbgZcUQdbWw25ovt/insa.sh-(Moderne)---1?page-id=0%3A1&type=design&node-id=2-5&viewport=482%2C525%2C0.43&t=VKcCbH9ocECCxc9a-8&scaling=scale-down-width&hide-ui=1)
-Lien du git: [git.insash.fr](https://git.insash.fr/git/bureau_insa_sh/site_web.git)
+
+Lien du git: [git.insash.fr](https://git.insash.fr/site-web-clubinfo/insash_website)
 
 ## Gestion des infos publiques des membres
 2 options : 
