@@ -1,1 +1,1 @@
-# Site du Club info - ./insa.sh
+# Site du Club Info - ./insa.sh
