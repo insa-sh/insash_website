@@ -1,0 +1,11 @@
+services:
+  website-insash-compose:
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    ports:
+      - "4200:4200"
