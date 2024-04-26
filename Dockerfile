@@ -1,9 +1,10 @@
 FROM node:latest
 WORKDIR /app
 
+# on installe angular GLOBALEMENT donc c'est OK
 RUN npm install -g @angular/cli@16
 
 COPY package*.json ./
-RUN npm install
 
-CMD ["ng", "serve", "--host", "0.0.0.0", "--disable-host-check"]
+# on met dans un script les deux commandes car il ne peut y avoir qu'un CMD dans un dockerfile
+CMD ["bash", "start.sh"]
