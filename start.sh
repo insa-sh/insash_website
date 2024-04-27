@@ -5,4 +5,4 @@ if [ ! -d "node_modules" ]; then
   npm install
 fi
 
-ng serve --host 0.0.0.0 --disable-host-check
+ng serve --host 0.0.0.0 --disable-host-check --live-reload true --poll 1000

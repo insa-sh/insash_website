@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'insash_website';
+  // variables à exporter vers la page utilisables en ecrivant {{ nomVariable }} sur la page
+  title = 'Site Web du Club Info'; 
 }
