@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* fonts and icons */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+
+
+
+
+
+
+/* variables globales pour le club Info */
+
+* {
+    --insash-logo-bg-color: #2D333E;
+    --insash-rose-pale: #EFC1CB;
+    --website-strong-color: #8F51DF;
+    --website-bg-color: #262626;
+
+
+    --insash-text-default-font: 'Roboto Mono';
+    --insash-title-default-font: 'Open Sans';
+
+    --insash-title-color: #FFFFFF;
+    --insash-text-color: #FFFFFF;
+
+    --golbal-transition-duration : 0.2s;
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}

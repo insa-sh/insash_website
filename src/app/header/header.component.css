@@ -1,0 +1,141 @@
+
+
+/* header */
+div#header {
+    width: 100%;
+    height: 100px;
+    background-color: var(--website-bg-color);
+    padding: 40px 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1;
+}
+
+div#header-title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 24px;
+
+}
+
+div#header-title>img {
+    height: 70px;
+    width: auto;
+}
+div#header-title>h1 {
+    color: var(--website-strong-color);
+    font-family: var(--insash-text-default-font);
+    font-size: 24px;
+}
+
+
+div#nav-links {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4vw;
+}
+
+div#nav-links>a {
+    font-family: var(--insash-title-default-font);
+    color: var(--insash-text-color);
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s; 
+}
+
+
+div#nav-links>a:hover {
+    color : var(--website-strong-color);
+}
+
+
+div#calendar {
+    user-select: none;
+}
+
+div.calendar-icon {
+    background-color: white;
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+div.calendar-icon>p.today-number {
+    flex: 1;
+    font-size: 20px;
+    font-weight: 800;
+    font-family: var(--insash-text-default-font);
+
+}
+
+div.calendar-icon>p.today-month {
+    background-color: red;
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-family: var(--insash-text-default-font);
+
+    
+
+}
+
+.mobile-only {
+    display: none;
+}
+
+
+
+/* mobile */
+@media (max-width:800px) {
+
+    .mobile-only {
+        display: initial;
+    }
+    div#header-title {
+        flex: 1;
+    }
+
+    div#nav-links {
+        position: absolute;
+        z-index: 2;
+        top: 100px;
+        right: 0px;
+        background-color: var(--website-bg-color);
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px;
+        overflow: hidden;
+        transition: right 0.2s;
+    }
+
+    /* menu fermé */
+    div#nav-links, div#nav-links.closed {
+        right: -100%;
+    }
+    div#nav-links.opened {
+        right: 0;
+    }
+
+}
