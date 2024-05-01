@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Open Sans');
+
+* {
+    --insash-button-bg-color: #C8930A;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    background-color: var(--website-bg-color-light-1);
+    font-family: var(--insash-title-default-font), sans-serif;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+h1 {
+    padding-left: 20px;
+    color: var(--website-strong-color);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+h2 {
+    color: var(--insash-text-color);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+a {
+    font-size: 18;
+    font-weight: 600;
+    color: var(--insash-text-color);
+    text-decoration: none;
+}
+
+ul {
+    padding-inline-start: 0px;
+    list-style-type: none;
+    padding-top: 50px;
+}
+
+li {
+    padding-bottom: 20px;
+}
+
+li>a:hover {
+    color: var(--website-strong-color);
+    transition: color var(--golbal-transition-duration);
+}
+
+div.footer-content {
+
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+div.footer-title {
+    display: flex;
+    align-items: center;
+}
+
+div.footer-nav {
+    padding-right: 10%;
+}
+
+div.footer-sites {
+    padding: 30px;
+
+    background-color: var(--website-bg-color-light-2);
+    border-radius: 20px;
+    margin-left: 10%;
+}
+
+div.footer-button-partenariat {
+    border: 2px solid transparent;
+    background-color: var(--insash-button-bg-color);
+    border-radius: 10px;
+    width: fit-content;
+}
+
+div.footer-button-partenariat>* {
+    text-align: center;
+    padding: 10px;
+}
+
+div.footer-button-partenariat:hover {
+    border: 2px solid var(--insash-button-bg-color);
+    background-color: var(--website-bg-color-light-1);
+    transition: background-color var(--golbal-transition-duration);
+}
+
+div.footer-copyright {
+    padding-top: 20px;
+    text-align: center;
+    color: var(--insash-text-color);
+    font-weight: 500;
+}
+
+@media (max-width:800px) {
+
+    ul {
+        padding-top: 30px;
+    }
+
+    div.footer-nav {
+        padding-right: 0%;
+        width: 75%;
+    }
+
+    div.footer-sites {
+        margin-top: 30px 0 0 0;
+        width: 75%;
+    }
+
+}
