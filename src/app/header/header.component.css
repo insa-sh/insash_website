@@ -1,0 +1,333 @@
+/* header */
+div#header {
+    width: 100%;
+    height: 100px;
+
+    background-color: rgba(38, 38, 38, 90%);
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1;
+}
+
+div#header-title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+
+}
+
+div#header-title>img {
+    height: 50px;
+    width: auto;
+}
+
+div#header-title>h1 {
+    color: var(--website-strong-color);
+    font-family: var(--insash-text-default-font);
+    font-size: 20px;
+}
+
+
+div#nav-links {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4vw;
+}
+
+div#nav-links a {
+    font-family: var(--insash-title-default-font);
+    color: var(--insash-text-color);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 8px 4px;
+}
+
+
+div#nav-links a:hover {
+    color: var(--website-strong-color);
+}
+
+
+
+/* Dropdown menu */
+
+div#nav-links>div.dropdown-menu>div {
+    background-color: #474747;
+    padding: 10px;
+    border-radius: 18px;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 4px;
+    width: max-content;
+    max-width: 60vw;
+    animation: close-menu 0.2s forwards;
+    animation-delay: 0.2s;
+}
+
+div#nav-links>div.dropdown-menu {
+    position: relative;
+}
+
+div#nav-links>div.dropdown-menu>a {
+    padding: 30px 4px;
+}
+
+
+
+div#nav-links>div.dropdown-menu>div {
+    animation: close-menu 0.2s forwards;
+    animation-delay: 0.4s;
+
+}
+
+
+
+div#nav-links>div.dropdown-menu>div>a {
+    border-radius: 10px;
+    padding: 8px;
+    text-align: left;
+    transition-duration: 0.2s;
+    transition-property: background-color, color;
+}
+
+div#nav-links>div.dropdown-menu>div>a:hover {
+    background-color: #565656;
+    color: var(--insash-text-color);
+}
+
+
+/* animation pour ouvrir le menu dropout*/
+@keyframes open-menu {
+    0% {
+        height: initial;
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+    }
+
+}
+
+/* animation pour fermer le menu dropout */
+@keyframes close-menu {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+
+
+}
+
+
+/* faire tourner le bouton du menu déroulant au clic */
+div#nav-links>div.dropdown-menu>a>i {
+    transition: transform 0.2s;
+
+}
+
+div#nav-links>div.dropdown-menu.opened>a>i {
+    transform: rotate(180deg);
+    color: var(--website-strong-color);
+}
+
+div#nav-links>div.dropdown-menu.opened>a {
+    color: var(--website-strong-color);
+}
+
+
+div#calendar {
+    user-select: none;
+}
+
+div.calendar-icon {
+    background-color: white;
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+div.calendar-icon>p.today-number {
+    flex: 1;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--insash-title-default-font);
+
+}
+
+/* calendrier */
+
+div.calendar-icon>p.today-month {
+    background-color: red;
+    font-size: 10px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-family: var(--insash-text-default-font);
+
+
+
+}
+
+.mobile-only {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* pc uniquement  */
+
+@media (min-width: 800px) {
+
+    div#nav-links>div.dropdown-menu.opened>div,
+    div#nav-links>div.dropdown-menu:hover>div {
+        animation: open-menu 0.2s forwards;
+        animation-delay: 0.2s;
+    }
+}
+
+
+
+/* mobile */
+/* ces règles s'appliquent à toutes les fenêtres dont la largeur est < à 800px */
+@media (max-width:800px) {
+
+    /* afficher les éléments masqués sur grand écran */
+    .mobile-only {
+        display: initial;
+    }
+
+    /* header */
+    div#header-title {
+        flex: 1;
+    }
+
+    div#header {
+        background-color: rgb(51, 51, 51);
+
+    }
+
+    /* liens cachés derrière l'écran à droite */
+    div#nav-links {
+        position: absolute;
+        z-index: 2;
+        top: 100px;
+        right: 0px;
+        background-color: rgb(51, 51, 51);
+
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+
+
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px;
+        /* overflow: hidden; */
+        transition: right 0.2s;
+    }
+
+    /* menu fermé */
+    div#nav-links,
+    div#nav-links.closed {
+        right: -100%;
+    }
+
+    /* menu ouvert */
+    div#nav-links.opened {
+        right: 0;
+    }
+
+    /* bouton hamburger */
+    div#hamburger-button {
+        font-size: 35px;
+        color: var(--insash-text-color);
+    }
+
+
+
+    /* menus déroulants mobiles */
+    div#nav-links>div.dropdown-menu {
+        width: 100%;
+    }
+
+    /* on change position->relative  et les animations changent pour des transitions */
+    /* pourquoi? c'était plus simple j'ai pas trouvé de meilleure solution*/
+    div#nav-links>div.dropdown-menu>div {
+        width: -webkit-fill-available;
+        position: relative;
+        top: unset;
+        right: unset;
+        overflow: hidden;
+        max-width: unset;
+        animation: unset;
+        max-height: 0;
+        transition: max-height 0.15s ease-out, padding 0.15s ease-out;
+        padding: 0 10px; /* on enleve le pading haut et bas car sinon, meme avec el overflow hidden, les padding restent visibles */
+        margin-top: 15px;
+
+    }
+
+    /* l'animation se fait sur la hauteur de la div */
+    div#nav-links>div.dropdown-menu.opened>div {
+        animation: unset;
+        max-height: 500px;
+        transition: max-height 0.15s ease-out, padding 0.15s ease-out;
+        padding: 10px; /* on remet le padding */
+
+    }
+
+}
