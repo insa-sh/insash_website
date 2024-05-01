@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
+// Importer la fonction toggleNavigationMenu() dans la page
 declare function toggleNavigationMenu(): void;
-
+declare function getDay(): String;
+declare function getMonth(): String;
 
 @Component({
   selector: 'app-header',
@@ -9,17 +11,16 @@ declare function toggleNavigationMenu(): void;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  day = getDay();
+  month = getMonth();
 
-  // variables à exporter vers la page utilisables en ecrivant {{ nomVariable }} sur la page
-  links = [
-    { link: 'home', title: 'Accueil' },
-    { link: 'about', title: 'A propos' },
-    { link: 'events', title: 'Événements' },
-    { link: 'team', title: 'Équipe' },
-    { link: 'contact', title: 'Contact' }
-  ];
+
+
+
+  // Insérer le kit d'icones fontawesome (balise script)
   constructor() { 
-    this.loadScripts(); 
+    this.loadScripts();
+    
   } 
  
   // Method to dynamically load JavaScript 
@@ -27,7 +28,8 @@ export class HeaderComponent {
  
     // This array contains all the files/CDNs 
     const dynamicScripts = [ 
-       'https://kit.fontawesome.com/1416c49ef4.js'
+       'https://kit.fontawesome.com/1416c49ef4.js',
+       'assets/scripts/navMenu.js'
     ]; 
     for (let i = 0; i < dynamicScripts.length; i++) { 
       const node = document.createElement('script'); 
@@ -37,4 +39,7 @@ export class HeaderComponent {
       document.getElementsByTagName('head')[0].appendChild(node); 
     } 
   }
+
+
+
 }
