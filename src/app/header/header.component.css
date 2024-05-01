@@ -4,9 +4,13 @@
 div#header {
     width: 100%;
     height: 100px;
-    background-color: rgba(38, 38,38, 90%);
-    padding: 40px 20px;
 
+    background-color: rgba(38, 38,38, 90%);
+    
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    padding: 40px 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,18 +27,18 @@ div#header-title {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 24px;
+    gap: 12px;
 
 }
 
 div#header-title>img {
-    height: 70px;
+    height: 50px;
     width: auto;
 }
 div#header-title>h1 {
     color: var(--website-strong-color);
     font-family: var(--insash-text-default-font);
-    font-size: 18px;
+    font-size: 20px;
 }
 
 
@@ -82,8 +86,8 @@ div.calendar-icon {
 div.calendar-icon>p.today-number {
     flex: 1;
     font-size: 20px;
-    font-weight: 800;
-    font-family: var(--insash-text-default-font);
+    font-weight: 700;
+    font-family: var(--insash-title-default-font);
 
 }
 
@@ -119,13 +123,22 @@ div.calendar-icon>p.today-month {
     div#header-title {
         flex: 1;
     }
+    div#header {
+        background-color: rgb(51, 51, 51);
+
+    }
 
     div#nav-links {
         position: absolute;
         z-index: 2;
         top: 100px;
         right: 0px;
-        background-color: var(--website-bg-color);
+        background-color: rgb(51, 51, 51);
+    
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+    
+
         width: 100%;
         flex-direction: column;
         align-items: flex-start;
@@ -140,6 +153,12 @@ div.calendar-icon>p.today-month {
     }
     div#nav-links.opened {
         right: 0;
+    }
+
+    /* bouton hamburger */
+    div#hamburger-button {
+        font-size: 35px;
+        color: var(--insash-text-color);
     }
 
 }
