@@ -1,39 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Open Sans');
 
+* {
+    --insash-button-bg-color: #C8930A;
+}
+
 footer {
-    position: fixed;
+    position: relative;
     width: 100%;
-    background-color: #353535;
-    font-family: "Open Sans", sans-serif;
+    background-color: var(--website-bg-color-light-1);
+    font-family: var(--insash-title-default-font), sans-serif;
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-.footerCopyright {
-    padding-top: 20px;
-    text-align: center;
-    color: white;
-    font-weight: 500;
-}
-
-.footerContent {
-    
-    
-    text-align: left;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
 h1 {
     padding-left: 20px;
-    color: #8F51DF;
+    color: var(--website-strong-color);
     font-size: 24px;
     font-weight: 800;
 }
 
 h2 {
-    color: white;
+    color: var(--insash-text-color);
     font-size: 24px;
     font-weight: 700;
 }
@@ -41,7 +29,7 @@ h2 {
 a {
     font-size: 18;
     font-weight: 600;
-    color: white;
+    color: var(--insash-text-color);
     text-decoration: none;
 }
 
@@ -55,60 +43,75 @@ li {
     padding-bottom: 20px;
 }
 
-li a:hover {
-    color: #8F51DF;
+li>a:hover {
+    color: var(--website-strong-color);
+    transition: color var(--golbal-transition-duration);
 }
 
-.footerSites {
-    padding: 30px;
-    
-    background-color: #474747;
-    border-radius: 20px;
-    margin-left: 10%;
+div.footer-content {
+
+    text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-.footerNav {
-    padding-right: 10%;
-}
-
-.footerTitle {
+div.footer-title {
     display: flex;
     align-items: center;
 }
 
-.boutonPartenariat {
-    border: 1px solid transparent;
-    background-color: #C8930A;
+div.footer-nav {
+    padding-right: 10%;
+}
+
+div.footer-sites {
+    padding: 30px;
+
+    background-color: var(--website-bg-color-light-2);
+    border-radius: 20px;
+    margin-left: 10%;
+}
+
+div.footer-button-partenariat {
+    border: 2px solid transparent;
+    background-color: var(--insash-button-bg-color);
     border-radius: 10px;
     width: fit-content;
 }
 
-.boutonPartenariat * {
+div.footer-button-partenariat>* {
     text-align: center;
     padding: 10px;
 }
 
-.boutonPartenariat:hover {
-    border: 1px solid #C8930A;
-    background-color: #353535;
+div.footer-button-partenariat:hover {
+    border: 2px solid var(--insash-button-bg-color);
+    background-color: var(--website-bg-color-light-1);
+    transition: background-color var(--golbal-transition-duration);
+}
+
+div.footer-copyright {
+    padding-top: 20px;
+    text-align: center;
+    color: var(--insash-text-color);
+    font-weight: 500;
 }
 
 @media (max-width:800px) {
 
-    /* Tout le code css que l'on met ici sera appliqué uniquement si la largeur de la fenêtre ne dépasse pas 800px */
-    .footerNav {
+    ul {
+        padding-top: 30px;
+    }
+
+    div.footer-nav {
         padding-right: 0%;
         width: 75%;
     }
 
-    .footerSites {
-        margin-left: 0%;
-        margin-top: 30px;
+    div.footer-sites {
+        margin-top: 30px 0 0 0;
         width: 75%;
-    }
-
-    ul {
-        padding-top: 30px;
     }
 
 }
