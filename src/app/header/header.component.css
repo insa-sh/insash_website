@@ -66,7 +66,10 @@ div#nav-links a:hover {
     color: var(--website-strong-color);
 }
 
+
+
 /* Dropdown menu */
+
 div#nav-links>div.dropdown-menu>div {
     background-color: #474747;
     padding: 10px;
@@ -95,7 +98,77 @@ div#nav-links>div.dropdown-menu>a {
 
 
 
+div#nav-links>div.dropdown-menu>div {
+    animation: close-menu 0.2s forwards;
+    animation-delay: 0.4s;
 
+}
+
+
+
+div#nav-links>div.dropdown-menu>div>a {
+    border-radius: 10px;
+    padding: 8px;
+    text-align: left;
+    transition-duration: 0.2s;
+    transition-property: background-color, color;
+}
+
+div#nav-links>div.dropdown-menu>div>a:hover {
+    background-color: #565656;
+    color: var(--insash-text-color);
+}
+
+
+/* animation pour ouvrir le menu dropout*/
+@keyframes open-menu {
+    0% {
+        height: initial;
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+    }
+
+}
+
+/* animation pour fermer le menu dropout */
+@keyframes close-menu {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+
+
+}
+
+
+/* faire tourner le bouton du menu déroulant au clic */
+div#nav-links>div.dropdown-menu>a>i {
+    transition: transform 0.2s;
+
+}
+
+div#nav-links>div.dropdown-menu.opened>a>i {
+    transform: rotate(180deg);
+    color: var(--website-strong-color);
+}
+
+div#nav-links>div.dropdown-menu.opened>a {
+    color: var(--website-strong-color);
+}
 
 
 div#calendar {
@@ -122,6 +195,8 @@ div.calendar-icon>p.today-number {
 
 }
 
+/* calendrier */
+
 div.calendar-icon>p.today-month {
     background-color: red;
     font-size: 10px;
@@ -140,78 +215,6 @@ div.calendar-icon>p.today-month {
 }
 
 
-    
-
-    
-    div#nav-links>div.dropdown-menu>div {
-        animation: close-menu 0.2s forwards;
-        animation-delay: 0.4s;
-    
-    }
-    
-    
-    
-    div#nav-links>div.dropdown-menu>div>a {
-        border-radius: 10px;
-        padding: 8px;
-        text-align: left;
-        transition-duration: 0.2s;
-        transition-property: background-color, color;
-    }
-    
-    div#nav-links>div.dropdown-menu>div>a:hover {
-        background-color: #565656;
-        color: var(--insash-text-color);
-    }
-    
-    
-    /* animation pour ouvrir le menu dropout*/
-    @keyframes open-menu {
-        0% {
-            height: initial;
-            opacity: 0;
-            transform: translateY(-10px);
-            visibility: visible;
-        }
-    
-        100% {
-            opacity: 1;
-            transform: translateY(0px);
-            visibility: visible;
-        }
-    
-    }
-    
-    /* animation pour fermer le menu dropout */
-    @keyframes close-menu {
-        0% {
-            opacity: 1;
-            transform: translateY(0px);
-            visibility: visible;
-        }
-    
-        100% {
-            opacity: 0;
-            transform: translateY(-10px);
-            visibility: hidden;
-        }
-    
-    
-    }
-
-
-    /* faire tourner le bouton du menu déroulant au clic */
-    div#nav-links>div.dropdown-menu>a>i {
-        transition: transform 0.2s;
-
-    }
-    div#nav-links>div.dropdown-menu.opened>a>i {
-        transform: rotate(180deg);
-        color: var(--website-strong-color);
-    }
-    div#nav-links>div.dropdown-menu.opened>a {
-        color: var(--website-strong-color);
-    }
 
 
 
@@ -225,22 +228,16 @@ div.calendar-icon>p.today-month {
 
 
 
+/* pc uniquement  */
 
+@media (min-width: 800px) {
 
-
-
-
-    
-    /* pc uniquement  */
-
-@media (min-width: 800px)
- {
     div#nav-links>div.dropdown-menu.opened>div,
     div#nav-links>div.dropdown-menu:hover>div {
         animation: open-menu 0.2s forwards;
         animation-delay: 0.2s;
     }
- }
+}
 
 
 
@@ -253,7 +250,7 @@ div.calendar-icon>p.today-month {
         display: initial;
     }
 
-    /*  */
+    /* header */
     div#header-title {
         flex: 1;
     }
@@ -263,6 +260,7 @@ div.calendar-icon>p.today-month {
 
     }
 
+    /* liens cachés derrière l'écran à droite */
     div#nav-links {
         position: absolute;
         z-index: 2;
@@ -288,6 +286,7 @@ div.calendar-icon>p.today-month {
         right: -100%;
     }
 
+    /* menu ouvert */
     div#nav-links.opened {
         right: 0;
     }
@@ -300,12 +299,13 @@ div.calendar-icon>p.today-month {
 
 
 
-    /* menus déroulants */
+    /* menus déroulants mobiles */
     div#nav-links>div.dropdown-menu {
         width: 100%;
     }
 
-
+    /* on change position->relative  et les animations changent pour des transitions */
+    /* pourquoi? c'était plus simple j'ai pas trouvé de meilleure solution*/
     div#nav-links>div.dropdown-menu>div {
         width: -webkit-fill-available;
         position: relative;
@@ -316,19 +316,18 @@ div.calendar-icon>p.today-month {
         animation: unset;
         max-height: 0;
         transition: max-height 0.15s ease-out, padding 0.15s ease-out;
-        padding: 0 10px;
+        padding: 0 10px; /* on enleve le pading haut et bas car sinon, meme avec el overflow hidden, les padding restent visibles */
         margin-top: 15px;
-    
-
 
     }
 
+    /* l'animation se fait sur la hauteur de la div */
     div#nav-links>div.dropdown-menu.opened>div {
         animation: unset;
         max-height: 500px;
         transition: max-height 0.15s ease-out, padding 0.15s ease-out;
-        padding: 10px;
-    
+        padding: 10px; /* on remet le padding */
+
     }
 
 }

@@ -1,6 +1,6 @@
 // TODO : 
 // - Create a calendar for the Club Info 
-// - Sync the website width it
+// - Sync the website with it
 
 
 // FONCTIONS EN ATTENDANT
