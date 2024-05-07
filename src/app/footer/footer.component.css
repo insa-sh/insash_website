@@ -31,6 +31,8 @@ a {
     font-weight: 600;
     color: var(--insash-text-color);
     text-decoration: none;
+    padding: 8px 0;
+    display: inline-block;
 }
 
 ul {
@@ -40,7 +42,7 @@ ul {
 }
 
 li {
-    padding-bottom: 20px;
+    margin-bottom: 2px;
 }
 
 li>a:hover {
@@ -54,6 +56,7 @@ div.footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    gap: 40px;
 }
 
 div.footer-title {
@@ -62,7 +65,9 @@ div.footer-title {
 }
 
 div.footer-nav {
-    padding-right: 10%;
+    /* padding-right: 10%; */
+    padding: 30px;
+
 }
 
 div.footer-sites {
@@ -70,7 +75,7 @@ div.footer-sites {
 
     background-color: var(--website-bg-color-light-2);
     border-radius: 20px;
-    margin-left: 10%;
+    /* margin-left: 10%; */
 }
 
 div.footer-button-partenariat {
@@ -104,14 +109,31 @@ div.footer-copyright {
         padding-top: 30px;
     }
 
+    footer {
+        padding: 4vw;
+    }
+
+
     div.footer-nav {
-        padding-right: 0%;
-        width: 75%;
+        /* padding-right: 0%; */
+        width: 100%;
     }
 
     div.footer-sites {
-        margin-top: 30px 0 0 0;
-        width: 75%;
+        /* margin-top: 30px 0 0 0; */
+        width: 100%;
+    }
+
+
+    a#footer-button-partenariat-link {
+        width: 100%;
+    }
+    div.footer-button-partenariat {
+        width: 100%;
+    }
+    
+    div.footer-button-partenariat>* {
+        text-align: left;
     }
 
 }

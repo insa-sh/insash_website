@@ -20,21 +20,23 @@ div#header {
     z-index: 1;
 }
 
-div#header-title {
+a#header-title {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     gap: 12px;
+    text-decoration: none;
+    color: inherit;
 
 }
 
-div#header-title>img {
+a#header-title>img {
     height: 50px;
     width: auto;
 }
 
-div#header-title>h1 {
+a#header-title>h1 {
     color: var(--website-strong-color);
     font-family: var(--insash-text-default-font);
     font-size: 20px;
@@ -54,7 +56,7 @@ div#nav-links a {
     font-family: var(--insash-title-default-font);
     color: var(--insash-text-color);
     text-align: center;
-    font-size: 18px;
+    font-size: var(--website-default-text-font-size);
     font-weight: 700;
     text-decoration: none;
     transition: color 0.2s;
@@ -251,7 +253,7 @@ div.calendar-icon>p.today-month {
     }
 
     /* header */
-    div#header-title {
+    a#header-title {
         flex: 1;
     }
 
@@ -284,11 +286,13 @@ div.calendar-icon>p.today-month {
     div#nav-links,
     div#nav-links.closed {
         right: -100%;
+        width: 0;
     }
 
     /* menu ouvert */
     div#nav-links.opened {
         right: 0;
+        width: 100%;
     }
 
     /* bouton hamburger */

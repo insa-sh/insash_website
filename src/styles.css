@@ -18,6 +18,9 @@
  
     --insash-text-default-font: 'Roboto Mono';
     --insash-title-default-font: 'Open Sans';
+
+    --website-default-text-font-size: 18px;
+    --website-default-title-font-size: 26px;
  
     --insash-title-color: #FFFFFF;
     --insash-text-color: #FFFFFF;

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 // Importer la fonction toggleNavigationMenu() dans la page
 declare function toggleNavigationMenu(): void;
-declare function getDay(): String;
+declare function getDate(): String;
 declare function getMonth(): String;
 
 @Component({
@@ -11,7 +11,7 @@ declare function getMonth(): String;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  day = getDay();
+  day = getDate();
   month = getMonth();
 
 

@@ -1,21 +1,21 @@
 <div id="header">
-    <div id="header-title">
+    <a id="header-title" routerLink="/">
         <img src="/assets/images/logo-insash-1.png" alt="">
         <h1>./insa.sh</h1>
-    </div>
+    </a>
 
     <div id="nav-links" class="closed">
         <div class="dropdown-menu closed">
             <a tabindex=0 onclick="toggleDropdownMenu(this);">Astuces <i class="fa-solid fa-caret-down"></i></a>
             <div>
-                <a href="">Cheat Sheets</a>
-                <a href="">Nos Actus</a>
-                <a href="">Conseils</a>
+                <a routerLink="">Cheat Sheets</a>
+                <a routerLink="">Nos Actus</a>
+                <a routerLink="">Conseils</a>
             </div>
         </div>
-        <a href="">HebergOS</a>
-        <a href="">Projets</a>
-        <a href="">Les membres</a>
+        <a routerLink="">HebergOS</a>
+        <a routerLink="">Projets</a>
+        <a routerLink="">Les membres</a>
 
     </div>
     <div id="calendar" onclick="getDay();">
