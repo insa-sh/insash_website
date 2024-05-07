@@ -1,0 +1,11 @@
+<div id="home-header">
+    <img src="/assets/images/logos/logo-insash-1.svg" alt="" srcset="">
+    <h1>Le <span id="clubinfo">Club Info</span> de l'INSA Hauts-de-France</h1>
+    <div id="liens-reseaux">
+        <!-- récupérer les liens depuis le tableau passé en argument par le composant -->
+
+        <a *ngFor="let bouton of reseaux" href="{{bouton.url}}" title="{{bouton.nom}}" target="_blank">
+            <i class="{{ bouton.icon }}"></i>
+        </a>
+    </div>
+</div>
