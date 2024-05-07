@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { FooterComponent } from './footer/footer.component';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { PageAccueilComponent } from './page-accueil/page-accueil.component';
-import { AppRoutingModule } from './app-routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FooterComponent } from "./footer/footer.component";
+import { AppComponent } from "./app.component";
+import { HeaderComponent } from "./header/header.component";
+import { PageAccueilComponent } from "./page-accueil/page-accueil.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { ProjectTileComponent } from "./page-accueil/project-tile/project-tile.component";
 
 @NgModule({
   declarations: [
@@ -15,12 +16,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FooterComponent,
     PageAccueilComponent,
     PageNotFoundComponent,
+    ProjectTileComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

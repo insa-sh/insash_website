@@ -1,0 +1,95 @@
+.tile-rectangle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--website-bg-color);
+  border-radius: 10px;
+  height: 300px;
+  width: 300px; /* delete après, c'est sensé être de taille dynamique */
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 2px var(--website-bg-color-light-2);
+}
+
+i {
+  color: white;
+  padding-right: 5px;
+}
+
+.tile-tags {
+  padding-top: 5px;
+}
+
+.tile-rectangle:hover {
+  box-shadow: 0px 0px 30px 3px var(--website-strong-color);
+  transition: box-shadow var(--golbal-transition-duration);
+}
+
+.tile-rectangle:hover .tile-button {
+  background-color: var(--website-strong-color);
+  transition: background-color var(--golbal-transition-duration);
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--website-strong-color-transparent);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px 10px 0px 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.tag > p {
+  color: var(--insash-rose-pale);
+}
+
+.tile-content {
+  padding-left: 20px;
+}
+
+.tile-image {
+  height: 150px;
+  width: 100%;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: center;
+}
+
+h1 {
+  color: white;
+  font-family: var(--insash-text-default-font);
+  font-size: 16px;
+}
+
+h2 {
+  color: white;
+  font-family: var(--insash-text-default-font);
+  font-size: 12px;
+  font-weight: 200;
+  padding-top: 5px;
+}
+
+p {
+  color: white;
+  font-size: 12px;
+  font-family: var(--insash-text-default-font);
+}
+
+.tile-button > p {
+  font-size: 16px;
+}
+
+.tile-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+
+  background-color: var(--website-bg-color-light-2);
+}
