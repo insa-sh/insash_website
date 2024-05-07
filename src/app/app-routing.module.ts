@@ -12,11 +12,10 @@ import { Title } from "@angular/platform-browser";
 
 const routes: Routes = [
   {
-    path: "accueil",
+    path: "",
     component: PageAccueilComponent,
     title: "Club Info INSA Hauts-de-France",
   },
-  { path: "", redirectTo: "accueil", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent, title: "Page not found :(" },
 ];
 
