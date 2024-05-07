@@ -10,6 +10,7 @@
 * {
     --insash-logo-bg-color: #2D333E;
     --insash-rose-pale: #EFC1CB;
+    --insash-rose-fonce: #DE7F92;
     --website-strong-color: #8F51DF;
     --website-bg-color: #262626;
     --website-bg-color-light-1: #353535;
@@ -32,8 +33,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--insash-text-default-font);
+    color: var(--insash-text-color);
 }
  
 body {
     overflow-x: hidden;
+    background-color: var(--website-bg-color);
+}
+
+
+h1, h2, h3 {
+    font-family: var(--insash-title-default-font);
 }

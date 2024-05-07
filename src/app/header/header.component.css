@@ -194,6 +194,7 @@ div.calendar-icon>p.today-number {
     font-size: 20px;
     font-weight: 700;
     font-family: var(--insash-title-default-font);
+    color: black;
 
 }
 
@@ -270,8 +271,8 @@ div.calendar-icon>p.today-month {
         right: 0px;
         background-color: rgb(51, 51, 51);
 
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
 
 
         width: 100%;

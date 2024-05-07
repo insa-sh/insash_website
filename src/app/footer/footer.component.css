@@ -8,9 +8,13 @@ footer {
     position: relative;
     width: 100%;
     background-color: var(--website-bg-color-light-1);
-    font-family: var(--insash-title-default-font), sans-serif;
     padding-top: 50px;
     padding-bottom: 20px;
+}
+
+/* s'applique à tous les éléments inclus dans la balise footer */
+footer * {
+    font-family: var(--insash-title-default-font), sans-serif;
 }
 
 h1 {

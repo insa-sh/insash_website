@@ -25,7 +25,7 @@ export class HomeSocialLinksComponent {
     {
       nom: "GitBucket",
       url: "https://git.insash.fr",
-      icon: "fa-brands fa-square-git",
+      icon: "fa-brands fa-square-git ",
     },
     {
       nom: "GitHub Organization",
