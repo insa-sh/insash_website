@@ -1,7 +1,38 @@
-div {
+.top-projects {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.more-project {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.more-project a p::before {
+  background-color: var(--insash-rose-pale);
+
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  left: -2px;
+  bottom: 0;
+  z-index: -1;
+}
+
+a > p {
+  color: white;
+  position: relative;
+  text-align: center;
+  font-family: var(--insash-text-default-font);
+  font-size: 20px;
 }
 
 app-project-tile {
@@ -9,13 +40,13 @@ app-project-tile {
 }
 
 @media (max-width: 800px) {
-  div {
+  .top-projects {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
   app-project-tile {
     margin-top: 20px;
-    width: 70%;
+    width: 90%;
   }
 }
