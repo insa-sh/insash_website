@@ -28,7 +28,6 @@ export class HeaderComponent {
 
     // This array contains all the files/CDNs 
     const dynamicScripts = [
-      'https://kit.fontawesome.com/1416c49ef4.js',
       'assets/scripts/navMenu.js'
     ];
     for (let i = 0; i < dynamicScripts.length; i++) {
