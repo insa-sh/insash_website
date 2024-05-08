@@ -51,13 +51,8 @@ div.tile-image {
   height: 150px;
   width: 100%;
   margin-bottom: 10px;
-}
-
-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  object-position: center;
+  background-position: center;
+  background-image: url("/assets/images/projets/guerre_des_carre.png");
 }
 
 div.tile-content {
