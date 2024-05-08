@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
 import { FooterComponent } from './footer/footer.component';
 import { AppComponent } from './app.component';
@@ -8,6 +8,8 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeSocialLinksComponent } from './page-accueil/home-social-links/home-social-links.component';
+import { ProjectTileComponent } from "./page-accueil/project-tile/project-tile.component";
+import { TopProjectComponent } from './page-accueil/top-project/top-project.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,12 @@ import { HomeSocialLinksComponent } from './page-accueil/home-social-links/home-
     FooterComponent,
     PageAccueilComponent,
     PageNotFoundComponent,
+    ProjectTileComponent,
+    TopProjectComponent,
     HomeSocialLinksComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

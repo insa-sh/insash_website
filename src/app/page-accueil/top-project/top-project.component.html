@@ -1,0 +1,9 @@
+<div class="top-projects">
+  <app-project-tile
+    *ngFor="let project of topProjects"
+    [project]="project"
+  ></app-project-tile>
+</div>
+<div class="more-project">
+  <a routerLink=""><p>-> Plus de projets</p></a>
+</div>

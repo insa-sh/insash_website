@@ -16,7 +16,6 @@ const routes: Routes = [
     component: PageAccueilComponent,
     title: "Club Info INSA Hauts-de-France",
   },
-  { path: "", redirectTo: "accueil", pathMatch: "full" },
   { path: "**", component: PageNotFoundComponent, title: "Page not found :(" },
 ];
 

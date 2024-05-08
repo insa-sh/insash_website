@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
- 
- 
+
 /* fonts and icons */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
@@ -12,7 +11,7 @@
 
   
 /* variables globales pour le club Info */
- 
+
 * {
     --insash-logo-bg-color: #2D333E;
     --insash-rose-pale: #EFC1CB;
@@ -21,19 +20,18 @@
     --website-bg-color: #262626;
     --website-bg-color-light-1: #353535;
     --website-bg-color-light-2: #474747;
- 
- 
-    --insash-text-default-font: 'Roboto Mono';
-    --insash-title-default-font: 'Open Sans';
+  --website-strong-color-transparent: #8f51df32;
 
-    --website-default-text-font-size: 18px;
-    --website-default-title-font-size: 26px;
- 
-    --insash-title-color: #FFFFFF;
-    --insash-text-color: #FFFFFF;
- 
-    --golbal-transition-duration : 0.2s;
- 
+  --insash-text-default-font: "Roboto Mono";
+  --insash-title-default-font: "Open Sans";
+
+  --website-default-text-font-size: 18px;
+  --website-default-title-font-size: 26px;
+
+  --insash-title-color: #ffffff;
+  --insash-text-color: #ffffff;
+
+  --golbal-transition-duration: 0.2s;
 }
 * {
     margin: 0;
@@ -42,7 +40,7 @@
     font-family: var(--insash-text-default-font);
     color: var(--insash-text-color);
 }
- 
+
 body {
     overflow-x: hidden;
     background-color: var(--website-bg-color);
