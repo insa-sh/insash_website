@@ -1,23 +1,26 @@
-.top-projects {
+a {
+  text-decoration: none;
+}
+
+div.top-projects {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.more-project {
+app-project-tile {
+  width: 25%;
+}
+
+div.more-project {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
 
-a {
-  text-decoration: none;
-}
-
-.more-project a p::before {
+div.more-project a p::before {
   background-color: var(--insash-rose-pale);
-
   content: "";
   position: absolute;
   width: 100%;
@@ -35,12 +38,8 @@ a > p {
   font-size: 20px;
 }
 
-app-project-tile {
-  width: 25%;
-}
-
 @media (max-width: 800px) {
-  .top-projects {
+  div.top-projects {
     flex-direction: column;
     justify-content: center;
     align-items: center;
