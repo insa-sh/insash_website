@@ -20,7 +20,7 @@ div.more-project {
 }
 
 div.more-project a p::before {
-  background-color: var(--insash-rose-pale);
+  background-color: var(--website-strong-color);
   content: "";
   position: absolute;
   width: 100%;

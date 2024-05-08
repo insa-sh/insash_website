@@ -34,7 +34,7 @@ div.tile-rectangle {
   justify-content: space-between;
   background-color: var(--website-bg-color);
   border-radius: 10px;
-  height: 300px;
+  height: 100%;
   overflow: hidden;
   box-shadow: 0px 0px 0px 2px var(--website-bg-color-light-2);
 }
@@ -57,7 +57,7 @@ img {
 }
 
 div.tile-content {
-  padding-left: 20px;
+  padding: 10px 20px 10px 20px;
 }
 
 div.tile-tags {
@@ -91,4 +91,5 @@ div.tile-rectangle:hover div.tile-button {
 
 div.tile-button > p {
   font-size: 16px;
+  text-align: center;
 }
