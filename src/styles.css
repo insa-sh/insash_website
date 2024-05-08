@@ -31,7 +31,7 @@
   --insash-title-color: #ffffff;
   --insash-text-color: #ffffff;
 
-  --golbal-transition-duration: 0.2s;
+  --global-transition-duration: 0.2s;
 }
 * {
     margin: 0;
@@ -49,4 +49,46 @@ body {
 
 h1, h2, h3 {
     font-family: var(--insash-title-default-font);
+}
+
+
+/* style des liens a par défaut */
+
+
+a.text-link {
+    text-decoration: none;
+    color: var(--insash-text-color);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+
+    position: relative;
+    padding: 1px 2px;
+    display: inline-block;
+}
+
+a.text-link::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 35%;
+    border-radius: 1px;
+
+
+    background-color: rgba(239, 193, 203, 0.45);
+    transition: height var(--global-transition-duration), color var(--global-transition-duration), background-color var(--global-transition-duration);
+}
+a.text-link:hover {
+    color: var(--website-bg-color);
+
+}
+a.text-link:hover::after {
+    background-color: var(--insash-rose-pale);
+    height: 100%;
+    border-radius: 2px;
+    
 }

@@ -20,7 +20,7 @@ div.more-project {
   margin-top: 20px;
 }
 
-div.more-project a p::before {
+/* div.more-project a p::before {
   background-color: var(--website-strong-color);
   content: "";
   position: absolute;
@@ -29,14 +29,16 @@ div.more-project a p::before {
   left: -2px;
   bottom: 0;
   z-index: -1;
-}
+} */
 
-a > p {
-  color: white;
-  position: relative;
-  text-align: center;
+a {
+  /* color: white; */
+  /* position: relative; */
+  /* text-align: center; */
+  font-weight: 600;
   font-family: var(--insash-text-default-font);
   font-size: 20px;
+  margin: 40px 0;
 }
 
 @media (max-width: 800px) {
