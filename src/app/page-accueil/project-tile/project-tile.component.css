@@ -5,7 +5,6 @@
   background-color: var(--website-bg-color);
   border-radius: 10px;
   height: 300px;
-  width: 300px; /* delete après, c'est sensé être de taille dynamique */
   overflow: hidden;
   box-shadow: 0px 0px 0px 2px var(--website-bg-color-light-2);
 }

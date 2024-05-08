@@ -8,6 +8,7 @@ import { PageAccueilComponent } from "./page-accueil/page-accueil.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { ProjectTileComponent } from "./page-accueil/project-tile/project-tile.component";
+import { TopProjectComponent } from './page-accueil/top-project/top-project.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ProjectTileComponent } from "./page-accueil/project-tile/project-tile.c
     PageAccueilComponent,
     PageNotFoundComponent,
     ProjectTileComponent,
+    TopProjectComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

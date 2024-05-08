@@ -1,0 +1,21 @@
+div {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+app-project-tile {
+  width: 25%;
+}
+
+@media (max-width: 800px) {
+  div {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  app-project-tile {
+    margin-top: 20px;
+    width: 70%;
+  }
+}
