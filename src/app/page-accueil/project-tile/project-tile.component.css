@@ -22,8 +22,7 @@ h1 {
 h2 {
   font-size: 12px;
   font-weight: 200;
-  padding-top: 5px;
-  margin-bottom: 5px;
+  padding-left: 5px;
 }
 
 p {
@@ -51,12 +50,28 @@ div.tile-image {
   height: 150px;
   width: 100%;
   margin-bottom: 10px;
-  background-position: center;
-  background-image: url("/assets/images/projets/guerre_des_carre.png");
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+div.icon > img {
+  object-fit: contain;
 }
 
 div.tile-content {
   padding: 10px 20px 10px 20px;
+}
+
+div.tile-authors {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+  margin-bottom: 5px;
 }
 
 div.tile-tags {
