@@ -5,6 +5,6 @@ WORKDIR /app
 RUN npm install -g @angular/cli@16
 
 COPY package*.json ./
+RUN npm install
 
-# on met dans un script les deux commandes car il ne peut y avoir qu'un CMD dans un dockerfile
-CMD ["bash", "start.sh"]
+CMD ["ng", "serve", "--host", "0.0.0.0"]
