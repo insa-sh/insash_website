@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HomeSocialLinksComponent } from './page-accueil/home-social-links/home-social-links.component';
 import { ProjectTileComponent } from "./page-accueil/project-tile/project-tile.component";
 import { TopProjectComponent } from './page-accueil/top-project/top-project.component';
+import { PageMembresComponent } from './page-membres/page-membres.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TopProjectComponent } from './page-accueil/top-project/top-project.comp
     ProjectTileComponent,
     TopProjectComponent,
     HomeSocialLinksComponent,
+    PageMembresComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
