@@ -4,6 +4,7 @@ export interface Member {
     name: string;
     last_name: string;
     pseudo: string;
+    role_tag: string;
     role: string;
     bureau_comment?: string;
     description?: string;
