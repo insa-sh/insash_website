@@ -1,6 +1,8 @@
 services:
-  website-insash-compose:
+  website-insash:
     build: .
+    image: website-insash
+    container_name: website-insash
     volumes:
       - ./:/app
       - /app/node_modules
