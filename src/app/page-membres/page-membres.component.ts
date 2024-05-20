@@ -43,7 +43,7 @@ export class PageMembresComponent {
       bureau_comment: undefined,
       photo: "",
       email: "secretaire@insash.org",
-      email_visible: true,
+      email_visible: false,
     },
     {
       id: 3,
@@ -55,7 +55,7 @@ export class PageMembresComponent {
       bureau_comment: undefined,
       photo: "",
       email: "communication@insash.org",
-      email_visible: false,
+      email_visible: true,
     },
     {
       id: 4,

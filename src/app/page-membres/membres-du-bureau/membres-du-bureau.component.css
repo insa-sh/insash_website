@@ -1,0 +1,14 @@
+div#membres-du-bureau {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 4vw;
+    justify-content: center;
+
+    margin: 20px 4vw;
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 4vw;
+}
