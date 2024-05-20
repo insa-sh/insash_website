@@ -18,6 +18,9 @@ div#home-header>h1>span {
     color: var(--insash-rose-pale);
     font-size: 32px;
 }
+div#home-header>h1>span>span#smaller-space {
+    font-family: 'Open Sans';
+}
 div#home-header>div#liens-reseaux {
     display: flex;
     flex-direction: row;
