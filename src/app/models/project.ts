@@ -7,3 +7,4 @@ export interface Project {
   date: Date;
   icon: boolean;
 }
+

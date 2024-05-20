@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Member } from "src/app/models/member";
+
 
 @Component({
   selector: 'app-membre-bureau',
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./membre-bureau.component.css']
 })
 export class MembreBureauComponent {
-
+  @Input() membre!: Member; // ! -> la variable membre est obligatoire et ne sera jamais null ou undefined
 }
