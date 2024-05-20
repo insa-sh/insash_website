@@ -1,8 +1,6 @@
 services:
   website-insash-compose:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     volumes:
       - ./:/app
       - /app/node_modules
