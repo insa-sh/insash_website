@@ -79,10 +79,12 @@ div.membre-bureau>div.membre-info {
 
     div.membre-bureau>div.membre-info {
         flex: 1;
-        width: unset;
+        width: 100%;
         padding: 10px 25px;
         border: 1px solid #353535;
         background: #1E1E1E;
         border-radius: 13px;
+        overflow: hidden;
+        word-break: break-word;
     }
 }

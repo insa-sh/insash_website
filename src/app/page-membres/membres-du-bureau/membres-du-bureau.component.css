@@ -4,12 +4,21 @@ div#membres-du-bureau {
     flex-direction: row;
     gap: 4vw;
     justify-content: center;
+    /* align-items: center; */
 
     margin: 20px 4vw;
     margin-bottom: 80px;
 }
 
+
 h1 {
     text-align: center;
     margin: 40px 4vw;
+}
+
+@media (max-width:800px) {
+    div#membres-du-bureau>* {
+        width: 100%;
+        max-width: min(100%, 600px);
+    }
 }
