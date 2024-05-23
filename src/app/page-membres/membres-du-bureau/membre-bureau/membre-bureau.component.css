@@ -6,23 +6,24 @@ div.membre-bureau {
     /* justify-content: center; */
     align-items: flex-start;
     font-size: var(--website-default-text-font-size);
-  
+
 
 
 
 }
+
 div.membre-bureau>img {
-    width: 110px;
+    width: 100px;
     border-radius: 50%;
     border: 6px solid #222;
     background-color: #353535;
     aspect-ratio: 1;
 
 
-    
+
 }
 
-div.membre-bureau>div.membre-info{
+div.membre-bureau>div.membre-info {
     /* flex: 1; */
     width: 380px;
     font-family: "Roboto Mono";
@@ -31,7 +32,7 @@ div.membre-bureau>div.membre-info{
     border: 1px solid #353535;
     background: #1E1E1E;
     border-radius: 13px;
-} 
+}
 
 
 
@@ -42,19 +43,22 @@ div.membre-bureau>div.membre-info{
 
 /* mise en forme de l'effet code */
 
-.variable-string, .variable-name>span  {
+.variable-string,
+.variable-name>span {
     color: #C8930A;
 }
+
 .variable-link {
     color: #338C30;
-    word-break:break-word;
+    word-break: break-word;
 }
 
 .indent-1 {
     margin-left: 2em;
 }
+
 .indent-2 {
-    margin-left : 4em;
+    margin-left: 4em;
 }
 
 
@@ -70,10 +74,10 @@ div.membre-bureau>div.membre-info{
 
     div.membre-bureau>img {
         width: 70px;
-        
+
     }
 
-    div.membre-bureau>div.membre-info{
+    div.membre-bureau>div.membre-info {
         flex: 1;
         width: unset;
         padding: 10px 25px;
