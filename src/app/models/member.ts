@@ -8,7 +8,7 @@ export interface Member {
     role: string;
     bureau_comment?: string;
     description?: string;
-    photo?: string;
+    photo?: string; //lien relatif ex: assets/images/...
     email: string;
     email_visible: boolean;
     personal_link?: string;
