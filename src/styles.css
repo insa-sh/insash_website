@@ -41,6 +41,15 @@
     color: var(--insash-text-color);
 }
 
+@media (max-width:800px) {
+    *{
+        --website-default-text-font-size: 16px;
+        --website-default-title-font-size: 26px;
+      
+    }
+  
+}
+
 body {
     overflow-x: hidden;
     background-color: var(--website-bg-color);

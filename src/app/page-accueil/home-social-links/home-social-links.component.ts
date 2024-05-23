@@ -29,7 +29,7 @@ export class HomeSocialLinksComponent {
     },
     {
       nom: "GitHub Organization",
-      url: "",
+      url: "https://github.com/insa-sh",
       icon: "fa-brands fa-github",
     }
 

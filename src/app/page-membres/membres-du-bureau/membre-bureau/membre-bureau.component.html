@@ -1,0 +1,27 @@
+<div class="membre-bureau">
+    <!-- si le membre a une photo de profil alors l'afficher, sinon prendre celle par défaut -->
+    <ng-container *ngIf="membre.photo !== undefined && membre.photo !== null && membre.photo !== ''">
+        <img src="{{membre.photo}}" alt="Photo de profil du {{membre.role}}" class="profile-picture">
+    </ng-container>
+    <ng-container *ngIf="membre.photo === undefined || membre.photo === null || membre.photo === ''">
+        <img src="/assets/images/profile_pictures/default.svg" alt="Photo  de profil du {{membre.role}}"
+            class="profile-picture">
+    </ng-container>
+
+
+    <div class="membre-info">
+        <p class="variable-name">{{membre.pseudo}}<span>.{{membre.role_tag}}</span></p>
+        <p class="indent-1">&#123;</p>
+        <p class="indent-2">pseudo = <span class="variable-string">"{{membre.pseudo}}"</span></p>
+        <p class="indent-2">role = <span class="variable-string">"{{membre.role}}"</span></p>
+        <!-- recrer une condition pour l'affichage de l'email -->
+        <p *ngIf="membre.email_visible === true && membre.email !== undefined && membre.email !== null && membre.email !== ''"
+            class="indent-2">mail = <a class="variable-link" href="mailto:{{membre.email}}">{{membre.email}}</a></p>
+        <p *ngIf="membre.personal_link !== undefined && membre.personal_link !== null && membre.personal_link !== ''"
+            class="indent-2">site = <a class="variable-link"
+                href="{{membre.personal_link}}">{{membre.personal_link}}</a></p>
+        <p class="indent-1">&#125;</p>
+
+
+    </div>
+</div>
