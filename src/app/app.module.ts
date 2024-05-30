@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
+import { RejoindreLeClubComponent } from './rejoindre-le-club/rejoindre-le-club.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,6 +20,7 @@ import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-b
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    RejoindreLeClubComponent,
     PageAccueilComponent,
     PageNotFoundComponent,
     ProjectTileComponent,
