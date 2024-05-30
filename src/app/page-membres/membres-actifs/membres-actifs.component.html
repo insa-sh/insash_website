@@ -1,1 +1,11 @@
-<p>membres-actifs works!</p>
+<h1>Les membres</h1>
+
+<div id="membres-actifs">
+    <!-- parcourir tous les membres du tableau -->
+    <ng-container *ngFor="let membre of membres">
+        <!-- si le rôle du membre fait partie des rôles associés au bureau, on l'affiche dans cette section -->
+        <ng-container *ngIf="!roles_bureau.includes(membre.role)">
+            <app-box-membre [membre]="membre"></app-box-membre>
+        </ng-container>
+    </ng-container>
+</div>

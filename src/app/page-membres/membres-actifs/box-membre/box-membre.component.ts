@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Member } from "src/app/models/member";
 
 @Component({
   selector: 'app-box-membre',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./box-membre.component.css']
 })
 export class BoxMembreComponent {
-
+  @Input() membre!: Member;
 }
