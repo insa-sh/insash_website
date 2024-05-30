@@ -1,9 +1,10 @@
 services:
-  website-insash-compose:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  website-insash:
+    build: .
+    image: website-insash
+    container_name: website-insash
     volumes:
       - ./:/app
+      - /app/node_modules
     ports:
       - "4200:4200"

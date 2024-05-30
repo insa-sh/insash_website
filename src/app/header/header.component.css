@@ -12,7 +12,7 @@ div#header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 24px;
+    gap: 4vw;
 
     position: sticky;
     position: -webkit-sticky;
@@ -20,21 +20,23 @@ div#header {
     z-index: 1;
 }
 
-div#header-title {
+a#header-title {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     gap: 12px;
+    text-decoration: none;
+    color: inherit;
 
 }
 
-div#header-title>img {
+a#header-title>img {
     height: 50px;
     width: auto;
 }
 
-div#header-title>h1 {
+a#header-title>h1 {
     color: var(--website-strong-color);
     font-family: var(--insash-text-default-font);
     font-size: 20px;
@@ -54,10 +56,10 @@ div#nav-links a {
     font-family: var(--insash-title-default-font);
     color: var(--insash-text-color);
     text-align: center;
-    font-size: 18px;
+    font-size: var(--website-default-text-font-size);
     font-weight: 700;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color var(--global-transition-duration);
     padding: 8px 4px;
 }
 
@@ -84,7 +86,7 @@ div#nav-links>div.dropdown-menu>div {
     gap: 4px;
     width: max-content;
     max-width: 60vw;
-    animation: close-menu 0.2s forwards;
+    animation: close-menu var(--global-transition-duration) forwards;
     animation-delay: 0.2s;
 }
 
@@ -94,12 +96,13 @@ div#nav-links>div.dropdown-menu {
 
 div#nav-links>div.dropdown-menu>a {
     padding: 30px 4px;
+    cursor: pointer;
 }
 
 
 
 div#nav-links>div.dropdown-menu>div {
-    animation: close-menu 0.2s forwards;
+    animation: close-menu var(--global-transition-duration) forwards;
     animation-delay: 0.4s;
 
 }
@@ -110,7 +113,7 @@ div#nav-links>div.dropdown-menu>div>a {
     border-radius: 10px;
     padding: 8px;
     text-align: left;
-    transition-duration: 0.2s;
+    transition-duration: var(--global-transition-duration);
     transition-property: background-color, color;
 }
 
@@ -157,13 +160,14 @@ div#nav-links>div.dropdown-menu>div>a:hover {
 
 /* faire tourner le bouton du menu déroulant au clic */
 div#nav-links>div.dropdown-menu>a>i {
-    transition: transform 0.2s;
+    transition: transform var(--global-transition-duration);
 
 }
 
 div#nav-links>div.dropdown-menu.opened>a>i {
     transform: rotate(180deg);
     color: var(--website-strong-color);
+    
 }
 
 div#nav-links>div.dropdown-menu.opened>a {
@@ -192,6 +196,7 @@ div.calendar-icon>p.today-number {
     font-size: 20px;
     font-weight: 700;
     font-family: var(--insash-title-default-font);
+    color: black;
 
 }
 
@@ -234,7 +239,7 @@ div.calendar-icon>p.today-month {
 
     div#nav-links>div.dropdown-menu.opened>div,
     div#nav-links>div.dropdown-menu:hover>div {
-        animation: open-menu 0.2s forwards;
+        animation: open-menu var(--global-transition-duration) forwards;
         animation-delay: 0.2s;
     }
 }
@@ -251,7 +256,7 @@ div.calendar-icon>p.today-month {
     }
 
     /* header */
-    div#header-title {
+    a#header-title {
         flex: 1;
     }
 
@@ -268,8 +273,8 @@ div.calendar-icon>p.today-month {
         right: 0px;
         background-color: rgb(51, 51, 51);
 
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
 
 
         width: 100%;
@@ -277,26 +282,75 @@ div.calendar-icon>p.today-month {
         align-items: flex-start;
         padding: 40px;
         /* overflow: hidden; */
-        transition: right 0.2s;
+        /* transition: right var(--global-transition-duration); */
     }
 
     /* menu fermé */
     div#nav-links,
     div#nav-links.closed {
         right: -100%;
+        width: 0;
+        overflow: hidden;
+        padding: 40px 0;
+        animation: mobile-close-nav-menu 0.5s ;
     }
 
     /* menu ouvert */
     div#nav-links.opened {
         right: 0;
+        width: 100%;
+        padding: 40px;
+        animation: mobile-open-nav-menu var(--global-transition-duration) forwards;
+
     }
 
     /* bouton hamburger */
     div#hamburger-button {
         font-size: 35px;
         color: var(--insash-text-color);
+        cursor: pointer;
     }
 
+    /* animation pour ouvrir le menu de navigation*/
+    @keyframes mobile-open-nav-menu {
+        0% {
+            right: -100%;
+            width: 0;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        100% {
+            right: 0;
+            overflow: visible;
+            opacity: 1;
+            width: 100%;
+            visibility: visible;
+        }
+
+    }
+
+    /* animation pour fermer le menu dropout */
+    @keyframes mobile-close-nav-menu {
+        0% {
+            opacity: 1;
+            width: 100%;
+            right: 0;
+            visibility: visible;
+        }
+
+        100% {
+            opacity: 0;
+            width: 0;
+            /* overflow: hidden; */
+            visibility: hidden;
+            right: -100%;
+            padding: 40px 0;
+        }
+
+
+    }
 
 
     /* menus déroulants mobiles */
@@ -316,7 +370,8 @@ div.calendar-icon>p.today-month {
         animation: unset;
         max-height: 0;
         transition: max-height 0.15s ease-out, padding 0.15s ease-out;
-        padding: 0 10px; /* on enleve le pading haut et bas car sinon, meme avec el overflow hidden, les padding restent visibles */
+        padding: 0 10px;
+        /* on enleve le pading haut et bas car sinon, meme avec el overflow hidden, les padding restent visibles */
         margin-top: 15px;
 
     }
@@ -326,8 +381,10 @@ div.calendar-icon>p.today-month {
         animation: unset;
         max-height: 500px;
         transition: max-height 0.15s ease-out, padding 0.15s ease-out;
-        padding: 10px; /* on remet le padding */
+        padding: 10px;
+        /* on remet le padding */
 
     }
+
 
 }

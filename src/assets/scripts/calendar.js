@@ -6,10 +6,10 @@
 // FONCTIONS EN ATTENDANT
 
 // obtenir numero du jour actuel
-function getDay() {
+function getDate() {
     let date = new Date();
-    console.log(date.getDay());
-    return date.getDay();
+    console.log(date.getDate());
+    return date.getDate();
 }
 
 // obtenir les trois premieres lettres du mois
