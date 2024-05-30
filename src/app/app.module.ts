@@ -11,6 +11,8 @@ import { HomeSocialLinksComponent } from './page-accueil/home-social-links/home-
 import { ProjectTileComponent } from "./page-accueil/project-tile/project-tile.component";
 import { TopProjectComponent } from './page-accueil/top-project/top-project.component';
 import { PageMembresComponent } from './page-membres/page-membres.component';
+import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membres-du-bureau.component';
+import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { PageMembresComponent } from './page-membres/page-membres.component';
     TopProjectComponent,
     HomeSocialLinksComponent,
     PageMembresComponent,
+    MembresDuBureauComponent,
+    MembreBureauComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
