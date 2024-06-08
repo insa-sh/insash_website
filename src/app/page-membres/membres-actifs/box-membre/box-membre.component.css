@@ -1,0 +1,32 @@
+div.box-membre>p.nom {
+    color: #FFF;
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.nom>span {
+    color: #BBB;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+div.box-membre>p.role {
+    color: #A1A1A1;
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-weight: 700;
+}
+
+div.box-membre {
+    /* flex: 1; */
+    width: 310px;
+    font-family: var(--insash-text-default-font);
+    padding: 20px;
+    border: 2px solid #474747;
+    background: #353535;
+    border-radius: 12px;
+}
