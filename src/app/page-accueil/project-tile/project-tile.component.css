@@ -34,16 +34,19 @@ div.tile-rectangle {
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--website-bg-color);
-  border-radius: 10px;
+  border-radius: 14px;
   height: 100%;
 
   overflow: hidden;
   border: 2px solid var(--website-bg-color-light-2);
-  transition: box-shadow var(--global-transition-duration);
+  transition: box-shadow var(--global-transition-duration), transform var(--global-transition-duration);
 }
 
 div.tile-rectangle:hover {
-  box-shadow: 0px 0px 30px 3px rgba(143, 81, 223, 0.40);
+  box-shadow: 0px 0px 20px 4px #50505046;
+  transform: translateY(-5px);
+  background-color: var(--website-bg-color-light-2);
+
 }
 
 div.tile-image {
@@ -80,14 +83,19 @@ div.tile-tags {
 
 div.tag {
   display: inline-block;
-  background-color: var(--website-strong-color-transparent);
+  background-color: rgba(239,193,233,10%);
   border-radius: 5px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   padding: 5px;
   margin: 5px 10px 0px 0px;
 }
 
 div.tag > p {
   color: var(--insash-rose-pale);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
 }
 
 div.tile-button {
@@ -104,7 +112,10 @@ div.tile-button {
 
 }
 div.tile-rectangle:hover div.tile-button {
-  background-color: var(--website-strong-color-transparent);
+  /* background-color: var(--website-strong-color-transparent); */
+  background-color: var(--website-strong-color);
+  /* border-color: var(--website-strong-color); */
+
 }
 
 div.tile-button > p {

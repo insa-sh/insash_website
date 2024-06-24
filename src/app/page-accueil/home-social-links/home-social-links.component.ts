@@ -24,7 +24,7 @@ export class HomeSocialLinksComponent {
     },
     {
       nom: "GitBucket",
-      url: "https://git.insash.fr",
+      url: "https://git.insash.org",
       icon: "fa-brands fa-square-git ",
     },
     {
