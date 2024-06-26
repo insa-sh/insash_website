@@ -40,7 +40,18 @@ div.tile-rectangle {
   overflow: hidden;
   border: 2px solid var(--website-bg-color-light-2);
   transition: box-shadow var(--global-transition-duration), transform var(--global-transition-duration);
+
 }
+
+
+
+
+
+
+
+
+
+
 
 div.tile-rectangle:hover {
   box-shadow: 0px 0px 20px 4px #50505046;
@@ -75,6 +86,7 @@ div.tile-authors {
   flex-direction: row;
   padding-top: 5px;
   margin-bottom: 5px;
+  align-items: center;
 }
 
 div.tile-tags {
