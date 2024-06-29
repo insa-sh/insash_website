@@ -16,7 +16,7 @@
     --insash-logo-bg-color: #2D333E;
     --insash-rose-pale: #EFC1CB;
     --insash-rose-fonce: #DE7F92;
-    --website-strong-color: #8F51DF;
+    --website-strong-color: #DE7F92;
     --website-bg-color: #262626;
     --website-bg-color-light-1: #353535;
     --website-bg-color-light-2: #474747;
@@ -41,11 +41,16 @@
     color: var(--insash-text-color);
 }
 
+
+/* mobiles */
 @media (max-width:800px) {
     *{
         --website-default-text-font-size: 16px;
         --website-default-title-font-size: 26px;
       
+    }
+    .computer-only {
+        display: none;
     }
   
 }
