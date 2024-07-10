@@ -1,0 +1,26 @@
+services:
+  website-insash-api:
+    build: .
+    image: website-insash-api
+    container_name: website-insash-api
+    env_file: ./cmd/.env
+    volumes:
+      - ./:/var/www/app
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+  postgres: 
+    image: postgres:16
+    container_name: website-insash-database
+    ports:
+      - "5432:5432"
+    env_file: ./database/.env
+    volumes:
+    - ./database/database_mock.sql:/docker-entrypoint-initdb.d/database_mock.sql
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
