@@ -13,6 +13,8 @@ import { TopProjectComponent } from './page-accueil/top-project/top-project.comp
 import { PageMembresComponent } from './page-membres/page-membres.component';
 import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membres-du-bureau.component';
 import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,8 +29,9 @@ import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-b
     PageMembresComponent,
     MembresDuBureauComponent,
     MembreBureauComponent,
+    
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,],
   providers: [],
   bootstrap: [AppComponent],
 })

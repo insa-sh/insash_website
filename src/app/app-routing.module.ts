@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { Title } from "@angular/platform-browser";
 
 
+
 // iumporter la fonction qui permet de fermer le menu de navigation au changement de page
 declare function toggleNavigationMenu(action : any): void;
 
