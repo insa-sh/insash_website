@@ -51,8 +51,10 @@ export class DocumentService {
 
   getProject(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number: number): Observable<Document> {
     let url: string = this._url + "documents/project?";
-    if (sort != SortingByDate.Asc) {
-      url += "sort=" + sort + "&";
+    if (sort == SortingByDate.Asc) {
+      url += "sort=asc&";
+    } else if (sort == SortingByDate.Desc) {
+      url += "sort=desc&";
     }
     
     if (tags && tags.length > 0) {
