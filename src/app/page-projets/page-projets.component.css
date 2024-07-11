@@ -9,17 +9,19 @@ h2 {
     opacity: 60%;
 }
 
+:host {
+    app-project-tile:nth-child(1) {
+        width: 50% !important;
+        max-width: 1000px !important;
+    }}
 
-::ng-deep app-project-tile:nth-child(1) {
-    width: 50% !important;
-    max-width: 1000px !important;
-   
-   
-   }
+
 
 @media (max-width: 800px) {
-    ::ng-deep app-project-tile:nth-child(1) {
+    :host {
+    app-project-tile:nth-child(1) {
       width: 90% !important;
       max-width: 400px !important;
     }
+}
   }

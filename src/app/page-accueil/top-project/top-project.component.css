@@ -48,12 +48,7 @@ div.top-projects app-project-tile:nth-child(3) {
       opacity: 1;
   }
 }
-div.more-project {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
+
 
 /* div.more-project a p::before {
   background-color: var(--website-strong-color);
