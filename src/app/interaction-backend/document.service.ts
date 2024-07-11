@@ -6,7 +6,7 @@ import { Member } from './member';
 import { Document } from './document';
 
 
-enum SortingByDate {
+export enum SortingByDate {
   Asc,
   Desc,
 }
@@ -21,7 +21,7 @@ export class DocumentService {
   private _url: string = "http://localhost:8080/"
   constructor(private http: HttpClient) { }
 
-  getArticle(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc): Observable<Document> {
+  getArticle(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number: number): Observable<Document> {
     let url: string = this._url + "documents/article?";
     if (sort != SortingByDate.Asc) {
       url += "sort=" + sort + "&";
@@ -41,31 +41,37 @@ export class DocumentService {
       if (slug && slug != "") {
         url += "slug=" + slug + "&";
       }
+      if (number && number > 0) {
+        url += "nbr=" + number + "&";
+      }
 
       return this.http.get<Document>(url);
     
   }
 
-  getProject(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc): Observable<Document> {
+  getProject(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number: number): Observable<Document> {
     let url: string = this._url + "documents/project?";
     if (sort != SortingByDate.Asc) {
       url += "sort=" + sort + "&";
     }
     
-      if (tags.length > 0) {
-        tags.forEach(tag => {
-          url += "tag=" + tag + "&";
-        });
-      }
-      if (search != "") {
-        url += "search=" + search + "&";
-      }
-      if (uuid != "") {
-        url += "uuid=" + uuid + "&";
-      }
-      if (slug != "") {
-        url += "slug=" + slug + "&";
-      }
+    if (tags && tags.length > 0) {
+      tags.forEach(tag => {
+        url += "tag=" + tag + "&";
+      });
+    }
+    if (search && search != "") {
+      url += "search=" + search + "&";
+    }
+    if (uuid && uuid != "") {
+      url += "uuid=" + uuid + "&";
+    }
+    if (slug && slug != "") {
+      url += "slug=" + slug + "&";
+    }
+    if (number && number > 0) {
+      url += "nbr=" + number + "&";
+    }
 
       return this.http.get<Document>(url);
   }
@@ -79,11 +85,11 @@ export class DocumentService {
   }
 
   getArticleAuthor(slug: String): any {
-    return this.http.get(this._url + "documents/article/author/" + slug);
+    return this.http.get(this._url + "documents/article/authors/" + slug);
   }
 
   getProjectAuthor(slug: String): any {
-    return this.http.get(this._url + "documents/project/author/" + slug);
+    return this.http.get(this._url + "documents/project/authors/" + slug);
   }
 
   getMembers(): Observable<Member> {

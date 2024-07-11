@@ -10,6 +10,7 @@ import { PageAccueilComponent } from "./page-accueil/page-accueil.component";
 import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
+import { PageProjetsComponent } from "./page-projets/page-projets.component";
 
 
 
@@ -27,6 +28,11 @@ const routes: Routes = [
     path : "les-membres",
     component: PageMembresComponent,
     title: "L'équipe du Club Info",
+  },
+  {
+    path : "projets",
+    component: PageProjetsComponent,
+    title: "Les projets du Club",
   },
 
   // à mettre à la fin des liens sinon ça ne marche pas ("s'applique à tous les autres liens")

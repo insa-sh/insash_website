@@ -6,6 +6,7 @@ import (
 	"insash-website-backend/internal/models"
 	"insash-website-backend/internal/utils"
 	"net/http"
+	"strconv"
 	"strings"
 
 	"github.com/gorilla/mux"
@@ -29,6 +30,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentType string) {
 	search := queryParams.Get("search")
 	uuid := queryParams.Get("uuid")
 	slug := queryParams.Get("slug")
+	nbr := queryParams.Get("nbr")
 
 	// Construction de la requête SQL dynamiquement
 	// recherche d'une chaine de caractère dans le titre ou la description
@@ -69,6 +71,15 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentType string) {
 		break
 	}
 
+	if nbr != "" {
+		value, err := strconv.Atoi(nbr)
+		if err != nil {
+			utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
+			return
+		}
+		query += " LIMIT " + strconv.Itoa(value)
+	}
+
 	rows, err := Db.Queryx(query+";", args...)
 	if err != nil {
 		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
@@ -78,7 +89,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentType string) {
 
 	for rows.Next() {
 		var document models.Document
-		err := rows.Scan(&document.UUID, &document.Title, pq.Array(&document.Tags), &document.Content, &document.Date, &document.Description, &document.Image, &document.Slug, &document.Type)
+		err := rows.Scan(&document.UUID, &document.Title, pq.Array(&document.Tags), &document.Content, &document.Date, &document.Description, &document.Image, &document.Slug, &document.Type, &document.IsImageIcon)
 		if err != nil {
 			utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 			return

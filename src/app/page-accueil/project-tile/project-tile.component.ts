@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { Project } from "src/app/models/project";
+import { DocumentAndAuthor } from "src/app/interaction-backend/document-and-author";
 
 @Component({
   selector: "app-project-tile",
@@ -8,5 +8,5 @@ import { Project } from "src/app/models/project";
   styleUrls: ["./project-tile.component.css"],
 })
 export class ProjectTileComponent {
-  @Input() project!: Project;
+  @Input() project!: DocumentAndAuthor;
 }

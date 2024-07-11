@@ -1,14 +1,15 @@
 export class Document {
 
-    constructor(
+    constructor(  
         public title: string,
         public type: string,
         public tags: string[],
-        public content: string,
+        public content_address: string,
         public date: string,
         public description: string,
-        public image: string,
-        public slug: string
+        public image_address: string,
+        public slug: string,
+        public is_image_icon: boolean
       ){}
 
       

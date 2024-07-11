@@ -1,22 +1,22 @@
 <a routerLink="">
   <div class="tile-rectangle">
-    <div class="tile-image" [ngClass]="{ icon: project.icon }">
-      <img src="{{ project.photo }}" alt="" />
+    <div class="tile-image" [ngClass]="{ icon: project.document.is_image_icon}">
+      <img src="{{ project.document.image_address }}" alt="" />
     </div>
 
     <div class="tile-content">
-      <h1>{{ project.name }}</h1>
+      <h1>{{ project.document.title }}</h1>
       <div class="tile-authors">
         <i class="fa-solid fa-users"></i>
         <h2>
           <span *ngFor="let author of project.authors; let isLast = last">
-            {{ author }}<span *ngIf="!isLast">, </span>
+            {{ author.firstname }}<span *ngIf="!isLast">, </span>
           </span>
         </h2>
       </div>
 
       <div class="tile-tags">
-        <div class="tag" *ngFor="let tag of project.tags">
+        <div class="tag" *ngFor="let tag of project.document.tags">
           <p>#{{ tag }}</p>
         </div>
       </div>

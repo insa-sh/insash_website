@@ -1,0 +1,10 @@
+h1 {
+    text-align: center;
+    margin: 40px 4vw;
+}
+
+h2 {
+    margin: 40px 4vw;
+    color: var(--insash-title-color);
+    opacity: 60%;
+}
