@@ -1,0 +1,17 @@
+div.more-project {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  a {
+    /* color: white; */
+    /* position: relative; */
+    /* text-align: center; */
+    text-decoration: none;
+    font-weight: 600;
+    font-family: var(--insash-text-default-font);
+    font-size: 20px;
+    margin: 40px 0;
+  }
