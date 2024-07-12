@@ -15,6 +15,8 @@ import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membr
 import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PageProjetsComponent } from './page-projets/page-projets.component';
+import { SearchBarComponent } from './page-projets/search-bar/search-bar.component';
+import { FilterComponent } from './page-projets/search-bar/filter/filter.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { PageProjetsComponent } from './page-projets/page-projets.component';
     MembresDuBureauComponent,
     MembreBureauComponent,
     PageProjetsComponent,
+    SearchBarComponent,
+    FilterComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,],

@@ -1,0 +1,16 @@
+<div class="dropdown">
+    <button class="dropdown-button">{{ nameFilter }} <i class="fa-solid fa-caret-down"></i></button>
+    <div class="dropdown-content">
+        <label for="dropdown-checkbox-{{ nameFilter }}-{{ e }}" *ngFor="let e of elements">
+        <div class="dropdown-content-element" >
+            <p>{{ e }}</p>
+                
+                
+                
+            
+
+            <input type="checkbox" name="" id="dropdown-checkbox-{{ nameFilter }}-{{ e }}" />
+        </div>
+    </label>
+    </div>
+  </div>

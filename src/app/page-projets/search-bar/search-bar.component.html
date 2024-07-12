@@ -1,0 +1,23 @@
+<div class="bar">
+  <div class="search-bar">
+
+    
+    <input type="text" class="search-bar-input" placeholder="Rechercher..." />
+
+        <button class="search-bar-button" id="search-bar-button-search"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
+
+    
+  </div>
+
+  <div class="search-filter" id="search-filter">
+
+  <app-filter [nameFilter]="'Auteurs'" [elements]="authors"></app-filter>
+
+  <app-filter [nameFilter]="'Tags'" [elements]="tags"></app-filter>
+
+  <app-filter [nameFilter]="'Date'" [elements]="dates"></app-filter>
+    <app-filter [nameFilter]="'Trier'" [elements]="tri"></app-filter>
+    
+</div>
+
+</div>
