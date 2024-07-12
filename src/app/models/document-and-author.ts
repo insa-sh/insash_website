@@ -1,4 +1,4 @@
-import { Member } from "./member";
+import { Member } from "../interaction-backend/member";
 import { Document } from "./document";
 
 export class DocumentAndAuthor {

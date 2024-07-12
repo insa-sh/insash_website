@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageProjetsComponent } from './page-projets/page-projets.component';
 import { SearchBarComponent } from './page-projets/search-bar/search-bar.component';
 import { FilterComponent } from './page-projets/search-bar/filter/filter.component';
+import { ListeProjetsComponent } from './page-projets/liste-projets/liste-projets.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FilterComponent } from './page-projets/search-bar/filter/filter.compone
     PageProjetsComponent,
     SearchBarComponent,
     FilterComponent,
+    ListeProjetsComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,],

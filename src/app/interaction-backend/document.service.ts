@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 
 import { Observable } from 'rxjs';
 import { Member } from './member';
-import { Document } from './document';
+import { Document } from '../models/document';
 
 
 export enum SortingByDate {

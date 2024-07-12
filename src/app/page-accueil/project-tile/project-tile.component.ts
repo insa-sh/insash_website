@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { DocumentAndAuthor } from "src/app/interaction-backend/document-and-author";
+import { DocumentAndAuthor } from "src/app/models/document-and-author";
 
 @Component({
   selector: "app-project-tile",
