@@ -35,7 +35,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentType string) {
 	// Construction de la requête SQL dynamiquement
 	// recherche d'une chaine de caractère dans le titre ou la description
 	if search != "" {
-		options = append(options, fmt.Sprintf("title LIKE $%d OR description LIKE $%d", len(args)+1, len(args)+1))
+		options = append(options, fmt.Sprintf("( LOWER(title) LIKE LOWER($%d) OR LOWER(description) LIKE LOWER($%d) )", len(args)+1, len(args)+1))
 		args = append(args, "%"+search+"%")
 	}
 
