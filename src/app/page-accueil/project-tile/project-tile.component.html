@@ -1,4 +1,4 @@
-<a routerLink="">
+<a routerLink="projets/{{ project.document.slug }}">
   <div class="tile-rectangle">
     <div class="tile-image" [ngClass]="{ icon: project.document.is_image_icon}">
       <img src="{{ project.document.image_address }}" alt="" />
