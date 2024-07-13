@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class FilterComponent {
   @Input() nameFilter!: string;
   @Input() elements!: string[];
+  @Input() isMultiple!: boolean;
   
 }

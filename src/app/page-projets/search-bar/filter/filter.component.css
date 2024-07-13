@@ -67,7 +67,7 @@ div.dropdown-content-element:last-child {
     border-bottom: none;
 }
 
-input[type="checkbox"] {
+.custom-input {
     -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
@@ -75,7 +75,7 @@ input[type="checkbox"] {
   place-content: center;
 }
 
-input[type="checkbox"]::before {
+.custom-input::before {
     content: "";
     width: 1em;
     height: 1em;
@@ -85,6 +85,6 @@ input[type="checkbox"]::before {
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   }
 
-  input[type="checkbox"]:checked::before {
+  .custom-input:checked::before {
     transform: scale(1);
   }

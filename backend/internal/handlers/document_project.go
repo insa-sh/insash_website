@@ -9,7 +9,3 @@ func GetProject(w http.ResponseWriter, r *http.Request) {
 func GetProjectTags(w http.ResponseWriter, r *http.Request) {
 	GetDocumentTags(w, r, "project")
 }
-
-func GetProjectAuthorsBySlug(w http.ResponseWriter, r *http.Request) {
-	GetDocumentAuthorsBySlug(w, r, "project")
-}

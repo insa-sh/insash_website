@@ -11,12 +11,12 @@
 
   <div class="search-filter" id="search-filter">
 
-  <app-filter [nameFilter]="'Auteurs'" [elements]="authors"></app-filter>
+  <app-filter [nameFilter]="'Auteurs'" [elements]="authors" [isMultiple]="true"></app-filter>
 
-  <app-filter [nameFilter]="'Tags'" [elements]="tags"></app-filter>
+  <app-filter [nameFilter]="'Tags'" [elements]="tags" [isMultiple]="true"></app-filter>
 
-  <app-filter [nameFilter]="'Date'" [elements]="dates"></app-filter>
-    <app-filter [nameFilter]="'Trier'" [elements]="tri"></app-filter>
+  <app-filter [nameFilter]="'Date'" [elements]="dates" [isMultiple]="true"></app-filter>
+    <app-filter [nameFilter]="'Trier'" [elements]="tri" [isMultiple]="false"></app-filter>
     
 </div>
 

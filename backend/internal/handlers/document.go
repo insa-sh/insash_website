@@ -9,21 +9,19 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gorilla/mux"
 	"github.com/lib/pq"
 )
 
-// Obtenir les documents avec des options de tri/filtrage via les url parameters
-func GetDocument(w http.ResponseWriter, r *http.Request, documentType string) {
+func AddQueryParameterDocument(r *http.Request, documentTypeParameter string) (string, []interface{}, error) {
 
-	var documents []models.Document
+	var query string
 	var options []string
 	var args []interface{}
 
-	query := "SELECT * FROM document"
+	options = append(options, "document.uuid = document_author.document_uuid", "member.uuid = document_author.member_uuid")
 
-	options = append(options, fmt.Sprintf("type = $%d", len(args)+1))
-	args = append(args, documentType)
+	options = append(options, fmt.Sprintf("document.type = $%d", len(args)+1))
+	args = append(args, documentTypeParameter)
 
 	queryParams := r.URL.Query()
 	tags := queryParams["tag"]
@@ -31,42 +29,62 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentType string) {
 	uuid := queryParams.Get("uuid")
 	slug := queryParams.Get("slug")
 	nbr := queryParams.Get("nbr")
+	year := queryParams["year"]
+	surname := queryParams["author"]
 
 	// Construction de la requête SQL dynamiquement
 	// recherche d'une chaine de caractère dans le titre ou la description
 	if search != "" {
-		options = append(options, fmt.Sprintf("( LOWER(title) LIKE LOWER($%d) OR LOWER(description) LIKE LOWER($%d) )", len(args)+1, len(args)+1))
+		options = append(options, fmt.Sprintf("( LOWER(document.title) LIKE LOWER($%d) OR LOWER(document.description) LIKE LOWER($%d) )", len(args)+1, len(args)+1))
 		args = append(args, "%"+search+"%")
+	}
+
+	if len(year) > 0 {
+		var options_year []string
+		for _, v := range year {
+			options_year = append(options_year, fmt.Sprintf("DATE_PART('YEAR', document.date) = $%d", len(args)+1))
+			args = append(args, v)
+		}
+		options = append(options, "("+strings.Join(options_year, " OR ")+")")
 	}
 
 	// si on cherches des documents avec des tags particuliers
 	if len(tags) > 0 {
-		options = append(options, fmt.Sprintf("$%d <@ tags", len(args)+1))
+		options = append(options, fmt.Sprintf("$%d <@ document.tags", len(args)+1))
 		args = append(args, pq.Array(tags))
+	}
+
+	if len(surname) > 0 {
+		for _, v := range surname {
+			options = append(options, fmt.Sprintf("document.uuid IN (SELECT document_author.document_uuid FROM document_author, member WHERE member.uuid = document_author.member_uuid AND member.surname = $%d)", len(args)+1))
+			args = append(args, v)
+		}
 	}
 
 	// chercher le document par UUID
 	if uuid != "" {
-		options = append(options, fmt.Sprintf("$%d = uuid", len(args)+1))
+		options = append(options, fmt.Sprintf("$%d = document.uuid", len(args)+1))
 		args = append(args, uuid)
 	}
 
 	// chercher le document par slug
 	if slug != "" {
-		options = append(options, fmt.Sprintf("$%d = slug", len(args)+1))
+		options = append(options, fmt.Sprintf("$%d = document.slug", len(args)+1))
 		args = append(args, slug)
 	}
 
-	if len(options) > 0 {
-		query += " WHERE " + strings.Join(options, " AND ")
-	}
+	query += " WHERE " + strings.Join(options, " AND ")
 
 	// tri par date asc/desc
 	switch queryParams.Get("sort") {
-	case "desc":
-		query += " ORDER BY date DESC"
-	case "asc":
-		query += " ORDER BY date ASC"
+	case "date_desc":
+		query += " ORDER BY document.date DESC"
+	case "date_asc":
+		query += " ORDER BY document.date ASC"
+	case "name_desc":
+		query += " ORDER BY document.title DESC"
+	case "name_asc":
+		query += " ORDER BY document.title ASC"
 	default:
 		break
 	}
@@ -75,26 +93,33 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentType string) {
 		value, err := strconv.Atoi(nbr)
 		if err != nil {
 			utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
-			return
+			return query, args, fmt.Errorf("error: invalid value for 'nbr' parameter: %s, can't use strcon.Atoi on it", nbr)
 		}
-		query += " LIMIT " + strconv.Itoa(value)
+		query += " LIMIT %" + strconv.Itoa(len(args)+1)
+		args = append(args, strconv.Itoa(value))
 	}
 
-	rows, err := Db.Queryx(query+";", args...)
+	return query, args, nil
+}
+
+// Obtenir les documents avec des options de tri/filtrage via les url parameters
+func GetDocument(w http.ResponseWriter, r *http.Request, documentTypeParameter string) {
+
+	var documents []models.Document
+
+	var args []interface{}
+
+	parameterQuery, args, err := AddQueryParameterDocument(r, documentTypeParameter)
 	if err != nil {
 		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 		return
 	}
-	defer rows.Close()
+	query := "SELECT DISTINCT document.title, document.type, document.tags, document.content_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon FROM document, document_author, member" + parameterQuery
 
-	for rows.Next() {
-		var document models.Document
-		err := rows.Scan(&document.UUID, &document.Title, pq.Array(&document.Tags), &document.Content, &document.Date, &document.Description, &document.Image, &document.Slug, &document.Type, &document.IsImageIcon)
-		if err != nil {
-			utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
-			return
-		}
-		documents = append(documents, document)
+	err = Db.Select(&documents, query+";", args...)
+	if err != nil {
+		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
+		return
 	}
 
 	// A FAIRE PARTOUT
@@ -109,11 +134,19 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentType string) {
 }
 
 // récupérer tous les tags, renvoyer un json de la forme {tag : nombre_d'documents_avec_ce_tag}
-func GetDocumentTags(w http.ResponseWriter, r *http.Request, documentType string) {
+func GetDocumentTags(w http.ResponseWriter, r *http.Request, documentTypeParameter string) {
 	tags := make(map[string]int)
 
-	query := `SELECT tags AS count FROM document WHERE type = $1 GROUP BY tags;`
-	rows, err := Db.Queryx(query, documentType)
+	var args []interface{}
+	query := "SELECT tags AS count FROM document"
+
+	if documentTypeParameter != "" {
+		query = query + " WHERE type = $1"
+		args = append(args, documentTypeParameter)
+
+	}
+
+	rows, err := Db.Queryx(query+";", args...)
 	if err != nil {
 		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAuthorsBySlug %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 		return
@@ -144,32 +177,34 @@ func GetDocumentTags(w http.ResponseWriter, r *http.Request, documentType string
 
 }
 
-// Récupérer les auteurs d'un document selon son slug
-func GetDocumentAuthorsBySlug(w http.ResponseWriter, r *http.Request, documentType string) {
-	params := mux.Vars(r)
-	slug := params["slug"]
-	query := "SELECT member.uuid, member.firstname, member.lastname, member.surname, member.role, member.image_address FROM document, document_author, member WHERE type = $1 AND document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid AND document.slug = $2;"
+func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
+
 	var members []models.Member
 
-	rows, err := Db.Queryx(query, documentType, slug)
-	if err != nil {
-		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAuthorsBySlug %s", r.Method, r.URL.Path, r.RemoteAddr, err))
-		return
-	}
-	defer rows.Close()
+	queryParams := r.URL.Query()
+	slug := queryParams.Get("slug")
 
-	for rows.Next() {
-		var member models.Member
-		err := rows.Scan(&member.UUID, &member.FirstName, &member.LastName, &member.Surname, &member.Role, &member.Image)
-		if err != nil {
-			utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAuthorsBySlug %s", r.Method, r.URL.Path, r.RemoteAddr, err))
-			return
-		}
-		members = append(members, member)
+	var args []interface{}
+	var options []string
+	query := "SELECT DISTINCT member.firstname, member.lastname, member.year, member.role, member.website, member.mail, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
+
+	if slug != "" {
+		options = append(options, fmt.Sprintf("document.slug = $%d", len(args)+1))
+		args = append(args, slug)
+	}
+
+	if len(options) > 0 {
+		query += " WHERE " + strings.Join(options, " AND ")
+	}
+
+	err := Db.Select(&members, query+";", args...)
+	if err != nil {
+		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAuthors %s", r.Method, r.URL.Path, r.RemoteAddr, err))
+		return
 	}
 
 	w.Header().Add("Content-Type", "application/json")
-	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetDocumentAuthorsBySlug", r.Method, r.URL.Path, r.RemoteAddr))
+	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetDocumentAuthors", r.Method, r.URL.Path, r.RemoteAddr))
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(members)
 }

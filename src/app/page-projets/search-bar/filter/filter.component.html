@@ -1,16 +1,42 @@
 <div class="dropdown">
-    <button class="dropdown-button">{{ nameFilter }} <i class="fa-solid fa-caret-down"></i></button>
-    <div class="dropdown-content">
-        <label for="dropdown-checkbox-{{ nameFilter }}-{{ e }}" *ngFor="let e of elements">
-        <div class="dropdown-content-element" >
-            <p>{{ e }}</p>
-                
-                
-                
-            
+  <button class="dropdown-button">
+    {{ nameFilter }} <i class="fa-solid fa-caret-down"></i>
+  </button>
+  <div class="dropdown-content" >
+    <ng-template *ngIf="isMultiple; then checkboxButton; else radioButton"></ng-template>
+    <ng-template #checkboxButton>
+      <label
+        for="dropdown-checkbox-{{ nameFilter }}-{{ e }}"
+        *ngFor="let e of elements"
+      >
+        <div class="dropdown-content-element">
+          <p>{{ e }}</p>
 
-            <input type="checkbox" name="" id="dropdown-checkbox-{{ nameFilter }}-{{ e }}" />
+          <input
+            type="checkbox"
+            class="custom-input"
+            name="dropdown-checkbox-{{ nameFilter }}"
+            id="dropdown-checkbox-{{ nameFilter }}-{{ e }}"
+          />
         </div>
-    </label>
-    </div>
+      </label>
+    </ng-template>
+    <ng-template #radioButton>
+      <label
+        for="dropdown-radio-{{ nameFilter }}-{{ e }}"
+        *ngFor="let e of elements"
+      >
+        <div class="dropdown-content-element">
+          <p>{{ e }}</p>
+
+          <input
+            type="radio"
+            class="custom-input"
+            name="dropdown-radio-{{ nameFilter }}"
+            id="dropdown-radio-{{ nameFilter }}-{{ e }}"
+          />
+        </div>
+      </label>
+    </ng-template>
   </div>
+</div>

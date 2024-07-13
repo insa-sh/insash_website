@@ -89,7 +89,7 @@ div.project-tags {
     flex-direction: column;
     justify-content: space-between;
     padding-left: 50px;
-    align-items: end;
+    align-items: flex-end;
   }
 
   div.project-main-details {
@@ -97,7 +97,7 @@ div.project-tags {
     flex-direction: column;
     justify-content: space-evenly;
     padding-left: 30px;
-    align-items: start;
+    align-items: flex-start;
   }
 
 @media (max-width: 800px) {
