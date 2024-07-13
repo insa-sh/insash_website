@@ -36,7 +36,7 @@ div.tile-rectangle {
   background-color: var(--website-bg-color);
   border-radius: 14px;
   height: 100%;
-
+  
   overflow: hidden;
   border: 2px solid var(--website-bg-color-light-2);
   transition: box-shadow var(--global-transition-duration), transform var(--global-transition-duration), background-color var(--global-transition-duration), border var(--global-transition-duration);

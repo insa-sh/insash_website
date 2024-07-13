@@ -1,5 +1,6 @@
-<a routerLink="projets/{{ project.document.slug }}">
+
   <div class="tile-rectangle">
+    <a routerLink="projets/{{ project.document.slug }}">
     <div class="tile-image" [ngClass]="{ icon: project.document.is_image_icon}">
       <img src="{{ project.document.image_address }}" alt="" />
     </div>
@@ -25,5 +26,6 @@
     <div class="tile-button">
       <p>Voir le projet</p>
     </div>
+  </a>
   </div>
-</a>
+

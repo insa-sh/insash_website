@@ -4,12 +4,14 @@ a {
 
 div.top-projects {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 4vw;
   flex-wrap: wrap;
 }
 
 app-project-tile {
   width: 25%;
+  max-width: min(25%, 500px);
   /* animation entrée */
   animation: slideIn 0.6s ease-in;
   opacity: 0;
