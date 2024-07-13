@@ -34,7 +34,6 @@ func main() {
 	router.HandleFunc("/documents/authors", handlers.GetDocumentAuthors).Methods("GET")
 
 	router.HandleFunc("/members", handlers.GetMembers).Methods("GET")
-	// router.HandleFunc("/members/{firstname}", handlers.GetMembersByFirstname).Methods("GET")
 
 	router.HandleFunc("/images/documents/project/{documentslug}/{filename}", handlers.GetProjectImageByName).Methods("GET")
 	router.HandleFunc("/images/documents/cheatsheet/{documentslug}/{filename}", handlers.GetCheatsheetImageByName).Methods("GET")

@@ -184,16 +184,12 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	slug := queryParams.Get("slug")
 
 	var args []interface{}
-	var options []string
+
 	query := "SELECT DISTINCT member.firstname, member.lastname, member.year, member.role, member.website, member.mail, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
 
 	if slug != "" {
-		options = append(options, fmt.Sprintf("document.slug = $%d", len(args)+1))
+		query += fmt.Sprintf(" AND document.slug = $%d", len(args)+1)
 		args = append(args, slug)
-	}
-
-	if len(options) > 0 {
-		query += " WHERE " + strings.Join(options, " AND ")
 	}
 
 	err := Db.Select(&members, query+";", args...)

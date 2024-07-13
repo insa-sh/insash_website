@@ -39,7 +39,7 @@ export class PageProjectComponent {
     this.documentService.getDocument(this.typeOfDocuments, this.selectedTags, this.search, "", "", this.selectedDates, this.selectedSortBy, this.selectedAuthors)
       .subscribe(
         (data: any) => {
-
+          
           this.documentsAndAuthors = data.map((document: any) => {
 
             return new DocumentAndAuthor(
@@ -62,13 +62,15 @@ export class PageProjectComponent {
               ),
               []
             );
-          });
+          } );
+
           this.documentsAndAuthors.forEach(documentAndAuthor => {
-            this.documentService.getDocumentAuthor(documentAndAuthor.document.type, documentAndAuthor.document.slug)
+            this.documentService.getDocumentAuthor(documentAndAuthor.document.slug)
               .subscribe(
                 (data: any) => {
+                  
                   documentAndAuthor.authors = data.map((membre: any) => {
-                    console.log(data);
+                    
                     return new Member(
                       membre.firstname,
                       membre.lastname,
@@ -90,16 +92,30 @@ export class PageProjectComponent {
                 }
               );
 
-          });
+          }
+        
+        
+          );
 
         })
 
+  }
+
+  fetchTags() {
+    this.documentService.getDocumentTags(this.typeOfDocuments)
+      .subscribe(
+        (data: any) => {
+          
+        }
+      );
+  
   }
 
 
 
   ngOnInit() {
     this.fetchDocuments();
+    this.fetchTags();
   }
 
   isThereEnoughTopDocuments() {

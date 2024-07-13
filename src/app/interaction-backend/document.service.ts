@@ -69,8 +69,16 @@ export class DocumentService {
     return this.http.get(BASE_URL + "documents/"+ documentType + "/tags");
   }
 
-  getDocumentAuthor(documentType: DocumentType, slug: String) {
-    return this.http.get(BASE_URL + "documents/" + documentType +"/authors/" + slug);
+  getDocumentAuthor(slug: String) {
+
+    let url = BASE_URL + "documents/authors?";
+
+    if (slug && slug != "") {
+      url += "slug=" + slug;
+    }
+
+
+    return this.http.get(url);
   }
 
   getMembers(status: String, surname: String) {

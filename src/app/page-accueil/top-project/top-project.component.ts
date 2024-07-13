@@ -47,7 +47,7 @@ export class TopProjectComponent {
             );
           });
           this.topProjects.forEach(projectAndAuthor => {
-            this.documentService.getDocumentAuthor(projectAndAuthor.document.type, projectAndAuthor.document.slug)
+            this.documentService.getDocumentAuthor(projectAndAuthor.document.slug)
               .subscribe(
                 (data: any) => {
                   projectAndAuthor.authors = data.map((membre: any) => {
