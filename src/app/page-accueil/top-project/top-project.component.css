@@ -80,6 +80,7 @@ a {
   }
   app-project-tile {
     margin-top: 20px;
+    max-width:  %;
     width: 90%;
   }
 }

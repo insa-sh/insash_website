@@ -21,7 +21,7 @@ export class DocumentService {
   private _url: string = "http://localhost:8080/"
   constructor(private http: HttpClient) { }
 
-  getArticle(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number: number): Observable<Document> {
+  getArticle(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number?: number): Observable<Document> {
     let url: string = this._url + "documents/article?";
     if (sort != SortingByDate.Asc) {
       url += "sort=" + sort + "&";
@@ -49,7 +49,7 @@ export class DocumentService {
     
   }
 
-  getProject(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number: number): Observable<Document> {
+  getProject(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number?: number): Observable<Document> {
     let url: string = this._url + "documents/project?";
     if (sort == SortingByDate.Asc) {
       url += "sort=asc&";

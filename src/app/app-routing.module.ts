@@ -10,7 +10,7 @@ import { PageAccueilComponent } from "./page-accueil/page-accueil.component";
 import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
-import { PageProjetsComponent } from "./page-projets/page-projets.component";
+import { PageProjectComponent } from "./page-projets/page-project.component";
 
 
 
@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   {
     path : "projets",
-    component: PageProjetsComponent,
+    component: PageProjectComponent,
     title: "Les projets du Club",
   },
 

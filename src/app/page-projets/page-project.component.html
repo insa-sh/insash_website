@@ -1,0 +1,19 @@
+<h1>{{ title }}</h1>
+
+<div *ngIf="isThereEnoughTopDocuments()">
+
+
+
+<h2><i>{{ subtitle1 }}</i></h2>
+
+<app-top-project [numberOfProjects]="2"></app-top-project>
+
+</div>
+
+
+
+<h2><i>{{ subtitle2 }}</i></h2>
+
+<app-search-bar></app-search-bar>
+
+<app-liste-project [documentsAndAuthors]="documents"></app-liste-project>

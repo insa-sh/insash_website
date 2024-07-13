@@ -4,7 +4,8 @@ h1 {
 }
 
 h2 {
-  margin: 40px 4vw;
+  width: min(90%, 2000px);
+  margin: 40px auto 40px auto;
   color: var(--insash-title-color);
   opacity: 60%;
 }

@@ -14,10 +14,11 @@ import { PageMembresComponent } from './page-membres/page-membres.component';
 import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membres-du-bureau.component';
 import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PageProjetsComponent } from './page-projets/page-projets.component';
+import { PageProjectComponent } from './page-projets/page-project.component';
 import { SearchBarComponent } from './page-projets/search-bar/search-bar.component';
 import { FilterComponent } from './page-projets/search-bar/filter/filter.component';
-import { ListeProjetsComponent } from './page-projets/liste-projets/liste-projets.component';
+import { ListeProjectComponent } from './page-projets/liste-project/liste-project.component';
+import { ListeProjectTileComponent } from './page-projets/liste-project/liste-project-tile/liste-project-tile.component';
 
 
 @NgModule({
@@ -33,10 +34,11 @@ import { ListeProjetsComponent } from './page-projets/liste-projets/liste-projet
     PageMembresComponent,
     MembresDuBureauComponent,
     MembreBureauComponent,
-    PageProjetsComponent,
+    PageProjectComponent,
     SearchBarComponent,
     FilterComponent,
-    ListeProjetsComponent,
+    ListeProjectComponent,
+    ListeProjectTileComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,],
