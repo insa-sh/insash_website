@@ -11,7 +11,8 @@ export class Member {
         public linkedin: string,
         public github: string,
         public citation: string,
-        public surname: string
+        public surname: string,
+        public status: string
       ){}
 
       

@@ -1,8 +1,18 @@
+
+export enum DocumentType {
+  project = "project",
+  cheatsheet = "cheatsheet",
+  tips = "tips",
+  news = "news",
+}
 export class Document {
+
+  
+
 
     constructor(  
         public title: string,
-        public type: string,
+        public type: DocumentType,
         public tags: string[],
         public content_address: string,
         public date: string,

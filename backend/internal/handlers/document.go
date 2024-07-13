@@ -95,8 +95,7 @@ func AddQueryParameterDocument(r *http.Request, documentTypeParameter string) (s
 			utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 			return query, args, fmt.Errorf("error: invalid value for 'nbr' parameter: %s, can't use strcon.Atoi on it", nbr)
 		}
-		query += " LIMIT %" + strconv.Itoa(len(args)+1)
-		args = append(args, strconv.Itoa(value))
+		query += " LIMIT " + strconv.Itoa(value)
 	}
 
 	return query, args, nil

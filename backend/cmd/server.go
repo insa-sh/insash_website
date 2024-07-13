@@ -42,10 +42,10 @@ func main() {
 	router.HandleFunc("/images/documents/news/{documentslug}/{filename}", handlers.GetNewsImageByName).Methods("GET")
 	router.HandleFunc("/images/members/{filename}", handlers.GetMemberImageByName).Methods("GET")
 
-	router.HandleFunc("/markdown/documents/project/{documentslug}/{filename}", handlers.GetProjectMarkdownByName).Methods("GET")
-	router.HandleFunc("/markdown/documents/cheatsheet/{documentslug}/{filename}", handlers.GetCheatsheetMarkdownByName).Methods("GET")
-	router.HandleFunc("/markdown/documents/tips/{documentslug}/{filename}", handlers.GetTipsMarkdownByName).Methods("GET")
-	router.HandleFunc("/markdown/documents/news/{documentslug}/{filename}", handlers.GetNewsMarkdownByName).Methods("GET")
+	router.HandleFunc("/markdown/documents/project/{filename}", handlers.GetProjectMarkdownByName).Methods("GET")
+	router.HandleFunc("/markdown/documents/cheatsheet/{filename}", handlers.GetCheatsheetMarkdownByName).Methods("GET")
+	router.HandleFunc("/markdown/documents/tips/{filename}", handlers.GetTipsMarkdownByName).Methods("GET")
+	router.HandleFunc("/markdown/documents/news/{filename}", handlers.GetNewsMarkdownByName).Methods("GET")
 
 	err := http.ListenAndServe(":8080", gorillaHandlers.CORS(originsOk)(router))
 	if err != nil {

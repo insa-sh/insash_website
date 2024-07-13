@@ -1,8 +1,8 @@
 import { Component, Input } from "@angular/core";
-import { DocumentService, SortingByDate } from "src/app/interaction-backend/document.service";
+import { DocumentService, SortingBy } from "src/app/interaction-backend/document.service";
 import { DocumentAndAuthor } from "src/app/models/document-and-author";
 import { Member } from "src/app/interaction-backend/member";
-import { Document } from "src/app/models/document";
+import { Document, DocumentType } from "src/app/models/document";
 
 @Component({
   selector: "app-top-project",
@@ -21,7 +21,7 @@ export class TopProjectComponent {
 
   fetchTopProjects() {
 
-    this.documentService.getProject([], "", "", "", SortingByDate.Asc, this.numberOfProjects)
+    this.documentService.getDocument(DocumentType.project, [], "", "", "", [], SortingBy.dateAsc, [], this.numberOfProjects)
       .subscribe(
         (data: any) => {
 
@@ -38,7 +38,7 @@ export class TopProjectComponent {
                 project.date,
 
                 project.description,
-                this.documentService.getProjectImageURL(project.image_address),
+                this.documentService.getDocumentImageURL(project.type, project.image_address),
                 project.slug,
                 project.is_image_icon,
 
@@ -47,7 +47,7 @@ export class TopProjectComponent {
             );
           });
           this.topProjects.forEach(projectAndAuthor => {
-            this.documentService.getProjectAuthor(projectAndAuthor.document.slug)
+            this.documentService.getDocumentAuthor(projectAndAuthor.document.type, projectAndAuthor.document.slug)
               .subscribe(
                 (data: any) => {
                   projectAndAuthor.authors = data.map((membre: any) => {
@@ -63,7 +63,8 @@ export class TopProjectComponent {
                       membre.linkedin,
                       membre.github,
                       membre.citation,
-                      membre.surname
+                      membre.surname,
+                      membre.status
                     )
                   }
 

@@ -33,6 +33,7 @@ func GetMarkdownByName(w http.ResponseWriter, r *http.Request, documentType stri
 	filename := path.Base(params["filename"]) // EMPECHE D'ALLER VOIR D'AUTRES DOSSIERS
 
 	markdownPath := filepath.Join("..", "assets", "markdown", "document", documentType, filename)
+	fmt.Println(markdownPath)
 
 	content, err := os.ReadFile(markdownPath)
 	if os.IsNotExist(err) {

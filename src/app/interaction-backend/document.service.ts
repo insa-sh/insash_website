@@ -3,13 +3,16 @@ import { HttpClient } from '@angular/common/http'
 
 import { Observable } from 'rxjs';
 import { Member } from './member';
-import { Document } from '../models/document';
+import { Document, DocumentType } from '../models/document';
 
-
-export enum SortingByDate {
-  Asc,
-  Desc,
+export enum SortingBy {
+  dateAsc = "date_asc",
+  dateDesc = "date_desc",
+  nameAsc = "name_asc",
+  nameDesc = "name_desc",
 }
+
+const BASE_URL: string = "http://localhost:8080/"
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +21,28 @@ export enum SortingByDate {
 export class DocumentService {
 
   // API URI
-  private _url: string = "http://localhost:8080/"
+  
   constructor(private http: HttpClient) { }
 
-  getArticle(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number?: number): Observable<Document> {
-    let url: string = this._url + "documents/article?";
-    if (sort != SortingByDate.Asc) {
+  getDocument(documentType: DocumentType, tags: string[], search: string, uuid: string, slug: string, year: string[], sort: SortingBy = SortingBy.dateAsc, authors: string[], number?: number): Observable<Document> {
+    
+    let url: string = BASE_URL + "documents/" + documentType +"?";
+
+    
       url += "sort=" + sort + "&";
-    }
+    
     
       if (tags && tags.length > 0) {
         tags.forEach(tag => {
           url += "tag=" + tag + "&";
         });
       }
+
+      if (authors && authors.length > 0) {
+        authors.forEach(author => {
+          url += "author=" + author + "&";
+        });}
+
       if (search && search != "") {
         url += "search=" + search + "&";
       }
@@ -44,77 +55,52 @@ export class DocumentService {
       if (number && number > 0) {
         url += "nbr=" + number + "&";
       }
+      if (year && year.length > 0) {
+        year.forEach(y => {
+          url += "year=" + y + "&";
+        });
+      }
 
       return this.http.get<Document>(url);
     
   }
 
-  getProject(tags: string[], search: string, uuid: string, slug: string, sort: SortingByDate = SortingByDate.Asc, number?: number): Observable<Document> {
-    let url: string = this._url + "documents/project?";
-    if (sort == SortingByDate.Asc) {
-      url += "sort=asc&";
-    } else if (sort == SortingByDate.Desc) {
-      url += "sort=desc&";
-    }
-    
-    if (tags && tags.length > 0) {
-      tags.forEach(tag => {
-        url += "tag=" + tag + "&";
-      });
-    }
-    if (search && search != "") {
-      url += "search=" + search + "&";
-    }
-    if (uuid && uuid != "") {
-      url += "uuid=" + uuid + "&";
-    }
-    if (slug && slug != "") {
-      url += "slug=" + slug + "&";
-    }
-    if (number && number > 0) {
-      url += "nbr=" + number + "&";
-    }
-
-      return this.http.get<Document>(url);
+  getDocumentTags(documentType: DocumentType) {
+    return this.http.get(BASE_URL + "documents/"+ documentType + "/tags");
   }
 
-  getArticleTags(): any {
-    return this.http.get(this._url + "documents/articleS/tags");
+  getDocumentAuthor(documentType: DocumentType, slug: String) {
+    return this.http.get(BASE_URL + "documents/" + documentType +"/authors/" + slug);
   }
 
-  getProjectTags(): any {
-    return this.http.get(this._url + "documents/project/tags");
-  }
+  getMembers(status: String, surname: String) {
 
-  getArticleAuthor(slug: String): any {
-    return this.http.get(this._url + "documents/article/authors/" + slug);
-  }
+    let url: string = BASE_URL + "members?";
 
-  getProjectAuthor(slug: String): any {
-    return this.http.get(this._url + "documents/project/authors/" + slug);
-  }
+    if (status && status != "") {
+      url += "status=" + status + "&";
+    }
 
-  getMembers(): Observable<Member> {
-    return this.http.get<Member>(this._url + "members");
+    if (surname && surname != "") {
+      url += "surname=" + surname + "&";
+    }
+
+    return this.http.get<Member>(url);
   }
 
   // image = {slug}/{filename} (identique au contenu de la DB à l'attribut 'image_address')
-  getArticleImageURL(image: string): string {
-    return this._url + "images/documents/article/" + image;
-  }
-
-  getProjectImageURL(image: string): string {
-    return this._url + "images/documents/project/" + image;
+  getDocumentImageURL(documentType: DocumentType, image: string): string {
+    return BASE_URL + "images/documents/" +  documentType + "/" + image;
   }
 
   // image = {filename} (identique au contenu de la DB à l'attribut 'image')
   getMemberImageURL(image: string): string {
-    return this._url + "images/members/" + image;
+    return BASE_URL + "images/members/" + image;
   }
 
   // filename : identique au contenu de la DB à l'attribut 'content_address'
-  getMarkdownURL(filename: string): string {
-    return this._url + "documents/content/" + filename;
+  getMarkdownURL(documentType: DocumentType, slug: String, filename: string): string {
+    return BASE_URL + "markdown/documents/" + documentType + "/" + filename;
   }
 
 }
