@@ -101,21 +101,12 @@ export class PageProjectComponent {
 
   }
 
-  fetchTags() {
-    this.documentService.getDocumentTags(this.typeOfDocuments)
-      .subscribe(
-        (data: any) => {
-          
-        }
-      );
   
-  }
 
 
 
   ngOnInit() {
     this.fetchDocuments();
-    this.fetchTags();
   }
 
   isThereEnoughTopDocuments() {

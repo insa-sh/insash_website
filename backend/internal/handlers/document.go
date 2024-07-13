@@ -6,6 +6,7 @@ import (
 	"insash-website-backend/internal/models"
 	"insash-website-backend/internal/utils"
 	"net/http"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -134,7 +135,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentTypeParameter s
 
 // récupérer tous les tags, renvoyer un json de la forme {tag : nombre_d'documents_avec_ce_tag}
 func GetDocumentTags(w http.ResponseWriter, r *http.Request, documentTypeParameter string) {
-	tags := make(map[string]int)
+	tags := []string{}
 
 	var args []interface{}
 	query := "SELECT tags AS count FROM document"
@@ -161,10 +162,8 @@ func GetDocumentTags(w http.ResponseWriter, r *http.Request, documentTypeParamet
 		}
 		// fmt.Println(tag)
 		for _, v := range tag {
-			if _, ok := tags[v]; !ok {
-				tags[v] = 1
-			} else {
-				tags[v] += 1
+			if !slices.Contains(tags, v) {
+				tags = append(tags, v)
 			}
 		}
 	}

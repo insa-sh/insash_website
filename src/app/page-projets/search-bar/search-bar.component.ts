@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { DocumentService } from 'src/app/interaction-backend/document.service';
+import { DocumentType } from 'src/app/models/document';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,16 +9,30 @@ import { Component } from '@angular/core';
 })
 export class SearchBarComponent {
   public authors: string[] = ['Louison', 'Maxime', 'Maël', 'Nathan', 'Sylvain', 'Rémi', 'Axel'];
-  public tags: string[] = ['jeux video', 'go', 'sf6', 'pokemon', 'feur'];
+  public tags: string[] = [];
   public dates: string[] = ["2021-2022", "2022-2023", "2023-2024"];
   public tri: string[] = ["A-Z", "Z-A", "Plus récent", "Plus ancien"];
 
-  showFilter () {
-    var filter = document.getElementById('search-filter');
-    if (filter!.style.display == "none") {
-      filter!.style.display = "flex";
-    } else {
-      filter!.style.display = "none";
-    }
+  @Input() typeOfDocuments: DocumentType = DocumentType.project;
+
+  constructor(private documentService: DocumentService) {
+
   }
+
+  fetchTags() {
+    this.documentService.getDocumentTags(this.typeOfDocuments)
+      .subscribe(
+        (data: any) => {
+          for (let tag of data) {
+            this.tags.push(tag);
+          }
+        }
+      );
+  
+  }
+
+  ngOnInit() {
+    this.fetchTags();
+  }
+
 }
