@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DocumentService } from 'src/app/interaction-backend/document.service';
+import { Member } from 'src/app/interaction-backend/member';
 import { DocumentType } from 'src/app/models/document';
 
 @Component({
@@ -8,7 +9,7 @@ import { DocumentType } from 'src/app/models/document';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent {
-  public authors: string[] = ['Louison', 'Maxime', 'Maël', 'Nathan', 'Sylvain', 'Rémi', 'Axel'];
+  public authors: Member[] = [];
   public tags: string[] = [];
   public dates: string[] = ["2021-2022", "2022-2023", "2023-2024"];
   public tri: string[] = ["A-Z", "Z-A", "Plus récent", "Plus ancien"];
@@ -31,8 +32,34 @@ export class SearchBarComponent {
   
   }
 
+  fetchAuthors() {
+    this.documentService.getDocumentAuthor("")
+      .subscribe(
+        (data: any) => {
+          this.authors = data.map((author: any) => {
+
+            return new Member(
+              author.firstname,
+              author.lastname,
+              author.year,
+              author.role,
+              author.website,
+              author.mail, 
+              author.image_address,
+              author.linkedin,
+              author.github,
+              author.citation,
+              author.surname,
+              author.status
+
+            );
+        }
+      );
+  
+  });}
+
   ngOnInit() {
-    this.fetchTags();
+    this.fetchAuthors();
   }
 
 }

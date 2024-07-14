@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Member } from './member';
 import { Document, DocumentType } from '../models/document';
+import { DocumentAndAuthor } from '../models/document-and-author';
 
 export enum SortingBy {
   dateAsc = "date_asc",
@@ -24,7 +25,7 @@ export class DocumentService {
   
   constructor(private http: HttpClient) { }
 
-  getDocument(documentType: DocumentType, tags: string[], search: string, uuid: string, slug: string, year: string[], sort: SortingBy = SortingBy.dateAsc, authors: string[], number?: number): Observable<Document> {
+  getDocument(documentType: DocumentType, tags: string[], search: string, uuid: string, slug: string, year: string[], sort: SortingBy = SortingBy.dateAsc, authors: string[], number?: number): Observable<DocumentAndAuthor> {
     
     let url: string = BASE_URL + "documents/" + documentType +"?";
 
@@ -61,7 +62,7 @@ export class DocumentService {
         });
       }
 
-      return this.http.get<Document>(url);
+      return this.http.get<DocumentAndAuthor>(url);
     
   }
 

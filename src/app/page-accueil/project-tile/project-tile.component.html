@@ -11,7 +11,7 @@
       <div class="tile-authors">
         <i class="fa-solid fa-users"></i>
         <h2>
-          <span *ngFor="let author of project.authors; let isLast = last">
+          <span *ngFor="let author of project.author; let isLast = last">
             {{ author.firstname }}<span *ngIf="!isLast">, </span>
           </span>
         </h2>

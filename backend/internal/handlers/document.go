@@ -102,37 +102,6 @@ func AddQueryParameterDocument(r *http.Request, documentTypeParameter string) (s
 	return query, args, nil
 }
 
-// Obtenir les documents avec des options de tri/filtrage via les url parameters
-func GetDocument(w http.ResponseWriter, r *http.Request, documentTypeParameter string) {
-
-	var documents []models.Document
-
-	var args []interface{}
-
-	parameterQuery, args, err := AddQueryParameterDocument(r, documentTypeParameter)
-	if err != nil {
-		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
-		return
-	}
-	query := "SELECT DISTINCT document.title, document.type, document.tags, document.content_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon FROM document, document_author, member" + parameterQuery
-
-	err = Db.Select(&documents, query+";", args...)
-	if err != nil {
-		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
-		return
-	}
-
-	// A FAIRE PARTOUT
-	//1. mettre le type du renvoi
-	w.Header().Add("Content-Type", "application/json")
-	// 2. log en utilisant les info déjà fournies par la request
-	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetDocument", r.Method, r.URL.Path, r.RemoteAddr))
-	// 3. définir le statut du renvoi
-	w.WriteHeader(http.StatusOK)
-	// 4. encoder le json et le renvoyer dans le writer 'w'
-	json.NewEncoder(w).Encode(documents)
-}
-
 // récupérer tous les tags, renvoyer un json de la forme {tag : nombre_d'documents_avec_ce_tag}
 func GetDocumentTags(w http.ResponseWriter, r *http.Request, documentTypeParameter string) {
 	tags := []string{}
@@ -201,4 +170,46 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetDocumentAuthors", r.Method, r.URL.Path, r.RemoteAddr))
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(members)
+}
+
+func GetDocument(w http.ResponseWriter, r *http.Request, documentTypeParameter string) {
+	var documentAndAuthors []models.DocumentAndAuthor
+	var documents []models.Document
+
+	var args []interface{}
+
+	parameterQuery, args, err := AddQueryParameterDocument(r, documentTypeParameter)
+	if err != nil {
+		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAndAuthors %s", r.Method, r.URL.Path, r.RemoteAddr, err))
+		return
+	}
+	query := "SELECT DISTINCT document.title, document.type, document.tags, document.content_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon FROM document, document_author, member" + parameterQuery
+
+	err = Db.Select(&documents, query+";", args...)
+	if err != nil {
+		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAndAuthors %s", r.Method, r.URL.Path, r.RemoteAddr, err))
+		return
+	}
+
+	query = "SELECT DISTINCT member.firstname, member.lastname, member.year, member.role, member.website, member.mail, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
+
+	for _, v := range documents {
+
+		args = nil
+		slug := v.Slug
+		query += fmt.Sprintf(" AND document.slug = $%d", len(args)+1)
+		args = append(args, slug)
+		authors := []models.Member{}
+		err := Db.Select(&authors, query+";", args...)
+		if err != nil {
+			utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAndAuthors %s", r.Method, r.URL.Path, r.RemoteAddr, err))
+			return
+		}
+		documentAndAuthors = append(documentAndAuthors, models.DocumentAndAuthor{Document: v, Author: authors})
+	}
+
+	w.Header().Add("Content-Type", "application/json")
+	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetDocumentAndAuthors", r.Method, r.URL.Path, r.RemoteAddr))
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(documentAndAuthors)
 }

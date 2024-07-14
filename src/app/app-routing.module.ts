@@ -11,6 +11,7 @@ import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
 import { PageProjectComponent } from "./page-projets/page-project.component";
+import { ProjectLimitNumberResolver, ProjectResolver } from "./interaction-backend/resolver/document.resolver";
 
 
 
@@ -23,7 +24,12 @@ const routes: Routes = [
     path: "",
     component: PageAccueilComponent,
     title: "Club Info INSA Hauts-de-France",
+    data: { resolveDataNumberOfTopDocuments: 3 },
+    resolve: {
+      topDocumentsAndAuthors: ProjectLimitNumberResolver
+    }
   },
+  
   {
     path : "les-membres",
     component: PageMembresComponent,
@@ -33,6 +39,11 @@ const routes: Routes = [
     path : "projets",
     component: PageProjectComponent,
     title: "Les projets du Club",
+    data: { resolveDataNumberOfTopDocuments: 2 },
+    resolve: {
+      documentsAndAuthors: ProjectResolver,
+      topDocumentsAndAuthors: ProjectLimitNumberResolver
+    }
   },
 
   // à mettre à la fin des liens sinon ça ne marche pas ("s'applique à tous les autres liens")

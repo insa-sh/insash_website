@@ -3,8 +3,10 @@ import { DocumentService, SortingBy } from '../interaction-backend/document.serv
 import { DocumentAndAuthor } from '../models/document-and-author';
 import { Document, DocumentType } from '../models/document';
 import { Member } from '../interaction-backend/member';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 
-const MIN_TOP_DECUMENTS=2 ;
+const NBR_TOP_DOCUMENTS=2 ;
 
 @Component({
   selector: 'app-page-projets',
@@ -15,6 +17,9 @@ const MIN_TOP_DECUMENTS=2 ;
 export class PageProjectComponent {
 
   public documentsAndAuthors: DocumentAndAuthor[] = [];
+  public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
+
+
   public authors: Member[] = [];
   public tags: string[] = [];
   public dates: string[] = [];
@@ -30,75 +35,22 @@ export class PageProjectComponent {
   @Input() subtitle1: string = "Projets en vedette";
   @Input() subtitle2: string = "Tous les projets";
 
-  constructor(private documentService: DocumentService, ) {
+  constructor(private documentService: DocumentService, private route: ActivatedRoute) {
 
   }
 
   fetchDocuments() {
-    
-    this.documentService.getDocument(this.typeOfDocuments, this.selectedTags, this.search, "", "", this.selectedDates, this.selectedSortBy, this.selectedAuthors)
-      .subscribe(
-        (data: any) => {
-          
-          this.documentsAndAuthors = data.map((document: any) => {
-
-            return new DocumentAndAuthor(
-              new Document(
-                document.title,
-                document.type,
-
-                document.tags,
-                document.content_address,
-
-                document.date,
-
-                document.description,
-
-                this.documentService.getDocumentImageURL(document.type, document.image_address),
-                
-                document.slug,
-                document.is_image_icon,
-
-              ),
-              []
-            );
-          } );
-
-          this.documentsAndAuthors.forEach(documentAndAuthor => {
-            this.documentService.getDocumentAuthor(documentAndAuthor.document.slug)
-              .subscribe(
-                (data: any) => {
-                  
-                  documentAndAuthor.authors = data.map((membre: any) => {
-                    
-                    return new Member(
-                      membre.firstname,
-                      membre.lastname,
-                      membre.year,
-                      membre.role,
-                      membre.website,
-                      membre.mail,
-                      membre.image_address,
-                      membre.linkedin,
-                      membre.github,
-                      membre.citation,
-                      membre.surname,
-                      membre.status
-                    )
-                  }
-
-                  );
-
-                }
-              );
-
-          }
-        
-        
-          );
-
+    this.route.data.subscribe(
+        (data) => {
+          data['documentsAndAuthors'].forEach((projectAndAuthor: DocumentAndAuthor) => {
+            projectAndAuthor.document.image_address = this.documentService.getDocumentImageURL(projectAndAuthor.document.type, projectAndAuthor.document.image_address);
+            projectAndAuthor.document.content_address = this.documentService.getMarkdownURL(projectAndAuthor.document.type, projectAndAuthor.document.slug ,projectAndAuthor.document.content_address);
+            this.documentsAndAuthors.push(projectAndAuthor);
+            if (this.topDocumentsAndAuthors.length < NBR_TOP_DOCUMENTS) {
+              this.topDocumentsAndAuthors.push(projectAndAuthor);
+            }
+          });
         })
-
   }
 
   
@@ -110,7 +62,7 @@ export class PageProjectComponent {
   }
 
   isThereEnoughTopDocuments() {
-    return this.documentsAndAuthors.length >= MIN_TOP_DECUMENTS;
+    return this.documentsAndAuthors.length >= NBR_TOP_DOCUMENTS;
   }
 
 }

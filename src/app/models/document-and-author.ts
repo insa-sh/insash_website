@@ -5,7 +5,7 @@ export class DocumentAndAuthor {
 
     constructor(  
         public document: Document,
-        public authors: Member[]
+        public author: Member[]
       ){}
 
       

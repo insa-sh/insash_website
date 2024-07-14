@@ -3,6 +3,7 @@ import { DocumentService, SortingBy } from "src/app/interaction-backend/document
 import { DocumentAndAuthor } from "src/app/models/document-and-author";
 import { Member } from "src/app/interaction-backend/member";
 import { Document, DocumentType } from "src/app/models/document";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-top-project",
@@ -11,79 +12,29 @@ import { Document, DocumentType } from "src/app/models/document";
 })
 export class TopProjectComponent {
 
-  public topProjects: DocumentAndAuthor[] = [];
-  public authors: Member[] = [];
-  @Input() numberOfProjects: number = 3; 
+  // @Input() projects: DocumentAndAuthor[] = [];
+  public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
 
-  constructor(private documentService: DocumentService) {
+  constructor(private documentService: DocumentService, private route: ActivatedRoute) {
 
   }
-
-  fetchTopProjects() {
-
-    this.documentService.getDocument(DocumentType.project, [], "", "", "", [], SortingBy.dateAsc, [], this.numberOfProjects)
-      .subscribe(
-        (data: any) => {
-
-          this.topProjects = data.map((project: any) => {
-
-            return new DocumentAndAuthor(
-              new Document(
-                project.title,
-                project.type,
-
-                project.tags,
-                project.content_address,
-
-                project.date,
-
-                project.description,
-                this.documentService.getDocumentImageURL(project.type, project.image_address),
-                project.slug,
-                project.is_image_icon,
-
-              ),
-              []
-            );
-          });
-          this.topProjects.forEach(projectAndAuthor => {
-            this.documentService.getDocumentAuthor(projectAndAuthor.document.slug)
-              .subscribe(
-                (data: any) => {
-                  projectAndAuthor.authors = data.map((membre: any) => {
-
-                    return new Member(
-                      membre.firstname,
-                      membre.lastname,
-                      membre.year,
-                      membre.role,
-                      membre.website,
-                      membre.mail,
-                      membre.image_address,
-                      membre.linkedin,
-                      membre.github,
-                      membre.citation,
-                      membre.surname,
-                      membre.status
-                    )
-                  }
-
-                  );
-
-                }
-              );
-
-          });
-
+  
+  fetchTopProject() {
+    this.route.data.subscribe(
+        (data) => {
+          data['topDocumentsAndAuthors'].forEach((projectAndAuthor: DocumentAndAuthor) => {
+            projectAndAuthor.document.image_address = this.documentService.getDocumentImageURL(projectAndAuthor.document.type, projectAndAuthor.document.image_address);
+            projectAndAuthor.document.content_address = this.documentService.getMarkdownURL(projectAndAuthor.document.type, projectAndAuthor.document.slug ,projectAndAuthor.document.content_address);
+              this.topDocumentsAndAuthors.push(projectAndAuthor);
+        });
         })
-
   }
+  
 
 
 
   ngOnInit() {
-    this.fetchTopProjects();
+    this.fetchTopProject();
   }
-
 
 }

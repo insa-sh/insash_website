@@ -12,4 +12,9 @@ export class ListeProjectTileComponent {
   getYear(documentAndAuthor: DocumentAndAuthor): string {
     return documentAndAuthor.document.date.split('-')[0];
   }
+
+  ngOnInit() {
+    console.log(this.documentAndAuthor.author);
+  }
+
 }
