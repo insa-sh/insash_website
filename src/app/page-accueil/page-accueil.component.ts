@@ -13,8 +13,4 @@ import { DocumentAndAuthor } from "../models/document-and-author";
 export class PageAccueilComponent {
   public title = "Site Web du Club Info";
 
-  
-
-
-
 }

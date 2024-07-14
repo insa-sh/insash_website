@@ -14,7 +14,6 @@ export class ListeProjectTileComponent {
   }
 
   ngOnInit() {
-    console.log(this.documentAndAuthor.author);
   }
 
 }

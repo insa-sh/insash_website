@@ -19,7 +19,7 @@ export class TopProjectComponent {
 
   }
   
-  fetchTopProject() {
+  fetchTopDocument() {
     this.route.data.subscribe(
         (data) => {
           data['topDocumentsAndAuthors'].forEach((projectAndAuthor: DocumentAndAuthor) => {
@@ -34,7 +34,7 @@ export class TopProjectComponent {
 
 
   ngOnInit() {
-    this.fetchTopProject();
+    this.fetchTopDocument();
   }
 
 }

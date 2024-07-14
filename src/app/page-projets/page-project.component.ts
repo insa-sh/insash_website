@@ -6,8 +6,6 @@ import { Member } from '../interaction-backend/member';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 
-const NBR_TOP_DOCUMENTS=2 ;
-
 @Component({
   selector: 'app-page-projets',
   templateUrl: './page-project.component.html',
@@ -42,13 +40,10 @@ export class PageProjectComponent {
   fetchDocuments() {
     this.route.data.subscribe(
         (data) => {
-          data['documentsAndAuthors'].forEach((projectAndAuthor: DocumentAndAuthor) => {
-            projectAndAuthor.document.image_address = this.documentService.getDocumentImageURL(projectAndAuthor.document.type, projectAndAuthor.document.image_address);
-            projectAndAuthor.document.content_address = this.documentService.getMarkdownURL(projectAndAuthor.document.type, projectAndAuthor.document.slug ,projectAndAuthor.document.content_address);
-            this.documentsAndAuthors.push(projectAndAuthor);
-            if (this.topDocumentsAndAuthors.length < NBR_TOP_DOCUMENTS) {
-              this.topDocumentsAndAuthors.push(projectAndAuthor);
-            }
+          data['documentsAndAuthors'].forEach((documentAndAuthor: DocumentAndAuthor) => {
+            documentAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentAndAuthor.document.type, documentAndAuthor.document.image_address);
+            documentAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentAndAuthor.document.type, documentAndAuthor.document.slug ,documentAndAuthor.document.content_address);
+            this.documentsAndAuthors.push(documentAndAuthor);
           });
         })
   }
@@ -59,10 +54,11 @@ export class PageProjectComponent {
 
   ngOnInit() {
     this.fetchDocuments();
+    
   }
 
   isThereEnoughTopDocuments() {
-    return this.documentsAndAuthors.length >= NBR_TOP_DOCUMENTS;
+    return this.documentsAndAuthors.length >= this.route.snapshot.data['resolveDataNumberOfTopDocuments'];
   }
 
 }
