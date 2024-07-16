@@ -15,12 +15,7 @@ import { map } from 'rxjs';
 export class PageProjectComponent {
 
   public documentsAndAuthors: DocumentAndAuthor[] = [];
-
-  public selectedSortBy: SortingBy = SortingBy.dateAsc;
-  public selectedTags: string[] = [];
-  public selectedAuthors: string[] = [];
-  public search: string = "";
-  public selectedDates: string[] = [];
+  public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
 
   @Input() typeOfDocuments: DocumentType = DocumentType.project; 
   @Input() title: string = "Nos projets";
@@ -40,31 +35,62 @@ export class PageProjectComponent {
 
   onFilterChanged(filters: any) {
     this.filters = filters;
-    this.updateResults();
+    this.fetchDocuments();
   }
 
-  updateResults() {
-    console.log('Filtres mis à jour:', this.filters);
+  fetchTopDocuments() {
+    this.route.data.subscribe(
+        (data) => {
+          data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
+            documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
+            documentsAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address);
+            
+            this.topDocumentsAndAuthors.push(documentsAndAuthor);
+            
+        });
+        })
   }
 
   fetchDocuments() {
-    this.route.data.subscribe(
-        (data) => {
-          data['documentsAndAuthors'].forEach((documentAndAuthor: DocumentAndAuthor) => {
-            documentAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentAndAuthor.document.type, documentAndAuthor.document.image_address);
-            documentAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentAndAuthor.document.type, documentAndAuthor.document.slug ,documentAndAuthor.document.content_address);
-            this.documentsAndAuthors.push(documentAndAuthor);
-          });
+
+    let sort : SortingBy = SortingBy.dateDesc;
+    if (this.filters.sort === "Plus récent") {
+      sort = SortingBy.dateDesc;
+    } else if (this.filters.sort === "Plus ancien") {
+      sort = SortingBy.dateAsc;
+    } else if (this.filters.sort === "A-Z") {
+      sort = SortingBy.nameAsc;
+    } else if (this.filters.sort === "Z-A") {
+      sort = SortingBy.nameDesc;
+    }
+
+    this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, "", "", "", this.filters.dates, sort, this.filters.authors).subscribe(
+        (data: any) => {
+          if (data) {
+            this.documentsAndAuthors = data.map((documentAndAuthor: DocumentAndAuthor) => {
+              documentAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentAndAuthor.document.type, documentAndAuthor.document.image_address);
+              documentAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentAndAuthor.document.type, documentAndAuthor.document.slug ,documentAndAuthor.document.content_address);
+              return documentAndAuthor;
+            });
+          } else {
+            this.documentsAndAuthors = [];
+          }
+          
         })
   }
 
 
   ngOnInit() {
     this.fetchDocuments();
+    this.fetchTopDocuments();
   }
 
   isThereEnoughDocuments() {
     return this.documentsAndAuthors.length > 0;
+  }
+
+  isThereEnoughTopDocuments() {
+    return this.topDocumentsAndAuthors.length > 0;
   }
 
 }

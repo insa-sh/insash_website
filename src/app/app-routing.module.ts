@@ -11,7 +11,7 @@ import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
 import { PageProjectComponent } from "./page-projets/page-project.component";
-import { ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver } from "./interaction-backend/resolver/document.resolver";
+import { ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TopProjectResolver } from "./interaction-backend/resolver/document.resolver";
 
 
 
@@ -25,7 +25,7 @@ const routes: Routes = [
     component: PageAccueilComponent,
     title: "Club Info INSA Hauts-de-France",
     resolve: {
-      documentsAndAuthors: ProjectResolver,
+      topDocumentsAndAuthors: TopProjectResolver,
     }
   },
   
@@ -39,7 +39,7 @@ const routes: Routes = [
     component: PageProjectComponent,
     title: "Les projets du Club",
     resolve: {
-      documentsAndAuthors: ProjectResolver,
+      topDocumentsAndAuthors: TopProjectResolver,
       documentTags: ProjectTagsResolver,
       documentAuthors : ProjectAuthorResolver, 
       documentYears : ProjectYearResolver,

@@ -27,8 +27,6 @@ export class SearchBarComponent {
 
   }
 
-  
-
   filterForm = this.fb.group({
     authors: this.fb.array([]),
     tags: this.fb.array([]),

@@ -13,26 +13,26 @@ const NUMBER_OF_TOP_DOCUMENTS = 3;
 export class PageAccueilComponent {
   public title = "Site Web du Club Info";
 
-  @Input() public documentsAndAuthors: DocumentAndAuthor[] = [];
+  @Input() public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
 
   constructor(private documentService: DocumentService, private route: ActivatedRoute) {
 
   }
   
-  fetchDocuments() {
+  fetchTopDocuments() {
     this.route.data.subscribe(
         (data) => {
-          data['documentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
+          data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
             documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
             documentsAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address);
             
-            this.documentsAndAuthors.push(documentsAndAuthor);
+            this.topDocumentsAndAuthors.push(documentsAndAuthor);
             
         });
         })
   }
 
   ngOnInit() {
-    this.fetchDocuments();
+    this.fetchTopDocuments();
   }
 }

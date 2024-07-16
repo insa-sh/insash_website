@@ -1,12 +1,12 @@
 <h1>{{ title }}</h1>
 
-<div *ngIf="isThereEnoughDocuments()">
+<div *ngIf="isThereEnoughTopDocuments()">
   <h2>
     <i>{{ subtitle1 }}</i>
   </h2>
 
   <app-top-project
-    [documentsAndAuthors]="documentsAndAuthors"
+    [documentsAndAuthors]="topDocumentsAndAuthors"
     [numberOfDocuments]="2"
   ></app-top-project>
 </div>
