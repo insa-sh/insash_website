@@ -55,9 +55,9 @@ export class PageProjectComponent {
 
     let sort : SortingBy = SortingBy.dateDesc;
     if (this.filters.sort === "Plus récent") {
-      sort = SortingBy.dateAsc;
-    } else if (this.filters.sort === "Plus ancien") {
       sort = SortingBy.dateDesc;
+    } else if (this.filters.sort === "Plus ancien") {
+      sort = SortingBy.dateAsc;
     } else if (this.filters.sort === "A-Z") {
       sort = SortingBy.nameAsc;
     } else if (this.filters.sort === "Z-A") {
