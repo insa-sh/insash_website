@@ -13,16 +13,13 @@ import (
 	"github.com/lib/pq"
 )
 
-func AddQueryParameterDocument(r *http.Request, documentTypeParameter string) (string, []interface{}, error) {
+func AddQueryParameterDocument(r *http.Request) (string, []interface{}, error) {
 
 	var query string
 	var options []string
 	var args []interface{}
 
 	options = append(options, "document.uuid = document_author.document_uuid", "member.uuid = document_author.member_uuid")
-
-	options = append(options, fmt.Sprintf("document.type = $%d", len(args)+1))
-	args = append(args, documentTypeParameter)
 
 	queryParams := r.URL.Query()
 	tags := queryParams["tag"]
@@ -32,6 +29,7 @@ func AddQueryParameterDocument(r *http.Request, documentTypeParameter string) (s
 	nbr := queryParams.Get("nbr")
 	year := queryParams["year"]
 	surname := queryParams["author"]
+	documentType := queryParams.Get("type")
 
 	// Construction de la requête SQL dynamiquement
 	// recherche d'une chaine de caractère dans le titre ou la description
@@ -68,13 +66,20 @@ func AddQueryParameterDocument(r *http.Request, documentTypeParameter string) (s
 		args = append(args, uuid)
 	}
 
+	if documentType != "" {
+		options = append(options, fmt.Sprintf("$%d = document.type", len(args)+1))
+		args = append(args, documentType)
+	}
+
 	// chercher le document par slug
 	if slug != "" {
 		options = append(options, fmt.Sprintf("$%d = document.slug", len(args)+1))
 		args = append(args, slug)
 	}
 
-	query += " WHERE " + strings.Join(options, " AND ")
+	if len(options) > 0 {
+		query += " WHERE " + strings.Join(options, " AND ")
+	}
 
 	// tri par date asc/desc
 	switch queryParams.Get("sort") {
@@ -96,23 +101,32 @@ func AddQueryParameterDocument(r *http.Request, documentTypeParameter string) (s
 			utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocument %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 			return query, args, fmt.Errorf("error: invalid value for 'nbr' parameter: %s, can't use strcon.Atoi on it", nbr)
 		}
-		query += " LIMIT " + strconv.Itoa(value)
+		query += fmt.Sprintf(" LIMIT %d", len(args)+1)
+		args = append(args, value)
 	}
 
 	return query, args, nil
 }
 
 // récupérer tous les tags, renvoyer un json de la forme {tag : nombre_d'documents_avec_ce_tag}
-func GetDocumentTags(w http.ResponseWriter, r *http.Request, documentTypeParameter string) {
+func GetDocumentTags(w http.ResponseWriter, r *http.Request) {
 	tags := []string{}
 
+	var options []string
 	var args []interface{}
+
+	queryParams := r.URL.Query()
+	documentType := queryParams.Get("type")
+
 	query := "SELECT tags AS count FROM document"
 
-	if documentTypeParameter != "" {
-		query = query + " WHERE type = $1"
-		args = append(args, documentTypeParameter)
+	if documentType != "" {
+		options = append(options, fmt.Sprintf("type = $%d", len(args)+1))
+		args = append(args, documentType)
+	}
 
+	if len(options) > 0 {
+		query += " WHERE " + strings.Join(options, " AND ")
 	}
 
 	rows, err := Db.Queryx(query+";", args...)
@@ -148,16 +162,29 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 
 	var members []models.Member
 
-	queryParams := r.URL.Query()
-	slug := queryParams.Get("slug")
-
+	var options []string
 	var args []interface{}
 
-	query := "SELECT DISTINCT member.firstname, member.lastname, member.year, member.role, member.website, member.mail, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
+	queryParams := r.URL.Query()
+	slug := queryParams.Get("slug")
+	documentType := queryParams.Get("type")
+
+	query := "SELECT DISTINCT member.firstname, member.lastname, member.year, member.role, member.website, member.mail, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status FROM document, document_author, member"
+
+	options = append(options, "document.uuid = document_author.document_uuid", "member.uuid = document_author.member_uuid")
 
 	if slug != "" {
-		query += fmt.Sprintf(" AND document.slug = $%d", len(args)+1)
+		options = append(options, fmt.Sprintf("document.slug = $%d", len(args)+1))
 		args = append(args, slug)
+	}
+
+	if documentType != "" {
+		options = append(options, fmt.Sprintf("document.type = $%d", len(args)+1))
+		args = append(args, documentType)
+	}
+
+	if len(options) > 0 {
+		query += " WHERE " + strings.Join(options, " AND ")
 	}
 
 	err := Db.Select(&members, query+";", args...)
@@ -172,13 +199,13 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(members)
 }
 
-func GetDocument(w http.ResponseWriter, r *http.Request, documentTypeParameter string) {
+func GetDocument(w http.ResponseWriter, r *http.Request) {
 	var documentAndAuthors []models.DocumentAndAuthor
 	var documents []models.Document
 
 	var args []interface{}
 
-	parameterQuery, args, err := AddQueryParameterDocument(r, documentTypeParameter)
+	parameterQuery, args, err := AddQueryParameterDocument(r)
 	if err != nil {
 		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAndAuthors %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 		return
@@ -212,4 +239,36 @@ func GetDocument(w http.ResponseWriter, r *http.Request, documentTypeParameter s
 	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetDocumentAndAuthors", r.Method, r.URL.Path, r.RemoteAddr))
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(documentAndAuthors)
+}
+
+func GetDocumentYears(w http.ResponseWriter, r *http.Request) {
+	var years []string
+
+	var options []string
+	var args []interface{}
+
+	queryParams := r.URL.Query()
+	documentType := queryParams.Get("type")
+
+	query := "SELECT DISTINCT DATE_PART('YEAR', date) FROM document"
+
+	if documentType != "" {
+		options = append(options, fmt.Sprintf("document.type = $%d", len(args)+1))
+		args = append(args, documentType)
+	}
+
+	if len(options) > 0 {
+		query += " WHERE " + strings.Join(options, " AND ")
+	}
+
+	err := Db.Select(&years, query+";", args...)
+	if err != nil {
+		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentYears %s", r.Method, r.URL.Path, r.RemoteAddr, err))
+		return
+	}
+
+	w.Header().Add("Content-Type", "application/json")
+	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetDocumentYears", r.Method, r.URL.Path, r.RemoteAddr))
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(years)
 }

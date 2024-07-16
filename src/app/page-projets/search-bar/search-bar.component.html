@@ -1,23 +1,99 @@
 <div class="bar">
   <div class="search-bar">
-
-    
     <input type="text" class="search-bar-input" placeholder="Rechercher..." />
 
-        <button class="search-bar-button" id="search-bar-button-search"><i class="fa-solid fa-magnifying-glass fa-xl"></i></button>
-
-    
+    <button class="search-bar-button" id="search-bar-button-search">
+      <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+    </button>
   </div>
 
-  <div class="search-filter" id="search-filter">
+  <form class="search-filter" [formGroup]="filterForm">
+    <div class="dropdown" *ngIf="isThereEnoughAuthors()">
+      <button class="dropdown-button">
+        Auteurs <i class="fa-solid fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <label
+          for="dropdown-checkbox-auteurs-{{ e.surname }}"
+          *ngFor="let e of authors; let i = index"
+        >
+          <div class="dropdown-content-element" formArrayName="authors">
+            <p>{{ e.firstname }}</p>
 
-  <app-filter [nameFilter]="'Auteurs'" [isMultiple]="true"></app-filter>
+            <input
+              type="checkbox"
+              class="custom-input"
+              name="dropdown-checkbox-auteurs"
+              id="dropdown-checkbox-auteurs-{{ e.surname }}"
+              [formControlName]="i"
+            />
+          </div>
+        </label>
+      </div>
+    </div>
 
-  <app-filter [nameFilter]="'Tags'" [elements]="tags" [isMultiple]="true"></app-filter>
+    <div class="dropdown" *ngIf="isThereEnoughTags()">
+      <button class="dropdown-button">
+        Tags <i class="fa-solid fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <label for="dropdown-checkbox-tags-{{ e }}" *ngFor="let e of tags; let i = index">
+          <div class="dropdown-content-element" formArrayName="tags">
+            <p>{{ e }}</p>
 
-  <app-filter [nameFilter]="'Date'" [elements]="dates" [isMultiple]="true"></app-filter>
-    <app-filter [nameFilter]="'Trier'" [elements]="tri" [isMultiple]="false"></app-filter>
-    
-</div>
+            <input
+              type="checkbox"
+              class="custom-input"
+              name="dropdown-checkbox-tags"
+              id="dropdown-checkbox-tags-{{ e }}"
+              [formControlName]="i"
+            />
+          </div>
+        </label>
+      </div>
+    </div>
 
+    <div class="dropdown" *ngIf="isThereEnoughYears()">
+      <button class="dropdown-button">
+        Date <i class="fa-solid fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <label for="dropdown-checkbox-date-{{ e }}" *ngFor="let e of dates; let i = index">
+          <div class="dropdown-content-element" formArrayName="dates">
+            <p>{{ e }}</p>
+
+            <input
+              type="checkbox"
+              class="custom-input"
+              name="dropdown-checkbox-date"
+              id="dropdown-checkbox-date-{{ e }}"
+              [formControlName]="i"
+            />
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-button">
+        Trier <i class="fa-solid fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <label for="dropdown-radio-sort-{{ e }}" *ngFor="let e of sort">
+          <div class="dropdown-content-element">
+            <p>{{ e }}</p>
+
+            <input
+              type="radio"
+              class="custom-input"
+              name="sort"
+              id="dropdown-radio-sort-{{ e }}"
+              formControlName="sort"
+              [value]="e"
+            />
+          </div>
+        </label>
+      </div>
+    </div>
+  </form>
 </div>

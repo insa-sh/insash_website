@@ -1,4 +1,13 @@
 <div class="liste-project">
+    <ng-template *ngIf="isThereEnoughDocuments(); then documents; else noDocument"></ng-template>
+    <ng-template #documents>
+        <app-liste-project-tile *ngFor="let doc of documentsAndAuthors" [documentAndAuthor]="doc"></app-liste-project-tile>
+    </ng-template>
+    
 
-    <app-liste-project-tile *ngFor="let doc of documentsAndAuthors" [documentAndAuthor]="doc"></app-liste-project-tile>
+<ng-template #noDocument>
+    <div class="no-documents" >
+        Bientôt ! ;)
+    </div>
+</ng-template>
 </div>

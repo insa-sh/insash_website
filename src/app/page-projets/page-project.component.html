@@ -1,19 +1,22 @@
 <h1>{{ title }}</h1>
 
-<div *ngIf="isThereEnoughTopDocuments()">
+<div *ngIf="isThereEnoughDocuments()">
+  <h2>
+    <i>{{ subtitle1 }}</i>
+  </h2>
 
-
-
-<h2><i>{{ subtitle1 }}</i></h2>
-
-<app-top-project></app-top-project>
-
+  <app-top-project
+    [documentsAndAuthors]="documentsAndAuthors"
+    [numberOfDocuments]="2"
+  ></app-top-project>
 </div>
 
+<h2>
+  <i>{{ subtitle2 }}</i>
+</h2>
 
+<app-search-bar (filterChanged)="onFilterChanged($event)"></app-search-bar>
 
-<h2><i>{{ subtitle2 }}</i></h2>
-
-<app-search-bar></app-search-bar>
-
-<app-liste-project [documentsAndAuthors]="documentsAndAuthors"></app-liste-project>
+<app-liste-project
+  [documentsAndAuthors]="documentsAndAuthors"
+></app-liste-project>

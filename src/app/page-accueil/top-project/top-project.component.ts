@@ -12,29 +12,13 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class TopProjectComponent {
 
-  // @Input() projects: DocumentAndAuthor[] = [];
-  public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
-
-  constructor(private documentService: DocumentService, private route: ActivatedRoute) {
-
-  }
-  
-  fetchTopDocument() {
-    this.route.data.subscribe(
-        (data) => {
-          data['topDocumentsAndAuthors'].forEach((projectAndAuthor: DocumentAndAuthor) => {
-            projectAndAuthor.document.image_address = this.documentService.getDocumentImageURL(projectAndAuthor.document.type, projectAndAuthor.document.image_address);
-            projectAndAuthor.document.content_address = this.documentService.getMarkdownURL(projectAndAuthor.document.type, projectAndAuthor.document.slug ,projectAndAuthor.document.content_address);
-              this.topDocumentsAndAuthors.push(projectAndAuthor);
-        });
-        })
-  }
-  
-
-
+  @Input() public documentsAndAuthors: DocumentAndAuthor[] = [];
+  @Input() public numberOfDocuments: number = 3;
 
   ngOnInit() {
-    this.fetchTopDocument();
+    this.documentsAndAuthors = this.documentsAndAuthors.slice(0, this.numberOfDocuments);
   }
+
+  
 
 }

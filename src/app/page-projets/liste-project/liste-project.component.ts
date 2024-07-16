@@ -8,4 +8,9 @@ import { DocumentAndAuthor } from 'src/app/models/document-and-author';
 })
 export class ListeProjectComponent {
   @Input() documentsAndAuthors!: DocumentAndAuthor[];
+
+  isThereEnoughDocuments() {
+    return this.documentsAndAuthors.length > 0;
+  }
+
 }

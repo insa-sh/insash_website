@@ -20,14 +20,12 @@ const BASE_URL: string = "http://localhost:8080/"
 })
 
 export class DocumentService {
-
-  // API URI
   
   constructor(private http: HttpClient) { }
 
-  getDocument(documentType: DocumentType, tags: string[], search: string, uuid: string, slug: string, year: string[], sort: SortingBy = SortingBy.dateAsc, authors: string[], number?: number): Observable<DocumentAndAuthor> {
+  getDocument(documentType?: DocumentType, tags?: string[], search?: string, uuid?: string, slug?: string, year?: string[], sort: SortingBy = SortingBy.dateAsc, authors?: string[], nbr?: number): Observable<DocumentAndAuthor> {
     
-    let url: string = BASE_URL + "documents/" + documentType +"?";
+    let url: string = BASE_URL + "documents?";
 
     
       url += "sort=" + sort + "&";
@@ -37,6 +35,12 @@ export class DocumentService {
         tags.forEach(tag => {
           url += "tag=" + tag + "&";
         });
+      }
+
+      if (documentType && documentType != null) {
+        
+          url += "type=" + documentType + "&";
+        
       }
 
       if (authors && authors.length > 0) {
@@ -53,8 +57,8 @@ export class DocumentService {
       if (slug && slug != "") {
         url += "slug=" + slug + "&";
       }
-      if (number && number > 0) {
-        url += "nbr=" + number + "&";
+      if (nbr && nbr > 0) {
+        url += "nbr=" + nbr + "&";
       }
       if (year && year.length > 0) {
         year.forEach(y => {
@@ -66,23 +70,45 @@ export class DocumentService {
     
   }
 
-  getDocumentTags(documentType: DocumentType) {
-    return this.http.get(BASE_URL + "documents/"+ documentType + "/tags");
+  getDocumentTags(documentType?: DocumentType): Observable<String> {
+
+    let url = BASE_URL + "documents/tags?";
+
+    if (documentType && documentType != null) {
+      url += "type=" + documentType + "&";
+    }
+
+    return this.http.get<String>(url);
   }
 
-  getDocumentAuthor(slug: String) {
+  getDocumentAuthors(documentType?: DocumentType, slug?: String): Observable<Member> {
 
     let url = BASE_URL + "documents/authors?";
 
+    if (documentType && documentType != null) {
+      url += "type=" + documentType + "&";
+    }
+
     if (slug && slug != "") {
-      url += "slug=" + slug;
+      url += "slug=" + slug + "&";
     }
 
 
-    return this.http.get(url);
+    return this.http.get<Member>(url);
   }
 
-  getMembers(status: String, surname: String) {
+  getDocumentYears(documentType?: DocumentType): Observable<String> {
+
+    let url = BASE_URL + "documents/years?";
+
+    if (documentType && documentType != null) {
+      url += "type=" + documentType + "&";
+    }
+
+    return this.http.get<String>(url);
+  }
+
+  getMembers(status?: String, surname?: String) {
 
     let url: string = BASE_URL + "members?";
 

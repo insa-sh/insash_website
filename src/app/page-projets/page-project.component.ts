@@ -15,12 +15,6 @@ import { map } from 'rxjs';
 export class PageProjectComponent {
 
   public documentsAndAuthors: DocumentAndAuthor[] = [];
-  public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
-
-
-  public authors: Member[] = [];
-  public tags: string[] = [];
-  public dates: string[] = [];
 
   public selectedSortBy: SortingBy = SortingBy.dateAsc;
   public selectedTags: string[] = [];
@@ -37,6 +31,22 @@ export class PageProjectComponent {
 
   }
 
+  filters = {
+    authors: [],
+    tags: [],
+    dates: [],
+    sort: ''
+  };
+
+  onFilterChanged(filters: any) {
+    this.filters = filters;
+    this.updateResults();
+  }
+
+  updateResults() {
+    console.log('Filtres mis à jour:', this.filters);
+  }
+
   fetchDocuments() {
     this.route.data.subscribe(
         (data) => {
@@ -48,17 +58,13 @@ export class PageProjectComponent {
         })
   }
 
-  
-
-
 
   ngOnInit() {
     this.fetchDocuments();
-    
   }
 
-  isThereEnoughTopDocuments() {
-    return this.documentsAndAuthors.length >= this.route.snapshot.data['resolveDataNumberOfTopDocuments'];
+  isThereEnoughDocuments() {
+    return this.documentsAndAuthors.length > 0;
   }
 
 }

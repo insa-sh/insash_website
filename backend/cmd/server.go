@@ -21,16 +21,9 @@ func main() {
 
 	originsOk := gorillaHandlers.AllowedOrigins([]string{os.Getenv("ORIGIN_ALLOWED")})
 
-	router.HandleFunc("/documents/project", handlers.GetProject).Methods("GET")
-	router.HandleFunc("/documents/cheatsheet", handlers.GetCheatsheet).Methods("GET")
-	router.HandleFunc("/documents/tips", handlers.GetTips).Methods("GET")
-	router.HandleFunc("/documents/news", handlers.GetNews).Methods("GET")
-
-	router.HandleFunc("/documents/project/tags", handlers.GetProjectTags).Methods("GET")
-	router.HandleFunc("/documents/cheatsheet/tags", handlers.GetCheatsheetTags).Methods("GET")
-	router.HandleFunc("/documents/tips/tags", handlers.GetTipsTags).Methods("GET")
-	router.HandleFunc("/documents/news/tags", handlers.GetNewsTags).Methods("GET")
-
+	router.HandleFunc("/documents", handlers.GetDocument).Methods("GET")
+	router.HandleFunc("/documents/years", handlers.GetDocumentYears).Methods("GET")
+	router.HandleFunc("/documents/tags", handlers.GetDocumentTags).Methods("GET")
 	router.HandleFunc("/documents/authors", handlers.GetDocumentAuthors).Methods("GET")
 
 	router.HandleFunc("/members", handlers.GetMembers).Methods("GET")
