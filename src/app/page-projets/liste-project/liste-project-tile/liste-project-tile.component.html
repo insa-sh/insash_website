@@ -8,17 +8,17 @@
     </div>
     <div class="project-content">
       <div class="project-main-details">
-        <h1>{{ documentAndAuthor.document.title }}</h1>
+        <h2>{{ documentAndAuthor.document.title }}</h2>
         <div class="project-tags">
-          <div class="tag" *ngFor="let tag of documentAndAuthor.document.tags">
+          <div class="tag" *ngFor="let tag of documentAndAuthor.document.tags.slice(0,3)">
             <p>#{{ tag }}</p>
           </div>
         </div>
         <p class="project-description">{{ documentAndAuthor.document.description }}</p>
       </div>
       <div class="project-other-details">
-        <div class="project-authors">
-          <h2>
+        <!-- <div class="project-authors">
+          <h3>
             <span
               *ngFor="
                 let author of documentAndAuthor.author;
@@ -27,11 +27,11 @@
             >
               {{ author.firstname }}<span *ngIf="!isLast">, </span>
             </span>
-          </h2>
+          </h3>
           <i class="fa-solid fa-users"></i>
-        </div>
+        </div> -->
         <div class="project-year">
-          <h1>{{ getYear(documentAndAuthor) }}</h1>
+          <h2>{{ getYear(documentAndAuthor) }}</h2>
         </div>
       </div>
     </div>

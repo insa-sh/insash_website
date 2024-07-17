@@ -2,12 +2,12 @@ a {
   text-decoration: none;
 }
 
-h1 {
+h2 {
   font-size: 16px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
-h2 {
+h3 {
   font-size: 14px;
   font-weight: 200;
   padding-left: 5px;
@@ -17,14 +17,27 @@ h2 {
 div.list-project-tile {
     display: flex;
     align-items: center;
+    gap: 10px;
+    padding: 15px;
+    padding-left: 10px;
+    padding-right: 25px;
+    border-radius: 16px;
+    transition: background-color var(--global-transition-duration), transform var(--global-transition-duration);
+}
+
+div.list-project-tile:hover {
+    background-color: var(--website-bg-color-light-2);
+    transform:translateX(5px);
+    
+
 }
 
 div.project-image {
-    height: 150px;
-    width: 150px;
-    min-width: 150px;
+    height: 120px;
+    width: 120px;
+    min-width: 120px;
     border-radius: 20px;
-    background-color: var(--website-bg-color-light-2);
+    /* background-color: var(--website-bg-color-light-2); */
   }
   
 img {
@@ -42,11 +55,11 @@ img {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 6px;
   }
 
-  div.project-authors h2 {
+  div.project-authors h3 {
     text-align: end;
-    margin-right: 10px;
   }
   
 
@@ -57,7 +70,6 @@ img {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     padding: 5px;
-    margin-right: 10px;
   }
   
   div.tag > p {
@@ -80,7 +92,12 @@ div.project-main-details>p {
 }
 
 div.project-tags {
-  margin-bottom: 10px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 8px;
 }
   
 
@@ -133,30 +150,29 @@ div.project-tags {
 
   }
 
-  div.project-authors h2 {
+  div.project-authors h3 {
     text-align: start;
     margin-left: 5px;
   }
 
-  h2, div.tag > p {
+  h3, div.tag > p {
     font-size: 12px;
   }
 
-  div.tag {
-    margin-bottom: 5px;
-    margin-right: 5px;
-  }
 
-  div.project-year h1 {
+  div.project-year h2 {
     font-size: 14px;
 
   }
 
   div.project-tags {
-    margin-bottom: 00px;
+    margin: 6px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 5px;
   }
 
-  h1 {
-    margin-bottom: 5px;
-  }
+
 }
