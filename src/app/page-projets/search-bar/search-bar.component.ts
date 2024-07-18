@@ -17,6 +17,7 @@ export class SearchBarComponent {
   public tags: string[] = [];
   public dates: string[] = [];
   public sort: string[] = ["Plus récent", "Plus ancien", "A-Z", "Z-A"];
+  public search: FormControl = new FormControl('');
 
   public formChangesSubscription: Subscription = new Subscription;
 
@@ -106,8 +107,11 @@ export class SearchBarComponent {
       authors: selectedAuthors,
       tags: selectedTags,
       dates: selectedDates,
-      sort: selectedSort
+      sort: selectedSort,
+      search: this.search.value
     };
+
+    console.log(this.search.value);
 
     this.filterChanged.emit(filters);
 

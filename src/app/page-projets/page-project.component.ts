@@ -30,7 +30,8 @@ export class PageProjectComponent {
     authors: [],
     tags: [],
     dates: [],
-    sort: ''
+    sort: '',
+    search: ''
   };
 
   onFilterChanged(filters: any) {
@@ -64,7 +65,9 @@ export class PageProjectComponent {
       sort = SortingBy.nameDesc;
     }
 
-    this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, "", "", "", this.filters.dates, sort, this.filters.authors).subscribe(
+    let search = this.filters.search.length > 3 ? this.filters.search : "";
+
+    this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, search, "", "", this.filters.dates, sort, this.filters.authors).subscribe(
         (data: any) => {
           if (data) {
             this.documentsAndAuthors = data.map((documentAndAuthor: DocumentAndAuthor) => {
