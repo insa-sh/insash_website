@@ -84,13 +84,27 @@ div.dropdown:hover i, div.dropdown:target i {
 }
 
 button.dropdown-button {
-    
     background: transparent;
     box-shadow: none;
     border: none;
     font-size: 16px;
     cursor: pointer;
+    margin-left: 20px;
+}
 
+button.dropdown-button i {
+    margin-left: 5px;
+}
+
+i.filter-selected-icon {
+    color: var(--website-strong-color);
+    margin-left: 10px;
+    font-size: 10px;
+    visibility: hidden;
+}
+
+i.filter-selected-icon-hidden {
+    visibility: visible;
 }
 
 div.dropdown-content {

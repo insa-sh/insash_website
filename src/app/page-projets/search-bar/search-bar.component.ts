@@ -113,6 +113,19 @@ export class SearchBarComponent {
 
   }
 
+  isSelectedAuthors() {
+    return this.getSelectedAuthors().length > 0;
+  }
+
+  isSelectedTags() {
+    return this.getSelectedTags().length > 0;
+  }
+
+  isSelectedDates() {
+    return this.getSelectedDates().length > 0;
+  }
+
+
   ngOnInit() {
     this.fetchAuthors();
     this.fetchTags();

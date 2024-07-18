@@ -10,8 +10,11 @@
   <form class="search-filter" [formGroup]="filterForm">
     <div class="dropdown" *ngIf="isThereEnoughAuthors()">
       <button class="dropdown-button">
-        Auteurs <i class="fa-solid fa-caret-down"></i>
+        Auteurs<i class="fa-solid fa-caret-down"></i>
       </button>
+      
+      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedAuthors()}" ></i>
+      
       <div class="dropdown-content">
         <label
           for="dropdown-checkbox-auteurs-{{ e.surname }}"
@@ -34,8 +37,10 @@
 
     <div class="dropdown" *ngIf="isThereEnoughTags()">
       <button class="dropdown-button">
-        Tags <i class="fa-solid fa-caret-down"></i>
+        Tags<i class="fa-solid fa-caret-down"></i>
       </button>
+      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedTags()}" ></i>
+      
       <div class="dropdown-content">
         <label for="dropdown-checkbox-tags-{{ e }}" *ngFor="let e of tags; let i = index">
           <div class="dropdown-content-element" formArrayName="tags">
@@ -55,8 +60,10 @@
 
     <div class="dropdown" *ngIf="isThereEnoughYears()">
       <button class="dropdown-button">
-        Date <i class="fa-solid fa-caret-down"></i>
+        Date<i class="fa-solid fa-caret-down"></i>
       </button>
+      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedDates()}" ></i>
+      
       <div class="dropdown-content">
         <label for="dropdown-checkbox-date-{{ e }}" *ngFor="let e of dates; let i = index">
           <div class="dropdown-content-element" formArrayName="dates">
@@ -76,7 +83,7 @@
 
     <div class="dropdown">
       <button class="dropdown-button">
-        Trier <i class="fa-solid fa-caret-down"></i>
+        Trier<i class="fa-solid fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
         <label for="dropdown-radio-sort-{{ e }}" *ngFor="let e of sort">
