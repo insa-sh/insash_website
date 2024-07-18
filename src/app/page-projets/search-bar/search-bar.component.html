@@ -5,9 +5,7 @@
     <button class="search-bar-button" id="search-bar-button-search" (click)="onFormChange()">
       <i class="fa-solid fa-magnifying-glass fa-xl"></i>
     </button>
-    <button class="search-bar-button search-bar-button-reset" (click)="resetSearch()">
-      <i class="fa-regular fa-circle-xmark"></i>
-    </button>
+
   </div>
 
   <form class="search-filter" [formGroup]="filterForm">
@@ -104,6 +102,9 @@
           </div>
         </label>
       </div>
-    </div>
+  </div>
+    <button class="search-bar-button search-bar-button-reset" (click)="resetSearch()">
+      <i class="fa-regular fa-circle-xmark"></i><span class="mobile-only">Supprimer les filtres</span>
+    </button>
   </form>
 </div>
