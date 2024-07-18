@@ -7,6 +7,7 @@ import (
 	"insash-website-backend/internal/utils"
 	"net/http"
 	"slices"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -151,6 +152,10 @@ func GetDocumentTags(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	sort.Slice(tags, func(i, j int) bool {
+		return strings.ToLower(tags[i]) < strings.ToLower(tags[j])
+	})
+
 	w.Header().Add("Content-Type", "application/json")
 	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetDocumentTags", r.Method, r.URL.Path, r.RemoteAddr))
 	w.WriteHeader(http.StatusOK)
@@ -186,6 +191,8 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	if len(options) > 0 {
 		query += " WHERE " + strings.Join(options, " AND ")
 	}
+
+	query += " ORDER BY member.firstname"
 
 	err := Db.Select(&members, query+";", args...)
 	if err != nil {
@@ -260,6 +267,8 @@ func GetDocumentYears(w http.ResponseWriter, r *http.Request) {
 	if len(options) > 0 {
 		query += " WHERE " + strings.Join(options, " AND ")
 	}
+
+	query += " ORDER BY DATE_PART('YEAR', date) DESC"
 
 	err := Db.Select(&years, query+";", args...)
 	if err != nil {
