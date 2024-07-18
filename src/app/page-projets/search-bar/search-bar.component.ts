@@ -117,6 +117,16 @@ export class SearchBarComponent {
 
   }
 
+  resetSearch() 
+  {
+    if (this.search.value.length >= 3 || this.isSelectedAuthors() || this.isSelectedTags() || this.isSelectedDates()) {
+      this.search.setValue('');
+      this.filterForm.reset();
+      this.onFormChange();
+    }
+    
+  }
+
   isSelectedAuthors() {
     return this.getSelectedAuthors().length > 0;
   }

@@ -65,7 +65,7 @@ export class PageProjectComponent {
       sort = SortingBy.nameDesc;
     }
 
-    let search = this.filters.search.length > 3 ? this.filters.search : "";
+    let search = this.filters.search.length >= 3 ? this.filters.search : "";
 
     this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, search, "", "", this.filters.dates, sort, this.filters.authors).subscribe(
         (data: any) => {
