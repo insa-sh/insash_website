@@ -74,8 +74,15 @@ img {
   
   div.tag > p {
     color: var(--insash-rose-pale);
-    font-weight: 700;
+    font-weight: 500;
     font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+  div.more-tags-text > p{
+    font-weight: 500;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.6px;
   }
@@ -96,6 +103,7 @@ div.project-tags {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
   column-gap: 10px;
   row-gap: 8px;
 }

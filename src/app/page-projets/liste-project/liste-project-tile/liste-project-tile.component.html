@@ -13,6 +13,9 @@
           <div class="tag" *ngFor="let tag of documentAndAuthor.document.tags.slice(0,3)">
             <p>#{{ tag }}</p>
           </div>
+          <div class="more-tags-text" *ngIf="documentAndAuthor.document.tags.length > 3">
+            <p>+{{ documentAndAuthor.document.tags.length - 3 }} tag(s)</p>
+          </div>
         </div>
         <p class="project-description">{{ documentAndAuthor.document.description }}</p>
       </div>
