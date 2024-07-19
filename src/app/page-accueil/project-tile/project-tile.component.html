@@ -18,7 +18,7 @@
       </div>
 
       <div class="tile-tags">
-        <div class="tag" *ngFor="let tag of project.document.tags">
+        <div class="tag" *ngFor="let tag of getMaxTags(MAX_TAGS)">
           <p>#{{ tag }}</p>
         </div>
       </div>
