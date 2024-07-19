@@ -39,6 +39,9 @@
     box-sizing: border-box;
     font-family: var(--insash-text-default-font);
     color: var(--insash-text-color);
+
+}
+input[type=text] {
     outline: none;
 
 }
