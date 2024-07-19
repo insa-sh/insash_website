@@ -1,6 +1,6 @@
 <div class="bar">
   <div class="search-bar">
-    <input type="text" class="search-bar-input" placeholder="Rechercher..." [formControl]="search"/>
+    <input type="text" class="search-bar-input" placeholder="Rechercher..." [formControl]="search" (keydown.enter)="onFormChange()"/>
     
     <button class="search-bar-button" id="search-bar-button-search" (click)="onFormChange()">
       <i class="fa-solid fa-magnifying-glass fa-xl"></i>
