@@ -57,6 +57,13 @@
   
 }
 
+
+/* grands écrans */
+@media (min-width:800px) {
+    .mobile-only {
+        display: none;
+    }
+}
 body {
     overflow-x: hidden;
     background-color: var(--website-bg-color);

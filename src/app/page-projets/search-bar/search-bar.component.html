@@ -10,11 +10,11 @@
 
   <form class="search-filter" [formGroup]="filterForm">
     <div class="dropdown" *ngIf="isThereEnoughAuthors()">
-      <button class="dropdown-button">
+      
+      <button class="dropdown-button" onclick="this.classList.toggle('dropdown-ouvert')">
+      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedAuthors()}" ></i>
         Auteurs<i class="fa-solid fa-caret-down"></i>
       </button>
-      
-      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedAuthors()}" ></i>
       
       <div class="dropdown-content">
         <label
@@ -37,10 +37,11 @@
     </div>
 
     <div class="dropdown" *ngIf="isThereEnoughTags()">
-      <button class="dropdown-button">
+
+      <button class="dropdown-button" onclick="this.classList.toggle('dropdown-ouvert')">
+      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedTags()}" ></i>
         Tags<i class="fa-solid fa-caret-down"></i>
       </button>
-      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedTags()}" ></i>
       
       <div class="dropdown-content">
         <label for="dropdown-checkbox-tags-{{ e }}" *ngFor="let e of tags; let i = index">
@@ -60,10 +61,11 @@
     </div>
 
     <div class="dropdown" *ngIf="isThereEnoughYears()">
-      <button class="dropdown-button">
+
+      <button class="dropdown-button" onclick="this.classList.toggle('dropdown-ouvert')">
+      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedDates()}" ></i>
         Date<i class="fa-solid fa-caret-down"></i>
       </button>
-      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedDates()}" ></i>
       
       <div class="dropdown-content">
         <label for="dropdown-checkbox-date-{{ e }}" *ngFor="let e of dates; let i = index">
@@ -83,7 +85,9 @@
     </div>
 
     <div class="dropdown">
-      <button class="dropdown-button">
+
+      <button class="dropdown-button" onclick="this.classList.toggle('dropdown-ouvert')">
+      <i class="fa-solid fa-circle filter-selected-icon"></i>
         Trier<i class="fa-solid fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
@@ -103,8 +107,8 @@
         </label>
       </div>
   </div>
-    <button class="search-bar-button search-bar-button-reset" (click)="resetSearch()">
-      <i class="fa-regular fa-circle-xmark"></i><span class="mobile-only">Supprimer les filtres</span>
+    <button class="search-bar-button search-bar-button-reset" title="Réinitialiser les filtres" (click)="resetSearch()">
+      <i class="fa-regular fa-circle-xmark"></i><span class="mobile-only">Réinitialiser les filtres</span>
     </button>
   </form>
 </div>

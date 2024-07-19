@@ -2,6 +2,7 @@
 div.bar {
     background-color: var(--website-bg-color-light-1);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     /* width: 100%; */
@@ -9,6 +10,7 @@ div.bar {
     padding: 20px 5%;
     border-radius: 16px;
     max-width: min(90%, 2000px);
+    gap: 20px;
 }
 
 
@@ -38,13 +40,13 @@ input.search-bar-input {
     font-size: 16px;
     border: none;
     padding: 2% 8px;
-    height: 640%;
+    /* height: 640%; */
     border: none;
     /* border-bottom: solid 2px var(--insash-text-color); */
 }
 
-div.search-bar:focus, div.search-bar:hover {
-    background-color: var(--website-bg-color-light-1);
+div.search-bar:hover, div.search-bar:focus-within {
+    background-color: var(--website-bg-color-light-2);
     color: red;
 }
 
@@ -69,6 +71,9 @@ div.search-bar:focus, div.search-bar:hover {
     display: flex;
     flex-direction: row;
     border: solid 2px var(--website-bg-color-light-2);
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
 
 }
 .search-bar-button-reset>i {
@@ -95,15 +100,21 @@ form.search-filter {
 }
 
 div.dropdown {
+    display: flex;
     text-align: center;
     position: relative;
-    display: block;
+    /* display: block; */
     width: fit-content;
     border-right: solid 1px var(--insash-text-color);
     padding: 8px 20px;
+    padding-left:10px;
 }
 
 div.dropdown:last-child {
+    border-right: none;
+    /* margin-left: 20px; */
+}
+div.dropdown:nth-last-child(2) {
     border-right: none;
 }
 
@@ -124,6 +135,11 @@ button.dropdown-button {
     font-size: 16px;
     cursor: pointer;
     /* margin-left: 20px; */
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 8px;
 }
 
 button.dropdown-button i {
@@ -132,13 +148,19 @@ button.dropdown-button i {
 
 i.filter-selected-icon {
     color: var(--website-strong-color);
-    margin-left: 10px;
+    /* margin-right: 10px; */
     font-size: 10px;
     visibility: hidden;
+    /* width: 0; */
+    overflow: hidden;
+    transform: scale(0);
+    transition: scale var(--global-transition-duration);
 }
 
 i.filter-selected-icon-hidden {
     visibility: visible;
+    width: auto;
+    transform: scale(1);
 }
 
 div.dropdown-content {
@@ -158,6 +180,7 @@ div.dropdown-content {
 
 div.dropdown div.dropdown-content {
     /* visibility: hidden;  */
+    top: 100%;
     opacity: 0;
     transform: scale(0);
     transform-origin: top;
@@ -222,11 +245,17 @@ div.dropdown-content-element:last-child {
     
     div.bar {
         flex-direction: column;
+        align-items: stretch;
     }
     
     div.search-bar {
         justify-content: space-between;
 
+    }
+    .search-bar-button-reset {
+        width: 100%;
+        margin: 0;
+        margin-top: 20px;
     }
 
     form.search-filter {
@@ -252,6 +281,82 @@ div.dropdown-content-element:last-child {
 
     div.dropdown {
         border-right: none;
+        flex-direction: column;
+        width: 100%;
     }
+
+
+    /* dropdown menu content */
+    div.dropdown-content {
+        margin-top: 12px;
+        position: relative;
+        overflow-y: unset;
+        text-align: left;
+        min-width: unset;
+        background-color: unset;
+        scrollbar-color: var(--website-bg-color-light-1) var(--website-bg-color-light-2);
+        border: unset;
+        overflow: auto;
+        /* overflow-y: scroll; */
+    }
+    
+    div.dropdown div.dropdown-content {
+        visibility: hidden; 
+        top: unset;
+        opacity: 1;
+        transform: scaleY(0);
+        height: 0;
+        transform-origin: top;
+        transition-delay: 0s;
+        transition: scaleY var(--global-transition-duration);
+    }
+    
+    div.dropdown:hover div.dropdown-content {
+        visibility: initial;
+        opacity: 1;
+        transform: unset;
+        transition-delay: 0s;
+
+    }
+    
+
+    .dropdown-button.dropdown-ouvert+div.dropdown-content {
+        /* height: 100%; */
+        /* background-color: red; */
+        transform: scaleY(1);
+        visibility: visible;
+        height: initial;
+        background-color: var(--website-bg-color-light-2);
+
+        
+    }
+
+
+
+
+
+    div.dropdown-content label {
+        background-color: transparent;
+        padding: 12px 16px;
+        display: block;
+        user-select: none;
+        transition: background-color var(--global-transition-duration);
+        
+    }
+    
+    div.dropdown-content label:hover {
+        background-color: var(--website-bg-color-light-2);
+    }
+    
+    div.dropdown-content-element {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px var(--website-bg-color-light-2);
+    }
+    
+    div.dropdown-content-element:last-child {
+        border-bottom: none;
+    }
+    
 
   }
