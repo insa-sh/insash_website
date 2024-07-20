@@ -13,6 +13,10 @@ div.bar {
     gap: 20px;
 }
 
+a {
+    text-decoration: none;
+}
+
 div#search-section {
     display:flex;flex-direction:row;flex-wrap:nowrap;flex:1;align-items: center;
 }
@@ -24,7 +28,7 @@ div.search-bar {
     display: flex;
     align-items: center;
 
-    
+    margin-left: 10px;
     border-radius: 16px;
     border: solid 2px var(--website-bg-color-light-2);
 

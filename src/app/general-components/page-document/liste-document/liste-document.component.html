@@ -1,7 +1,7 @@
 <div class="liste-document">
     <ng-template *ngIf="isThereEnoughDocuments(); then documents; else noDocument"></ng-template>
     <ng-template #documents>
-        <app-list-document-tile *ngFor="let doc of documentsAndAuthors" [documentAndAuthor]="doc"></app-list-document-tile>
+        <app-liste-document-tile *ngFor="let doc of documentsAndAuthors" [documentAndAuthor]="doc"></app-liste-document-tile>
     </ng-template>
     
 

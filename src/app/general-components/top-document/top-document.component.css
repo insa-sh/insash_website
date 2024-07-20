@@ -23,7 +23,7 @@ app-box-document-tile {
 
 app-list-document-tile {
   width: 100%;
-  max-width: min(45%, 800px);
+  max-width: min(80%, 700px);
   /* animation entrée */
   animation: slideIn 0.6s ease-in;
   opacity: 0;
@@ -42,15 +42,15 @@ div.top-documents app-box-document-tile:nth-child(3) {
   animation-delay: 0.2s;
 }
 
-div.top-documents app-list-document-tile:nth-child(1) {
+div.top-documents app-liste-document-tile:nth-child(1) {
   animation-delay: 0s;
 }
 
-div.top-documents app-list-document-tile:nth-child(2) {
+div.top-documents app-liste-document-tile:nth-child(2) {
   animation-delay: 0.1s;
 }
 
-div.top-documents app-list-document-tile:nth-child(3) {
+div.top-documents app-liste-document-tile:nth-child(3) {
   animation-delay: 0.2s;
 }
 
@@ -101,13 +101,14 @@ a {
     align-items: center;
     gap: 2vw;
   }
+
   app-box-document-tile {
     margin-top: 20px;
     max-width: 90%;
     width: 90%;
   }
 
-  app-list-document-tile {
+  app-liste-document-tile {
     margin-top: 20px;
     max-width: 90%;
     width: 90%;

@@ -9,12 +9,12 @@ div.liste-document {
     max-width: min(90%, 2000px);
 }
 
-app-list-document-tile {
+app-liste-document-tile {
 
     margin-bottom: 20px;
 }
 
-app-list-document-tile:nth-last-child(1) {
+app-liste-document-tile:nth-last-child(1) {
 
     margin-bottom: 0px;
 }

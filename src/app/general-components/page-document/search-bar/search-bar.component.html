@@ -14,12 +14,14 @@
       </button>
       <div class="dropdown-content" id="dropdown-type">
         <label for="dropdown-radio-sort-{{ e }}" *ngFor="let e of otherTypes">
+          <a routerLink="/{{ e }}">
           <div class="dropdown-content-element">
             <div class="tag" [ngClass]="'type-tag-'+e">
               <p>{{ getDocumentType(e) }}</p>
             </div>  
             <p></p>
           </div>
+        </a>
         </label>
       </div>
     </div>
