@@ -19,6 +19,7 @@ import { SearchBarComponent } from './general-components/page-document/search-ba
 import { ListeDocumentComponent } from './general-components/page-document/liste-document/liste-document.component';
 import { ListeDocumentTileComponent } from './general-components/liste-document-tile/liste-document-tile.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { PageProjetsComponent } from './page-projets/page-projets.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     SearchBarComponent,
     ListeDocumentComponent,
     ListeDocumentTileComponent,
+    PageProjetsComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],

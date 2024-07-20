@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { Title } from "@angular/platform-browser";
 import { PageDocumentComponent } from "./general-components/page-document/page-document.component";
 import { ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TopProjectResolver } from "./interaction-backend/resolver/document.resolver";
+import { PageProjetsComponent } from "./page-projets/page-projets.component";
 
 
 
@@ -36,7 +37,7 @@ const routes: Routes = [
   },
   {
     path : "projets",
-    component: PageDocumentComponent,
+    component: PageProjetsComponent,
     title: "Les projets du Club",
     resolve: {
       topDocumentsAndAuthors: TopProjectResolver,
