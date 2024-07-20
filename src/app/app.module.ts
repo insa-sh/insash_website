@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeSocialLinksComponent } from './page-accueil/home-social-links/home-social-links.component';
 import { BoxDocumentTileComponent } from "./general-components/box-document-tile/box-document-tile.component";
-import { TopProjectComponent } from './general-components/top-document/top-project.component';
+import { TopDocumentComponent } from './general-components/top-document/top-document.component';
 import { PageMembresComponent } from './page-membres/page-membres.component';
 import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membres-du-bureau.component';
 import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
@@ -28,7 +28,7 @@ import { ReactiveFormsModule } from "@angular/forms";
     PageAccueilComponent,
     PageNotFoundComponent,
     BoxDocumentTileComponent,
-    TopProjectComponent,
+    TopDocumentComponent,
     HomeSocialLinksComponent,
     PageMembresComponent,
     MembresDuBureauComponent,

@@ -2,11 +2,11 @@ import { Component, Input } from "@angular/core";
 import { DocumentAndAuthor } from "src/app/models/document-and-author";
 
 @Component({
-  selector: "app-top-project",
-  templateUrl: "./top-project.component.html",
-  styleUrls: ["./top-project.component.css"],
+  selector: "app-top-document",
+  templateUrl: "./top-document.component.html",
+  styleUrls: ["./top-document.component.css"],
 })
-export class TopProjectComponent {
+export class TopDocumentComponent {
 
   @Input() public documentsAndAuthors: DocumentAndAuthor[] = [];
   @Input() public numberOfDocuments: number = 3;

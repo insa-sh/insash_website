@@ -10,11 +10,11 @@ import { DocumentAndAuthor } from "src/app/models/document-and-author";
   styleUrls: ["./box-document-tile.component.css"],
 })
 export class BoxDocumentTileComponent {
-  @Input() project!: DocumentAndAuthor;
+  @Input() documentAndAuthor!: DocumentAndAuthor;
   public MAX_TAGS: number = 3;
 
   getMaxTags(max: number) {
-    return this.project.document.tags.slice(0, max);
+    return this.documentAndAuthor.document.tags.slice(0, max);
   }
 
 }
