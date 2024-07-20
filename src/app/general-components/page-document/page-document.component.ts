@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { DocumentService, SortingBy } from '../../interaction-backend/document.service';
 import { DocumentAndAuthor } from '../../models/document-and-author';
-import { Document, DocumentType } from '../../models/document';
-import { Member } from '../../interaction-backend/member';
+import { DocumentType } from '../../models/document';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { TileStyle } from '../top-document/top-document.component';
 
 @Component({
   selector: 'app-page-document',
@@ -21,6 +20,8 @@ export class PageDocumentComponent {
   @Input() title: string = "PROJETS";
   @Input() subtitle1: string = "Projets en vedette";
   @Input() subtitle2: string = "Tous les projets";
+
+  public tileStyle: TileStyle =  this.typeOfDocuments == DocumentType.project ? TileStyle.box : TileStyle.list;
 
   constructor(private documentService: DocumentService, private route: ActivatedRoute) {
 
