@@ -7,7 +7,7 @@ div.bar {
     align-items: center;
     /* width: 100%; */
     margin: auto;
-    padding: 20px 5%;
+    padding: 20px 3%;
     border-radius: 16px;
     max-width: min(90%, 2000px);
     gap: 20px;
@@ -109,8 +109,8 @@ div.dropdown {
     /* display: block; */
     width: fit-content;
     
-    padding: 8px 20px;
-    padding-left:10px;
+    padding: 8px 10px;
+    padding-left:5px;
 }
 
 div.dropdown:last-child {
@@ -166,7 +166,7 @@ i.filter-selected-icon-hidden {
     transform: scale(1);
 }
 
-div.dropdown-content {
+div.dropdown-content, #dropdown-type {
     position: absolute;
     z-index: 1;
     max-height: min(250px,60vh);
@@ -181,7 +181,11 @@ div.dropdown-content {
        
 }
 
-div.dropdown div.dropdown-content {
+#dropdown-type {
+    z-index: 2;
+}
+
+div.dropdown div.dropdown-content, #dropdown-type {
     /* visibility: hidden;  */
     top: 100%;
     opacity: 0;
@@ -192,14 +196,14 @@ div.dropdown div.dropdown-content {
     transition-delay: 0.2s;
 }
 
-div.dropdown:hover div.dropdown-content {
+div.dropdown:hover div.dropdown-content, div.dropdown:hover #dropdown-type {
     visibility: visible;
     opacity: 1;
     transform: scale(1);
     transition-delay: 0s;
 }
 
-div.dropdown-content label {
+div.dropdown-content label, #dropdown-type label {
     background-color: transparent;
     padding: 12px 16px;
     display: block;
@@ -208,11 +212,11 @@ div.dropdown-content label {
     
 }
 
-div.dropdown-content label:hover {
+div.dropdown-content label:hover, #dropdown-type label:hover {
     background-color: var(--website-bg-color-light-2);
 }
 
-div.dropdown-content-element {
+div.dropdown-content-element  {
     display: flex;
     justify-content: space-between;
     border-bottom: solid 1px var(--website-bg-color-light-2);
@@ -362,7 +366,7 @@ div.tag {
         transition: scaleY var(--global-transition-duration), tranform var(--global-transition-duration), opacity var(--global-transition-duration), visibility var(--global-transition-duration);
     }
     
-    div.dropdown:hover div.dropdown-content {
+    div.dropdown:hover div.dropdown-content, div.dropdown:hover #dropdown-type {
         visibility: initial;
         opacity: 1;
         transform: unset;
@@ -380,6 +384,14 @@ div.tag {
         background-color: var(--website-bg-color-light-2);
 
         
+    }
+    /* ouverture spéciale de type pc pour les filtres de type de contenu sur mobile */
+
+    .dropdown-button.dropdown-ouvert+#dropdown-type {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+        transition-delay: 0s;
     }
 
 
