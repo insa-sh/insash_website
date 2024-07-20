@@ -7,11 +7,12 @@ export class Member {
         public role: string,
         public website: string,
         public mail: string,
-        public image: string,
+        public image_address: string,
         public linkedin: string,
         public github: string,
         public citation: string,
-        public surname: string
+        public surname: string,
+        public status: string
       ){}
 
       

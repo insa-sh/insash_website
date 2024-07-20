@@ -7,16 +7,40 @@ import (
 	"insash-website-backend/internal/utils"
 	"log"
 	"net/http"
+	"strings"
 )
 
 // Obtenir la liste de tous les membres à afficher sur le site web
 func GetMembers(w http.ResponseWriter, r *http.Request) {
 
 	var members []models.Member
+	var query string
+	var args []interface{}
+	var options []string
 
-	query := "SELECT firstname, lastname, year, role, website, mail, image_address, linkedin, github, citation, surname FROM member"
+	queryParams := r.URL.Query()
+	status := queryParams.Get("status")
+	surname := queryParams.Get("surname")
 
-	err := Db.Select(&members, query)
+	query = "SELECT firstname, lastname, year, role, website, mail, image_address, linkedin, github, citation, surname, status FROM member"
+
+	if status != "" {
+		options = append(options, fmt.Sprintf("status = $%d", len(args)+1))
+		args = append(args, status)
+	}
+
+	if surname != "" {
+		options = append(options, fmt.Sprintf("surname = $%d", len(args)+1))
+		args = append(args, surname)
+	}
+
+	if len(options) > 0 {
+		query += " WHERE " + strings.Join(options, " AND ")
+	}
+
+	query += " ORDER BY firstname ASC"
+
+	err := Db.Select(&members, query+";", args...)
 	if err != nil {
 		log.Fatal(err)
 	}

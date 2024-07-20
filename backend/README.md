@@ -104,7 +104,7 @@ Normalement c'est bon
 
 1. Ajouter le membre à la DB :\
 a. L'UUID est généré automatiquement\
-b. Remplir le reste normalement, cependant si website/github/linkedin/mail est vide mettre des '' pour dire <chaine de caractere vide> et pas NULL car je crois ça pose pb\
+b. Remplir le reste normalement, citation/website/github/linkedin/mail peuvent être NULL
 c. Pour l'avatar, mettre le nom du fichier simplement, ex: avatar-karen.jpg
 2. Mettre dans l'api dans assets/images/members le fichier avatar-karen.jpg
 
@@ -117,3 +117,8 @@ Normalement c'est bon
 - mettre l'api sur le même docker en production que le frontend, comme conseillé par sylvain
 - améliorer la procédure d'ajout d'article/de membre via une page de création d'article ptet
 - bugs pas encore repérés ?
+
+
+- ne pas chercher les articles par auteur via le surname mais autre chose (exemple un slug créé ?)
+- commenter comme il faut
+- rédiger une documentation complète de l'API, la database et le site web (chaque composant) (avec docusaurus ou autre)

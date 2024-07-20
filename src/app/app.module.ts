@@ -14,7 +14,11 @@ import { PageMembresComponent } from './page-membres/page-membres.component';
 import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membres-du-bureau.component';
 import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { PageProjectComponent } from './page-projets/page-project.component';
+import { SearchBarComponent } from './page-projets/search-bar/search-bar.component';
+import { ListeProjectComponent } from './page-projets/liste-project/liste-project.component';
+import { ListeProjectTileComponent } from './page-projets/liste-project/liste-project-tile/liste-project-tile.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,9 +33,13 @@ import { HttpClientModule } from '@angular/common/http';
     PageMembresComponent,
     MembresDuBureauComponent,
     MembreBureauComponent,
+    PageProjectComponent,
+    SearchBarComponent,
+    ListeProjectComponent,
+    ListeProjectTileComponent,
     
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule,],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

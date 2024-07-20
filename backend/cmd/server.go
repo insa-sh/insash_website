@@ -21,25 +21,24 @@ func main() {
 
 	originsOk := gorillaHandlers.AllowedOrigins([]string{os.Getenv("ORIGIN_ALLOWED")})
 
-	router.HandleFunc("/documents/project", handlers.GetProject).Methods("GET")
-	router.HandleFunc("/documents/article", handlers.GetArticle).Methods("GET")
-	router.HandleFunc("/documents/project/tags", handlers.GetProjectTags).Methods("GET")
-	router.HandleFunc("/documents/article/tags", handlers.GetArticleTags).Methods("GET")
+	router.HandleFunc("/documents", handlers.GetDocument).Methods("GET")
+	router.HandleFunc("/documents/years", handlers.GetDocumentYears).Methods("GET")
+	router.HandleFunc("/documents/tags", handlers.GetDocumentTags).Methods("GET")
+	router.HandleFunc("/documents/authors", handlers.GetDocumentAuthors).Methods("GET")
 
-	router.HandleFunc("/documents/project/authors/{slug}", handlers.GetProjectAuthorsBySlug).Methods("GET")
-	router.HandleFunc("/documents/article/authors/{slug}", handlers.GetArticleAuthorsBySlug).Methods("GET")
-
-	router.HandleFunc("/images/documents/article/{documentslug}/{filename}", handlers.GetArticleImageByName).Methods("GET")
-	router.HandleFunc("/images/documents/project/{documentslug}/{filename}", handlers.GetProjectImageByName).Methods("GET")
-	router.HandleFunc("/images/members/{filename}", handlers.GetMemberImageByName).Methods("GET")
-
-	router.HandleFunc("/markdown/article/{filename}", handlers.GetArticleMarkdownByName).Methods("GET")
-	router.HandleFunc("/markdown/project/{filename}", handlers.GetProjectMarkdownByName).Methods("GET")
-
-	// router.HandleFunc("/members/{firstname}", handlers.GetMembersByFirstname).Methods("GET")
 	router.HandleFunc("/members", handlers.GetMembers).Methods("GET")
 
-	// REMPLACER PAR LES VRAIS ELEMENTS DE CERTIFICATION HTTPS
+	router.HandleFunc("/images/documents/project/{documentslug}/{filename}", handlers.GetProjectImageByName).Methods("GET")
+	router.HandleFunc("/images/documents/cheatsheet/{documentslug}/{filename}", handlers.GetCheatsheetImageByName).Methods("GET")
+	router.HandleFunc("/images/documents/tips/{documentslug}/{filename}", handlers.GetTipsImageByName).Methods("GET")
+	router.HandleFunc("/images/documents/news/{documentslug}/{filename}", handlers.GetNewsImageByName).Methods("GET")
+	router.HandleFunc("/images/members/{filename}", handlers.GetMemberImageByName).Methods("GET")
+
+	router.HandleFunc("/markdown/documents/project/{filename}", handlers.GetProjectMarkdownByName).Methods("GET")
+	router.HandleFunc("/markdown/documents/cheatsheet/{filename}", handlers.GetCheatsheetMarkdownByName).Methods("GET")
+	router.HandleFunc("/markdown/documents/tips/{filename}", handlers.GetTipsMarkdownByName).Methods("GET")
+	router.HandleFunc("/markdown/documents/news/{filename}", handlers.GetNewsMarkdownByName).Methods("GET")
+
 	err := http.ListenAndServe(":8080", gorillaHandlers.CORS(originsOk)(router))
 	if err != nil {
 		log.Fatal("Server Failed: ", err)

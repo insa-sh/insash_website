@@ -11,12 +11,29 @@ import (
 	"github.com/gorilla/mux"
 )
 
+func GetCheatsheetMarkdownByName(w http.ResponseWriter, r *http.Request) {
+	GetMarkdownByName(w, r, "cheatsheet")
+}
+
+func GetTipsMarkdownByName(w http.ResponseWriter, r *http.Request) {
+	GetMarkdownByName(w, r, "tips")
+}
+
+func GetNewsMarkdownByName(w http.ResponseWriter, r *http.Request) {
+	GetMarkdownByName(w, r, "news")
+}
+
+func GetProjectMarkdownByName(w http.ResponseWriter, r *http.Request) {
+	GetMarkdownByName(w, r, "project")
+}
+
 // Récupérer un fichier markdown via son nom
 func GetMarkdownByName(w http.ResponseWriter, r *http.Request, documentType string) {
 	params := mux.Vars(r)
 	filename := path.Base(params["filename"]) // EMPECHE D'ALLER VOIR D'AUTRES DOSSIERS
 
-	markdownPath := filepath.Join("..", "assets", "markdown", documentType, filename)
+	markdownPath := filepath.Join("..", "assets", "markdown", "document", documentType, filename)
+	fmt.Println(markdownPath)
 
 	content, err := os.ReadFile(markdownPath)
 	if os.IsNotExist(err) {
@@ -29,12 +46,4 @@ func GetMarkdownByName(w http.ResponseWriter, r *http.Request, documentType stri
 	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetMarkdownByName filename=%s", r.Method, r.URL.Path, r.RemoteAddr, filename))
 	w.WriteHeader(http.StatusOK)
 	w.Write(content)
-}
-
-func GetArticleMarkdownByName(w http.ResponseWriter, r *http.Request) {
-	GetMarkdownByName(w, r, "article")
-}
-
-func GetProjectMarkdownByName(w http.ResponseWriter, r *http.Request) {
-	GetMarkdownByName(w, r, "project")
 }
