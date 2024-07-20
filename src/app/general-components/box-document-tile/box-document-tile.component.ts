@@ -5,11 +5,11 @@ import { DocumentAndAuthor } from "src/app/models/document-and-author";
 
 
 @Component({
-  selector: "app-project-tile",
-  templateUrl: "./project-tile.component.html",
-  styleUrls: ["./project-tile.component.css"],
+  selector: "app-box-document-tile",
+  templateUrl: "./box-document-tile.component.html",
+  styleUrls: ["./box-document-tile.component.css"],
 })
-export class ProjectTileComponent {
+export class BoxDocumentTileComponent {
   @Input() project!: DocumentAndAuthor;
   public MAX_TAGS: number = 3;
 

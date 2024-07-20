@@ -1,9 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { DocumentService, SortingBy } from "src/app/interaction-backend/document.service";
 import { DocumentAndAuthor } from "src/app/models/document-and-author";
-import { Member } from "src/app/interaction-backend/member";
-import { Document, DocumentType } from "src/app/models/document";
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-top-project",
