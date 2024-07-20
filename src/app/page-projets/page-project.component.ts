@@ -18,7 +18,7 @@ export class PageProjectComponent {
   public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
 
   @Input() typeOfDocuments: DocumentType = DocumentType.project; 
-  @Input() title: string = "Nos projets";
+  @Input() title: string = "PROJETS";
   @Input() subtitle1: string = "Projets en vedette";
   @Input() subtitle2: string = "Tous les projets";
 

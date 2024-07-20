@@ -31,6 +31,13 @@
   --insash-title-color: #ffffff;
   --insash-text-color: #ffffff;
 
+  --cheatsheet-text-color: #338C30;
+  --cheatsheet-bg-color: #338C3033;
+  --news-text-color: #C8930A;
+  --news-bg-color: #C8930A33;
+  --tips-text-color: #007AFF;
+  --tips-bg-color: #007AFF33;
+
   --global-transition-duration: 0.2s;
 }
 * {

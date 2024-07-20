@@ -80,11 +80,30 @@ img {
     letter-spacing: 0.6px;
   }
 
-  div.more-tags-text > p{
-    font-weight: 500;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
+
+  div.type-tag-tips {
+    background-color: var(--tips-bg-color);
+  }
+
+  div.type-tag-tips > p {
+    color: var(--tips-text-color);
+    font-weight: 900;
+  }
+
+  div.type-tag-cheatsheet {
+    background-color: var(--cheatsheet-bg-color);
+  }
+
+  div.type-tag-cheatsheet > p {
+    color: var(--cheatsheet-text-color);
+  }
+
+  div.type-tag-news {
+    background-color: var(--news-bg-color);
+  }
+
+  div.type-tag-news > p {
+    color: var(--news-text-color);
   }
 
   div.project-content {

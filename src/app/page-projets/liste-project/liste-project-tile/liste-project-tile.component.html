@@ -10,11 +10,14 @@
       <div class="project-main-details">
         <h2>{{ documentAndAuthor.document.title }}</h2>
         <div class="project-tags">
+          <div class="tag" [ngClass]="'type-tag-'+documentAndAuthor.document.type" *ngIf="documentAndAuthor.document.type != 'project'">
+            <p>{{ getDocumentType() }}</p>
+          </div>
           <div class="tag" *ngFor="let tag of documentAndAuthor.document.tags.slice(0,3)">
             <p>#{{ tag }}</p>
           </div>
-          <div class="more-tags-text" *ngIf="documentAndAuthor.document.tags.length > 3">
-            <p>+{{ documentAndAuthor.document.tags.length - 3 }} tag(s)</p>
+          <div class="tag" *ngIf="documentAndAuthor.document.tags.length > 3">
+            <p>+{{ documentAndAuthor.document.tags.length - 3 }}</p>
           </div>
         </div>
         <p class="project-description">{{ documentAndAuthor.document.description }}</p>
