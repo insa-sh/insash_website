@@ -21,7 +21,7 @@ export class SearchBarComponent {
 
   public formChangesSubscription: Subscription = new Subscription;
 
-  @Input() typeOfDocuments: DocumentType = DocumentType.tips;
+  @Input() typeOfDocuments: DocumentType = DocumentType.project;
   @Output() filterChanged = new EventEmitter<any>();
 
   public otherTypes = Object.values(DocumentType).filter((v) => v != this.typeOfDocuments && v != DocumentType.project);
