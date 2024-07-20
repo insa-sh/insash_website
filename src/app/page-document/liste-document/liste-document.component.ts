@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { DocumentAndAuthor } from 'src/app/models/document-and-author';
 
 @Component({
-  selector: 'app-liste-project',
-  templateUrl: './liste-project.component.html',
-  styleUrls: ['./liste-project.component.css']
+  selector: 'app-liste-document',
+  templateUrl: './liste-document.component.html',
+  styleUrls: ['./liste-document.component.css']
 })
-export class ListeProjectComponent {
+export class ListeDocumentComponent {
   @Input() documentsAndAuthors!: DocumentAndAuthor[];
 
   isThereEnoughDocuments() {

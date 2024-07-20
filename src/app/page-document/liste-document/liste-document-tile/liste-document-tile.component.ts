@@ -3,11 +3,11 @@ import { DocumentType } from 'src/app/models/document';
 import { DocumentAndAuthor } from 'src/app/models/document-and-author';
 
 @Component({
-  selector: 'app-liste-project-tile',
-  templateUrl: './liste-project-tile.component.html',
-  styleUrls: ['./liste-project-tile.component.css']
+  selector: 'app-liste-document-tile',
+  templateUrl: './liste-document-tile.component.html',
+  styleUrls: ['./liste-document-tile.component.css']
 })
-export class ListeProjectTileComponent {
+export class ListeDocumentTileComponent {
   @Input() documentAndAuthor!: DocumentAndAuthor;
 
   getYear(documentAndAuthor: DocumentAndAuthor): string {

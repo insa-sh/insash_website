@@ -7,12 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 
 @Component({
-  selector: 'app-page-projets',
-  templateUrl: './page-project.component.html',
-  styleUrls: ['./page-project.component.css']
+  selector: 'app-page-document',
+  templateUrl: './page-document.component.html',
+  styleUrls: ['./page-document.component.css']
 })
 
-export class PageProjectComponent {
+export class PageDocumentComponent {
 
   public documentsAndAuthors: DocumentAndAuthor[] = [];
   public topDocumentsAndAuthors: DocumentAndAuthor[] = [];

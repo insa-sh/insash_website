@@ -14,10 +14,10 @@ import { PageMembresComponent } from './page-membres/page-membres.component';
 import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membres-du-bureau.component';
 import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PageProjectComponent } from './page-projets/page-project.component';
-import { SearchBarComponent } from './page-projets/search-bar/search-bar.component';
-import { ListeProjectComponent } from './page-projets/liste-project/liste-project.component';
-import { ListeProjectTileComponent } from './page-projets/liste-project/liste-project-tile/liste-project-tile.component';
+import { PageDocumentComponent } from './page-document/page-document.component';
+import { SearchBarComponent } from './page-document/search-bar/search-bar.component';
+import { ListeDocumentComponent } from './page-document/liste-document/liste-document.component';
+import { ListeDocumentTileComponent } from './page-document/liste-document/liste-document-tile/liste-document-tile.component';
 import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
@@ -33,10 +33,10 @@ import { ReactiveFormsModule } from "@angular/forms";
     PageMembresComponent,
     MembresDuBureauComponent,
     MembreBureauComponent,
-    PageProjectComponent,
+    PageDocumentComponent,
     SearchBarComponent,
-    ListeProjectComponent,
-    ListeProjectTileComponent,
+    ListeDocumentComponent,
+    ListeDocumentTileComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],

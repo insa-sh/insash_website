@@ -1,4 +1,4 @@
-div.liste-project {
+div.liste-document {
     display: flex;
     flex-direction: column;
     background-color: var(--website-bg-color-light-1);
@@ -9,12 +9,12 @@ div.liste-project {
     max-width: min(90%, 2000px);
 }
 
-app-liste-project-tile {
+app-liste-document-tile {
 
     margin-bottom: 20px;
 }
 
-app-liste-project-tile:nth-last-child(1) {
+app-liste-document-tile:nth-last-child(1) {
 
     margin-bottom: 0px;
 }
@@ -25,7 +25,7 @@ div.no-documents{
 }
 
 @media (max-width: 800px) {
-    div.liste-project {
+    div.liste-document {
 
 
         padding: 20px;

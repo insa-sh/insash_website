@@ -10,7 +10,7 @@ import { PageAccueilComponent } from "./page-accueil/page-accueil.component";
 import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
-import { PageProjectComponent } from "./page-projets/page-project.component";
+import { PageDocumentComponent } from "./page-document/page-document.component";
 import { ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TopProjectResolver } from "./interaction-backend/resolver/document.resolver";
 
 
@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path : "projets",
-    component: PageProjectComponent,
+    component: PageDocumentComponent,
     title: "Les projets du Club",
     resolve: {
       topDocumentsAndAuthors: TopProjectResolver,
