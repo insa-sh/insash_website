@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PageDocumentComponent } from './general-components/page-document/page-document.component';
 import { SearchBarComponent } from './general-components/page-document/search-bar/search-bar.component';
 import { ListeDocumentComponent } from './general-components/page-document/liste-document/liste-document.component';
-import { ListeDocumentTileComponent } from './general-components/liste-document-tile/liste-document-tile.component';
+import { ListDocumentTileComponent } from './general-components/list-document-tile/list-document-tile.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { PageProjetsComponent } from './page-projets/page-projets.component';
 import { PageCheatsheetComponent } from './page-cheatsheet/page-cheatsheet.component';
@@ -40,7 +40,7 @@ import { PageTipsComponent } from './page-tips/page-tips.component';
     PageDocumentComponent,
     SearchBarComponent,
     ListeDocumentComponent,
-    ListeDocumentTileComponent,
+    ListDocumentTileComponent,
     PageProjetsComponent,
     PageCheatsheetComponent,
     PageNewsComponent,

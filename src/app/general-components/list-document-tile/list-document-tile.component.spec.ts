@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListeDocumentTileComponent } from './liste-document-tile.component';
+import { ListDocumentTileComponent } from './list-document-tile.component';
 
 describe('ListeDocumentTileComponent', () => {
-  let component: ListeDocumentTileComponent;
-  let fixture: ComponentFixture<ListeDocumentTileComponent>;
+  let component: ListDocumentTileComponent;
+  let fixture: ComponentFixture<ListDocumentTileComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListeDocumentTileComponent]
+      declarations: [ListDocumentTileComponent]
     });
-    fixture = TestBed.createComponent(ListeDocumentTileComponent);
+    fixture = TestBed.createComponent(ListDocumentTileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
