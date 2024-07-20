@@ -84,6 +84,7 @@ div.search-bar:hover, div.search-bar:focus-within {
     border-radius: 12px;
     align-items: center;
     justify-content: center;
+    margin-left: 15px;
 
 }
 .search-bar-button-reset>i {
