@@ -8,16 +8,28 @@ div#header {
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 100;
+}
+
+
+div#header-content {
+    width: 100%;
     padding: 40px 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 4vw;
 
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    z-index: 100;
+    max-width: 2000px;
+
 }
 
 a#header-title {
