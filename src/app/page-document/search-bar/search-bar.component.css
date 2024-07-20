@@ -24,7 +24,7 @@ div.search-bar {
     display: flex;
     align-items: center;
 
-    background-color: var(--website-bg-color-light-2);
+    
     border-radius: 16px;
     border: solid 2px var(--website-bg-color-light-2);
 
