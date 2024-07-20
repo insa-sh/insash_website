@@ -113,7 +113,7 @@ a.text-link::after {
     border-radius: 1px;
 
 
-    background-color: rgba(239, 193, 203, 0.45);
+    background-color: #9d5765;
     transition: height var(--global-transition-duration), color var(--global-transition-duration), background-color var(--global-transition-duration);
 }
 a.text-link:hover {
@@ -121,7 +121,7 @@ a.text-link:hover {
 
 }
 a.text-link:hover::after {
-    background-color: var(--insash-rose-pale);
+    background-color: var(--insash-rose-fonce);
     height: 100%;
     border-radius: 2px;
     
