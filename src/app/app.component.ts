@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { FooterComponent } from "./footer/footer.component";
-import { HeaderComponent } from "./header/header.component";
+import { FooterComponent } from "./general-components/footer/footer.component";
+import { HeaderComponent } from "./general-components/header/header.component";
 import { CommonModule } from "@angular/common";
 import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd } from "@angular/router";
 

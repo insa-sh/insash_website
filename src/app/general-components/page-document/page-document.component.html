@@ -1,0 +1,26 @@
+<div class="title-container">
+  <h1 [ngClass]="'type-'+typeOfDocuments">{{ title }}</h1>
+</div>
+
+
+<div *ngIf="isThereEnoughTopDocuments()">
+  <h2>
+    <i>{{ subtitle1 }}</i>
+  </h2>
+
+  <app-top-document
+  [tileStyle]="tileStyle"
+    [documentsAndAuthors]="topDocumentsAndAuthors"
+    [numberOfDocuments]="2"
+  ></app-top-document>
+</div>
+
+<h2>
+  <i>{{ subtitle2 }}</i>
+</h2>
+
+<app-search-bar [typeOfDocuments]="this.typeOfDocuments" (filterChanged)="onFilterChanged($event)"></app-search-bar>
+
+<app-liste-document
+  [documentsAndAuthors]="documentsAndAuthors"
+></app-liste-document>

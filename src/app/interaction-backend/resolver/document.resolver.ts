@@ -24,6 +24,9 @@ export const TipsResolver = createDocumentResolver(DocumentType.tips);
 export const NewsResolver = createDocumentResolver(DocumentType.news);
 
 export const TopProjectResolver = createDocumentResolver(DocumentType.project, 3);
+export const TopCheatsheetResolver = createDocumentResolver(DocumentType.cheatsheet, 3);
+export const TopTipsResolver = createDocumentResolver(DocumentType.tips, 3);
+export const TopNewsResolver = createDocumentResolver(DocumentType.news, 3);
 
 const createDocumentTagsResolver = (documentType: DocumentType): ResolveFn<String> => {
     return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<String> => {

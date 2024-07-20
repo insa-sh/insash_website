@@ -1,0 +1,29 @@
+<div id="header">
+    <a id="header-title" routerLink="/">
+        <img src="/assets/images/logos/logo-insash-1.png" alt="">
+        <h1>./insa.sh</h1>
+    </a>
+
+    <div id="nav-links" class="closed">
+        <div class="dropdown-menu closed">
+            <a tabindex=0 onclick="toggleDropdownMenu(this);">Articles <i class="fa-solid fa-caret-down"></i></a>
+            <div>
+                <a routerLink="news">Nos Actus</a>
+                <a routerLink="cheatsheet">Cheatsheet</a>
+                <a routerLink="tips">Astuces</a>
+            </div>
+        </div>
+        <a href="https://hebergos.insash.org" target="_blank">HebergOS</a>
+        <a routerLink="project">Projets</a>
+        <a routerLink="les-membres">Les membres</a>
+
+    </div>
+    <div id="calendar" onclick="getDay();">
+        <div class="calendar-icon">
+            <p class="today-number">{{ day }}</p>
+            <p class="today-month">{{ month }}</p>
+        </div>
+    </div> <!-- nouveau composant ?? -->
+    <div class="mobile-only" id="hamburger-button" onclick="toggleNavigationMenu();"><i class="fa-solid fa-bars"></i>
+    </div>
+</div>

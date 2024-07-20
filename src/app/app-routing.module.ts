@@ -10,8 +10,12 @@ import { PageAccueilComponent } from "./page-accueil/page-accueil.component";
 import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
-import { PageProjectComponent } from "./page-projets/page-project.component";
-import { ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TopProjectResolver } from "./interaction-backend/resolver/document.resolver";
+import { PageDocumentComponent } from "./general-components/page-document/page-document.component";
+import { CheatsheetAuthorResolver, CheatsheetTagsResolver, CheatsheetYearResolver, NewsAuthorResolver, NewsTagsResolver, ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TipsAuthorResolver, TipsTagsResolver, TipsYearResolver, TopCheatsheetResolver, TopNewsResolver, TopProjectResolver, TopTipsResolver } from "./interaction-backend/resolver/document.resolver";
+import { PageProjetsComponent } from "./page-projets/page-projets.component";
+import { PageCheatsheetComponent } from "./page-cheatsheet/page-cheatsheet.component";
+import { PageTipsComponent } from "./page-tips/page-tips.component";
+import { PageNewsComponent } from "./page-news/page-news.component";
 
 
 
@@ -35,14 +39,47 @@ const routes: Routes = [
     title: "L'équipe du Club Info",
   },
   {
-    path : "projets",
-    component: PageProjectComponent,
+    path : "project",
+    component: PageProjetsComponent,
     title: "Les projets du Club",
     resolve: {
       topDocumentsAndAuthors: TopProjectResolver,
       documentTags: ProjectTagsResolver,
       documentAuthors : ProjectAuthorResolver, 
       documentYears : ProjectYearResolver,
+    }
+  },
+  {
+    path : "cheatsheet",
+    component: PageCheatsheetComponent,
+    title: "Les cheatsheets du Club",
+    resolve: {
+      topDocumentsAndAuthors: TopCheatsheetResolver,
+      documentTags: CheatsheetTagsResolver,
+      documentAuthors : CheatsheetAuthorResolver, 
+      documentYears : CheatsheetYearResolver,
+    }
+  },
+  {
+    path : "news",
+    component: PageNewsComponent,
+    title: "Les actus du Club",
+    resolve: {
+      topDocumentsAndAuthors: TopNewsResolver,
+      documentTags: NewsTagsResolver,
+      documentAuthors : NewsAuthorResolver, 
+      documentYears : NewsAuthorResolver,
+    }
+  },
+  {
+    path : "tips",
+    component: PageTipsComponent,
+    title: "Les astuces du Club",
+    resolve: {
+      topDocumentsAndAuthors: TopTipsResolver,
+      documentTags: TipsTagsResolver,
+      documentAuthors : TipsAuthorResolver, 
+      documentYears : TipsYearResolver,
     }
   },
 

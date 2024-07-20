@@ -1,24 +1,28 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './general-components/footer/footer.component';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './general-components/header/header.component';
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeSocialLinksComponent } from './page-accueil/home-social-links/home-social-links.component';
-import { ProjectTileComponent } from "./page-accueil/project-tile/project-tile.component";
-import { TopProjectComponent } from './page-accueil/top-project/top-project.component';
+import { BoxDocumentTileComponent } from "./general-components/box-document-tile/box-document-tile.component";
+import { TopDocumentComponent } from './general-components/top-document/top-document.component';
 import { PageMembresComponent } from './page-membres/page-membres.component';
 import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membres-du-bureau.component';
 import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PageProjectComponent } from './page-projets/page-project.component';
-import { SearchBarComponent } from './page-projets/search-bar/search-bar.component';
-import { ListeProjectComponent } from './page-projets/liste-project/liste-project.component';
-import { ListeProjectTileComponent } from './page-projets/liste-project/liste-project-tile/liste-project-tile.component';
+import { PageDocumentComponent } from './general-components/page-document/page-document.component';
+import { SearchBarComponent } from './general-components/page-document/search-bar/search-bar.component';
+import { ListeDocumentComponent } from './general-components/page-document/liste-document/liste-document.component';
+import { ListDocumentTileComponent } from './general-components/list-document-tile/list-document-tile.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { PageProjetsComponent } from './page-projets/page-projets.component';
+import { PageCheatsheetComponent } from './page-cheatsheet/page-cheatsheet.component';
+import { PageNewsComponent } from './page-news/page-news.component';
+import { PageTipsComponent } from './page-tips/page-tips.component';
 
 @NgModule({
   declarations: [
@@ -27,16 +31,20 @@ import { ReactiveFormsModule } from "@angular/forms";
     FooterComponent,
     PageAccueilComponent,
     PageNotFoundComponent,
-    ProjectTileComponent,
-    TopProjectComponent,
+    BoxDocumentTileComponent,
+    TopDocumentComponent,
     HomeSocialLinksComponent,
     PageMembresComponent,
     MembresDuBureauComponent,
     MembreBureauComponent,
-    PageProjectComponent,
+    PageDocumentComponent,
     SearchBarComponent,
-    ListeProjectComponent,
-    ListeProjectTileComponent,
+    ListeDocumentComponent,
+    ListDocumentTileComponent,
+    PageProjetsComponent,
+    PageCheatsheetComponent,
+    PageNewsComponent,
+    PageTipsComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
