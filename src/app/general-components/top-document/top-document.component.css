@@ -83,6 +83,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2vw;
   }
   app-box-document-tile {
     margin-top: 20px;

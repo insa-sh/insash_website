@@ -24,10 +24,9 @@ export class SearchBarComponent {
   @Input() typeOfDocuments: DocumentType = DocumentType.project;
   @Output() filterChanged = new EventEmitter<any>();
 
-  public otherTypes = Object.values(DocumentType).filter((v) => v != this.typeOfDocuments && v != DocumentType.project);
+  public otherTypes : DocumentType[] = [];
 
   constructor(private documentService: DocumentService, private route: ActivatedRoute, private fb: FormBuilder) {
-
   }
 
   filterForm = this.fb.group({
@@ -160,7 +159,7 @@ export class SearchBarComponent {
     this.fetchAuthors();
     this.fetchTags();
     this.fetchYears();
-
+    this.otherTypes = Object.values(DocumentType).filter((v) => v != this.typeOfDocuments && v != DocumentType.project);
     this.addCheckboxes();
 
     this.formChangesSubscription = this.filterForm.valueChanges.subscribe(() => {

@@ -21,7 +21,7 @@ export class PageDocumentComponent {
   @Input() subtitle1: string = "Projets en vedette";
   @Input() subtitle2: string = "Tous les projets";
 
-  public tileStyle: TileStyle =  this.typeOfDocuments == DocumentType.project ? TileStyle.box : TileStyle.list;
+  public tileStyle: TileStyle = TileStyle.box;
 
   constructor(private documentService: DocumentService, private route: ActivatedRoute) {
 
@@ -87,6 +87,8 @@ export class PageDocumentComponent {
   ngOnInit() {
     this.fetchDocuments();
     this.fetchTopDocuments();
+    this.tileStyle = this.typeOfDocuments == DocumentType.project ? TileStyle.box : TileStyle.list;;
+    console.log(this.typeOfDocuments);
   }
 
   isThereEnoughDocuments() {

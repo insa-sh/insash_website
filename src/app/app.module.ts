@@ -20,6 +20,9 @@ import { ListeDocumentComponent } from './general-components/page-document/liste
 import { ListeDocumentTileComponent } from './general-components/liste-document-tile/liste-document-tile.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { PageProjetsComponent } from './page-projets/page-projets.component';
+import { PageCheatsheetComponent } from './page-cheatsheet/page-cheatsheet.component';
+import { PageNewsComponent } from './page-news/page-news.component';
+import { PageTipsComponent } from './page-tips/page-tips.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { PageProjetsComponent } from './page-projets/page-projets.component';
     ListeDocumentComponent,
     ListeDocumentTileComponent,
     PageProjetsComponent,
+    PageCheatsheetComponent,
+    PageNewsComponent,
+    PageTipsComponent,
     
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
