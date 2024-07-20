@@ -373,7 +373,13 @@ div.tag {
         transition-delay: 0s;
 
     }
-    
+    div.dropdown:hover i {
+        transform: inherit;
+    }
+
+    .dropdown-button.dropdown-ouvert i, .dropdown-button.dropdown-ouvert:target i,div.dropdown:hover .dropdown-button.dropdown-ouvert i  {
+        transform : rotate(180deg)
+    }
 
     .dropdown-button.dropdown-ouvert+div.dropdown-content {
         /* height: 100%; */
@@ -393,6 +399,8 @@ div.tag {
         transform: scale(1);
         transition-delay: 0s;
     }
+
+
 
 
 
