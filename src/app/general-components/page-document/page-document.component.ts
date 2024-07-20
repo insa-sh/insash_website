@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { DocumentService, SortingBy } from '../interaction-backend/document.service';
-import { DocumentAndAuthor } from '../models/document-and-author';
-import { Document, DocumentType } from '../models/document';
-import { Member } from '../interaction-backend/member';
+import { DocumentService, SortingBy } from '../../interaction-backend/document.service';
+import { DocumentAndAuthor } from '../../models/document-and-author';
+import { Document, DocumentType } from '../../models/document';
+import { Member } from '../../interaction-backend/member';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 

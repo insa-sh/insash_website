@@ -36,6 +36,7 @@ div.search-bar {
 
 
 div.search-bar-button {
+    height: 100%;
     display: flex;
 }
 
@@ -62,10 +63,9 @@ div.search-bar:hover, div.search-bar:focus-within {
 .search-bar-button{
 
     background-color: var(--website-bg-color-light-1);
-    border: solid 2px var(--website-bg-color-light-1);
     border: none;
     border-radius: 0 12px 12px 0;
-    padding: 10px 10px;
+    padding: 11px;
     font-size: 16px;
     cursor: pointer;
     /* margin-left: 10px; */
