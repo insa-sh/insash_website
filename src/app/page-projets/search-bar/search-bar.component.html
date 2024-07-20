@@ -1,21 +1,58 @@
 <div class="bar">
   <div class="search-bar">
-    <input type="text" class="search-bar-input" placeholder="Rechercher..." [formControl]="search" (keydown.enter)="onFormChange()"/>
-    
-    <button class="search-bar-button" id="search-bar-button-search" (click)="onFormChange()">
+    <input
+      type="text"
+      class="search-bar-input"
+      placeholder="Rechercher..."
+      [formControl]="search"
+      (keydown.enter)="onFormChange()"
+    />
+
+    <button
+      class="search-bar-button"
+      id="search-bar-button-search"
+      (click)="onFormChange()"
+    >
       <i class="fa-solid fa-magnifying-glass fa-xl"></i>
     </button>
-
   </div>
 
   <form class="search-filter" [formGroup]="filterForm">
-    <div class="dropdown" *ngIf="isThereEnoughAuthors()">
+    <div class="dropdown" *ngIf="isItAnArticle()">
+      <button
+        class="dropdown-button"
+        onclick="this.classList.toggle('dropdown-ouvert')"
+      >
+      <div class="tag" [ngClass]="'type-tag-'+this.typeOfDocuments">
+        <p>{{ getDocumentType(this.typeOfDocuments) }}</p>
+      </div>  
       
-      <button class="dropdown-button" onclick="this.classList.toggle('dropdown-ouvert')">
-      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedAuthors()}" ></i>
-        Auteurs<i class="fa-solid fa-caret-down"></i>
+      
+      <i class="fa-solid fa-chevron-down"></i>
       </button>
-      
+      <div class="dropdown-content">
+        <label for="dropdown-radio-sort-{{ e }}" *ngFor="let e of otherTypes">
+          <div class="dropdown-content-element">
+            <div class="tag" [ngClass]="'type-tag-'+e">
+              <p>{{ getDocumentType(e) }}</p>
+            </div>  
+            <p></p>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="dropdown" *ngIf="isThereEnoughAuthors()">
+      <button
+        class="dropdown-button"
+        onclick="this.classList.toggle('dropdown-ouvert')"
+      >
+        <i
+          class="fa-solid fa-circle filter-selected-icon"
+          [ngClass]="{ 'filter-selected-icon-hidden': isSelectedAuthors() }"
+        ></i>
+        Auteurs<i class="fa-solid fa-chevron-down"></i>
+      </button>
+
       <div class="dropdown-content">
         <label
           for="dropdown-checkbox-auteurs-{{ e.surname }}"
@@ -37,14 +74,22 @@
     </div>
 
     <div class="dropdown" *ngIf="isThereEnoughTags()">
-
-      <button class="dropdown-button" onclick="this.classList.toggle('dropdown-ouvert')">
-      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedTags()}" ></i>
-        Tags<i class="fa-solid fa-caret-down"></i>
+      <button
+        class="dropdown-button"
+        onclick="this.classList.toggle('dropdown-ouvert')"
+      >
+        <i
+          class="fa-solid fa-circle filter-selected-icon"
+          [ngClass]="{ 'filter-selected-icon-hidden': isSelectedTags() }"
+        ></i>
+        Tags<i class="fa-solid fa-chevron-down"></i>
       </button>
-      
+
       <div class="dropdown-content">
-        <label for="dropdown-checkbox-tags-{{ e }}" *ngFor="let e of tags; let i = index">
+        <label
+          for="dropdown-checkbox-tags-{{ e }}"
+          *ngFor="let e of tags; let i = index"
+        >
           <div class="dropdown-content-element" formArrayName="tags">
             <p>{{ e }}</p>
 
@@ -61,14 +106,22 @@
     </div>
 
     <div class="dropdown" *ngIf="isThereEnoughYears()">
-
-      <button class="dropdown-button" onclick="this.classList.toggle('dropdown-ouvert')">
-      <i class="fa-solid fa-circle filter-selected-icon" [ngClass]="{ 'filter-selected-icon-hidden': isSelectedDates()}" ></i>
-        Date<i class="fa-solid fa-caret-down"></i>
+      <button
+        class="dropdown-button"
+        onclick="this.classList.toggle('dropdown-ouvert')"
+      >
+        <i
+          class="fa-solid fa-circle filter-selected-icon"
+          [ngClass]="{ 'filter-selected-icon-hidden': isSelectedDates() }"
+        ></i>
+        Date<i class="fa-solid fa-chevron-down"></i>
       </button>
-      
+
       <div class="dropdown-content">
-        <label for="dropdown-checkbox-date-{{ e }}" *ngFor="let e of dates; let i = index">
+        <label
+          for="dropdown-checkbox-date-{{ e }}"
+          *ngFor="let e of dates; let i = index"
+        >
           <div class="dropdown-content-element" formArrayName="dates">
             <p>{{ e }}</p>
 
@@ -85,10 +138,12 @@
     </div>
 
     <div class="dropdown">
-
-      <button class="dropdown-button" onclick="this.classList.toggle('dropdown-ouvert')">
-      <i class="fa-solid fa-circle filter-selected-icon"></i>
-        Trier<i class="fa-solid fa-caret-down"></i>
+      <button
+        class="dropdown-button"
+        onclick="this.classList.toggle('dropdown-ouvert')"
+      >
+        <i class="fa-solid fa-circle filter-selected-icon"></i>
+        Trier<i class="fa-solid fa-chevron-down"></i>
       </button>
       <div class="dropdown-content">
         <label for="dropdown-radio-sort-{{ e }}" *ngFor="let e of sort">
@@ -106,9 +161,14 @@
           </div>
         </label>
       </div>
-  </div>
-    <button class="search-bar-button search-bar-button-reset" title="Réinitialiser les filtres" (click)="resetSearch()">
-      <i class="fa-regular fa-circle-xmark"></i><span class="mobile-only">Réinitialiser les filtres</span>
+    </div>
+    <button
+      class="search-bar-button search-bar-button-reset"
+      title="Réinitialiser les filtres"
+      (click)="resetSearch()"
+    >
+      <i class="fa-regular fa-circle-xmark"></i
+      ><span class="mobile-only">Réinitialiser les filtres</span>
     </button>
   </form>
 </div>

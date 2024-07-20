@@ -108,7 +108,7 @@ div.dropdown {
     position: relative;
     /* display: block; */
     width: fit-content;
-    border-right: solid 1px var(--insash-text-color);
+    
     padding: 8px 20px;
     padding-left:10px;
 }
@@ -247,6 +247,48 @@ div.dropdown-content-element:last-child {
 .dropdown-checkbox-tags {
     padding-left: 6px;
 }
+
+div.tag {
+    display: inline-block;
+    background-color: rgba(239,193,233,10%);
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 5px;
+  }
+  
+  div.tag > p {
+    color: var(--insash-rose-pale);
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+
+
+  div.type-tag-tips {
+    background-color: var(--tips-bg-color);
+  }
+
+  div.type-tag-tips > p {
+    color: var(--tips-text-color);
+  }
+
+  div.type-tag-cheatsheet {
+    background-color: var(--cheatsheet-bg-color);
+  }
+
+  div.type-tag-cheatsheet > p {
+    color: var(--cheatsheet-text-color);
+  }
+
+  div.type-tag-news {
+    background-color: var(--news-bg-color);
+  }
+
+  div.type-tag-news > p {
+    color: var(--news-text-color);
+  }
 
 
 

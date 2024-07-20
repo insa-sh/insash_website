@@ -24,6 +24,8 @@ export class SearchBarComponent {
   @Input() typeOfDocuments: DocumentType = DocumentType.project;
   @Output() filterChanged = new EventEmitter<any>();
 
+  public otherTypes = Object.values(DocumentType).filter((v) => v != this.typeOfDocuments && v != DocumentType.project);
+
   constructor(private documentService: DocumentService, private route: ActivatedRoute, private fb: FormBuilder) {
 
   }
@@ -34,6 +36,18 @@ export class SearchBarComponent {
     dates: this.fb.array([]),
     sort: ['Plus récent']
   });
+
+  getDocumentType(t: DocumentType): String {
+    if (t === DocumentType.project) {
+      return "PROJETS";
+    } else if (t === DocumentType.cheatsheet) {
+      return "CHEATSHEETS";
+    } else if (t === DocumentType.tips) {
+      return "ASTUCES";
+    } else {
+      return "ACTUS";
+    } 
+  }
 
   fetchTags() {
     this.route.data.subscribe(
@@ -66,6 +80,10 @@ export class SearchBarComponent {
 
   isThereEnoughTags () {
     return this.tags.length > 0;
+  }
+
+  isItAnArticle () {
+    return this.typeOfDocuments != DocumentType.project;
   }
 
   private addCheckboxes() {
@@ -111,8 +129,6 @@ export class SearchBarComponent {
       search: this.search.value
     };
 
-    console.log(this.search.value);
-
     this.filterChanged.emit(filters);
 
   }
@@ -147,7 +163,6 @@ export class SearchBarComponent {
 
     this.addCheckboxes();
 
-    // Souscrire aux changements du formulaire
     this.formChangesSubscription = this.filterForm.valueChanges.subscribe(() => {
       this.onFormChange();
     });
@@ -156,7 +171,7 @@ export class SearchBarComponent {
   }
 
   ngOnDestroy(): void {
-    // Désabonner pour éviter les fuites de mémoire
+
     if (this.formChangesSubscription) {
       this.formChangesSubscription.unsubscribe();
     }
