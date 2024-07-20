@@ -8,7 +8,7 @@ import { DocumentType } from '../models/document';
 })
 export class PageTipsComponent {
   public title: string = "ASTUCES";
-  public subtitle1: string = "Les dernières astuces";
-  public subtitle2: string = "Toutes les astuces";
+  public subtitle1: string = "Nos dernières astuces";
+  public subtitle2: string = "Toutes nos astuces";
   public typeOfDocuments: DocumentType = DocumentType.tips; 
 }

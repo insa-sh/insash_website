@@ -7,8 +7,8 @@ import { DocumentType } from '../models/document';
   styleUrls: ['./page-news.component.css']
 })
 export class PageNewsComponent {
-  public title: string = "ASTUCES";
-  public subtitle1: string = "Les dernières astuces";
-  public subtitle2: string = "Toutes les astuces";
+  public title: string = "ACTUS";
+  public subtitle1: string = "Les dernières news du Club Info";
+  public subtitle2: string = "Toutes nos actus";
   public typeOfDocuments: DocumentType = DocumentType.news; 
 }
