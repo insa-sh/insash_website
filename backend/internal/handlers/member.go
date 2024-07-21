@@ -19,9 +19,9 @@ func GetMembers(w http.ResponseWriter, r *http.Request) {
 	var options []string
 
 	queryParams := r.URL.Query()
-	status := queryParams.Get("status")
+	status := utils.NormalizeInputSearch(queryParams.Get("status"))
 	surname := queryParams.Get("surname")
-	archived := queryParams.Get("archived")
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
 	query = "SELECT firstname, lastname, role, website, image_address, linkedin, github, citation, surname, status, archived FROM member"
 

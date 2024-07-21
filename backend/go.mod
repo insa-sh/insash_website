@@ -15,4 +15,5 @@ require (
 	github.com/jmoiron/sqlx v1.4.0
 	github.com/lib/pq v1.10.9
 	golang.org/x/crypto v0.24.0
+	golang.org/x/text v0.16.0
 )

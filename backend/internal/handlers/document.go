@@ -24,25 +24,27 @@ func AddQueryParameterDocument(r *http.Request) (string, []interface{}, error) {
 
 	queryParams := r.URL.Query()
 	tags := queryParams["tag"]
-	search := queryParams.Get("search")
-	uuid := queryParams.Get("uuid")
-	slug := queryParams.Get("slug")
-	nbr := queryParams.Get("nbr")
+	search := utils.NormalizeInputSearch(queryParams.Get("search"))
+	uuid := utils.NormalizeInputSlug(queryParams.Get("uuid"))
+	slug := utils.NormalizeInputSlug(queryParams.Get("slug"))
+	nbr := utils.NormalizeInputNumber(queryParams.Get("nbr"))
 	year := queryParams["year"]
 	surname := queryParams["author"]
-	documentType := queryParams.Get("type")
-	archived := queryParams.Get("archived")
+	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
 	// Construction de la requête SQL dynamiquement
 	// recherche d'une chaine de caractère dans le titre ou la description
 	if search != "" {
-		options = append(options, fmt.Sprintf("( LOWER(document.title) LIKE LOWER($%d) OR LOWER(document.description) LIKE LOWER($%d) )", len(args)+1, len(args)+1))
-		args = append(args, "%"+search+"%")
+		fmt.Println(search)
+		options = append(options, fmt.Sprintf("( to_tsvector('french', LOWER(unaccent(document.title))) @@ plainto_tsquery('french', $%d) OR to_tsvector('french', LOWER(unaccent(document.description))) @@ plainto_tsquery('french', $%d))", len(args)+1, len(args)+1))
+		args = append(args, search)
 	}
 
 	if len(year) > 0 {
 		var options_year []string
 		for _, v := range year {
+			v = utils.NormalizeInputNumber(v)
 			options_year = append(options_year, fmt.Sprintf("DATE_PART('YEAR', document.date) = $%d", len(args)+1))
 			args = append(args, v)
 		}
@@ -123,8 +125,8 @@ func GetDocumentTags(w http.ResponseWriter, r *http.Request) {
 	var args []interface{}
 
 	queryParams := r.URL.Query()
-	documentType := queryParams.Get("type")
-	archived := queryParams.Get("archived")
+	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
 	query := "SELECT tags AS count FROM document"
 
@@ -183,9 +185,9 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	var args []interface{}
 
 	queryParams := r.URL.Query()
-	slug := queryParams.Get("slug")
-	documentType := queryParams.Get("type")
-	archived := queryParams.Get("archived")
+	slug := utils.NormalizeInputSlug(queryParams.Get("slug"))
+	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
 	query := "SELECT DISTINCT member.firstname, member.lastname, member.role, member.website, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status, member.archived FROM document, document_author, member"
 
@@ -273,8 +275,8 @@ func GetDocumentYears(w http.ResponseWriter, r *http.Request) {
 	var args []interface{}
 
 	queryParams := r.URL.Query()
-	documentType := queryParams.Get("type")
-	archived := queryParams.Get("archived")
+	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
 	query := "SELECT DISTINCT DATE_PART('YEAR', date) FROM document"
 

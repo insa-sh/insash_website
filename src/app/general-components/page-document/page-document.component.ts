@@ -43,7 +43,7 @@ export class PageDocumentComponent {
   fetchTopDocuments() {
     this.route.data.subscribe(
         (data) => {
-          if (data['topDocumentsAndAuthors'] == null) {
+          if (data['topDocumentsAndAuthors'] != null) {
             data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
               documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
               documentsAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address);
