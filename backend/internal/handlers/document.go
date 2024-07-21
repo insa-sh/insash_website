@@ -124,12 +124,18 @@ func GetDocumentTags(w http.ResponseWriter, r *http.Request) {
 
 	queryParams := r.URL.Query()
 	documentType := queryParams.Get("type")
+	archived := queryParams.Get("archived")
 
 	query := "SELECT tags AS count FROM document"
 
 	if documentType != "" {
 		options = append(options, fmt.Sprintf("type = $%d", len(args)+1))
 		args = append(args, documentType)
+	}
+
+	if archived == "true" || archived == "false" {
+		options = append(options, fmt.Sprintf("$%d = document.archived", len(args)+1))
+		args = append(args, archived)
 	}
 
 	if len(options) > 0 {
@@ -179,14 +185,20 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	queryParams := r.URL.Query()
 	slug := queryParams.Get("slug")
 	documentType := queryParams.Get("type")
+	archived := queryParams.Get("archived")
 
-	query := "SELECT DISTINCT member.firstname, member.lastname, member.year, member.role, member.website, member.mail, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status, member.archived FROM document, document_author, member"
+	query := "SELECT DISTINCT member.firstname, member.lastname, member.role, member.website, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status, member.archived FROM document, document_author, member"
 
 	options = append(options, "document.uuid = document_author.document_uuid", "member.uuid = document_author.member_uuid")
 
 	if slug != "" {
 		options = append(options, fmt.Sprintf("document.slug = $%d", len(args)+1))
 		args = append(args, slug)
+	}
+
+	if archived == "true" || archived == "false" {
+		options = append(options, fmt.Sprintf("$%d = document.archived", len(args)+1))
+		args = append(args, archived)
 	}
 
 	if documentType != "" {
@@ -262,12 +274,18 @@ func GetDocumentYears(w http.ResponseWriter, r *http.Request) {
 
 	queryParams := r.URL.Query()
 	documentType := queryParams.Get("type")
+	archived := queryParams.Get("archived")
 
 	query := "SELECT DISTINCT DATE_PART('YEAR', date) FROM document"
 
 	if documentType != "" {
 		options = append(options, fmt.Sprintf("document.type = $%d", len(args)+1))
 		args = append(args, documentType)
+	}
+
+	if archived == "true" || archived == "false" {
+		options = append(options, fmt.Sprintf("$%d = document.archived", len(args)+1))
+		args = append(args, archived)
 	}
 
 	if len(options) > 0 {

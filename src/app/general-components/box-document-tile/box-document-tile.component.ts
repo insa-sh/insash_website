@@ -11,10 +11,14 @@ import { DocumentAndAuthor } from "src/app/models/document-and-author";
 })
 export class BoxDocumentTileComponent {
   @Input() documentAndAuthor!: DocumentAndAuthor;
-  public MAX_TAGS: number = 3;
+  public MAX_TAGS: number = 3;  
 
   getMaxTags(max: number) {
     return this.documentAndAuthor.document.tags.slice(0, max);
+  }
+
+  getArchivedAuthors() {
+    return this.documentAndAuthor.author.filter((a) => a.archived).length;
   }
 
 }

@@ -23,7 +23,7 @@ export class DocumentService {
   
   constructor(private http: HttpClient) { }
 
-  getDocument(documentType?: DocumentType, tags?: string[], search?: string, uuid?: string, slug?: string, year?: string[], sort: SortingBy = SortingBy.dateAsc, authors?: string[], nbr?: number): Observable<DocumentAndAuthor> {
+  getDocument(documentType?: DocumentType, tags?: string[], search?: string, uuid?: string, slug?: string, year?: string[], sort: SortingBy = SortingBy.dateAsc, authors?: string[], nbr?: number, archived?: boolean): Observable<DocumentAndAuthor> {
     
     let url: string = BASE_URL + "documents?";
 
@@ -66,22 +66,28 @@ export class DocumentService {
         });
       }
 
+      if (archived != undefined) {
+        url += "archived=" + archived.toString() + "&";
+      }
+
       return this.http.get<DocumentAndAuthor>(url);
     
   }
 
-  getDocumentTags(documentType?: DocumentType): Observable<String> {
+  getDocumentTags(documentType?: DocumentType, archived?: boolean): Observable<String> {
 
     let url = BASE_URL + "documents/tags?";
 
     if (documentType && documentType != null) {
       url += "type=" + documentType + "&";
     }
-
+    if (archived != undefined) {
+      url += "archived=" + archived.toString() + "&";
+    }
     return this.http.get<String>(url);
   }
 
-  getDocumentAuthors(documentType?: DocumentType, slug?: String): Observable<Member> {
+  getDocumentAuthors(documentType?: DocumentType, slug?: String, archived?: boolean): Observable<Member> {
 
     let url = BASE_URL + "documents/authors?";
 
@@ -92,23 +98,27 @@ export class DocumentService {
     if (slug && slug != "") {
       url += "slug=" + slug + "&";
     }
-
+    if (archived != undefined) {
+      url += "archived=" + archived.toString() + "&";
+    }
 
     return this.http.get<Member>(url);
   }
 
-  getDocumentYears(documentType?: DocumentType): Observable<String> {
+  getDocumentYears(documentType?: DocumentType, archived?: boolean): Observable<String> {
 
     let url = BASE_URL + "documents/years?";
 
     if (documentType && documentType != null) {
       url += "type=" + documentType + "&";
     }
-
+    if (archived != undefined) {
+      url += "archived=" + archived.toString() + "&";
+    }
     return this.http.get<String>(url);
   }
 
-  getMembers(status?: String, surname?: String) {
+  getMembers(status?: String, surname?: String, archived?: boolean) {
 
     let url: string = BASE_URL + "members?";
 
@@ -119,7 +129,9 @@ export class DocumentService {
     if (surname && surname != "") {
       url += "surname=" + surname + "&";
     }
-
+    if (archived != undefined) {
+      url += "archived=" + archived.toString() + "&";
+    }
     return this.http.get<Member>(url);
   }
 

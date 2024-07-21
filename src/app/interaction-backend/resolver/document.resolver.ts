@@ -14,7 +14,7 @@ const createDocumentResolver = (documentType: DocumentType, nbr? : number): Reso
             nbr = 0;
         } 
 
-        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", "", [], SortingBy.dateAsc, [], nbr = nbr);
+        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", "", [], SortingBy.dateAsc, [], nbr = nbr, false);
     };
 };
 
@@ -31,7 +31,7 @@ export const TopNewsResolver = createDocumentResolver(DocumentType.news, 3);
 const createDocumentTagsResolver = (documentType: DocumentType): ResolveFn<String> => {
     return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<String> => {
 
-        return inject(DocumentService).getDocumentTags(documentType = documentType);
+        return inject(DocumentService).getDocumentTags(documentType = documentType, false);
     };
 };
 
@@ -43,7 +43,7 @@ export const NewsTagsResolver = createDocumentTagsResolver(DocumentType.news);
 const createDocumentAuthorResolver = (documentType: DocumentType): ResolveFn<Member> => {
     return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Member> => {
 
-        return inject(DocumentService).getDocumentAuthors(documentType = documentType);
+        return inject(DocumentService).getDocumentAuthors(documentType = documentType, "", false);
     };
 };
 
@@ -55,7 +55,7 @@ export const NewsAuthorResolver = createDocumentAuthorResolver(DocumentType.news
 const createDocumentYearResolver = (documentType: DocumentType): ResolveFn<String> => {
     return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<String> => {
 
-        return inject(DocumentService).getDocumentYears(documentType = documentType);
+        return inject(DocumentService).getDocumentYears(documentType = documentType, false);
     };
 };
 
