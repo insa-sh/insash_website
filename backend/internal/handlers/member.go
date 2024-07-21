@@ -19,10 +19,11 @@ func GetMembers(w http.ResponseWriter, r *http.Request) {
 	var options []string
 
 	queryParams := r.URL.Query()
-	status := queryParams.Get("status")
+	status := utils.NormalizeInputSearch(queryParams.Get("status"))
 	surname := queryParams.Get("surname")
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
-	query = "SELECT firstname, lastname, year, role, website, mail, image_address, linkedin, github, citation, surname, status FROM member"
+	query = "SELECT firstname, lastname, role, website, image_address, linkedin, github, citation, surname, status, archived FROM member"
 
 	if status != "" {
 		options = append(options, fmt.Sprintf("status = $%d", len(args)+1))
@@ -32,6 +33,11 @@ func GetMembers(w http.ResponseWriter, r *http.Request) {
 	if surname != "" {
 		options = append(options, fmt.Sprintf("surname = $%d", len(args)+1))
 		args = append(args, surname)
+	}
+
+	if archived == "true" || archived == "false" {
+		options = append(options, fmt.Sprintf("$%d = document.archived", len(args)+1))
+		args = append(args, archived)
 	}
 
 	if len(options) > 0 {
@@ -51,44 +57,3 @@ func GetMembers(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(members)
 }
-
-// func GetMembersByFirstname(w http.ResponseWriter, r *http.Request) {
-
-// 	var members []models.Member
-// 	vars := mux.Vars(r)
-// 	firstname := vars["firstname"]
-
-// 	query := "SELECT * FROM member WHERE firstname = $1"
-
-// 	err := Db.Select(&members, query, firstname)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-
-// 	w.Header().Add("Content-Type", "application/json")
-// 	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetMemberByFirstname Firstname=%s", r.Method, r.URL.Path, r.RemoteAddr, firstname))
-// 	w.WriteHeader(http.StatusOK)
-// 	json.NewEncoder(w).Encode(members)
-
-// }
-
-// func GetMemberByUUID(w http.ResponseWriter, r *http.Request) {
-
-// 	var member models.Member
-// 	vars := mux.Vars(r)
-// 	uuid := vars["UUID"]
-
-// 	query := "SELECT * FROM member WHERE uuid = $1"
-
-// 	err := Db.Select(&member, query, uuid)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-
-// 	w.Header().Add("Content-Type", "application/json")
-// 	utils.LogEvent(fmt.Sprintf("%s - %s (%s) 200 GetMemberByUUID UUID=%s", r.Method, r.URL.Path, r.RemoteAddr, uuid))
-
-// 	w.WriteHeader(http.StatusOK)
-// 	json.NewEncoder(w).Encode(member)
-
-// }

@@ -24,24 +24,27 @@ func AddQueryParameterDocument(r *http.Request) (string, []interface{}, error) {
 
 	queryParams := r.URL.Query()
 	tags := queryParams["tag"]
-	search := queryParams.Get("search")
-	uuid := queryParams.Get("uuid")
-	slug := queryParams.Get("slug")
-	nbr := queryParams.Get("nbr")
+	search := utils.NormalizeInputSearch(queryParams.Get("search"))
+	uuid := utils.NormalizeInputSlug(queryParams.Get("uuid"))
+	slug := utils.NormalizeInputSlug(queryParams.Get("slug"))
+	nbr := utils.NormalizeInputNumber(queryParams.Get("nbr"))
 	year := queryParams["year"]
 	surname := queryParams["author"]
-	documentType := queryParams.Get("type")
+	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
 	// Construction de la requête SQL dynamiquement
 	// recherche d'une chaine de caractère dans le titre ou la description
 	if search != "" {
-		options = append(options, fmt.Sprintf("( LOWER(document.title) LIKE LOWER($%d) OR LOWER(document.description) LIKE LOWER($%d) )", len(args)+1, len(args)+1))
-		args = append(args, "%"+search+"%")
+		fmt.Println(search)
+		options = append(options, fmt.Sprintf("( to_tsvector('french', LOWER(unaccent(document.title))) @@ plainto_tsquery('french', $%d) OR to_tsvector('french', LOWER(unaccent(document.description))) @@ plainto_tsquery('french', $%d))", len(args)+1, len(args)+1))
+		args = append(args, search)
 	}
 
 	if len(year) > 0 {
 		var options_year []string
 		for _, v := range year {
+			v = utils.NormalizeInputNumber(v)
 			options_year = append(options_year, fmt.Sprintf("DATE_PART('YEAR', document.date) = $%d", len(args)+1))
 			args = append(args, v)
 		}
@@ -76,6 +79,11 @@ func AddQueryParameterDocument(r *http.Request) (string, []interface{}, error) {
 	if slug != "" {
 		options = append(options, fmt.Sprintf("$%d = document.slug", len(args)+1))
 		args = append(args, slug)
+	}
+
+	if archived == "true" || archived == "false" {
+		options = append(options, fmt.Sprintf("$%d = document.archived", len(args)+1))
+		args = append(args, archived)
 	}
 
 	if len(options) > 0 {
@@ -117,13 +125,19 @@ func GetDocumentTags(w http.ResponseWriter, r *http.Request) {
 	var args []interface{}
 
 	queryParams := r.URL.Query()
-	documentType := queryParams.Get("type")
+	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
 	query := "SELECT tags AS count FROM document"
 
 	if documentType != "" {
 		options = append(options, fmt.Sprintf("type = $%d", len(args)+1))
 		args = append(args, documentType)
+	}
+
+	if archived == "true" || archived == "false" {
+		options = append(options, fmt.Sprintf("$%d = document.archived", len(args)+1))
+		args = append(args, archived)
 	}
 
 	if len(options) > 0 {
@@ -171,16 +185,22 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	var args []interface{}
 
 	queryParams := r.URL.Query()
-	slug := queryParams.Get("slug")
-	documentType := queryParams.Get("type")
+	slug := utils.NormalizeInputSlug(queryParams.Get("slug"))
+	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
-	query := "SELECT DISTINCT member.firstname, member.lastname, member.year, member.role, member.website, member.mail, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status FROM document, document_author, member"
+	query := "SELECT DISTINCT member.firstname, member.lastname, member.role, member.website, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status, member.archived FROM document, document_author, member"
 
 	options = append(options, "document.uuid = document_author.document_uuid", "member.uuid = document_author.member_uuid")
 
 	if slug != "" {
 		options = append(options, fmt.Sprintf("document.slug = $%d", len(args)+1))
 		args = append(args, slug)
+	}
+
+	if archived == "true" || archived == "false" {
+		options = append(options, fmt.Sprintf("$%d = document.archived", len(args)+1))
+		args = append(args, archived)
 	}
 
 	if documentType != "" {
@@ -217,7 +237,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request) {
 		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAndAuthors %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 		return
 	}
-	query := "SELECT DISTINCT document.title, document.type, document.tags, document.content_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon FROM document, document_author, member" + parameterQuery
+	query := "SELECT DISTINCT document.title, document.type, document.tags, document.content_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon, document.archived FROM document, document_author, member" + parameterQuery
 
 	err = Db.Select(&documents, query+";", args...)
 	if err != nil {
@@ -225,7 +245,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	query = "SELECT DISTINCT member.firstname, member.lastname, member.year, member.role, member.website, member.mail, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
+	query = "SELECT DISTINCT member.firstname, member.lastname, member.role, member.website, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status, member.archived FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
 
 	for _, v := range documents {
 
@@ -255,13 +275,19 @@ func GetDocumentYears(w http.ResponseWriter, r *http.Request) {
 	var args []interface{}
 
 	queryParams := r.URL.Query()
-	documentType := queryParams.Get("type")
+	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
+	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
 	query := "SELECT DISTINCT DATE_PART('YEAR', date) FROM document"
 
 	if documentType != "" {
 		options = append(options, fmt.Sprintf("document.type = $%d", len(args)+1))
 		args = append(args, documentType)
+	}
+
+	if archived == "true" || archived == "false" {
+		options = append(options, fmt.Sprintf("$%d = document.archived", len(args)+1))
+		args = append(args, archived)
 	}
 
 	if len(options) > 0 {

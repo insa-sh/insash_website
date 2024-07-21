@@ -4,6 +4,7 @@
 backend/cmd/*
 !backend/cmd/server.go
 backend/database/database_mock.sql
+*.sql
 
 # Compiled output
 /dist

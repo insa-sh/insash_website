@@ -13,4 +13,5 @@ type Document struct {
 	Image       string         `json:"image_address" db:"image_address"`
 	Slug        string         `json:"slug" db:"slug"`
 	IsImageIcon bool           `json:"is_image_icon" db:"is_image_icon"`
+	Archived    bool           `json:"archived" db:"archived"`
 }

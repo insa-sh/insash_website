@@ -11,7 +11,7 @@ import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
 import { PageDocumentComponent } from "./general-components/page-document/page-document.component";
-import { CheatsheetAuthorResolver, CheatsheetTagsResolver, CheatsheetYearResolver, NewsAuthorResolver, NewsTagsResolver, ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TipsAuthorResolver, TipsTagsResolver, TipsYearResolver, TopCheatsheetResolver, TopNewsResolver, TopProjectResolver, TopTipsResolver } from "./interaction-backend/resolver/document.resolver";
+import { CheatsheetAuthorResolver, CheatsheetTagsResolver, CheatsheetYearResolver, MemberResolver, NewsAuthorResolver, NewsTagsResolver, ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TipsAuthorResolver, TipsTagsResolver, TipsYearResolver, TopCheatsheetResolver, TopNewsResolver, TopProjectResolver, TopTipsResolver } from "./interaction-backend/resolver/document.resolver";
 import { PageProjetsComponent } from "./page-projets/page-projets.component";
 import { PageCheatsheetComponent } from "./page-cheatsheet/page-cheatsheet.component";
 import { PageTipsComponent } from "./page-tips/page-tips.component";
@@ -37,6 +37,12 @@ const routes: Routes = [
     path : "les-membres",
     component: PageMembresComponent,
     title: "L'équipe du Club Info",
+    resolve: {
+      members: MemberResolver,
+    }
+
+
+    
   },
   {
     path : "project",

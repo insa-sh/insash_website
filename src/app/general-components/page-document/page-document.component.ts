@@ -43,13 +43,16 @@ export class PageDocumentComponent {
   fetchTopDocuments() {
     this.route.data.subscribe(
         (data) => {
-          data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
-            documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
-            documentsAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address);
-            
-            this.topDocumentsAndAuthors.push(documentsAndAuthor);
-            
-        });
+          if (data['topDocumentsAndAuthors'] != null) {
+            data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
+              documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
+              documentsAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address);
+              
+              this.topDocumentsAndAuthors.push(documentsAndAuthor);
+              
+          });
+          }
+          
         })
   }
 
@@ -68,7 +71,7 @@ export class PageDocumentComponent {
 
     let search = this.filters.search.length >= 3 ? this.filters.search : "";
 
-    this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, search, "", "", this.filters.dates, sort, this.filters.authors).subscribe(
+    this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, search, "", "", this.filters.dates, sort, this.filters.authors, undefined, false).subscribe(
         (data: any) => {
           if (data) {
             this.documentsAndAuthors = data.map((documentAndAuthor: DocumentAndAuthor) => {
@@ -87,8 +90,7 @@ export class PageDocumentComponent {
   ngOnInit() {
     this.fetchDocuments();
     this.fetchTopDocuments();
-    this.tileStyle = this.typeOfDocuments == DocumentType.project ? TileStyle.box : TileStyle.list;;
-    console.log(this.typeOfDocuments);
+    this.tileStyle = this.typeOfDocuments == DocumentType.project ? TileStyle.box : TileStyle.list;
   }
 
   isThereEnoughDocuments() {

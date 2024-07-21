@@ -1,18 +1,20 @@
+import { NullString } from "./null-string";
 
-export interface Member {
-    id: number;
-    name: string;
-    last_name: string;
-    pseudo: string;
-    role_tag: string;
-    role: string;
-    bureau_comment?: string;
-    description?: string;
-    photo?: string; //lien relatif ex: assets/images/...
-    email: string;
-    email_visible: boolean;
-    personal_link?: string;
-    linkedin?: string;
-    github?: string;
-    instagram?: string;
-  }
+export class Member {
+
+    constructor(  
+        public firstname: NullString,
+        public lastname: NullString,
+        public role: NullString,
+        public website: NullString,
+        public image_address: NullString,
+        public linkedin: NullString,
+        public github: NullString,
+        public citation: NullString,
+        public surname: NullString,
+        public status: NullString,
+        public archived: boolean
+      ){}
+
+      
+}

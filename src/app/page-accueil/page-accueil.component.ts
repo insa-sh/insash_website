@@ -22,13 +22,15 @@ export class PageAccueilComponent {
   fetchTopDocuments() {
     this.route.data.subscribe(
         (data) => {
-          data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
-            documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
-            documentsAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address);
-            
-            this.topDocumentsAndAuthors.push(documentsAndAuthor);
-            
-        });
+          if (data['topDocumentsAndAuthors'] != null) {
+            data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
+              documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
+              documentsAndAuthor.document.content_address = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address);
+              
+              this.topDocumentsAndAuthors.push(documentsAndAuthor);
+              
+          });
+          }
         })
   }
 
