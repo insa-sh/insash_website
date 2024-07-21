@@ -8,6 +8,8 @@ import { Member } from "src/app/models/member";
   styleUrls: ['./page-membres.component.css']
 })
 export class PageMembresComponent {
+  // tableau des rôles du bureau à afficher
+  roles_bureau: string[] = ["Président", "Trésorier", "Secrétaire", "Respo Communication & Graphismes"];
   membres: Member[] = [
     {
       id: 0,
@@ -63,12 +65,83 @@ export class PageMembresComponent {
       last_name: "Ccc",
       pseudo: "tttccc",
       role_tag: "membre",
+      role: "Membre actif",
+      bureau_comment: undefined,
+      photo: "",
+      email: "",
+      email_visible: false,
+    },
+    {
+      id: 5,
+      name: "JP",
+      last_name: "PJ",
+      pseudo: "SSLAIFJVJF",
+      role_tag: "membre",
       role: "Membre ",
       bureau_comment: undefined,
       photo: "",
       email: "",
       email_visible: false,
+    },
+    {
+      id: 6,
+      name: "6",
+      last_name: "Ccc",
+      pseudo: "six",
+      role_tag: "membre",
+      role: "Membre actif",
+      bureau_comment: undefined,
+      photo: "",
+      email: "",
+      email_visible: false,
+    },
+    {
+      id: 7,
+      name: "7",
+      last_name: "Ccc",
+      pseudo: "sept",
+      role_tag: "membre",
+      role: "Membre actif",
+      bureau_comment: undefined,
+      photo: "",
+      email: "",
+      email_visible: false,
+    },
+    {
+      id: 8,
+      name: "8",
+      last_name: "Ccc",
+      pseudo: "huit",
+      role_tag: "membre",
+      role: "Membre actif",
+      bureau_comment: undefined,
+      photo: "",
+      email: "",
+      email_visible: false,
+    },
+    {
+      id: 9,
+      name: "9",
+      last_name: "Ccc",
+      pseudo: "neuf",
+      role_tag: "membre",
+      role: "Membre actif",
+      bureau_comment: undefined,
+      photo: "",
+      email: "",
+      email_visible: false,
+    },
+    {
+      id: 10,
+      name: "10",
+      last_name: "Ccc",
+      pseudo: "DIX",
+      role_tag: "membre",
+      role: "Membre actif",
+      bureau_comment: undefined,
+      photo: "",
+      email: "",
+      email_visible: false,
     }
-
   ];
 }
