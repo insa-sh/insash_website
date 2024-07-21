@@ -13,6 +13,8 @@ import { TopDocumentComponent } from './general-components/top-document/top-docu
 import { PageMembresComponent } from './page-membres/page-membres.component';
 import { MembresDuBureauComponent } from './page-membres/membres-du-bureau/membres-du-bureau.component';
 import { MembreBureauComponent } from './page-membres/membres-du-bureau/membre-bureau/membre-bureau.component';
+import { MembresActifsComponent } from './page-membres/membres-actifs/membres-actifs.component';
+import { BoxMembreComponent } from './page-membres/membres-actifs/box-membre/box-membre.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PageDocumentComponent } from './general-components/page-document/page-document.component';
 import { SearchBarComponent } from './general-components/page-document/search-bar/search-bar.component';
@@ -23,6 +25,7 @@ import { PageProjetsComponent } from './page-projets/page-projets.component';
 import { PageCheatsheetComponent } from './page-cheatsheet/page-cheatsheet.component';
 import { PageNewsComponent } from './page-news/page-news.component';
 import { PageTipsComponent } from './page-tips/page-tips.component';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import { PageTipsComponent } from './page-tips/page-tips.component';
     PageMembresComponent,
     MembresDuBureauComponent,
     MembreBureauComponent,
+    MembresActifsComponent,
+    BoxMembreComponent,
     PageDocumentComponent,
     SearchBarComponent,
     ListeDocumentComponent,
@@ -45,7 +50,6 @@ import { PageTipsComponent } from './page-tips/page-tips.component';
     PageCheatsheetComponent,
     PageNewsComponent,
     PageTipsComponent,
-    
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],

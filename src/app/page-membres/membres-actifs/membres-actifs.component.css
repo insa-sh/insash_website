@@ -1,0 +1,13 @@
+h1 {
+    text-align: center;
+    margin: 40px 4vw;
+}
+
+div#membres-actifs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5vw 4vw;
+    padding: 50px;
+}
