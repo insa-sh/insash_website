@@ -15,8 +15,9 @@
 * {
     --insash-logo-bg-color: #2D333E;
     --insash-rose-pale: #EFC1CB;
+    --insash-rose-pale-transparent: #EFC1CB33;
     --insash-rose-fonce: #DE7F92;
-    --website-strong-color: #8F51DF;
+    --website-strong-color: #DE7F92;
     --website-bg-color: #262626;
     --website-bg-color-light-1: #353535;
     --website-bg-color-light-2: #474747;
@@ -31,6 +32,13 @@
   --insash-title-color: #ffffff;
   --insash-text-color: #ffffff;
 
+  --cheatsheet-text-color: #338C30;
+  --cheatsheet-bg-color: #338C3033;
+  --news-text-color: #C8930A;
+  --news-bg-color: #C8930A33;
+  --tips-text-color: #007AFF;
+  --tips-bg-color: #007AFF33;
+
   --global-transition-duration: 0.2s;
 }
 * {
@@ -39,17 +47,34 @@
     box-sizing: border-box;
     font-family: var(--insash-text-default-font);
     color: var(--insash-text-color);
+
+}
+input[type=text] {
+    outline: none;
+
 }
 
+
+/* mobiles */
 @media (max-width:800px) {
     *{
         --website-default-text-font-size: 16px;
         --website-default-title-font-size: 26px;
       
     }
+    .computer-only {
+        display: none;
+    }
   
 }
 
+
+/* grands écrans */
+@media (min-width:800px) {
+    .mobile-only {
+        display: none;
+    }
+}
 body {
     overflow-x: hidden;
     background-color: var(--website-bg-color);
@@ -88,7 +113,7 @@ a.text-link::after {
     border-radius: 1px;
 
 
-    background-color: rgba(239, 193, 203, 0.45);
+    background-color: #9d5765;
     transition: height var(--global-transition-duration), color var(--global-transition-duration), background-color var(--global-transition-duration);
 }
 a.text-link:hover {
@@ -96,7 +121,7 @@ a.text-link:hover {
 
 }
 a.text-link:hover::after {
-    background-color: var(--insash-rose-pale);
+    background-color: var(--insash-rose-fonce);
     height: 100%;
     border-radius: 2px;
     

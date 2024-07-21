@@ -1,0 +1,56 @@
+h1 {
+  display: inline-block;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 10px;
+  font-size: 30px;
+  font-family: var(--insash-text-default-font);
+}
+
+h1.type-tips {
+  background-color: var(--tips-bg-color);
+  color: var(--tips-text-color);
+}
+
+h1.type-project {
+  background-color: var(--insash-rose-pale-transparent);
+  color: var(--insash-rose-pale);
+}
+
+h1.type-cheatsheet {
+  background-color: var(--cheatsheet-bg-color);
+  color: var(--cheatsheet-text-color);
+}
+
+h1.type-news {
+  background-color: var(--news-bg-color);
+  color: var(--news-text-color);
+}
+
+div.title-container {
+  width: min(90%, 2000px);
+  margin: 40px auto;
+}
+
+h2 {
+  width: min(90%, 2000px);
+  margin: 40px auto;
+  color: var(--insash-title-color);
+  opacity: 60%;
+}
+
+:host {
+  app-box-document-tile:nth-child(1) {
+    width: 50%;
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 800px) {
+  :host {
+    app-box-document-tile:nth-child(1) {
+      width: 90% !important;
+    }
+  }
+}

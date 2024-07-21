@@ -1,0 +1,135 @@
+a {
+  text-decoration: none;
+}
+
+i {
+  color: var(--insash-text-color);
+  padding-right: 5px;
+}
+
+h1,
+h2,
+p {
+  color: var(--insash-text-color);
+  font-family: var(--insash-text-default-font);
+}
+
+h1 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+h2 {
+  font-size: 12px;
+  font-weight: 200;
+  padding-left: 5px;
+}
+
+p {
+  font-size: 12px;
+}
+
+div.tile-rectangle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--website-bg-color);
+  border-radius: 14px;
+  height: 100%;
+  
+  overflow: hidden;
+  border: 2px solid var(--website-bg-color-light-2);
+  transition: box-shadow var(--global-transition-duration), transform var(--global-transition-duration), background-color var(--global-transition-duration), border var(--global-transition-duration);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+div.tile-rectangle:hover {
+  box-shadow: 0px 0px 20px 4px #50505046;
+  transform: translateY(-5px);
+  background-color: var(--website-bg-color-light-2);
+}
+
+div.tile-image {
+  height: 150px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+div.icon > img {
+  object-fit: contain;
+}
+
+div.tile-content {
+  padding: 10px 20px 10px 20px;
+}
+
+div.tile-authors {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5px;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+div.tile-tags {
+  padding-top: 5px;
+}
+
+div.tag {
+  display: inline-block;
+  background-color: rgba(239,193,233,10%);
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 5px;
+  margin: 5px 10px 0px 0px;
+}
+
+div.tag > p {
+  color: var(--insash-rose-pale);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+div.tile-button {
+  background-color: var(--website-bg-color-light-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-top: 10px;
+}
+
+div.tile-button {
+  transition: background-color var(--global-transition-duration);
+
+}
+div.tile-rectangle:hover div.tile-button {
+  /* background-color: var(--website-strong-color-transparent); */
+  background-color: var(--website-strong-color);
+  /* border-color: var(--website-strong-color); */
+
+}
+
+div.tile-button > p {
+  font-size: 16px;
+  text-align: center;
+}

@@ -1,0 +1,33 @@
+
+<a href="{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.slug }}">
+  <div class="tile-rectangle">
+    
+    <div class="tile-image" [ngClass]="{ icon: documentAndAuthor.document.is_image_icon}">
+      <img src="{{ documentAndAuthor.document.image_address }}" alt="" />
+    </div>
+
+    <div class="tile-content">
+      <h1>{{ documentAndAuthor.document.title }}</h1>
+      <div class="tile-authors">
+        <i class="fa-solid fa-users"></i>
+        <h2>
+          <span *ngFor="let author of documentAndAuthor.author; let isLast = last">
+            {{ author.firstname }}<span *ngIf="!isLast">, </span>
+          </span>
+        </h2>
+      </div>
+
+      <div class="tile-tags">
+        <div class="tag" *ngFor="let tag of getMaxTags(MAX_TAGS)">
+          <p>#{{ tag }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile-button">
+      <p>Voir le projet</p>
+    </div>
+ 
+  </div>
+</a>
+

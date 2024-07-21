@@ -6,8 +6,10 @@ div#membres-du-bureau {
     justify-content: center;
     /* align-items: center; */
 
-    margin: 20px 4vw;
-    margin-bottom: 80px;
+
+    max-width: min(90%, 2000px);
+    margin: auto;
+
 }
 
 

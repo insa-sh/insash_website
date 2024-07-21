@@ -1,0 +1,4 @@
+.env
+cmd/*
+!cmd/server.go
+database/database_mock.sql

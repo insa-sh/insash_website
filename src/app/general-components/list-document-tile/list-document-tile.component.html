@@ -1,0 +1,32 @@
+<a href="{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.slug }}"
+  ><div class="list-document-tile">
+    <div
+      class="document-image"
+      [ngClass]="{ icon: documentAndAuthor.document.is_image_icon }"
+    >
+      <img src="{{ documentAndAuthor.document.image_address }}" alt="" />
+    </div>
+    <div class="document-content">
+      <div class="document-main-details">
+        <h2>{{ documentAndAuthor.document.title }}</h2>
+        <div class="document-tags">
+          <div class="tag" [ngClass]="'type-tag-'+documentAndAuthor.document.type" *ngIf="documentAndAuthor.document.type != 'project'">
+            <p>{{ getDocumentType() }}</p>
+          </div>
+          <div class="tag" *ngFor="let tag of documentAndAuthor.document.tags.slice(0,3)">
+            <p>#{{ tag }}</p>
+          </div>
+          <div class="tag" *ngIf="documentAndAuthor.document.tags.length > 3">
+            <p>+{{ documentAndAuthor.document.tags.length - 3 }}</p>
+          </div>
+        </div>
+        <p class="document-description">{{ documentAndAuthor.document.description }}</p>
+      </div>
+      <div class="document-other-details">
+        <div class="document-year">
+          <h2>{{ getYear(documentAndAuthor) }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

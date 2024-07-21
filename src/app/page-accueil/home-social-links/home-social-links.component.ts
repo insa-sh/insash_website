@@ -14,7 +14,7 @@ export class HomeSocialLinksComponent {
     },
     {
       nom: "Instagram",
-      url: "https://www.instagram.com/hdf_insa.sh",
+      url: "https://www.instagram.com/clubinfoinsahdf",
       icon: "fa-brands fa-instagram",
     },
     {
@@ -24,7 +24,7 @@ export class HomeSocialLinksComponent {
     },
     {
       nom: "GitBucket",
-      url: "https://git.insash.fr",
+      url: "https://git.insash.org",
       icon: "fa-brands fa-square-git ",
     },
     {
