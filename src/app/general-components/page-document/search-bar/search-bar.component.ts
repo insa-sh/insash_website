@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DocumentService } from 'src/app/interaction-backend/document.service';
-import { Member } from 'src/app/interaction-backend/member';
+import { Member } from 'src/app/models/member';
 import { DocumentType } from 'src/app/models/document';
 
 @Component({

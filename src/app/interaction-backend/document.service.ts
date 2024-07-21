@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 import { Observable } from 'rxjs';
-import { Member } from './member';
+import { Member } from '../models/member';
 import { Document, DocumentType } from '../models/document';
 import { DocumentAndAuthor } from '../models/document-and-author';
 

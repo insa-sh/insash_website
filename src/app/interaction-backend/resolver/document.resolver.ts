@@ -4,7 +4,7 @@ import { DocumentService, SortingBy } from "../document.service";
 import { Observable } from "rxjs";
 import { Document, DocumentType } from "../../models/document";
 import { DocumentAndAuthor } from "src/app/models/document-and-author";
-import { Member } from "../member";
+import { Member } from "src/app/models/member";
 
 
 const createDocumentResolver = (documentType: DocumentType, nbr? : number): ResolveFn<DocumentAndAuthor> => {
@@ -63,3 +63,8 @@ export const ProjectYearResolver = createDocumentYearResolver(DocumentType.proje
 export const CheatsheetYearResolver = createDocumentYearResolver(DocumentType.cheatsheet);
 export const TipsYearResolver = createDocumentYearResolver(DocumentType.tips);
 export const NewsYearResolver = createDocumentYearResolver(DocumentType.news);
+
+export const MemberResolver : ResolveFn<Member> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Member> => {
+
+        return inject(DocumentService).getMembers();
+    };
