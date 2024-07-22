@@ -26,7 +26,15 @@ export class ListDocumentTileComponent {
     } 
   }
 
+  getDateString() {
+    let date = new Date(this.documentAndAuthor.document.date);
+    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  
+
   ngOnInit() {
+    
   }
 
 }
