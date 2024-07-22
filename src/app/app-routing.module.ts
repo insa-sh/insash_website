@@ -16,6 +16,8 @@ import { PageProjetsComponent } from "./page-projets/page-projets.component";
 import { PageCheatsheetComponent } from "./page-cheatsheet/page-cheatsheet.component";
 import { PageTipsComponent } from "./page-tips/page-tips.component";
 import { PageNewsComponent } from "./page-news/page-news.component";
+import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
+import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
 
 
 
@@ -87,6 +89,17 @@ const routes: Routes = [
       documentAuthors : TipsAuthorResolver, 
       documentYears : TipsYearResolver,
     }
+  },
+
+  {
+    path : "politique-confidentialite",
+    component: PagePolitiqueConfidentialiteComponent,
+    title: "Politique de confidentialité",
+  },
+  {
+    path : "mentions-legales",
+    component: PageMentionsLegalesComponent,
+    title: "Mentions légales",
   },
 
   // à mettre à la fin des liens sinon ça ne marche pas ("s'applique à tous les autres liens")
