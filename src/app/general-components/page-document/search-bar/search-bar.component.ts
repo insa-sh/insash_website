@@ -99,7 +99,7 @@ export class SearchBarComponent {
     let authorsFormArray = this.filterForm.controls.authors as FormArray;
     return this.authors
       .filter((_, i) => authorsFormArray.at(i).value)
-      .map(author => author.surname);
+      .map(author => author.surname.String);
   }
 
   getSelectedTags() {
