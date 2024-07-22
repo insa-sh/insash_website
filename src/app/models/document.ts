@@ -1,3 +1,4 @@
+import { NullString } from "./null-string";
 
 export enum DocumentType {
   project = "project",
@@ -19,7 +20,8 @@ export class Document {
         public description: string,
         public image_address: string,
         public slug: string,
-        public is_image_icon: boolean
+        public is_image_icon: boolean,
+        public project_address: NullString,
       ){}
 
       

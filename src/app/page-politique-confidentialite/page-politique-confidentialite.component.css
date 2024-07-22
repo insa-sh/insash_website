@@ -15,8 +15,15 @@ h2, h3 {
 p {
     text-align: justify;
     margin: 1em auto;
+    font-weight: 200;
 }
 
 ul {
     margin-left: 30px;
+    /* font-weight: 200; */
+}
+
+p#date-pdc {
+    margin-top: 3em;
+    text-align: right;
 }

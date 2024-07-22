@@ -61,17 +61,17 @@
 
       <div class="dropdown-content">
         <label
-          for="dropdown-checkbox-auteurs-{{ e.surname }}"
+          for="dropdown-checkbox-auteurs-{{ e.surname.String }}"
           *ngFor="let e of authors; let i = index"
         >
           <div class="dropdown-content-element" formArrayName="authors">
-            <p>{{ e.firstname }}</p>
+            <p>{{ e.firstname.String }}</p>
 
             <input
               type="checkbox"
               class="custom-input"
               name="dropdown-checkbox-auteurs"
-              id="dropdown-checkbox-auteurs-{{ e.surname }}"
+              id="dropdown-checkbox-auteurs-{{ e.surname.String }}"
               [formControlName]="i"
             />
           </div>

@@ -136,6 +136,7 @@ div.document-tags {
     justify-content: space-between;
     padding-left: 50px;
     align-items: flex-end;
+    text-align: right;
   }
 
   div.document-main-details {

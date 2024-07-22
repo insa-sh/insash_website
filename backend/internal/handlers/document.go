@@ -189,7 +189,7 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
 	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
-	query := "SELECT DISTINCT member.firstname, member.lastname, member.role, member.website, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status, member.archived FROM document, document_author, member"
+	query := "SELECT DISTINCT member.firstname FROM document, document_author, member"
 
 	options = append(options, "document.uuid = document_author.document_uuid", "member.uuid = document_author.member_uuid")
 
@@ -237,7 +237,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request) {
 		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAndAuthors %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 		return
 	}
-	query := "SELECT DISTINCT document.title, document.type, document.tags, document.content_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon, document.archived FROM document, document_author, member" + parameterQuery
+	query := "SELECT DISTINCT document.title, document.type, document.tags, document.content_address, document.project_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon, document.archived FROM document, document_author, member" + parameterQuery
 
 	err = Db.Select(&documents, query+";", args...)
 	if err != nil {
@@ -245,7 +245,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	query = "SELECT DISTINCT member.firstname, member.lastname, member.role, member.website, member.image_address, member.linkedin, member.github, member.citation, member.surname, member.status, member.archived FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
+	query = "SELECT DISTINCT member.firstname, member.surname, member.archived FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
 
 	for _, v := range documents {
 

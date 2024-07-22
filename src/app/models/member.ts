@@ -10,6 +10,7 @@ export class Member {
         public image_address: NullString,
         public linkedin: NullString,
         public github: NullString,
+        public instagram: NullString,
         public citation: NullString,
         public surname: NullString,
         public status: NullString,
