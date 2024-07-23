@@ -22,6 +22,7 @@ export class Document {
         public slug: string,
         public is_image_icon: boolean,
         public project_address: NullString,
+        public github_address: NullString,
       ){}
 
       

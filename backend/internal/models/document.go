@@ -19,4 +19,5 @@ type Document struct {
 	IsImageIcon    bool           `json:"is_image_icon" db:"is_image_icon"`
 	Archived       bool           `json:"archived" db:"archived"`
 	ProjectAddress sql.NullString `json:"project_address" db:"project_address"`
+	GithubAddress  sql.NullString `json:"github_address" db:"github_address"`
 }
