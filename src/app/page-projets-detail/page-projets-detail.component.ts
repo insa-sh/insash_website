@@ -4,6 +4,7 @@ import { DocumentService } from '../interaction-backend/document.service';
 import { DocumentType } from '../models/document';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-page-projets-detail',
@@ -13,14 +14,15 @@ import { first } from 'rxjs';
 export class PageProjetsDetailComponent {
   public project!: DocumentAndAuthor;
 
-  constructor(private documentService: DocumentService) {
-  }
+  constructor(private documentService: DocumentService, private titleService: Title, private route: ActivatedRoute) {
+    
+  } 
 
-  private route = inject(ActivatedRoute);
   private router = inject(Router);
 
   ngOnInit() {
     this.fetchProject();
+    this.titleService.setTitle("./insa.sh - " + this.project.document.title);
   }
 
   getNumberArchivedAuthors() {
