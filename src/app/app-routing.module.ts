@@ -62,6 +62,9 @@ const routes: Routes = [
     path : "project/:slug",
     component: PageProjetsDetailComponent,
     title: ":slug",
+    resolve: {
+      project: ProjectResolver
+    }
   },
   {
     path : "cheatsheet",

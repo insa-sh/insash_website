@@ -12,31 +12,25 @@ import { first } from 'rxjs';
 })
 export class PageProjetsDetailComponent {
   public project!: DocumentAndAuthor;
-  public projectSlug: string = "";
 
   constructor(private documentService: DocumentService) {
-
   }
 
   private route = inject(ActivatedRoute);
   private router = inject(Router);
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-       this.projectSlug = params['slug'];
-    });
     this.fetchProject();
-    
   }
 
-  
+
 
   fetchProject() {
-    
-    this.documentService.getDocument(DocumentType.project, [], "", "", this.projectSlug, [], undefined, [], undefined).subscribe(
-        (data: any) => {
-          if (data) {
-            this.project = data[0];
+    this.route.data.subscribe(
+        (data) => {
+          if (data['project'] != null) {
+
+            this.project = data['project'][0];
             this.project.document.image_address = this.documentService.getDocumentImageURL(this.project.document.type, this.project.document.image_address);
             this.project.document.content_address = this.documentService.getMarkdownURL(this.project.document.type, this.project.document.slug ,this.project.document.content_address);
           } else {
@@ -44,7 +38,5 @@ export class PageProjetsDetailComponent {
           }
           
         })
-
-        
   }
 }
