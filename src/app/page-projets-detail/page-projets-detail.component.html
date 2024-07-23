@@ -1,6 +1,46 @@
 <div *ngIf="project; else loading">
-    <app-project-detail-header [project]="project"></app-project-detail-header>
-</div>
+  <app-project-detail-header [project]="project"></app-project-detail-header>
+
+  <div class="project-top">
+
+    <h1>{{ project.document.title }}</h1>
+
+    <div class="project-tags">
+      <div class="tag" *ngFor="let tag of project.document.tags">
+        <p>#{{ tag }}</p>
+      </div>
+    </div>
+
+
+  <div class="project-details">
+    <div class="project-authors project-detail-section">
+        <i class="fa-solid fa-user"></i>
+      <div class="author" *ngFor="let author of project.author">
+        
+      </div>
+      <ng-container *ngFor="let author of getActiveAuthors(); let isLast = last">
+      <a routerLink="/les-membres/{{ author.surname.String }}" >
+      <span>
+        {{ author.firstname.String }}
+      </span>
+    
+      </a>
+      <span *ngIf="!isLast">,&nbsp;</span>
+    </ng-container>
+      <span *ngIf="getNumberArchivedAuthors() > 0">
+        + {{ getNumberArchivedAuthors() }} auteurs
+      </span>
+    </div>
+
+    <div class="project-date project-detail-section">
+        <i class="fa-solid fa-calendar-days"></i><p>{{ getDateString() }}</p>
+    </div>
+
+    <div class="project-description project-detail-section">
+        <i class="fa-solid fa-file"></i><p>{{ project.document.description }}</p>
+    </div>
+  </div>
+</div></div>
 
 <ng-template #loading
   ><div class="loader"></div>

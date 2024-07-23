@@ -23,7 +23,18 @@ export class PageProjetsDetailComponent {
     this.fetchProject();
   }
 
+  getNumberArchivedAuthors() {
+    return this.project.author.filter((a) => a.archived).length;
+  }
 
+  getActiveAuthors() { 
+    return this.project.author.filter((a) => !a.archived);
+  }
+
+  getDateString() {
+    let date = new Date(this.project.document.date);
+    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
 
   fetchProject() {
     this.route.data.subscribe(
