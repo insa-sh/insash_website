@@ -11,7 +11,7 @@ import { first } from 'rxjs';
   styleUrls: ['./page-projets-detail.component.css']
 })
 export class PageProjetsDetailComponent {
-  public project!: DocumentAndAuthor;;
+  public project!: DocumentAndAuthor;
   public projectSlug: string = "";
 
   constructor(private documentService: DocumentService) {
