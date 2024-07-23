@@ -1,4 +1,47 @@
 <div *ngIf="project; else loading">
-    {{ project.document.title }}
-  </div>
-  <ng-template #loading ><div class="loader"></div><ng-template>
+    <div class="project-header">
+
+        <div class="project-header-bg">
+
+            <img [src]="project.document.image_address" alt="">
+
+        </div>
+
+        <div class="project-header-fg">
+
+            <div class="project-header-image">
+
+                <img [src]="project.document.image_address" alt="">
+            </div>
+
+            <div class="project-header-buttons">
+                <a href="">
+                    <div class="button button-github">
+                        <p>Github</p><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="button button-play">
+                        <p>Lancer</p><i class="fa-solid fa-play"></i>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+
+        
+
+
+    </div>
+  
+
+
+
+
+</div>
+
+
+
+
+
+<ng-template #loading ><div class="loader"></div><ng-template>
