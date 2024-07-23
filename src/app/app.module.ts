@@ -27,6 +27,7 @@ import { PageNewsComponent } from './page-news/page-news.component';
 import { PageTipsComponent } from './page-tips/page-tips.component';
 import { PagePolitiqueConfidentialiteComponent } from './page-politique-confidentialite/page-politique-confidentialite.component';
 import { PageMentionsLegalesComponent } from './page-mentions-legales/page-mentions-legales.component';
+import { PageProjetsDetailComponent } from './page-projets-detail/page-projets-detail.component';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { PageMentionsLegalesComponent } from './page-mentions-legales/page-menti
     PageTipsComponent,
     PagePolitiqueConfidentialiteComponent,
     PageMentionsLegalesComponent,
+    PageProjetsDetailComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],

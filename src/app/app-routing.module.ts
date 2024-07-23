@@ -18,6 +18,7 @@ import { PageTipsComponent } from "./page-tips/page-tips.component";
 import { PageNewsComponent } from "./page-news/page-news.component";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
+import { PageProjetsDetailComponent } from "./page-projets-detail/page-projets-detail.component";
 
 
 
@@ -56,6 +57,11 @@ const routes: Routes = [
       documentAuthors : ProjectAuthorResolver, 
       documentYears : ProjectYearResolver,
     }
+  },
+  {
+    path : "project/:slug",
+    component: PageProjetsDetailComponent,
+    title: ":slug",
   },
   {
     path : "cheatsheet",

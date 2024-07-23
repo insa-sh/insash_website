@@ -1,0 +1,4 @@
+<div *ngIf="project; else loading">
+    {{ project.document.title }}
+  </div>
+  <ng-template #loading ><div class="loader"></div><ng-template>
