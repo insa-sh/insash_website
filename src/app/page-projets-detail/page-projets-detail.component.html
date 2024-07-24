@@ -2,7 +2,6 @@
   <app-project-detail-header [project]="project"></app-project-detail-header>
 
   <div class="project-top">
-
     <h1>{{ project.document.title }}</h1>
 
     <div class="project-tags">
@@ -11,36 +10,57 @@
       </div>
     </div>
 
-
-  <div class="project-details">
-    <div class="project-authors project-detail-section">
+    <div class="project-details">
+      <div class="project-detail-section">
         <i class="fa-solid fa-user"></i>
-      <div class="author" *ngFor="let author of project.author">
-        
+        <div class="project-authors">
+          <div
+            class="author"
+            *ngFor="let author of getActiveAuthors(); let isLast = last"
+          >
+            <span
+              ><a routerLink="/les-membres/{{ author.surname.String }}">{{
+                author.firstname.String
+              }}</a>
+            </span>
+
+            <span *ngIf="!isLast">,&nbsp;</span>
+
+            <span *ngIf="getNumberArchivedAuthors() > 0">
+              + {{ getNumberArchivedAuthors() }} auteurs
+            </span>
+          </div>
+        </div>
       </div>
-      <ng-container *ngFor="let author of getActiveAuthors(); let isLast = last">
-      <a routerLink="/les-membres/{{ author.surname.String }}" >
-      <span>
-        {{ author.firstname.String }}
-      </span>
-    
-      </a>
-      <span *ngIf="!isLast">,&nbsp;</span>
-    </ng-container>
-      <span *ngIf="getNumberArchivedAuthors() > 0">
-        + {{ getNumberArchivedAuthors() }} auteurs
-      </span>
-    </div>
 
-    <div class="project-date project-detail-section">
-        <i class="fa-solid fa-calendar-days"></i><p>{{ getDateString() }}</p>
-    </div>
+      <div class="project-date project-detail-section">
+        <i class="fa-solid fa-calendar-days"></i>
+        <p>{{ getDateString() }}</p>
+      </div>
 
-    <div class="project-description project-detail-section">
-        <i class="fa-solid fa-file"></i><p>{{ project.document.description }}</p>
+      <div class="project-description project-detail-section">
+        <i class="fa-solid fa-file"></i>
+        <p>{{ project.document.description }}</p>
+      </div>
     </div>
   </div>
-</div></div>
+
+  <div
+    class="project-content"
+    *ngIf="
+      project.document.content_address != null &&
+        project.document.content_address != ''
+    "
+  >
+    <markdown
+      lineNumbers
+      ngPreserveWhitespaces
+      [src]="project.document.content_address"
+    >
+    </markdown>
+  </div>
+
+</div>
 
 <ng-template #loading
   ><div class="loader"></div>

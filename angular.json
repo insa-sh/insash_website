@@ -21,17 +21,22 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/components",
+              "src/public"
+              
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "src/public/style/styles.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/public/style/prism-toolbar.css",
+              "src/public/style/prism-one-dark.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
+              "src/public/style/markdown.css"
 
             ],
             "scripts": [
-              "src/assets/scripts/navMenu.js",
-              "src/assets/scripts/calendar.js"
+              "src/public/scripts/navMenu.js",
+              "src/public/scripts/calendar.js"
             ]
           },
           "configurations": {
@@ -88,11 +93,11 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/public/favicon.ico",
+              "src/public"
             ],
             "styles": [
-              "src/styles.css"
+              "src/public/style/styles.css"
             ],
             "scripts": []
           }

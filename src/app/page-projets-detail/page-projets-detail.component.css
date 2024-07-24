@@ -42,6 +42,13 @@ div.project-detail-section {
     align-items: center;
 }
 
+div.project-authors {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 i {
     margin: 0px 35px;
     font-size: 30px;
@@ -49,8 +56,13 @@ i {
     text-align: center;
 }
 
-
-
+div.project-content {
+    width: min(70%, 1500px);
+    margin: 30px auto;
+    padding: 30px;
+    background-color: var(--website-bg-color-light-1);
+    border-radius: 20px;
+}
 
 .loader{
     width: 40px;
@@ -100,6 +112,12 @@ i {
 @media (max-width: 800px) {
     div.project-description {
         align-items: start;
+    }
+
+    div.project-content {
+      width: 90%;
+      padding: 0px;
+      background-color: transparent;
     }
 
     div.project-top {

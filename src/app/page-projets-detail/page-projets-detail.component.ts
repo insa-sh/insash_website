@@ -23,6 +23,7 @@ export class PageProjetsDetailComponent {
   ngOnInit() {
     this.fetchProject();
     this.titleService.setTitle("./insa.sh - " + this.project.document.title);
+    console.log(this.project.document.content_address);
   }
 
   getNumberArchivedAuthors() {
@@ -45,8 +46,11 @@ export class PageProjetsDetailComponent {
 
             this.project = data['project'][0];
             this.project.document.image_address = this.documentService.getDocumentImageURL(this.project.document.type, this.project.document.image_address);
-            this.project.document.content_address = this.documentService.getMarkdownURL(this.project.document.type, this.project.document.slug ,this.project.document.content_address);
-          } else {
+            if (this.project.document.content_address != null && this.project.document.content_address != "") {
+              this.project.document.content_address = this.documentService.getMarkdownURL(this.project.document.type, this.project.document.slug ,this.project.document.content_address);
+          
+            }
+            } else {
             this.router.navigate(['/404']);
           }
           
