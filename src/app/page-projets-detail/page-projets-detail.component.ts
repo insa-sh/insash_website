@@ -46,8 +46,8 @@ export class PageProjetsDetailComponent {
 
             this.project = data['project'][0];
             this.project.document.image_address = this.documentService.getDocumentImageURL(this.project.document.type, this.project.document.image_address);
-            if (this.project.document.content_address != null && this.project.document.content_address != "") {
-              this.project.document.content_address = this.documentService.getMarkdownURL(this.project.document.type, this.project.document.slug ,this.project.document.content_address);
+            if (this.project.document.content_address.String != "") {
+              this.project.document.content_address.String = this.documentService.getMarkdownURL(this.project.document.type, this.project.document.slug ,this.project.document.content_address.String);
           
             }
             } else {

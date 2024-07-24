@@ -13,6 +13,7 @@ export class Member {
         public instagram: NullString,
         public citation: NullString,
         public surname: NullString,
+        public username: String,
         public status: NullString,
         public archived: boolean
       ){}

@@ -15,5 +15,6 @@ type Member struct {
 	Instagram sql.NullString `json:"instagram" db:"instagram"`
 	Citation  sql.NullString `json:"citation" db:"citation"`
 	Surname   sql.NullString `json:"surname" db:"surname"`
+	Username  string         `json:"username" db:"username"`
 	Archived  bool           `json:"archived" db:"archived"`
 }

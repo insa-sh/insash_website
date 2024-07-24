@@ -19,7 +19,7 @@
             *ngFor="let author of getActiveAuthors(); let isLast = last"
           >
             <span
-              ><a routerLink="/les-membres/{{ author.surname.String }}">{{
+              ><a routerLink="/les-membres/{{ author.username }}">{{
                 author.firstname.String
               }}</a>
             </span>
@@ -48,14 +48,13 @@
   <div
     class="project-content"
     *ngIf="
-      project.document.content_address != null &&
-        project.document.content_address != ''
+        project.document.content_address.String != ''
     "
   >
     <markdown
       lineNumbers
       ngPreserveWhitespaces
-      [src]="project.document.content_address"
+      [src]="project.document.content_address.String"
     >
     </markdown>
   </div>

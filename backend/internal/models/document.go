@@ -11,7 +11,7 @@ type Document struct {
 	Title          string         `json:"title" db:"title"`
 	Type           string         `json:"type" db:"type"`
 	Tags           pq.StringArray `json:"tags" db:"tags"`
-	Content        string         `json:"content_address" db:"content_address"`
+	Content        sql.NullString `json:"content_address" db:"content_address"`
 	Date           string         `json:"date" db:"date"`
 	Description    string         `json:"description" db:"description"`
 	Image          string         `json:"image_address" db:"image_address"`
