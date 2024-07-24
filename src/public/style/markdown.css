@@ -7,6 +7,10 @@ markdown img {
   border-radius: 10px;
 }
 
+markdown a {
+  color: var(--insash-rose-pale);
+}
+
 markdown strong {
   color: var(--insash-rose-fonce);
 }
