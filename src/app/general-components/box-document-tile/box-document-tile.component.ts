@@ -17,8 +17,13 @@ export class BoxDocumentTileComponent {
     return this.documentAndAuthor.document.tags.slice(0, max);
   }
 
-  getArchivedAuthors() {
+  getNumberArchivedAuthors() {
     return this.documentAndAuthor.author.filter((a) => a.archived).length;
   }
+
+  getActiveAuthors() { 
+    return this.documentAndAuthor.author.filter((a) => !a.archived);
+  }
+
 
 }

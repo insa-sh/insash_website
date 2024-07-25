@@ -67,6 +67,8 @@ div.footer-content {
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 40px;
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 div.footer-title {

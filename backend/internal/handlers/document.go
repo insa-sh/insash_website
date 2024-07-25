@@ -29,7 +29,7 @@ func AddQueryParameterDocument(r *http.Request) (string, []interface{}, error) {
 	slug := utils.NormalizeInputSlug(queryParams.Get("slug"))
 	nbr := utils.NormalizeInputNumber(queryParams.Get("nbr"))
 	year := queryParams["year"]
-	surname := queryParams["author"]
+	username := queryParams["username"]
 	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
 	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
@@ -57,9 +57,9 @@ func AddQueryParameterDocument(r *http.Request) (string, []interface{}, error) {
 		args = append(args, pq.Array(tags))
 	}
 
-	if len(surname) > 0 {
-		for _, v := range surname {
-			options = append(options, fmt.Sprintf("document.uuid IN (SELECT document_author.document_uuid FROM document_author, member WHERE member.uuid = document_author.member_uuid AND member.surname = $%d)", len(args)+1))
+	if len(username) > 0 {
+		for _, v := range username {
+			options = append(options, fmt.Sprintf("document.uuid IN (SELECT document_author.document_uuid FROM document_author, member WHERE member.uuid = document_author.member_uuid AND member.username = $%d)", len(args)+1))
 			args = append(args, v)
 		}
 	}
@@ -189,7 +189,7 @@ func GetDocumentAuthors(w http.ResponseWriter, r *http.Request) {
 	documentType := utils.NormalizeInputSearch(queryParams.Get("type"))
 	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
-	query := "SELECT DISTINCT member.firstname FROM document, document_author, member"
+	query := "SELECT DISTINCT member.firstname, member.username FROM document, document_author, member"
 
 	options = append(options, "document.uuid = document_author.document_uuid", "member.uuid = document_author.member_uuid")
 
@@ -237,7 +237,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request) {
 		utils.LogEvent(fmt.Sprintf("%s - %s (%s) ERR ACCESS DATABASE GetDocumentAndAuthors %s", r.Method, r.URL.Path, r.RemoteAddr, err))
 		return
 	}
-	query := "SELECT DISTINCT document.title, document.type, document.tags, document.content_address, document.project_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon, document.archived FROM document, document_author, member" + parameterQuery
+	query := "SELECT DISTINCT document.title, document.type, document.github_address, document.tags, document.content_address, document.project_address, document.date, document.description, document.image_address, document.slug, document.is_image_icon, document.archived FROM document, document_author, member" + parameterQuery
 
 	err = Db.Select(&documents, query+";", args...)
 	if err != nil {
@@ -245,7 +245,7 @@ func GetDocument(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	query = "SELECT DISTINCT member.firstname, member.surname, member.archived FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
+	query = "SELECT DISTINCT member.firstname, member.username, member.archived FROM document, document_author, member WHERE document.uuid = document_author.document_uuid AND member.uuid = document_author.member_uuid"
 
 	for _, v := range documents {
 

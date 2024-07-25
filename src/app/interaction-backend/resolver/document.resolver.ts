@@ -10,11 +10,17 @@ import { Member } from "src/app/models/member";
 const createDocumentResolver = (documentType: DocumentType, nbr? : number): ResolveFn<DocumentAndAuthor> => {
     return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<DocumentAndAuthor> => {
 
+
+        let slug = "";
         if (nbr == null) {
             nbr = 0;
         } 
 
-        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", "", [], SortingBy.dateAsc, [], nbr = nbr, false);
+        if (route.paramMap.get('slug') != null) {
+            slug = route.paramMap.get('slug')!;
+        }
+
+        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", slug, [], SortingBy.dateAsc, [], nbr = nbr, false);
     };
 };
 

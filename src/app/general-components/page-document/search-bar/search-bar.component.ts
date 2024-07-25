@@ -59,6 +59,7 @@ export class SearchBarComponent {
     this.route.data.subscribe(
         (data) => {
           this.authors = data['documentAuthors'];
+          console.log(this.authors);
         })
   }
 
@@ -99,7 +100,7 @@ export class SearchBarComponent {
     let authorsFormArray = this.filterForm.controls.authors as FormArray;
     return this.authors
       .filter((_, i) => authorsFormArray.at(i).value)
-      .map(author => author.surname.String);
+      .map(author => author.username);
   }
 
   getSelectedTags() {
@@ -127,6 +128,8 @@ export class SearchBarComponent {
       sort: selectedSort,
       search: this.search.value
     };
+
+    console.log(filters);
 
     this.filterChanged.emit(filters);
 

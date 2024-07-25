@@ -23,7 +23,7 @@ export class DocumentService {
   
   constructor(private http: HttpClient) { }
 
-  getDocument(documentType?: DocumentType, tags?: string[], search?: string, uuid?: string, slug?: string, year?: string[], sort: SortingBy = SortingBy.dateAsc, authors?: string[], nbr?: number, archived?: boolean): Observable<DocumentAndAuthor> {
+  getDocument(documentType?: DocumentType, tags?: string[], search?: string, uuid?: string, slug?: string, year?: string[], sort: SortingBy = SortingBy.dateAsc, username?: string[], nbr?: number, archived?: boolean): Observable<DocumentAndAuthor> {
     
     let url: string = BASE_URL + "documents?";
 
@@ -43,9 +43,9 @@ export class DocumentService {
         
       }
 
-      if (authors && authors.length > 0) {
-        authors.forEach(author => {
-          url += "author=" + author + "&";
+      if (username && username.length > 0) {
+        username.forEach(u => {
+          url += "username=" + u + "&";
         });}
 
       if (search && search != "") {
@@ -118,7 +118,7 @@ export class DocumentService {
     return this.http.get<String>(url);
   }
 
-  getMembers(status?: String, surname?: String, archived?: boolean) {
+  getMembers(status?: String, username?: String, archived?: boolean) {
 
     let url: string = BASE_URL + "members?";
 
@@ -126,8 +126,8 @@ export class DocumentService {
       url += "status=" + status + "&";
     }
 
-    if (surname && surname != "") {
-      url += "surname=" + surname + "&";
+    if (username && username != "") {
+      url += "username=" + username + "&";
     }
     if (archived != undefined) {
       url += "archived=" + archived.toString() + "&";

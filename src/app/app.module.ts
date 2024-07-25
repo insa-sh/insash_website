@@ -27,7 +27,17 @@ import { PageNewsComponent } from './page-news/page-news.component';
 import { PageTipsComponent } from './page-tips/page-tips.component';
 import { PagePolitiqueConfidentialiteComponent } from './page-politique-confidentialite/page-politique-confidentialite.component';
 import { PageMentionsLegalesComponent } from './page-mentions-legales/page-mentions-legales.component';
+import { PageDocumentsDetailComponent } from './page-projets-detail/page-document-detail.component';
+import { ProjectDetailHeaderComponent } from './page-projets-detail/project-detail-header/project-detail-header.component';
+import { MarkdownModule, MarkedOptions } from "ngx-markdown";
 
+
+import "prismjs/prism";
+import "prismjs/plugins/line-numbers/prism-line-numbers.js";
+import "prismjs/plugins/toolbar/prism-toolbar.js";
+import "prismjs/plugins/autoloader/prism-autoloader.js";
+import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js";
+import "prismjs/plugins/show-language/prism-show-language.js";
 
 @NgModule({
   declarations: [
@@ -54,8 +64,18 @@ import { PageMentionsLegalesComponent } from './page-mentions-legales/page-menti
     PageTipsComponent,
     PagePolitiqueConfidentialiteComponent,
     PageMentionsLegalesComponent,
+    PageDocumentsDetailComponent,
+    ProjectDetailHeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, MarkdownModule.forRoot({
+    markedOptions: {
+      provide: MarkedOptions,
+      useValue: {
+        gfm: true,
+        breaks: true
+      }
+    }
+  })],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -28,7 +28,7 @@ export class HeaderComponent {
 
     // This array contains all the files/CDNs 
     const dynamicScripts = [
-      'assets/scripts/navMenu.js'
+      'public/scripts/navMenu.js'
     ];
     for (let i = 0; i < dynamicScripts.length; i++) {
       const node = document.createElement('script');

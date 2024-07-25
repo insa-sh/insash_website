@@ -27,3 +27,9 @@ p#date-pdc {
     margin-top: 3em;
     text-align: right;
 }
+
+@media (max-width: 800px) {
+    div.politique-confidentialite {
+        width: 90%;
+    }
+}

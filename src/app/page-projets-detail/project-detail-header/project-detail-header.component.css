@@ -1,0 +1,134 @@
+a {
+    text-decoration: none;
+}
+
+.project-header {
+    position: relative;
+    width: 100%;
+    margin: 0px auto;
+    height: 250px;
+    max-width: 2000px;
+    
+}
+
+.project-header-bg {
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    filter: blur(5px);
+}
+
+.project-header-bg img {
+    display: block;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.project-header-fg {
+    position: absolute;
+    z-index: 1;
+    padding: 30px 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+
+div.project-header-image img {
+    height: 200px;
+    width: 200px;
+    
+}
+
+div.project-header-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    align-items: center
+}
+
+div.button {
+    height: 50px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 10px;
+    transition: transform var(--global-transition-duration), background-color var(--global-transition-duration), border var(--global-transition-duration), color var(--global-transition-duration); 
+}
+
+div.button:hover {
+    transform:translateX(5px);
+}
+
+div.button i{
+    margin-left: 10px;
+    
+
+}
+
+div.button-github {
+    background-color: var(--website-bg-color-light-1);
+
+}
+
+div.button-github:hover {
+    background-color: var(--website-bg-color-light-2);
+
+}
+
+
+div.button-play {
+    background-color: var(--insash-rose-fonce);
+    border: 2px solid transparent;
+}
+
+
+div.button-play:hover {
+    background-color: var(--insash-rose-pale-transparent);
+    border: 2px solid var(--insash-rose-fonce);
+}
+
+div.button-play:hover>* {
+
+    color: var(--insash-rose-fonce);
+}
+
+
+
+div.list-document-tile:hover {
+    background-color: var(--website-bg-color-light-2);
+    
+
+}
+
+div.button p {
+    font-size: 20px;
+}
+
+@media (max-width: 800px) {
+
+    .project-header-fg {
+
+
+        flex-direction: column;
+        align-items: center;
+    
+    }
+
+    div.button {
+        padding: 10px 20px;
+        
+    }
+
+    div.project-header-buttons {
+        
+        gap: 20px;
+    }   
+
+}

@@ -13,3 +13,9 @@ p {
     text-align: justify;
     margin: 1em auto;
 }
+
+@media (max-width: 800px) {
+    div.mentions-legales {
+        width: 90%;
+    }
+}

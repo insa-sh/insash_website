@@ -20,19 +20,19 @@ func GetMembers(w http.ResponseWriter, r *http.Request) {
 
 	queryParams := r.URL.Query()
 	status := utils.NormalizeInputSearch(queryParams.Get("status"))
-	surname := queryParams.Get("surname")
+	username := queryParams.Get("username")
 	archived := utils.NormalizeInputSearch(queryParams.Get("archived"))
 
-	query = "SELECT firstname, lastname, role, website, image_address, linkedin, github, citation, surname, status, archived, instagram FROM member"
+	query = "SELECT firstname, lastname, role, website, image_address, linkedin, github, citation, username, status, archived, instagram FROM member"
 
 	if status != "" {
 		options = append(options, fmt.Sprintf("status = $%d", len(args)+1))
 		args = append(args, status)
 	}
 
-	if surname != "" {
-		options = append(options, fmt.Sprintf("surname = $%d", len(args)+1))
-		args = append(args, surname)
+	if username != "" {
+		options = append(options, fmt.Sprintf("username = $%d", len(args)+1))
+		args = append(args, username)
 	}
 
 	if archived == "true" || archived == "false" {
