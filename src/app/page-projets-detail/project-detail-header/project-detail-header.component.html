@@ -10,8 +10,8 @@
         </div>
   
         <div class="project-header-buttons">
-          <a href="">
-            <!-- *ngIf="project.document.github_address.String != ''" -->
+          <a href="{{ project.document.github_address.String }}" *ngIf="project.document.github_address.String != ''">
+
             <div class="button button-github">
               <p>Github</p>
               <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -20,9 +20,8 @@
   
           <a
             href="{{ project.document.project_address.String }}"
-            
+            *ngIf="project.document.project_address.String != ''"
           >
-          <!-- *ngIf="project.document.project_address.String != ''" -->
             <div class="button button-play">
               <p>Lancer</p>
               <i class="fa-solid fa-play"></i>

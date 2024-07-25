@@ -11,14 +11,14 @@ import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
 import { PageDocumentComponent } from "./general-components/page-document/page-document.component";
-import { CheatsheetAuthorResolver, CheatsheetTagsResolver, CheatsheetYearResolver, MemberResolver, NewsAuthorResolver, NewsTagsResolver, NewsYearResolver, ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TipsAuthorResolver, TipsTagsResolver, TipsYearResolver, TopCheatsheetResolver, TopNewsResolver, TopProjectResolver, TopTipsResolver } from "./interaction-backend/resolver/document.resolver";
+import { CheatsheetAuthorResolver, CheatsheetResolver, CheatsheetTagsResolver, CheatsheetYearResolver, MemberResolver, NewsAuthorResolver, NewsResolver, NewsTagsResolver, NewsYearResolver, ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TipsAuthorResolver, TipsResolver, TipsTagsResolver, TipsYearResolver, TopCheatsheetResolver, TopNewsResolver, TopProjectResolver, TopTipsResolver } from "./interaction-backend/resolver/document.resolver";
 import { PageProjetsComponent } from "./page-projets/page-projets.component";
 import { PageCheatsheetComponent } from "./page-cheatsheet/page-cheatsheet.component";
 import { PageTipsComponent } from "./page-tips/page-tips.component";
 import { PageNewsComponent } from "./page-news/page-news.component";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
-import { PageProjetsDetailComponent } from "./page-projets-detail/page-projets-detail.component";
+import { PageDocumentsDetailComponent } from "./page-projets-detail/page-document-detail.component";
 
 
 
@@ -60,10 +60,10 @@ const routes: Routes = [
   },
   {
     path : "project/:slug",
-    component: PageProjetsDetailComponent,
-    title: ":slug",
+    component: PageDocumentsDetailComponent,
+    title: "",
     resolve: {
-      project: ProjectResolver
+      document: ProjectResolver
     }
   },
   {
@@ -78,6 +78,14 @@ const routes: Routes = [
     }
   },
   {
+    path : "cheatsheet/:slug",
+    component: PageDocumentsDetailComponent,
+    title: "",
+    resolve: {
+      document: CheatsheetResolver
+    }
+  },
+  {
     path : "news",
     component: PageNewsComponent,
     title: "Les actus du Club",
@@ -86,6 +94,14 @@ const routes: Routes = [
       documentTags: NewsTagsResolver,
       documentAuthors : NewsAuthorResolver, 
       documentYears : NewsYearResolver,
+    }
+  },
+  {
+    path : "news/:slug",
+    component: PageDocumentsDetailComponent,
+    title: "",
+    resolve: {
+      document: NewsResolver
     }
   },
   {
@@ -99,7 +115,14 @@ const routes: Routes = [
       documentYears : TipsYearResolver,
     }
   },
-
+  {
+    path : "tips/:slug",
+    component: PageDocumentsDetailComponent,
+    title: "",
+    resolve: {
+      document: TipsResolver
+    }
+  },
   {
     path : "politique-confidentialite",
     component: PagePolitiqueConfidentialiteComponent,

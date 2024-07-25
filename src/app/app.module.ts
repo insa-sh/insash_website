@@ -27,7 +27,7 @@ import { PageNewsComponent } from './page-news/page-news.component';
 import { PageTipsComponent } from './page-tips/page-tips.component';
 import { PagePolitiqueConfidentialiteComponent } from './page-politique-confidentialite/page-politique-confidentialite.component';
 import { PageMentionsLegalesComponent } from './page-mentions-legales/page-mentions-legales.component';
-import { PageProjetsDetailComponent } from './page-projets-detail/page-projets-detail.component';
+import { PageDocumentsDetailComponent } from './page-projets-detail/page-document-detail.component';
 import { ProjectDetailHeaderComponent } from './page-projets-detail/project-detail-header/project-detail-header.component';
 import { MarkdownModule, MarkedOptions } from "ngx-markdown";
 
@@ -64,7 +64,7 @@ import "prismjs/plugins/show-language/prism-show-language.js";
     PageTipsComponent,
     PagePolitiqueConfidentialiteComponent,
     PageMentionsLegalesComponent,
-    PageProjetsDetailComponent,
+    PageDocumentsDetailComponent,
     ProjectDetailHeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule, MarkdownModule.forRoot({
