@@ -34,7 +34,7 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
 
 }
 
@@ -90,7 +90,7 @@ div.button-play {
 
 
 div.button-play:hover {
-    background-color: var(--website-bg-color-light-1);
+    background-color: var(--insash-rose-pale-transparent);
     border: 2px solid var(--insash-rose-fonce);
 }
 
