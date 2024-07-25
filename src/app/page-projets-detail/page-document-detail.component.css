@@ -1,10 +1,10 @@
-div.project-top {
+div.document-top {
     width: min(100%, 2000px);
     margin: 50px auto;
     padding:  0px min(150px, 10%);
 }
 
-div.project-top h1 {
+div.document-top h1 {
 font-size: 36px;
 }
 
@@ -35,7 +35,7 @@ div.tag {
     letter-spacing: 0.6px;
   }
 
-div.project-details {
+div.document-details {
     border-left: solid 5px var(--website-bg-color-light-2);
     display: flex;
     flex-direction: column;
@@ -46,13 +46,13 @@ div.project-details {
     margin-top: 75px;
 }
 
-div.project-detail-section {
+div.document-detail-section {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-div.project-authors {
+div.document-authors {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -66,11 +66,23 @@ i {
     text-align: center;
 }
 
-div.project-content {
+div.document-content {
     width: min(70%, 1500px);
     margin: 30px auto;
     padding: 30px;
     background-color: var(--website-bg-color-light-1);
+    border-radius: 20px;
+}
+
+div.document-image {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+div.document-image img{
+  display: block;
+  max-width: 75%;
+    margin: auto;
     border-radius: 20px;
 }
 
@@ -119,18 +131,20 @@ div.project-content {
    100% {left:100%}
   }
 
+
+
 @media (max-width: 800px) {
-    div.project-description {
+    div.document-description {
         align-items: start;
     }
 
-    div.project-content {
+    div.document-content {
       width: 90%;
       padding: 0px;
       background-color: transparent;
     }
 
-    div.project-top {
+    div.document-top {
         padding-top: 75px; 
     }
 }

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageProjetsDetailComponent } from './page-projets-detail.component';
+import { PageDocumentsDetailComponent } from './page-document-detail.component';
 
 describe('PageProjetsDetailComponent', () => {
-  let component: PageProjetsDetailComponent;
-  let fixture: ComponentFixture<PageProjetsDetailComponent>;
+  let component: PageDocumentsDetailComponent;
+  let fixture: ComponentFixture<PageDocumentsDetailComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageProjetsDetailComponent]
+      declarations: [PageDocumentsDetailComponent]
     });
-    fixture = TestBed.createComponent(PageProjetsDetailComponent);
+    fixture = TestBed.createComponent(PageDocumentsDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
