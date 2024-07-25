@@ -19,7 +19,7 @@
             *ngFor="let author of getActiveAuthors(); let isLast = last"
           >
             <span
-              ><a routerLink="/les-membres/{{ author.username }}">{{
+              ><a routerLink="/les-membres/{{ author.username }}" title="./insa.sh - Profil de {{ author.firstname.String }}">{{
                 author.firstname.String
               }}</a>
             </span>

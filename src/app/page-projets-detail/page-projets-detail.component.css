@@ -8,6 +8,16 @@ div.project-top h1 {
 font-size: 36px;
 }
 
+a {
+    text-decoration: none;
+
+}
+
+a:hover {
+    text-decoration: underline;
+
+}
+
 div.tag {
     display: inline-block;
     background-color: rgba(239,193,233,10%);
