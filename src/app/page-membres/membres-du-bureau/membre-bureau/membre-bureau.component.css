@@ -12,7 +12,11 @@ div.membre-bureau {
 
 }
 
-div.membre-bureau>img {
+a {
+    text-decoration: none;
+}
+
+div.membre-bureau img {
     width: 100px;
     border-radius: 50%;
     border: 6px solid #222;
@@ -23,7 +27,7 @@ div.membre-bureau>img {
 
 }
 
-div.membre-bureau>div.membre-info {
+div.membre-bureau div.membre-info {
     /* flex: 1; */
     width: 380px;
     font-family: "Roboto Mono";
@@ -72,12 +76,12 @@ div.membre-bureau>div.membre-info {
 
     }
 
-    div.membre-bureau>img {
+    div.membre-bureau img {
         width: 70px;
 
     }
 
-    div.membre-bureau>div.membre-info {
+    div.membre-bureau div.membre-info {
         flex: 1;
         width: 100%;
         padding: 10px 25px;
