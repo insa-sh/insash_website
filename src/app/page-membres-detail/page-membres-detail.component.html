@@ -33,6 +33,11 @@
                 <i class="fas fa-medal"></i> {{ project.length }} projet(s)     </div>
 
         </div>
+        <a routerLink="/custom-website/{{ member.username }}">
+        <div class="member-custom-website">
+            <p>Page perso</p>
+            <i class="fa-solid fa-play"></i>
+        </div></a>
         <div class="member-reseaux">
             <div class="reseau-tag"  *ngIf="member.website.String != ''">
                 <a href="{{ member.website.String }}" target="_blank">

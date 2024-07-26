@@ -6,6 +6,10 @@ h2 {
     opacity: 60%;
   }
 
+  a {
+    text-decoration: none;
+  }
+
 div.member-detail {
     margin-bottom: 100px;
 }
@@ -50,14 +54,15 @@ div.member-image {
 div.member-citation {
     position: absolute;
     padding: 10px;
-    margin-left: 200px;
+    max-width: 15em;
+    margin-left: min(400px, 30%);
     background-color: var(--website-bg-color-light-1);
     z-index: 1;
     border-radius: 10px;
 }
 
 div.member-citation p{
-
+    
     color: var(--website-alternative-color);
 
 }
@@ -130,9 +135,52 @@ div.member-reseaux i:hover {
     background-color: var(--website-bg-color-light-3);
 }
 
+div.member-custom-website {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px;
+    border-radius: 10px;
+    background-color: var(--insash-rose-fonce);
+    border: 2px solid transparent;
+    transition: background-color var(--global-transition-duration), border var(--global-transition-duration), color var(--global-transition-duration); 
+}
+
+
+
+
+div.member-custom-website:hover {
+    background-color: var(--insash-rose-pale-transparent);
+    border: 2px solid var(--insash-rose-fonce);
+}
+
+div.member-custom-website i{
+    margin-left: 20px;
+    transition: transform 1s;
+
+}
+
+div.member-custom-website:hover i{
+    transform: rotate(240deg);
+    
+
+}
+
+
+
+div.member-custom-website p {
+    font-size: 20px;
+}
+
 @media (max-width: 800px) {
     div.member-citation p{
         font-size: 14px;
-    
+
     }
+    div.member-citation{
+
+        margin-left: 60%;
+    }
+
 }
