@@ -50,7 +50,8 @@ const routes: Routes = [
     component: PageMembresDetailComponent,
     title: "",
     resolve: {
-      membre: MemberResolver
+      member: MemberResolver,
+      project: ProjectResolver
     }
   },
   {
