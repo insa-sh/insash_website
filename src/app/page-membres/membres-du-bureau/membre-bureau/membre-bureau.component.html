@@ -18,15 +18,15 @@
       />
     </ng-container></a>
 
-    <a routerLink="/les-membres/{{ membre.username }}">
+    <a routerLink="/les-membres/{{ membre.username }}"><div class="membre-panel">
     <div class="membre-info">
       <p class="variable-name">
-        {{ membre.surname.String }}<span>.{{ membre.role.String }}</span>
+        {{ membre.firstname.String.toLowerCase() }}{{ membre.lastname.String.toUpperCase() }}<span>.{{ membre.surname.String }}</span>
       </p>
       <p class="indent-1">&#123;</p>
       <p class="indent-2">
         pseudo =
-        <span class="variable-string">"{{ membre.surname.String }}"</span>
+        <span class="variable-string">"{{ membre.username }}"</span>
       </p>
       <p class="indent-2">
         role = <span class="variable-string">"{{ membre.role.String }}"</span>
@@ -38,6 +38,20 @@
           membre.website.String
         }}</a>
       </p>
+      
       <p class="indent-1">&#125;</p>
-    </div></a>
+      <p class="membre-citation" *ngIf="membre.citation.String !== ''">
+        <span class="variable-string">// {{ membre.citation.String }}</span>
+      </p>
+    </div>
+
+    <div class="membre-reseau">
+        <a href="https://www.instagram.com/{{ membre.instagram.String }}" target="_blank" *ngIf="membre.instagram.String != ''"><i class="fa-brands fa-instagram"></i></a>
+        <a href="{{ membre.linkedin.String }}" target="_blank" *ngIf="membre.linkedin.String != ''"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="{{ membre.github.String }}" target="_blank" *ngIf="membre.github.String != ''"><i class="fa-brands fa-github"></i></a>
+        
+        
+       
+    </div>
+</div></a>
   </div>
