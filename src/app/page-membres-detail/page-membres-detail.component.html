@@ -35,26 +35,18 @@
         </div>
         
         <div class="member-reseaux">
-            <div class="reseau-tag"  *ngIf="member.website.String != ''">
-                <a href="{{ member.website.String }}" target="_blank">
+                <a class="reseau-tag" href="{{ member.website.String }}" target="_blank" *ngIf="member.website.String != ''">
                     <i class="fas fa-globe"></i>
                 </a>
-            </div>
-            <div class="reseau-tag" *ngIf="member.instagram.String != ''">
-                <a href="{{ member.instagram.String }}" target="_blank" >
+                <a class="reseau-tag" *ngIf="member.instagram.String != ''" href="{{ member.instagram.String }}" target="_blank" >
                     <i class="fab fa-instagram"></i>
                 </a>
-            </div>
-            <div class="reseau-tag" *ngIf="member.github.String != ''">
-                <a href="{{ member.github.String }}" target="_blank" >
+                <a class="reseau-tag" *ngIf="member.github.String != ''" href="{{ member.github.String }}" target="_blank" >
                     <i class="fab fa-github"></i>
                 </a>
-            </div>
-            <div class="reseau-tag"  *ngIf="member.linkedin.String != ''">
-                <a href="{{ member.linkedin.String }}" target="_blank">
+                <a  class="reseau-tag"  *ngIf="member.linkedin.String != ''"href="{{ member.linkedin.String }}" target="_blank">
                     <i class="fab fa-linkedin"></i>
                 </a>
-            </div>
             <a routerLink="/custom-website/{{ member.username }}">
                 <div class="member-custom-website">
                     <p>Page perso</p>

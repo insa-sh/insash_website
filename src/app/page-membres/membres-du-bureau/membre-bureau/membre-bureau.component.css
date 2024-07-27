@@ -20,13 +20,11 @@ div.membre-panel {
 }
 
 div.membre-bureau img {
-    width: 250px;
+    width: 150px;
     border-radius: 50%;
     border: 6px solid #222;
     background-color: #353535;
     aspect-ratio: 1;
-    
-
 
 }
 

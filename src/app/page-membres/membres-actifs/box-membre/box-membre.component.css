@@ -18,6 +18,11 @@ div.box-membre>p.nom {
     font-style: italic;
 }
 
+.nom>span.tiret {
+    padding: 0 6px;
+
+}
+
 div.box-membre>p.role {
     color: #A1A1A1;
     font-family: "Open Sans";
