@@ -28,17 +28,6 @@ func main() {
 
 	router.HandleFunc("/members", handlers.GetMembers).Methods("GET")
 
-	router.HandleFunc("/images/documents/project/{documentslug}/{filename}", handlers.GetProjectImageByName).Methods("GET")
-	router.HandleFunc("/images/documents/cheatsheet/{documentslug}/{filename}", handlers.GetCheatsheetImageByName).Methods("GET")
-	router.HandleFunc("/images/documents/tips/{documentslug}/{filename}", handlers.GetTipsImageByName).Methods("GET")
-	router.HandleFunc("/images/documents/news/{documentslug}/{filename}", handlers.GetNewsImageByName).Methods("GET")
-	router.HandleFunc("/images/members/{filename}", handlers.GetMemberImageByName).Methods("GET")
-
-	router.HandleFunc("/markdown/documents/project/{filename}", handlers.GetProjectMarkdownByName).Methods("GET")
-	router.HandleFunc("/markdown/documents/cheatsheet/{filename}", handlers.GetCheatsheetMarkdownByName).Methods("GET")
-	router.HandleFunc("/markdown/documents/tips/{filename}", handlers.GetTipsMarkdownByName).Methods("GET")
-	router.HandleFunc("/markdown/documents/news/{filename}", handlers.GetNewsMarkdownByName).Methods("GET")
-
 	err := http.ListenAndServe(":8080", gorillaHandlers.CORS(originsOk)(router))
 	if err != nil {
 		log.Fatal("Server Failed: ", err)
