@@ -65,8 +65,8 @@
           *ngFor="let e of authors; let i = index"
         >
           <div class="dropdown-content-element" formArrayName="authors">
-            <p>{{ e.firstname.String }}</p>
-
+            <p *ngIf="e.firstname.String !== ''; else username">{{ e.firstname.String }}</p>
+            <ng-template #username><p>{{ e.username }}</p></ng-template>
             <input
               type="checkbox"
               class="custom-input"
