@@ -36,51 +36,67 @@ div.member-name h1 {
 }
 div.member-name h1 span {
     font-size: 30px;
+    color: #BBBBBB;
+
+}
+/* SI LE PSEUDO EST LE SEUL IDENTIFIANT FOURNIT */
+div.member-name h1 span.pseudo-only {
+    font-size: 30px;
+    color: var(--insash-title-color);
 
 }
 
-div.member-surname p em{
-color: var(--website-alternative-color);
+
+
+div.member-surname p, div.member-surname p em {
+    color: #BBBBBB;
+    font-weight: 700;
 }
 
-
+/* PHOTO DE PROFIL */
 
 div.member-image {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-div.member-citation {
-    position: absolute;
-    padding: 10px;
-    max-width: 15em;
-    margin-left: min(400px, 30%);
-    background-color: var(--website-bg-color-light-1);
-    z-index: 1;
-    border-radius: 10px;
-}
-
-div.member-citation p{
-    
-    color: var(--website-alternative-color);
-
+    text-align: center;
+    position: relative;
+    overflow: visible;
+    margin-top: 20px;
 }
 
 div.member-image img {
     width: 300px;
-    max-width: 70%;
+    /* max-width: 70%; */
     border-radius: 50%;
     background-color: #353535;
     aspect-ratio: 1;
     box-shadow: none;
     transition: box-shadow var(--global-transition-duration);
+    border: 6px solid #222222;
+
 }
 
-div.member-image img:hover {
-    box-shadow: 0px 0px 20px var(--website-strong-color);
+div.member-citation {
+    position: absolute;
+    top: -10px;
+    left: 220px;
+    z-index: 1;
 }
 
+div.member-citation p{
+    padding: 12px 20px;
+    background-color: var(--website-bg-color-light-1);
+    border: 1px solid var(--website-bg-color-light-2);
+    border-radius: 10px;
+
+    color: var(--website-alternative-color);
+    max-width: min(250px, 80vw);
+    width: max-content;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: clip; 
+    line-break:anywhere;
+
+
+}
 
 div.member-tag {
     display: flex;
@@ -174,13 +190,28 @@ div.member-custom-website p {
 }
 
 @media (max-width: 800px) {
-    div.member-citation p{
-        font-size: 14px;
+
+    div.member-image {
+        margin-bottom: 0;
+        margin-top: initial;
+    }
+    div.member-image img {
+        max-width: 70vw;
+    }
+
+    div.member-citation {
+        position: relative;
+        top: 0;
+        left: 0;
+        top: -30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
 
     }
-    div.member-citation{
-
-        margin-left: 60%;
+    div.member-citation p{
+        font-size: 14px;
     }
 
 }
