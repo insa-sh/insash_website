@@ -44,10 +44,10 @@ export class PageDocumentComponent {
     this.route.data.subscribe(
         (data) => {
           if (data['topDocumentsAndAuthors'] != null) {
-            data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
-              this.topDocumentsAndAuthors.push(documentsAndAuthor);
+
+              this.topDocumentsAndAuthors = data['topDocumentsAndAuthors'];
               
-          });
+          
           }
           
         })
@@ -71,9 +71,7 @@ export class PageDocumentComponent {
     this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, search, "", "", this.filters.dates, sort, this.filters.authors, undefined, false).subscribe(
         (data: any) => {
           if (data) {
-            this.documentsAndAuthors = data.map((documentAndAuthor: DocumentAndAuthor) => {
-              return documentAndAuthor;
-            });
+            this.documentsAndAuthors = data;
           } else {
             this.documentsAndAuthors = [];
           }

@@ -23,10 +23,10 @@ export class PageAccueilComponent {
     this.route.data.subscribe(
         (data) => {
           if (data['topDocumentsAndAuthors'] != null) {
-            data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
-              this.topDocumentsAndAuthors.push(documentsAndAuthor);
+
+              this.topDocumentsAndAuthors = data['topDocumentsAndAuthors'];
               
-          });
+
           }
         })
   }

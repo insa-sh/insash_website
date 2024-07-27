@@ -23,9 +23,7 @@ export class PageMembresComponent {
 
         if (data['members'] != null) {
 
-          this.membres = data['members'].map((member: Member) => {
-            return member;
-          });
+          this.membres = data['members'];
         }
 
       })
