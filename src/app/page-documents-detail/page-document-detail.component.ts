@@ -47,6 +47,7 @@ export class PageDocumentsDetailComponent {
           if (data['document'] != null) {
 
             this.documentAndAuthor = data['document'][0];
+
             this.titleService.setTitle("./insa.sh - " + this.documentAndAuthor.document.title);
             } else {
             this.router.navigate(['/404']);

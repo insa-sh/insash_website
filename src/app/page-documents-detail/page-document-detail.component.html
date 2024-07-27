@@ -38,15 +38,20 @@
         <p>{{ getDateString() }}</p>
       </div>
 
+
       <div class="document-description document-detail-section" *ngIf="documentAndAuthor.document.description.String !== ''">
         <i class="fa-solid fa-file"></i>
         <p>{{ documentAndAuthor.document.description.String }}</p>
+
       </div>
     </div>
   </div>
 
   <div class="document-image" *ngIf="!isProject()">
+
   <img   src="/public/images/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.image_address }}">
+
+
 </div>
   <div
     class="document-content"
@@ -58,6 +63,7 @@
       lineNumbers
       ngPreserveWhitespaces
       src="/public/markdown/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.content_address.String }}"
+
     >
     </markdown>
   </div>
