@@ -7,7 +7,7 @@ div.membre-bureau {
     align-items: flex-start;
     font-size: 16px;
     min-height: 300px;
-    transition: transform var(--global-transition-duration);
+    transition: all var(--global-transition-duration);
 
 }
 
@@ -39,8 +39,8 @@ div.membre-bureau>a {
 }
 
 div.membre-bureau img:hover, div.membre-bureau:has(div.membre-info:hover) img {
-    transform: scale(1);
-    border: 6px var(--website-strong-color) solid;
+    /* transform: scale(1); */
+    /* border: 6px var(--website-strong-color) solid; */
 }
 
 div.membre-bureau div.membre-info {
@@ -59,12 +59,20 @@ div.membre-bureau a:nth-child(2) {
     transform: scale(1);
     transition: transform var(--global-transition-duration) ease-in-out;
 }
-div.membre-bureau a:nth-child(2):has(div.membre-info:hover), div.membre-bureau:has(img:hover)>a:nth-child(2), p.hover-text:hover, div.membre-bureau:has(p.hover-text:hover)  a:nth-child(2)  {
-    transform: scale(1.02);
+div.membre-bureau a:nth-child(2):has(div.membre-info:hover), div.membre-bureau:has(img:hover)>a:nth-child(2), div.hover-text:hover, div.membre-bureau:has(div.hover-text:hover)  a:nth-child(2)  {
+    /* transform: scale(1.02); */
+
+}
+div.membre-bureau:has(div.membre-info:hover), div.membre-bureau:has(img:hover), div.membre-bureau:has(div.hover-text:hover)  {
+    /* transform: scale(1.02); */
+    /* gap: 30px; */
+    
 }
 
 
-p.hover-text {
+
+
+div.hover-text {
     position: absolute;
     top: 0px;
     left: 0;
@@ -76,8 +84,9 @@ p.hover-text {
     font-weight: 700;
     display: flex;
     justify-content: center;
+    margin: auto;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
     color: var(--website-strong-color);
@@ -88,9 +97,14 @@ p.hover-text {
     /* visibility: hidden; */
     transition: opacity var(--global-transition-duration) ease-in-out, border var(--global-transition-duration) ease-in-out;
     cursor: pointer;
+    overflow: hidden;
+
+}
+div.hover-text p, div.hover-text span {
+    color: inherit;
 }
 
-div.membre-bureau a:nth-child(2):has(div.membre-info:hover) p.hover-text, div.membre-bureau:has(img:hover) p.hover-text, p.hover-text:hover, div.membre-bureau:has(img:hover) p.hover-text, div.membre-bureau:has(div.membre-info:hover) p.hover-text {
+div.membre-bureau a:nth-child(2):has(div.membre-info:hover) div.hover-text, div.membre-bureau:has(img:hover) div.hover-text, div.hover-text:hover, div.membre-bureau:has(img:hover) div.hover-text, div.membre-bureau:has(div.membre-info:hover) div.hover-text {
     opacity: 1;
     visibility: visible;
     border: 6px solid var(--website-strong-color);
@@ -118,9 +132,19 @@ div.membre-reseau {
     padding: 10px;
     border-radius: 0 0 13px 13px;
 }
+div.membre-reseau a {
+    transition: color var(--global-transition-duration) ease-in-out, transform 0.2s ease-in-out;
+
+}
+div.membre-reseau a:hover {
+    color: #dbdbdb;
+    font-size: 20px;
+    transform: scale(0.9);
+}
 
 div.membre-reseau i {
     font-size: 30px;
+    color: inherit;
 }
 
 
@@ -173,4 +197,9 @@ div.membre-reseau i {
         overflow: hidden;
         word-break: break-word;
     }
+
+    div.hover-text {
+        font-size: 14px;
+    }
+    
 }

@@ -5,7 +5,7 @@
     <ng-container *ngIf="membre.image_address.String !== ''">
         
         <img src="/public/images/member/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" class="profile-picture">
-        <p class="hover-text">Voir le profil</p>
+        <div class="hover-text"><p>Voir<span class="computer-only"> le profil</span></p></div>
 
     </ng-container>
     <ng-container *ngIf="membre.image_address.String === ''">
@@ -14,7 +14,7 @@
         alt="Photo  de profil du {{ membre.role }}"
         class="profile-picture" 
       />
-      <p class="hover-text">Voir le profil</p>
+      <div class="hover-text"><p>Voir<span class="computer-only"> le profil</span></p></div>
     </ng-container></a>
 
     <a><div class="membre-panel">
@@ -33,7 +33,7 @@
       <!-- recrer une condition pour l'affichage de l'email -->
       <p *ngIf="membre.website.String !== ''" class="indent-2">
         site =
-        <a class="variable-link" (click)="openLink(membre.website.String)">{{
+        <a class="variable-link">{{
           membre.website.String
         }}</a>
       </p>
@@ -45,9 +45,10 @@
     </div>
 
     <div class="membre-reseau">
-        <a href="https://www.instagram.com/{{ membre.instagram.String }}" target="_blank" *ngIf="membre.instagram.String != ''"><i class="fa-brands fa-instagram"></i></a>
-        <a href="{{ membre.linkedin.String }}" target="_blank" *ngIf="membre.linkedin.String != ''"><i class="fa-brands fa-linkedin"></i></a>
         <a href="{{ membre.github.String }}" target="_blank" *ngIf="membre.github.String != ''"><i class="fa-brands fa-github"></i></a>
+        <a href="{{ membre.website.String }}" target="_blank" *ngIf="membre.website.String != ''"><i class="fa-solid fa-globe"></i></a>
+        <a href="{{ membre.linkedin.String }}" target="_blank" *ngIf="membre.linkedin.String != ''"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/{{ membre.instagram.String }}" target="_blank" *ngIf="membre.instagram.String != ''"><i class="fa-brands fa-instagram"></i></a>
         
         
        
