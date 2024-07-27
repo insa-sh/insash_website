@@ -38,7 +38,7 @@
         <p>{{ getDateString() }}</p>
       </div>
 
-      <div class="document-description document-detail-section">
+      <div class="document-description document-detail-section" *ngIf="documentAndAuthor.document.description.String !== ''">
         <i class="fa-solid fa-file"></i>
         <p>{{ documentAndAuthor.document.description.String }}</p>
       </div>
