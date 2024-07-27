@@ -91,12 +91,26 @@ div.member-citation p{
     max-width: min(250px, 80vw);
     width: max-content;
     text-align: left;
+    /* gérer l'overflow du texte */
     overflow: hidden;
     text-overflow: clip; 
     line-break:anywhere;
+    /* animation timing - delay */
+    animation: appearFromLeftCorner 0.5s ease-out 1.5s;
+    opacity: 0;
+    transform: scale(0) translate(-20%,-20%);
+
+
+    /* garder l'état final d'animation */
+    animation-fill-mode: forwards;
+    /* centre de l'animation */
+    transform-origin: bottom left;
 
 
 }
+
+
+
 
 div.member-tag {
     display: flex;
@@ -212,6 +226,48 @@ div.member-custom-website p {
     }
     div.member-citation p{
         font-size: 14px;
+        animation: appearFromTopCenter 0.5s ease-out 1.5s;
+        opacity: 0;
+        transform: scale(0) translateY(-20%);
+    
+    
+        /* garder l'état final d'animation */
+        animation-fill-mode: forwards;
+        /* centre de l'animation */
+        transform-origin: top center;
+    
     }
 
+}
+
+
+
+
+
+
+
+
+/* ANIMATIONS */
+/* animation d'apparition */
+@keyframes appearFromLeftCorner {
+    from {
+        opacity: 0;
+        transform: scale(0) translate(-20%,-20%);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translate(0,0);
+    }
+}
+
+/* animation d'apparition */
+@keyframes appearFromTopCenter {
+    from {
+        opacity: 0;
+        transform: scale(0) translateY(-20%);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
