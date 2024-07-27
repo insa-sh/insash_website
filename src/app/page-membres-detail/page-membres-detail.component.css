@@ -154,7 +154,7 @@ div.member-reseaux {
 }
 
 
-div.member-reseaux i{
+div.member-reseaux div.reseau-tag a i{
     font-size: 25px;
     padding: 10px;
     background-color: var(--website-bg-color-light-2);
@@ -174,12 +174,12 @@ div.member-reseaux i:active {
 
 
 div.member-custom-website {
-    height: 50px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 20px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 7px;
     background-color: var(--insash-rose-fonce);
     border: 2px solid transparent;
     transition: background-color var(--global-transition-duration), border var(--global-transition-duration), color var(--global-transition-duration); 
@@ -219,6 +219,10 @@ div.member-custom-website p {
     }
     div.member-image img {
         max-width: 70vw;
+    }
+
+    div.member-reseaux {
+        max-width: 300px;
     }
 
     div.member-citation {
