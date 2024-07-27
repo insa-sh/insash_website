@@ -208,7 +208,8 @@ div.member-custom-website:hover i{
 
 
 div.member-custom-website p {
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 @media (max-width: 800px) {
