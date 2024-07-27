@@ -19,9 +19,12 @@
             *ngFor="let author of getActiveAuthors(); let isLast = last"
           >
             <span
-              ><a routerLink="/les-membres/{{ author.username }}" title="./insa.sh - Profil de {{ author.firstname.String }}">{{
-                author.firstname.String
-              }}</a>
+              ><a routerLink="/les-membres/{{ author.username }}" title="./insa.sh - Profil de {{ author.firstname.String }}">
+                <ng-container *ngIf="author.firstname.String !== '';else username">{{author.firstname.String}}</ng-container>
+                
+            <ng-template #username>{{
+              author.username
+            }}</ng-template></a>
             </span>
 
             <span *ngIf="!isLast">,&nbsp;</span>
