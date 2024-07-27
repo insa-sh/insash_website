@@ -23,17 +23,7 @@ export class PageMembresComponent {
 
         if (data['members'] != null) {
 
-          this.membres = data['members'].map((member: Member) => {
-            member.image_address.String = this.documentService.getMemberImageURL(member.image_address.String);
-            return member;
-          });
-
-
-
-
-
-
-
+          this.membres = data['members'];
         }
 
       })

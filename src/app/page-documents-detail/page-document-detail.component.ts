@@ -47,11 +47,7 @@ export class PageDocumentsDetailComponent {
           if (data['document'] != null) {
 
             this.documentAndAuthor = data['document'][0];
-            this.documentAndAuthor.document.image_address = this.documentService.getDocumentImageURL(this.documentAndAuthor.document.type, this.documentAndAuthor.document.image_address);
-            if (this.documentAndAuthor.document.content_address.String != "") {
-              this.documentAndAuthor.document.content_address.String = this.documentService.getMarkdownURL(this.documentAndAuthor.document.type, this.documentAndAuthor.document.slug ,this.documentAndAuthor.document.content_address.String);
-          
-            }
+
             this.titleService.setTitle("./insa.sh - " + this.documentAndAuthor.document.title);
             } else {
             this.router.navigate(['/404']);

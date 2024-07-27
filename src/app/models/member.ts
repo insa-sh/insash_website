@@ -14,8 +14,9 @@ export class Member {
         public citation: NullString,
         public surname: NullString,
         public username: String,
-        public status: NullString,
-        public archived: boolean
+        public status: String,
+        public archived: boolean,
+        public has_custom_website: boolean
       ){}
 
       

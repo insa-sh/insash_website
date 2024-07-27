@@ -4,7 +4,7 @@
       class="document-image"
       [ngClass]="{ icon: documentAndAuthor.document.is_image_icon }"
     >
-      <img src="{{ documentAndAuthor.document.image_address }}" alt="" />
+      <img src="/public/images/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.image_address }}" alt="" />
     </div>
     <div class="document-content">
       <div class="document-main-details">
@@ -20,7 +20,7 @@
             <p>+{{ documentAndAuthor.document.tags.length - 3 }}</p>
           </div>
         </div>
-        <p class="document-description">{{ documentAndAuthor.document.description }}</p>
+        <p class="document-description" *ngIf="documentAndAuthor.document.description.String !== ''">{{ documentAndAuthor.document.description.String }}</p>
       </div>
       <div class="document-other-details">
         <div class="document-year">

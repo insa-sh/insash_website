@@ -17,7 +17,7 @@ export class Document {
         public tags: string[],
         public content_address: NullString,
         public date: string,
-        public description: string,
+        public description: NullString,
         public image_address: string,
         public slug: string,
         public is_image_icon: boolean,

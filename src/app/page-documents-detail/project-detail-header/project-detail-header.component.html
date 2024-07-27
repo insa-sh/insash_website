@@ -1,12 +1,16 @@
 
     <div class="project-header">
       <div class="project-header-bg">
-        <img [src]="project.document.image_address" alt="" />
+
+        <img src="/public/images/document/{{ project.document.type }}/{{ project.document.image_address }}" alt="" />
+
       </div>
   
       <div class="project-header-fg">
         <div class="project-header-image">
-          <img [src]="project.document.image_address" alt="" />
+
+          <img src="/public/images/document/{{ project.document.type }}/{{ project.document.image_address }}" alt="" />
+
         </div>
   
         <div class="project-header-buttons">

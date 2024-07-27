@@ -4,7 +4,7 @@
     <!-- parcourir tous les membres du tableau -->
     <ng-container *ngFor="let membre of membres">
         <!-- si le rôle du membre fait partie des rôles associés au bureau, on l'affiche dans cette section -->
-        <ng-container *ngIf="membre.status.String == 'bureau' && !membre.archived">
+        <ng-container *ngIf="membre.status == 'bureau' && !membre.archived">
             <app-membre-bureau [membre]=membre></app-membre-bureau>
         </ng-container>
     </ng-container>

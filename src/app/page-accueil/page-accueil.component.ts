@@ -23,15 +23,10 @@ export class PageAccueilComponent {
     this.route.data.subscribe(
         (data) => {
           if (data['topDocumentsAndAuthors'] != null) {
-            data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
-              documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
-              if (documentsAndAuthor.document.content_address.String != "") {
 
-              documentsAndAuthor.document.content_address.String = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address.String);
-              }
-              this.topDocumentsAndAuthors.push(documentsAndAuthor);
+              this.topDocumentsAndAuthors = data['topDocumentsAndAuthors'];
               
-          });
+
           }
         })
   }
