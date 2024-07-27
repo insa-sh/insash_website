@@ -13,7 +13,7 @@ type Document struct {
 	Tags           pq.StringArray `json:"tags" db:"tags"`
 	Content        sql.NullString `json:"content_address" db:"content_address"`
 	Date           string         `json:"date" db:"date"`
-	Description    string         `json:"description" db:"description"`
+	Description    sql.NullString `json:"description" db:"description"`
 	Image          string         `json:"image_address" db:"image_address"`
 	Slug           string         `json:"slug" db:"slug"`
 	IsImageIcon    bool           `json:"is_image_icon" db:"is_image_icon"`
