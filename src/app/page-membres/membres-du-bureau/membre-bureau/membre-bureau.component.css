@@ -28,12 +28,19 @@ div.membre-bureau img {
     background-color: #353535;
     aspect-ratio: 1;
     cursor: pointer;
-    transition: transform var(--global-transition-duration) ease-in-out;
+    transition: border var(--global-transition-duration) ease-in-out;
+
+}
+div.membre-bureau>a {
+    position:relative;
+    /* overflow: hidden; */
+
 
 }
 
-div.membre-bureau img:hover {
-    transform: scale(1.05);
+div.membre-bureau img:hover, div.membre-bureau:has(div.membre-info:hover) img {
+    transform: scale(1);
+    border: 6px var(--website-strong-color) solid;
 }
 
 div.membre-bureau div.membre-info {
@@ -52,9 +59,48 @@ div.membre-bureau a:nth-child(2) {
     transform: scale(1);
     transition: transform var(--global-transition-duration) ease-in-out;
 }
-div.membre-bureau a:nth-child(2):has(div.membre-info:hover)  {
-    transform: scale(1.02)
+div.membre-bureau a:nth-child(2):has(div.membre-info:hover), div.membre-bureau:has(img:hover)>a:nth-child(2), p.hover-text:hover, div.membre-bureau:has(p.hover-text:hover)  a:nth-child(2)  {
+    transform: scale(1.02);
 }
+
+
+p.hover-text {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    aspect-ratio: 1;
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    color: var(--website-strong-color);
+    /* margin: 6px; */
+    border-radius: 600px;
+    border: 0px solid var(--website-strong-color);
+    opacity: 0;
+    /* visibility: hidden; */
+    transition: opacity var(--global-transition-duration) ease-in-out, border var(--global-transition-duration) ease-in-out;
+    cursor: pointer;
+}
+
+div.membre-bureau a:nth-child(2):has(div.membre-info:hover) p.hover-text, div.membre-bureau:has(img:hover) p.hover-text, p.hover-text:hover, div.membre-bureau:has(img:hover) p.hover-text, div.membre-bureau:has(div.membre-info:hover) p.hover-text {
+    opacity: 1;
+    visibility: visible;
+    border: 6px solid var(--website-strong-color);
+
+}
+
+
+
+
+
 
 
 p.membre-citation {

@@ -1,10 +1,11 @@
 
   <div class="membre-bureau">
     <!-- si le membre a une photo de profil alors l'afficher, sinon prendre celle par défaut -->
-    <a routerLink="/les-membres/{{ membre.username }}">
+    <a routerLink="/les-membres/{{membre.username}}">
     <ng-container *ngIf="membre.image_address.String !== ''">
         
         <img src="/public/images/member/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" class="profile-picture">
+        <p class="hover-text">Voir le profil</p>
 
     </ng-container>
     <ng-container *ngIf="membre.image_address.String === ''">
@@ -13,10 +14,11 @@
         alt="Photo  de profil du {{ membre.role }}"
         class="profile-picture" 
       />
+      <p class="hover-text">Voir le profil</p>
     </ng-container></a>
 
     <a><div class="membre-panel">
-    <div class="membre-info" routerLink="/les-membres/{{ membre.username }}">
+    <div class="membre-info" (click)="navigateToMembre(membre.username.toString())">
       <p class="variable-name">
         {{ membre.firstname.String.toLowerCase() }}{{ membre.lastname.String.toUpperCase() }}<span>.{{ membre.surname.String }}</span>
       </p>
@@ -31,7 +33,7 @@
       <!-- recrer une condition pour l'affichage de l'email -->
       <p *ngIf="membre.website.String !== ''" class="indent-2">
         site =
-        <a class="variable-link" href="{{ membre.website.String }}">{{
+        <a class="variable-link" (click)="openLink(membre.website.String)">{{
           membre.website.String
         }}</a>
       </p>
