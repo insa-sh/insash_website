@@ -34,6 +34,7 @@ div.search-bar {
 
     /* pas d'encadré à la selection */
     flex: 1;
+    transition: all var(--global-transition-duration);
 
 }
 
