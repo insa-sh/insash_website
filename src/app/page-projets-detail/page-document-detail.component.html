@@ -46,7 +46,7 @@
   </div>
 
   <div class="document-image" *ngIf="!isProject()">
-  <img   src="{{ documentAndAuthor.document.image_address }}">
+  <img   src="/public/images/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.image_address }}">
 </div>
   <div
     class="document-content"
@@ -57,7 +57,7 @@
     <markdown
       lineNumbers
       ngPreserveWhitespaces
-      [src]="documentAndAuthor.document.content_address.String"
+      src="/public/markdown/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.content_address.String }}"
     >
     </markdown>
   </div>

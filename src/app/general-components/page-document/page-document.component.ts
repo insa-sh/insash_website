@@ -45,10 +45,6 @@ export class PageDocumentComponent {
         (data) => {
           if (data['topDocumentsAndAuthors'] != null) {
             data['topDocumentsAndAuthors'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
-              documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
-              if (documentsAndAuthor.document.content_address.String != "") {
-              documentsAndAuthor.document.content_address.String = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address.String);
-              }
               this.topDocumentsAndAuthors.push(documentsAndAuthor);
               
           });
@@ -76,10 +72,6 @@ export class PageDocumentComponent {
         (data: any) => {
           if (data) {
             this.documentsAndAuthors = data.map((documentAndAuthor: DocumentAndAuthor) => {
-              documentAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentAndAuthor.document.type, documentAndAuthor.document.image_address);
-              if (documentAndAuthor.document.content_address.String != "") {
-              documentAndAuthor.document.content_address.String = this.documentService.getMarkdownURL(documentAndAuthor.document.type, documentAndAuthor.document.slug ,documentAndAuthor.document.content_address.String);
-              }
               return documentAndAuthor;
             });
           } else {

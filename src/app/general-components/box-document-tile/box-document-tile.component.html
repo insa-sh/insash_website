@@ -3,7 +3,7 @@
   <div class="tile-rectangle">
     
     <div class="tile-image" [ngClass]="{ icon: documentAndAuthor.document.is_image_icon}">
-      <img src="{{ documentAndAuthor.document.image_address }}" alt="" />
+      <img src="/public/images/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.image_address }}" alt="" />
     </div>
 
     <div class="tile-content">

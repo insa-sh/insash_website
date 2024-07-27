@@ -1,7 +1,7 @@
 <div class="membre-bureau">
     <!-- si le membre a une photo de profil alors l'afficher, sinon prendre celle par défaut -->
     <ng-container *ngIf="membre.image_address.String !== ''">
-        <img src="{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" class="profile-picture">
+        <img src="/public/images/member/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" class="profile-picture">
     </ng-container>
     <ng-container *ngIf="membre.image_address.String === ''">
         <img src="/public/images/profile_pictures/default.jpeg" alt="Photo  de profil du {{membre.role}}"

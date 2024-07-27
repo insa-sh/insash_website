@@ -135,19 +135,4 @@ export class DocumentService {
     return this.http.get<Member>(url);
   }
 
-  // image = {slug}/{filename} (identique au contenu de la DB à l'attribut 'image_address')
-  getDocumentImageURL(documentType: DocumentType, image: string): string {
-    return BASE_URL + "images/documents/" +  documentType + "/" + image;
-  }
-
-  // image = {filename} (identique au contenu de la DB à l'attribut 'image')
-  getMemberImageURL(image: string): string {
-    return BASE_URL + "images/members/" + image;
-  }
-
-  // filename : identique au contenu de la DB à l'attribut 'content_address'
-  getMarkdownURL(documentType: DocumentType, slug: String, filename: string): string {
-    return BASE_URL + "markdown/documents/" + documentType + "/" + filename;
-  }
-
 }
