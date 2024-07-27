@@ -12,6 +12,7 @@ const createDocumentResolver = (documentType: DocumentType, nbr? : number): Reso
 
 
         let slug = "";
+        let username = [];
         if (nbr == null) {
             nbr = 0;
         } 
@@ -20,7 +21,12 @@ const createDocumentResolver = (documentType: DocumentType, nbr? : number): Reso
             slug = route.paramMap.get('slug')!;
         }
 
-        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", slug, [], SortingBy.dateAsc, [], nbr = nbr, false);
+        
+    if (route.paramMap.get('username') != null) {
+        username.push(route.paramMap.get('username')!);
+    }
+
+        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", slug, [], SortingBy.dateAsc, username, nbr = nbr, false);
     };
 };
 
@@ -72,5 +78,10 @@ export const NewsYearResolver = createDocumentYearResolver(DocumentType.news);
 
 export const MemberResolver : ResolveFn<Member> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Member> => {
 
-        return inject(DocumentService).getMembers();
+    let username = "";
+    if (route.paramMap.get('username') != null) {
+        username = route.paramMap.get('username')!;
+    }
+
+        return inject(DocumentService).getMembers("", username, undefined);
     };

@@ -18,7 +18,8 @@ import { PageTipsComponent } from "./page-tips/page-tips.component";
 import { PageNewsComponent } from "./page-news/page-news.component";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
-import { PageDocumentsDetailComponent } from "./page-projets-detail/page-document-detail.component";
+import { PageDocumentsDetailComponent } from "./page-documents-detail/page-document-detail.component";
+import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
 
 
 
@@ -43,9 +44,15 @@ const routes: Routes = [
     resolve: {
       members: MemberResolver,
     }
-
-
-    
+  },
+  {
+    path : "les-membres/:username",
+    component: PageMembresDetailComponent,
+    title: "",
+    resolve: {
+      member: MemberResolver,
+      project: ProjectResolver
+    }
   },
   {
     path : "project",

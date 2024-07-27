@@ -22,8 +22,6 @@ export class PageDocumentsDetailComponent {
 
   ngOnInit() {
     this.fetchDocument();
-    this.titleService.setTitle("./insa.sh - " + this.documentAndAuthor.document.title);
-    console.log(this.documentAndAuthor.document.content_address);
   }
 
   getNumberArchivedAuthors() {
@@ -54,6 +52,7 @@ export class PageDocumentsDetailComponent {
               this.documentAndAuthor.document.content_address.String = this.documentService.getMarkdownURL(this.documentAndAuthor.document.type, this.documentAndAuthor.document.slug ,this.documentAndAuthor.document.content_address.String);
           
             }
+            this.titleService.setTitle("./insa.sh - " + this.documentAndAuthor.document.title);
             } else {
             this.router.navigate(['/404']);
           }
