@@ -96,7 +96,7 @@ div.member-citation p{
     text-overflow: clip; 
     line-break:anywhere;
     /* animation timing - delay */
-    animation: appearFromLeftCorner 0.5s ease-out 1.5s;
+    animation: appearFromLeftCorner 0.5s ease-out 0s;
     opacity: 0;
     transform: scale(0) translate(-20%,-20%);
 
