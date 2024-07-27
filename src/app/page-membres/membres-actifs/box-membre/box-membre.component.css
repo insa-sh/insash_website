@@ -1,3 +1,7 @@
+A {
+    text-decoration: none;
+}
+
 div.box-membre>p.nom {
     color: #FFF;
     font-family: "Open Sans";
@@ -12,6 +16,11 @@ div.box-membre>p.nom {
     font-size: 16px;
     font-weight: 400;
     font-style: italic;
+}
+
+.nom>span.tiret {
+    padding: 0 6px;
+
 }
 
 div.box-membre>p.role {

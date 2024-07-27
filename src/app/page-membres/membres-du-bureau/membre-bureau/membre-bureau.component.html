@@ -1,25 +1,52 @@
-<div class="membre-bureau">
+
+  <div class="membre-bureau">
     <!-- si le membre a une photo de profil alors l'afficher, sinon prendre celle par défaut -->
+    <a routerLink="/les-membres/{{ membre.username }}">
     <ng-container *ngIf="membre.image_address.String !== ''">
         <img src="/public/images/member/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" class="profile-picture">
     </ng-container>
     <ng-container *ngIf="membre.image_address.String === ''">
-        <img src="/public/images/profile_pictures/default.jpeg" alt="Photo  de profil du {{membre.role}}"
-            class="profile-picture">
-    </ng-container>
+      <img
+        src="/public/images/profile_pictures/default.jpeg"
+        alt="Photo  de profil du {{ membre.role }}"
+        class="profile-picture"
+      />
+    </ng-container></a>
 
-
+    <a routerLink="/les-membres/{{ membre.username }}"><div class="membre-panel">
     <div class="membre-info">
-        <p class="variable-name">{{membre.surname.String}}<span>.{{membre.role.String}}</span></p>
-        <p class="indent-1">&#123;</p>
-        <p class="indent-2">pseudo = <span class="variable-string">"{{membre.surname.String}}"</span></p>
-        <p class="indent-2">role = <span class="variable-string">"{{membre.role.String}}"</span></p>
-        <!-- recrer une condition pour l'affichage de l'email -->
-        <p *ngIf="membre.website.String !== ''"
-            class="indent-2">site = <a class="variable-link"
-                href="{{membre.website.String}}">{{membre.website.String}}</a></p>
-        <p class="indent-1">&#125;</p>
-
-
+      <p class="variable-name">
+        {{ membre.firstname.String.toLowerCase() }}{{ membre.lastname.String.toUpperCase() }}<span>.{{ membre.surname.String }}</span>
+      </p>
+      <p class="indent-1">&#123;</p>
+      <p class="indent-2">
+        pseudo =
+        <span class="variable-string">"{{ membre.username }}"</span>
+      </p>
+      <p class="indent-2">
+        role = <span class="variable-string">"{{ membre.role.String }}"</span>
+      </p>
+      <!-- recrer une condition pour l'affichage de l'email -->
+      <p *ngIf="membre.website.String !== ''" class="indent-2">
+        site =
+        <a class="variable-link" href="{{ membre.website.String }}">{{
+          membre.website.String
+        }}</a>
+      </p>
+      
+      <p class="indent-1">&#125;</p>
+      <p class="membre-citation" *ngIf="membre.citation.String !== ''">
+        <span class="variable-string">// {{ membre.citation.String }}</span>
+      </p>
     </div>
-</div>
+
+    <div class="membre-reseau">
+        <a href="https://www.instagram.com/{{ membre.instagram.String }}" target="_blank" *ngIf="membre.instagram.String != ''"><i class="fa-brands fa-instagram"></i></a>
+        <a href="{{ membre.linkedin.String }}" target="_blank" *ngIf="membre.linkedin.String != ''"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="{{ membre.github.String }}" target="_blank" *ngIf="membre.github.String != ''"><i class="fa-brands fa-github"></i></a>
+        
+        
+       
+    </div>
+</div></a>
+  </div>
