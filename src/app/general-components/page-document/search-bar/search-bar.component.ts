@@ -59,7 +59,6 @@ export class SearchBarComponent {
     this.route.data.subscribe(
         (data) => {
           this.authors = data['documentAuthors'];
-          console.log(this.authors);
         })
   }
 
@@ -128,8 +127,6 @@ export class SearchBarComponent {
       sort: selectedSort,
       search: this.search.value
     };
-
-    console.log(filters);
 
     this.filterChanged.emit(filters);
 

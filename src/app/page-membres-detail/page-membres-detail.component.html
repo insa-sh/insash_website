@@ -1,6 +1,6 @@
 <div class="member-detail">
     <div class="member-header">
-        <div class="member-image"><img src="{{ member.image_address.String }}" alt="">
+        <div class="member-image"><img src="/public/images/member/{{ member.image_address.String }}" alt="">
         
             <div class="member-citation" *ngIf="member.citation.String != ''"><p>// {{ member.citation.String }}</p></div></div>
             
@@ -23,10 +23,10 @@
             <div class="tag-retraite tag" *ngIf="member.archived">
                 Retraité du club
             </div>
-            <div class="tag-bureau tag" *ngIf="member.status.String == 'bureau'">
+            <div class="tag-bureau tag" *ngIf="member.status == 'bureau'">
                 Bureau
             </div>
-            <div class="tag-role tag" *ngIf="member.status.String == 'bureau' && member.role.String != ''">
+            <div class="tag-role tag" *ngIf="member.status == 'bureau' && member.role.String != ''">
                 {{ member.role.String}}
             </div>
             <div class="tag-project tag" *ngIf="project.length > 0">
@@ -47,7 +47,7 @@
                 <a  class="reseau-tag"  *ngIf="member.linkedin.String != ''"href="{{ member.linkedin.String }}" target="_blank">
                     <i class="fab fa-linkedin"></i>
                 </a>
-            <a routerLink="/custom-website/{{ member.username }}">
+            <a routerLink="/custom-website/{{ member.username }}" *ngIf="member.has_custom_website">
                 <div class="member-custom-website">
                     <p>Page perso</p>
                     <i class="fa-solid fa-play"></i>
