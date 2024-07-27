@@ -50,4 +50,8 @@ export class PageMembresDetailComponent {
         })
   }
 
+  doesHeHaveInternet() {
+    return this.member.github.String != '' || this.member.linkedin.String != '' || this.member.instagram.String != '' || this.member.website.String != '' || this.member.has_custom_website;
+  }
+
 }
