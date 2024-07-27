@@ -33,7 +33,6 @@ export class PageMembresComponent {
 
   ngOnInit() {
     this.fetchMembers();
-    console.log(this.membres);
   }
 
 

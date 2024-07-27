@@ -8,7 +8,6 @@
 // obtenir numero du jour actuel
 function getDate() {
     let date = new Date();
-    console.log(date.getDate());
     return date.getDate();
 }
 

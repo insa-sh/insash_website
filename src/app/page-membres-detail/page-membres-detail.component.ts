@@ -33,9 +33,6 @@ export class PageMembresDetailComponent {
 
             this.member = data['member'][0];
             this.titleService.setTitle("./insa.sh - " + this.member.username);
-            if (this.member.image_address.String != "") {
-              this.member.image_address.String = this.documentService.getMemberImageURL(this.member.image_address.String);
-            }
             } else {
             this.router.navigate(['/404']);
           }
@@ -47,14 +44,7 @@ export class PageMembresDetailComponent {
     this.route.data.subscribe(
         (data) => {
           if (data['project'] != null) {
-            data['project'].forEach((documentsAndAuthor: DocumentAndAuthor) => {
-              documentsAndAuthor.document.image_address = this.documentService.getDocumentImageURL(documentsAndAuthor.document.type, documentsAndAuthor.document.image_address);
-              if (documentsAndAuthor.document.content_address.String != "") {
-              documentsAndAuthor.document.content_address.String = this.documentService.getMarkdownURL(documentsAndAuthor.document.type, documentsAndAuthor.document.slug ,documentsAndAuthor.document.content_address.String);
-              }
-              this.project.push(documentsAndAuthor);
-              
-          });
+            this.project = data['project'];
           }
           
         })
