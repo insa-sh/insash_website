@@ -247,7 +247,7 @@ div.member-custom-website p {
     }
     div.member-citation p{
         font-size: 14px;
-        animation: appearFromTopCenter 0.5s ease-out 1.5s;
+        animation: appearFromTopCenter 0.5s ease-out 0s;
         opacity: 0;
         transform: scale(0) translateY(-20%);
     

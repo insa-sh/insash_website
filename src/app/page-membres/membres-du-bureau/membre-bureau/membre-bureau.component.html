@@ -1,22 +1,24 @@
 
   <div class="membre-bureau">
     <!-- si le membre a une photo de profil alors l'afficher, sinon prendre celle par défaut -->
-    <a routerLink="/les-membres/{{ membre.username }}">
+    <a routerLink="/les-membres/{{membre.username}}">
     <ng-container *ngIf="membre.image_address.String !== ''">
-
+        
         <img src="/public/images/member/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" class="profile-picture">
+        <div class="hover-text"><p>Voir<span class="computer-only"> le profil</span></p></div>
 
     </ng-container>
     <ng-container *ngIf="membre.image_address.String === ''">
       <img
         src="/public/images/profile_pictures/default.jpeg"
         alt="Photo  de profil du {{ membre.role }}"
-        class="profile-picture"
+        class="profile-picture" 
       />
+      <div class="hover-text"><p>Voir<span class="computer-only"> le profil</span></p></div>
     </ng-container></a>
 
-    <a routerLink="/les-membres/{{ membre.username }}"><div class="membre-panel">
-    <div class="membre-info">
+    <a><div class="membre-panel">
+    <div class="membre-info" (click)="navigateToMembre(membre.username.toString())">
       <p class="variable-name">
         {{ membre.firstname.String.toLowerCase() }}{{ membre.lastname.String.toUpperCase() }}<span>.{{ membre.surname.String }}</span>
       </p>
@@ -31,7 +33,7 @@
       <!-- recrer une condition pour l'affichage de l'email -->
       <p *ngIf="membre.website.String !== ''" class="indent-2">
         site =
-        <a class="variable-link" href="{{ membre.website.String }}">{{
+        <a class="variable-link">{{
           membre.website.String
         }}</a>
       </p>
@@ -43,9 +45,10 @@
     </div>
 
     <div class="membre-reseau">
-        <a href="https://www.instagram.com/{{ membre.instagram.String }}" target="_blank" *ngIf="membre.instagram.String != ''"><i class="fa-brands fa-instagram"></i></a>
-        <a href="{{ membre.linkedin.String }}" target="_blank" *ngIf="membre.linkedin.String != ''"><i class="fa-brands fa-linkedin"></i></a>
         <a href="{{ membre.github.String }}" target="_blank" *ngIf="membre.github.String != ''"><i class="fa-brands fa-github"></i></a>
+        <a href="{{ membre.website.String }}" target="_blank" *ngIf="membre.website.String != ''"><i class="fa-solid fa-globe"></i></a>
+        <a href="{{ membre.linkedin.String }}" target="_blank" *ngIf="membre.linkedin.String != ''"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/{{ membre.instagram.String }}" target="_blank" *ngIf="membre.instagram.String != ''"><i class="fa-brands fa-instagram"></i></a>
         
         
        

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Member } from 'src/app/models/member';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -9,4 +11,16 @@ import { Member } from 'src/app/models/member';
 })
 export class MembreBureauComponent {
   @Input() membre!: Member; // ! -> la variable membre est obligatoire et ne sera jamais null ou undefined
+
+
+  constructor(private router: Router) { }
+  
+  navigateToMembre(username: string) {
+    this.router.navigate([`/les-membres/${username}`]);
+  }
+  // ouvrir un lien externe
+  openLink(link: string) {
+    window.open(link, '_blank');
+  }
+
 }

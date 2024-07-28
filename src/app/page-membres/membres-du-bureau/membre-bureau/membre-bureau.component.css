@@ -7,12 +7,14 @@ div.membre-bureau {
     align-items: flex-start;
     font-size: 16px;
     min-height: 300px;
+    transition: all var(--global-transition-duration);
 
 }
 
 a {
     text-decoration: none;
 }
+
 
 div.membre-panel {
     display: flex;
@@ -25,7 +27,20 @@ div.membre-bureau img {
     border: 6px solid #222;
     background-color: #353535;
     aspect-ratio: 1;
+    cursor: pointer;
+    transition: border var(--global-transition-duration) ease-in-out;
 
+}
+div.membre-bureau>a {
+    position:relative;
+    /* overflow: hidden; */
+
+
+}
+
+div.membre-bureau img:hover, div.membre-bureau:has(div.membre-info:hover) img {
+    /* transform: scale(1); */
+    /* border: 6px var(--website-strong-color) solid; */
 }
 
 div.membre-bureau div.membre-info {
@@ -37,8 +52,69 @@ div.membre-bureau div.membre-info {
     border: 1px solid #353535;
     background: #1E1E1E;
     border-radius: 13px 13px 0 0;
+    cursor: pointer;
     
 }
+div.membre-bureau a:nth-child(2) {
+    transform: scale(1);
+    transition: transform var(--global-transition-duration) ease-in-out;
+}
+div.membre-bureau a:nth-child(2):has(div.membre-info:hover), div.membre-bureau:has(img:hover)>a:nth-child(2), div.hover-text:hover, div.membre-bureau:has(div.hover-text:hover)  a:nth-child(2)  {
+    /* transform: scale(1.02); */
+
+}
+div.membre-bureau:has(div.membre-info:hover), div.membre-bureau:has(img:hover), div.membre-bureau:has(div.hover-text:hover)  {
+    /* transform: scale(1.02); */
+    /* gap: 30px; */
+    
+}
+
+
+
+
+div.hover-text {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    aspect-ratio: 1;
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    color: var(--website-strong-color);
+    /* margin: 6px; */
+    border-radius: 600px;
+    border: 0px solid var(--website-strong-color);
+    opacity: 0;
+    /* visibility: hidden; */
+    transition: opacity var(--global-transition-duration) ease-in-out, border var(--global-transition-duration) ease-in-out;
+    cursor: pointer;
+    overflow: hidden;
+
+}
+div.hover-text p, div.hover-text span {
+    color: inherit;
+}
+
+div.membre-bureau a:nth-child(2):has(div.membre-info:hover) div.hover-text, div.membre-bureau:has(img:hover) div.hover-text, div.hover-text:hover, div.membre-bureau:has(img:hover) div.hover-text, div.membre-bureau:has(div.membre-info:hover) div.hover-text {
+    opacity: 1;
+    visibility: visible;
+    border: 6px solid var(--website-strong-color);
+
+}
+
+
+
+
+
+
 
 p.membre-citation {
     margin-top: 10px;
@@ -55,9 +131,19 @@ div.membre-reseau {
     padding: 10px;
     border-radius: 0 0 13px 13px;
 }
+div.membre-reseau a {
+    transition: color var(--global-transition-duration) ease-in-out, transform 0.2s ease-in-out;
+
+}
+div.membre-reseau a:hover {
+    color: #dbdbdb;
+    font-size: 20px;
+    transform: scale(0.9);
+}
 
 div.membre-reseau i {
     font-size: 30px;
+    color: inherit;
 }
 
 
@@ -106,8 +192,13 @@ div.membre-reseau i {
         padding: 10px 25px;
         border: 1px solid #353535;
         background: #1E1E1E;
-        border-radius: 13px;
+        /* border-radius: 13px; */
         overflow: hidden;
         word-break: break-word;
     }
+
+    div.hover-text {
+        font-size: 14px;
+    }
+    
 }
