@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Member } from 'src/app/models/member';
 import { Router } from '@angular/router';
-import { defaultPictures } from '../../default-pictures';
 
 
 
@@ -24,9 +23,9 @@ export class MembreBureauComponent {
   openLink(link: string) {
     window.open(link, '_blank');
   }
-
-  getRandomDefaultPicture() {
-    return defaultPictures[Math.floor(Math.random() * defaultPictures.length)];
+  imageError (event: any) {
+    console.log("Image load error, changing 'image_adress' to '' : " + event);
+    this.membre.image_address.String = '';
   }
 
 }

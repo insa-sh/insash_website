@@ -1,6 +1,34 @@
 <div class="member-detail">
     <div class="member-header">
-        <div class="member-image"><img src="/public/images/member/{{ member.image_address.String }}" alt="">
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        <div class="member-image">
+            <ng-container *ngIf="member.image_address.String !== ''">
+        
+            <img src="/public/images/member/{{member.image_address.String}}" alt="Photo de profil du {{member.role.String}}" (error)="imageError($event)" class="profile-picture">
+    
+        </ng-container>
+        <ng-container *ngIf="member.image_address.String === ''">
+          <img
+            src="/public/images/member/default/barr-e.png"
+            alt="Photo  de profil du {{ member.role }}"
+            class="profile-picture" 
+          />
+        </ng-container>
         
             <div class="member-citation" *ngIf="member.citation.String != ''"><p>// {{ member.citation.String }}</p></div></div>
             
