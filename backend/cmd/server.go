@@ -21,12 +21,12 @@ func main() {
 
 	originsOk := gorillaHandlers.AllowedOrigins([]string{os.Getenv("ORIGIN_ALLOWED")})
 
-	router.HandleFunc("/documents", handlers.GetDocument).Methods("GET")
-	router.HandleFunc("/documents/years", handlers.GetDocumentYears).Methods("GET")
-	router.HandleFunc("/documents/tags", handlers.GetDocumentTags).Methods("GET")
-	router.HandleFunc("/documents/authors", handlers.GetDocumentAuthors).Methods("GET")
+	router.HandleFunc("/api/documents", handlers.GetDocument).Methods("GET")
+	router.HandleFunc("/api/documents/years", handlers.GetDocumentYears).Methods("GET")
+	router.HandleFunc("/api/documents/tags", handlers.GetDocumentTags).Methods("GET")
+	router.HandleFunc("/api/documents/authors", handlers.GetDocumentAuthors).Methods("GET")
 
-	router.HandleFunc("/members", handlers.GetMembers).Methods("GET")
+	router.HandleFunc("/api/members", handlers.GetMembers).Methods("GET")
 
 	err := http.ListenAndServe(":8080", gorillaHandlers.CORS(originsOk)(router))
 	if err != nil {
