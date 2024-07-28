@@ -36,9 +36,14 @@ func AddQueryParameterDocument(r *http.Request) (string, []interface{}, error) {
 	// Construction de la requête SQL dynamiquement
 	// recherche d'une chaine de caractère dans le titre ou la description
 	if search != "" {
-		fmt.Println(search)
-		options = append(options, fmt.Sprintf("( to_tsvector('french', LOWER(unaccent(document.title))) @@ plainto_tsquery('french', $%d) OR to_tsvector('french', LOWER(unaccent(document.description))) @@ plainto_tsquery('french', $%d))", len(args)+1, len(args)+1))
-		args = append(args, search)
+
+		search_terms := strings.Fields(search)
+
+		for _, v := range search_terms {
+			options = append(options, fmt.Sprintf("( unaccent(document.title) ILIKE $%d OR unaccent(document.description) ILIKE $%d)", len(args)+1, len(args)+1))
+			args = append(args, "%"+v+"%")
+		}
+
 	}
 
 	if len(year) > 0 {

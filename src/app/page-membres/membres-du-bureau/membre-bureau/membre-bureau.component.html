@@ -4,13 +4,13 @@
     <a routerLink="/les-membres/{{membre.username}}">
     <ng-container *ngIf="membre.image_address.String !== ''">
         
-        <img src="/public/images/member/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" class="profile-picture">
+        <img src="/public/images/member/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" (error)="imageError($event)" class="profile-picture">
         <div class="hover-text"><p>Voir<span class="computer-only"> le profil</span></p></div>
 
     </ng-container>
     <ng-container *ngIf="membre.image_address.String === ''">
       <img
-        src="/public/images/profile_pictures/default.jpeg"
+        src="/public/images/member/default/barr-e.png"
         alt="Photo  de profil du {{ membre.role }}"
         class="profile-picture" 
       />

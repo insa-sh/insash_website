@@ -54,4 +54,9 @@ export class PageMembresDetailComponent {
     return this.member.github.String != '' || this.member.linkedin.String != '' || this.member.instagram.String != '' || this.member.website.String != '' || this.member.has_custom_website;
   }
 
+  imageError (event: any) {
+    console.log("Image load error, changing 'image_adress' to '' : " + event);
+    this.member.image_address.String = '';
+  }
+
 }
