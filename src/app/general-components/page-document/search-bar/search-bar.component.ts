@@ -51,21 +51,28 @@ export class SearchBarComponent {
   fetchTags() {
     this.route.data.subscribe(
         (data) => {
-          this.tags = data['documentTags'];
+          if (data['documentTags'] != null) {
+            this.tags = data['documentTags'];
+          }
+          
         })
   }
 
   fetchAuthors() {
     this.route.data.subscribe(
         (data) => {
-          this.authors = data['documentAuthors'];
+          if (data['documentAuthors'] != null) {
+            this.authors = data['documentAuthors'];
+          }
         })
   }
 
   fetchYears() {
     this.route.data.subscribe(
         (data) => {
+          if (data['documentYears'] != null) {
           this.dates = data['documentYears'];
+          }
         })
   }
 

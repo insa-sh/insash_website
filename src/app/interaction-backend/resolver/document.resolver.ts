@@ -1,14 +1,14 @@
 import { Injectable, inject } from "@angular/core";
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
 import { DocumentService, SortingBy } from "../document.service";
-import { Observable } from "rxjs";
+import { catchError, Observable, of } from "rxjs";
 import { Document, DocumentType } from "../../models/document";
 import { DocumentAndAuthor } from "src/app/models/document-and-author";
 import { Member } from "src/app/models/member";
 
 
 const createDocumentResolver = (documentType: DocumentType, nbr? : number): ResolveFn<DocumentAndAuthor> => {
-    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<DocumentAndAuthor> => {
+    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> => {
 
 
         let slug = "";
@@ -26,7 +26,12 @@ const createDocumentResolver = (documentType: DocumentType, nbr? : number): Reso
         username.push(route.paramMap.get('username')!);
     }
 
-        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", slug, [], SortingBy.dateAsc, username, nbr = nbr, false);
+        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", slug, [], SortingBy.dateAsc, username, nbr = nbr, false).pipe(
+            catchError((error) => {
+              console.error('Error loading documents');
+              return of(null); 
+            })
+          );
     };
 };
 
@@ -41,9 +46,14 @@ export const TopTipsResolver = createDocumentResolver(DocumentType.tips, 3);
 export const TopNewsResolver = createDocumentResolver(DocumentType.news, 3);
 
 const createDocumentTagsResolver = (documentType: DocumentType): ResolveFn<String> => {
-    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<String> => {
+    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> => {
 
-        return inject(DocumentService).getDocumentTags(documentType = documentType, false);
+        return inject(DocumentService).getDocumentTags(documentType = documentType, false).pipe(
+            catchError((error) => {
+              console.error('Error loading document tags');
+              return of(null); 
+            })
+          );
     };
 };
 
@@ -53,9 +63,14 @@ export const TipsTagsResolver = createDocumentTagsResolver(DocumentType.tips);
 export const NewsTagsResolver = createDocumentTagsResolver(DocumentType.news);
 
 const createDocumentAuthorResolver = (documentType: DocumentType): ResolveFn<Member> => {
-    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Member> => {
+    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> => {
 
-        return inject(DocumentService).getDocumentAuthors(documentType = documentType, "", false);
+        return inject(DocumentService).getDocumentAuthors(documentType = documentType, "", false).pipe(
+            catchError((error) => {
+              console.error('Error loading document authors');
+              return of(null); 
+            })
+          );
     };
 };
 
@@ -65,9 +80,14 @@ export const TipsAuthorResolver = createDocumentAuthorResolver(DocumentType.tips
 export const NewsAuthorResolver = createDocumentAuthorResolver(DocumentType.news);
 
 const createDocumentYearResolver = (documentType: DocumentType): ResolveFn<String> => {
-    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<String> => {
+    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> => {
 
-        return inject(DocumentService).getDocumentYears(documentType = documentType, false);
+        return inject(DocumentService).getDocumentYears(documentType = documentType, false).pipe(
+            catchError((error) => {
+              console.error('Error loading document years');
+              return of(null); 
+            })
+          );
     };
 };
 
@@ -76,12 +96,17 @@ export const CheatsheetYearResolver = createDocumentYearResolver(DocumentType.ch
 export const TipsYearResolver = createDocumentYearResolver(DocumentType.tips);
 export const NewsYearResolver = createDocumentYearResolver(DocumentType.news);
 
-export const MemberResolver : ResolveFn<Member> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Member> => {
+export const MemberResolver : ResolveFn<Member> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> => {
 
     let username = "";
     if (route.paramMap.get('username') != null) {
         username = route.paramMap.get('username')!;
     }
 
-        return inject(DocumentService).getMembers("", username, undefined);
+        return inject(DocumentService).getMembers("", username, undefined).pipe(
+            catchError((error) => {
+              console.error('Error loading member');
+              return of(null); 
+            })
+          );
     };

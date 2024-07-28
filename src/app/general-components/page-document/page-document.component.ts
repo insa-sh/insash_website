@@ -4,6 +4,7 @@ import { DocumentAndAuthor } from '../../models/document-and-author';
 import { DocumentType } from '../../models/document';
 import { ActivatedRoute } from '@angular/router';
 import { TileStyle } from '../top-document/top-document.component';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-page-document',
@@ -68,7 +69,12 @@ export class PageDocumentComponent {
 
     let search = this.filters.search.length >= 3 ? this.filters.search : "";
 
-    this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, search, "", "", this.filters.dates, sort, this.filters.authors, undefined, false).subscribe(
+    this.documentService.getDocument(this.typeOfDocuments, this.filters.tags, search, "", "", this.filters.dates, sort, this.filters.authors, undefined, false).pipe(
+      catchError((error) => {
+        console.error('Error loading documents list');
+        return of(null); // or return a default value
+      })
+    ).subscribe(
         (data: any) => {
           if (data) {
             this.documentsAndAuthors = data;
