@@ -96,6 +96,7 @@ div#home-header svg:hover+#msg-bubble {
 
 div#home-header>h1>span {
     color: var(--insash-rose-fonce);
+    font-family: var(--insash-text-default-font);
     font-size: 32px;
 }
 div#home-header>h1>span>span#smaller-space {
