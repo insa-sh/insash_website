@@ -30,6 +30,7 @@ import { PageMentionsLegalesComponent } from './page-mentions-legales/page-menti
 import { PageDocumentsDetailComponent } from './page-documents-detail/page-document-detail.component';
 import { ProjectDetailHeaderComponent } from './page-documents-detail/project-detail-header/project-detail-header.component';
 import { MarkdownModule, MarkedOptions } from "ngx-markdown";
+import { RejoindreLeClubComponent } from './general-components/rejoindre-le-club/rejoindre-le-club.component';
 
 
 import "prismjs/prism";
@@ -45,6 +46,7 @@ import { PageMembresDetailComponent } from './page-membres-detail/page-membres-d
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    RejoindreLeClubComponent,
     PageAccueilComponent,
     PageNotFoundComponent,
     BoxDocumentTileComponent,
