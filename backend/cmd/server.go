@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"insash-website-backend/internal/handlers"
 	"log"
 	"net/http"
@@ -13,8 +12,6 @@ import (
 )
 
 func main() {
-
-	fmt.Println("POSTGRES_HOST:", os.Getenv("POSTGRES_HOST"))
 
 	handlers.InitDatabase()
 	router := mux.NewRouter()
