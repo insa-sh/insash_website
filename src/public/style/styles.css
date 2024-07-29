@@ -41,6 +41,10 @@
   --tips-text-color: #007AFF;
   --tips-bg-color: #007AFF33;
 
+  --insa-red-color: #E42618;
+
+
+
   --global-transition-duration: 0.2s;
 }
 * {
