@@ -1,0 +1,30 @@
+div#rejoindre-le-club {
+    max-width: min(80vw, 2000px);
+    margin: 120px auto;
+    margin-top: 60px;
+}
+
+
+div#rejoindre-le-club h2 {
+    /* font-size: 2.5rem; */
+    margin-bottom: 60px;
+    font-family: "Open Sans";
+}
+
+h2>span {
+    color: var(--website-strong-color);
+    font-size: inherit;
+    font-family: inherit;
+}
+
+div#rejoindre-le-club>div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+a {
+    font-weight: 500;
+}
