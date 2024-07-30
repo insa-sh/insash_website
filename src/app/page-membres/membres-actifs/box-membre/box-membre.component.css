@@ -97,12 +97,15 @@ div.membre-infos a:has(~ a:hover) div.membre-surname span{
 }
 
 
-i {
+a:has(>i) {
     font-size: 30px;
-    transition: color var(--global-transition-duration);
+    transition: color var(--global-transition-duration), transform var(--global-transition-duration) ease-in-out;
 }
 
-i:hover {
+a:has(>i):hover {
     font-size: 30px;
     color: var(--website-strong-color);
+    transform: scale(0.95);
 }
+
+

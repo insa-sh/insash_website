@@ -8,17 +8,17 @@ div#membres-actifs {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: min(125px,5vw) min(100px,4vw);
+    gap: min(125px,5vw) min(90px,2vw);
     padding: 50px 25px;
 
     max-width: min(95%, 2000px);
     margin: auto;
-
+    margin-bottom: 60px;
 }
 
 app-box-membre {
 
-    min-width: 425px;
+    min-width: 390px;
 }
 
 @media (max-width: 800px) {
@@ -27,5 +27,9 @@ app-box-membre {
         padding: 2%;
         width: 100%;
     
+    }
+    app-box-membre {
+
+        min-width: 80vw;
     }
 }
