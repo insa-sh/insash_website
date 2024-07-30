@@ -1,41 +1,73 @@
-A {
+a {
     text-decoration: none;
 }
 
-div.box-membre>p.nom {
-    color: #FFF;
-    font-family: "Open Sans";
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.nom>span {
-    color: #BBB;
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.nom>span.tiret {
-    padding: 0 6px;
-
-}
-
-div.box-membre>p.role {
-    color: #A1A1A1;
-    font-family: "Open Sans";
-    font-size: 20px;
-    font-weight: 700;
-}
-
 div.box-membre {
-    /* flex: 1; */
-    width: 310px;
-    font-family: var(--insash-text-default-font);
-    padding: 20px;
-    border: 2px solid #474747;
-    background: #353535;
-    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+div.membre-image img {
+    width: 125px;
+    border-radius: 50%;
+    border: 6px solid #222;
+    background-color: #353535;
+    aspect-ratio: 1;
+    cursor: pointer;
+
+}
+
+div.membre-infos {
+    display: flex;
+    height: 100%;
+  min-height: 0;
+    flex-direction: column;
+    padding: 15px;
+    gap:10px;
+    width: 100%;
+    background-color: var(--website-bg-color-light-1);
+    border: 2px solid var(--website-bg-color-light-2);
+    border-radius: 10px;
+}
+
+div.membre-names p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+div.membre-names p span{
+    font-size: 16px;
+    font-weight: bold;
+    color: #ACACAC;
+}
+
+div.membre-surname p{
+    font-size: 16px;
+    font-weight: bold;
+    color: #ACACAC;
+}
+
+div.membre-surname span { 
+    font-size: 14px;
+    color: var(--insash-text-color);
+    font-weight: 400;
+    padding: 5px;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+}
+
+div.membre-citation p {
+    font-style: italic;
+    font-size: 16px;
+    color: #ACACAC;
+}
+
+div.membre-reseaux {
+    display: flex;
+    gap: 20px;
+}
+
+i {
+    font-size: 30px;
 }

@@ -1,6 +1,67 @@
-<a routerLink="/les-membres/{{ membre.username }}">
-<div class="box-membre">
-    <p class="nom">{{ membre.firstname.String }}<span class="tiret">-</span><span>{{ membre.surname.String }}</span></p>
-    <p class="role">{{ membre.role.String }}</p>
-</div>
-</a>
+
+  <div class="box-membre">
+    <div class="membre-image">
+      <ng-container *ngIf="membre.image_address.String !== ''">
+        <img
+          src="/public/images/member/{{ membre.image_address.String }}"
+          alt="Photo de profil du {{ membre.role.String }}"
+          (error)="imageError($event)"
+        />
+      </ng-container>
+      <ng-container *ngIf="membre.image_address.String === ''">
+        <img
+          src="/public/images/member/default/barr-e.png"
+          alt="Photo  de profil du {{ membre.role }}"
+        />
+      </ng-container>
+    </div>
+
+    <div class="membre-infos">
+      <div class="membre-names">
+        <ng-container *ngIf="membre.firstname.String !== ''; else surnom">
+          <p class="nom">
+            {{ membre.firstname.String }} {{ membre.lastname.String
+            }}<span> - <em>{{ membre.username }}</em></span>
+          </p></ng-container
+        >
+        <ng-template #surnom>
+          <p class="nom">{{ membre.username }}</p>
+        </ng-template>
+      </div>
+      <div class="membre-surname" *ngIf="membre.surname.String !== ''">
+        <p>
+          aka <span>{{ membre.surname.String }}</span>
+        </p>
+      </div>
+      <div class="membre-citation" *ngIf="membre.citation.String !== ''">
+        <p>// {{ membre.citation.String }}</p>
+      </div>
+      <div class="membre-reseaux">
+        <a
+          href="{{ membre.github.String }}"
+          target="_blank"
+          *ngIf="membre.github.String != ''"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a
+          href="{{ membre.website.String }}"
+          target="_blank"
+          *ngIf="membre.website.String != ''"
+          ><i class="fa-solid fa-globe"></i
+        ></a>
+        <a
+          href="{{ membre.linkedin.String }}"
+          target="_blank"
+          *ngIf="membre.linkedin.String != ''"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/{{ membre.instagram.String }}"
+          target="_blank"
+          *ngIf="membre.instagram.String != ''"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+
