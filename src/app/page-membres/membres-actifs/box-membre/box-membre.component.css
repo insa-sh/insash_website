@@ -15,13 +15,20 @@ div.membre-image img {
     background-color: #353535;
     aspect-ratio: 1;
     cursor: pointer;
+    transition: transform 0.25s;
 
 }
+
+div.membre-image img:hover{
+    -ms-transform: scale(1.1); 
+    -webkit-transform: scale(1.1); 
+    transform: scale(1.1);
+    }
 
 div.membre-infos {
     display: flex;
     height: 100%;
-  min-height: 0;
+    min-height: 0;
     flex-direction: column;
     padding: 15px;
     gap:10px;
@@ -29,23 +36,27 @@ div.membre-infos {
     background-color: var(--website-bg-color-light-1);
     border: 2px solid var(--website-bg-color-light-2);
     border-radius: 10px;
+    transition: color var(--global-transition-duration), background-color var(--global-transition-duration);
 }
 
 div.membre-names p {
     font-size: 16px;
     font-weight: bold;
+    transition: color var(--global-transition-duration)
 }
 
 div.membre-names p span{
     font-size: 16px;
     font-weight: bold;
     color: #ACACAC;
+    transition: color var(--global-transition-duration);
 }
 
 div.membre-surname p{
     font-size: 16px;
     font-weight: bold;
     color: #ACACAC;
+    transition: color var(--global-transition-duration);
 }
 
 div.membre-surname span { 
@@ -55,6 +66,7 @@ div.membre-surname span {
     padding: 5px;
     background-color: #1e1e1e;
     border-radius: 5px;
+    transition: background-color var(--global-transition-duration);
 }
 
 div.membre-citation p {
@@ -67,7 +79,30 @@ div.membre-reseaux {
     display: flex;
     gap: 20px;
 }
+    
+div.membre-infos a:hover div.membre-names span,
+div.membre-infos a:hover div.membre-names p,
+div.membre-infos a:hover div.membre-surname p,
+div.membre-infos a:hover ~ a p,
+div.membre-infos a:has(~ a:hover) p,
+div.membre-infos a:has(~ a:hover) span{
+    color: var(--website-strong-color);
+}
+
+
+div.membre-infos a:hover div.membre-surname span,
+div.membre-infos a:hover ~ a div.membre-surname span,
+div.membre-infos a:has(~ a:hover) div.membre-surname span{
+    background-color: var(--website-strong-color);
+}
+
 
 i {
     font-size: 30px;
+    transition: color var(--global-transition-duration);
+}
+
+i:hover {
+    font-size: 30px;
+    color: var(--website-strong-color);
 }

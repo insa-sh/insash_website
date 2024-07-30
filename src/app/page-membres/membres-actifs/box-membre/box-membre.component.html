@@ -1,6 +1,7 @@
 
   <div class="box-membre">
     <div class="membre-image">
+        <a routerLink="{{ membre.username }}">
       <ng-container *ngIf="membre.image_address.String !== ''">
         <img
           src="/public/images/member/{{ membre.image_address.String }}"
@@ -14,10 +15,13 @@
           alt="Photo  de profil du {{ membre.role }}"
         />
       </ng-container>
+    </a>
     </div>
 
     <div class="membre-infos">
+        <a routerLink="{{ membre.username }}">
       <div class="membre-names">
+        
         <ng-container *ngIf="membre.firstname.String !== ''; else surnom">
           <p class="nom">
             {{ membre.firstname.String }} {{ membre.lastname.String
@@ -27,12 +31,15 @@
         <ng-template #surnom>
           <p class="nom">{{ membre.username }}</p>
         </ng-template>
-      </div>
+    
+      </div></a>
+      <a routerLink="{{ membre.username }}">
       <div class="membre-surname" *ngIf="membre.surname.String !== ''">
         <p>
           aka <span>{{ membre.surname.String }}</span>
         </p>
       </div>
+    </a>
       <div class="membre-citation" *ngIf="membre.citation.String !== ''">
         <p>// {{ membre.citation.String }}</p>
       </div>
