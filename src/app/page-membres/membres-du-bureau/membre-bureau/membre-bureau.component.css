@@ -22,7 +22,7 @@ div.membre-panel {
 }
 
 div.membre-bureau img {
-    width: 150px;
+    width: 175px;
     border-radius: 50%;
     border: 6px solid #222;
     background-color: #353535;
@@ -178,11 +178,12 @@ div.membre-reseau i {
     div.membre-bureau {
         gap: 12px;
         margin: 4vw;
-
+        flex-direction: column !important;
+        align-items: center;
     }
 
     div.membre-bureau img {
-        width: 70px;
+        width: 175px;
 
     }
 
@@ -199,6 +200,10 @@ div.membre-reseau i {
 
     div.hover-text {
         font-size: 14px;
+    }
+
+    a.membre-panel-link {
+        width: 100%;
     }
     
 }
