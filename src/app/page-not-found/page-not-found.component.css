@@ -4,7 +4,7 @@
 }
 
 p {
-    font-size: --insash-text-default-font;
+    font-size: var(--insash-text-default-font);
     font-size: 30px;
     font-weight: bold;
     text-align: center;
@@ -24,5 +24,11 @@ div {
 @media screen and (max-width: 800px) {
     p {
       font-size: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .img_404 {
+        width: 70vw;
     }
   }
