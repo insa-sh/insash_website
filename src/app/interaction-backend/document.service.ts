@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Member } from '../models/member';
 import { Document, DocumentType } from '../models/document';
 import { DocumentAndAuthor } from '../models/document-and-author';
+import { Cacheable } from 'ts-cacheable';
 
 export enum SortingBy {
   dateAsc = "date_asc",
@@ -23,6 +24,7 @@ export class DocumentService {
   
   constructor(private http: HttpClient) { }
 
+  @Cacheable({ maxAge: 1000 * 60 * 5})
   getDocument(documentType?: DocumentType, tags?: string[], search?: string, uuid?: string, slug?: string, year?: string[], sort: SortingBy = SortingBy.dateAsc, username?: string[], nbr?: number, archived?: boolean): Observable<DocumentAndAuthor> {
     
     let url: string = BASE_URL + "documents?";
@@ -74,6 +76,7 @@ export class DocumentService {
     
   }
 
+  @Cacheable({ maxAge: 1000 * 60 * 5})
   getDocumentTags(documentType?: DocumentType, archived?: boolean): Observable<String> {
 
     let url = BASE_URL + "documents/tags?";
@@ -87,6 +90,7 @@ export class DocumentService {
     return this.http.get<String>(url);
   }
 
+  @Cacheable({ maxAge: 1000 * 60 * 5})
   getDocumentAuthors(documentType?: DocumentType, slug?: String, archived?: boolean): Observable<Member> {
 
     let url = BASE_URL + "documents/authors?";
@@ -105,6 +109,7 @@ export class DocumentService {
     return this.http.get<Member>(url);
   }
 
+  @Cacheable({ maxAge: 1000 * 60 * 5})
   getDocumentYears(documentType?: DocumentType, archived?: boolean): Observable<String> {
 
     let url = BASE_URL + "documents/years?";
@@ -118,6 +123,7 @@ export class DocumentService {
     return this.http.get<String>(url);
   }
 
+  @Cacheable({ maxAge: 1000 * 60 * 5})
   getMembers(status?: String, username?: String, archived?: boolean) {
 
     let url: string = BASE_URL + "members?";
