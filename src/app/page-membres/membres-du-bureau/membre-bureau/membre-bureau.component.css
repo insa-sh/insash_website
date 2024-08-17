@@ -57,7 +57,7 @@ div.membre-bureau div.membre-info {
 }
 div.membre-bureau a:nth-child(2) {
     transform: scale(1);
-    transition: transform var(--global-transition-duration) ease-in-out;
+    transition: transform var(--global-transition-duration) ease-in-out, color var(--global-transition-duration) ease-in-out;
 }
 div.membre-bureau a:nth-child(2):has(div.membre-info:hover), div.membre-bureau:has(img:hover)>a:nth-child(2), div.hover-text:hover, div.membre-bureau:has(div.hover-text:hover)  a:nth-child(2)  {
     /* transform: scale(1.02); */
@@ -136,7 +136,7 @@ div.membre-reseau a {
 
 }
 div.membre-reseau a:hover {
-    color: #dbdbdb;
+    color: var(--website-strong-color);;
     font-size: 20px;
     transform: scale(0.9);
 }
