@@ -1,6 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input , Renderer2} from "@angular/core";
 import { DocumentService } from "../interaction-backend/document.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { DocumentAndAuthor } from "../models/document-and-author";
 
 const NUMBER_OF_TOP_DOCUMENTS = 3;
@@ -15,7 +15,10 @@ export class PageAccueilComponent {
 
   @Input() public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
 
-  constructor(private documentService: DocumentService, private route: ActivatedRoute) {
+  private keysPressed: string[] = [];
+  private keyDownListener: (() => void) | undefined;
+
+  constructor(private documentService: DocumentService, private route: ActivatedRoute, private renderer: Renderer2, private router: Router) {
 
   }
   
@@ -31,7 +34,48 @@ export class PageAccueilComponent {
         })
   }
 
+  private handleKeyPress(event: KeyboardEvent): void {
+
+    this.keysPressed.push(event.key);
+
+    console.log(this.keysPressed);
+
+    // Implémenter la logique pour une autre séquence
+    if (this.codeSecret(['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']) || this.codeSecret(['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'B', 'A'])) {
+      console.log('Konami code detected!');
+      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+
+    }
+
+    if (this.keysPressed.length > 9) { 
+      this.keysPressed.shift();
+    }
+  }
+
+  private codeSecret(sequence: string[]): boolean {
+    const length = sequence.length;
+    if (this.keysPressed.length < length) {
+      return false;
+    }
+    for (let index = 0; index < sequence.length; index++) {
+      if (this.keysPressed[index] !== sequence[index]) {
+        return false;
+      }
+      
+    }
+    return true;
+  }
+
   ngOnInit() {
     this.fetchTopDocuments();
+    this.keyDownListener = this.renderer.listen('document', 'keydown', (event: KeyboardEvent) => {
+      this.handleKeyPress(event);
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.keyDownListener) {
+      this.keyDownListener();
+    }
   }
 }
