@@ -8,9 +8,9 @@ import { Component } from '@angular/core';
 export class HomeSocialLinksComponent {
   reseaux = [
     {
-      nom: "LinkedIn",
-      url: "https://www.linkedin.com/company/insa-sh/",
-      icon: "fa-brands fa-linkedin",
+      nom: "Discord",
+      url: "https://discord.gg/rtYZMdJW7r",
+      icon: "fa-brands fa-discord",
     },
     {
       nom: "Instagram",
@@ -18,20 +18,23 @@ export class HomeSocialLinksComponent {
       icon: "fa-brands fa-instagram",
     },
     {
-      nom: "Discord",
-      url: "https://discord.gg/rtYZMdJW7r",
-      icon: "fa-brands fa-discord",
-    },
-    {
-      nom: "GitBucket",
-      url: "https://git.insash.org",
-      icon: "fa-brands fa-square-git ",
-    },
-    {
       nom: "GitHub Organization",
       url: "https://github.com/insa-sh",
       icon: "fa-brands fa-github",
-    }
+    },
+    {
+      nom: "LinkedIn",
+      url: "https://www.linkedin.com/company/insa-sh/",
+      icon: "fa-brands fa-linkedin",
+    },
+
+
+    // {
+    //   nom: "GitBucket",
+    //   url: "https://git.insash.org",
+    //   icon: "fa-brands fa-square-git ",
+    // },
+
 
   ];
 
