@@ -28,7 +28,12 @@ export class ListDocumentTileComponent {
 
   getDateString() {
     let date = new Date(this.documentAndAuthor.document.date);
-    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+    if (this.documentAndAuthor.document.type === DocumentType.project) {
+      return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' });
+    } else {
+      return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+    
   }
 
   
