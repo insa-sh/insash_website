@@ -26,7 +26,7 @@ const createDocumentResolver = (documentType: DocumentType, nbr? : number): Reso
         username.push(route.paramMap.get('username')!);
     }
 
-        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", slug, [], SortingBy.dateAsc, username, nbr = nbr, false);
+        return inject(DocumentService).getDocument(documentType = documentType, [], "", "", slug, [], SortingBy.dateDesc, username, nbr = nbr, false);
     };
 };
 
