@@ -1,40 +1,33 @@
 services:
   website-insash:
+    # nginx + frontend
     build: .
     image: website-insash
     container_name: website-insash
-    volumes:
-      - ./:/app
-      - /app/node_modules
     ports:
-      - "4200:4200"
+      - "80:80"
     networks:
-      - frontend
-  website-insash-api:
-    build: ./backend
-    image: website-insash-api
-    container_name: website-insash-api
-    env_file: ./backend/cmd/.env
-    volumes:
-      - ./backend:/var/www/app
-    ports:
-      - "8080:8080"
+      - website
+
+  website-insash-backend:
+    build: insash_website_backend
+    image: website-insash-backend
+    container_name: website-insash-backend
+    env_file: insash_website_backend/cmd/.env
     networks:
-      - backend
-      - frontend
-  postgres: 
+        - website
+
+
+  website-insash-database: 
     image: postgres:16
     container_name: website-insash-database
-    ports:
-      - "5432:5432"
-    env_file: ./backend/database/.env
+    env_file: ./database/.env
     volumes:
-    - ./backend/database/database_mock.sql:/docker-entrypoint-initdb.d/database_mock.sql
+    - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
     networks:
-      - backend
+      - website
+
 
 networks:
-  backend:
-    driver: bridge
-  frontend:
+  website:
     driver: bridge

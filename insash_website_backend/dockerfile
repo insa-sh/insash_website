@@ -1,13 +1,17 @@
-FROM golang:1.22
+# ---[backend build]--- #
+FROM golang:1.22 AS build
 
-USER www-data
+WORKDIR /build
+COPY ./ ./
 
-WORKDIR /var/www/app
+RUN go mod download 
+RUN go mod verify
 
-COPY go.mod go.sum ./
-RUN go mod download && go mod verify
+WORKDIR /build/cmd   
 
-# Remet un workdir pour spécifier la racine où seront cherché tout les fichiers
-WORKDIR /var/www/app/cmd   
+RUN go build -o backend
 
-CMD ["go", "run", "."]
+# ---[serve]--- #
+FROM debian
+COPY --from=build /build/cmd/backend /var/www/app/backend
+CMD /var/www/app/backend
