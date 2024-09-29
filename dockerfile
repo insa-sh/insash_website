@@ -9,4 +9,5 @@ RUN npm run build --omit=dev
 FROM nginx:1.27.1
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /build/dist/insash_website/ /var/www/website
+RUN chown -R www-data:www-data  /var/www/
 CMD nginx -g "daemon off;"

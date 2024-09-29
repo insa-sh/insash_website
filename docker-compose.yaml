@@ -5,7 +5,7 @@ services:
     image: website-insash
     container_name: website-insash
     ports:
-      - "80:80"
+      - "10000:80"
     networks:
       - website
 
@@ -15,18 +15,16 @@ services:
     container_name: website-insash-backend
     env_file: insash_website_backend/cmd/.env
     networks:
-        - website
+      - website
 
-
-  website-insash-database: 
+  website-insash-database:
     image: postgres:16
     container_name: website-insash-database
     env_file: ./database/.env
     volumes:
-    - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
     networks:
       - website
-
 
 networks:
   website:
