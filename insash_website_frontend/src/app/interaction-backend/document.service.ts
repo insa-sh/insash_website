@@ -5,7 +5,6 @@ import { Observable } from "rxjs";
 import { Member } from "../models/member";
 import { Document, DocumentType } from "../models/document";
 import { DocumentAndAuthor } from "../models/document-and-author";
-import { environment } from "../../environments/environment";
 
 export enum SortingBy {
   dateAsc = "date_asc",
@@ -14,13 +13,19 @@ export enum SortingBy {
   nameDesc = "name_desc",
 }
 
-const BASE_URL: string = environment.apiUrl;
-
 @Injectable({
   providedIn: "root",
 })
 export class DocumentService {
   constructor(private http: HttpClient) {}
+
+  BASE_URL: string = "";
+
+  ngOnInit(): void {
+    const fullUrl = window.location.href;
+    const url = new URL(fullUrl);
+    this.BASE_URL = `${url.protocol}//${url.host}/api`;
+  }
 
   getDocument(
     documentType?: DocumentType,
@@ -34,7 +39,7 @@ export class DocumentService {
     nbr?: number,
     archived?: boolean
   ): Observable<DocumentAndAuthor> {
-    let url: string = BASE_URL + "documents?";
+    let url: string = this.BASE_URL + "documents?";
 
     url += "sort=" + sort + "&";
 
@@ -83,7 +88,7 @@ export class DocumentService {
     documentType?: DocumentType,
     archived?: boolean
   ): Observable<String> {
-    let url = BASE_URL + "documents/tags?";
+    let url = this.BASE_URL + "documents/tags?";
 
     if (documentType && documentType != null) {
       url += "type=" + documentType + "&";
@@ -99,7 +104,7 @@ export class DocumentService {
     slug?: String,
     archived?: boolean
   ): Observable<Member> {
-    let url = BASE_URL + "documents/authors?";
+    let url = this.BASE_URL + "documents/authors?";
 
     if (documentType && documentType != null) {
       url += "type=" + documentType + "&";
@@ -119,7 +124,7 @@ export class DocumentService {
     documentType?: DocumentType,
     archived?: boolean
   ): Observable<String> {
-    let url = BASE_URL + "documents/years?";
+    let url = this.BASE_URL + "documents/years?";
 
     if (documentType && documentType != null) {
       url += "type=" + documentType + "&";
@@ -131,7 +136,7 @@ export class DocumentService {
   }
 
   getMembers(status?: String, username?: String, archived?: boolean) {
-    let url: string = BASE_URL + "members?";
+    let url: string = this.BASE_URL + "members?";
 
     if (status && status != "") {
       url += "status=" + status + "&";
