@@ -19,13 +19,9 @@ export enum SortingBy {
 export class DocumentService {
   constructor(private http: HttpClient) {}
 
-  BASE_URL: string = "";
-
-  ngOnInit(): void {
-    const fullUrl = window.location.href;
-    const url = new URL(fullUrl);
-    this.BASE_URL = `${url.protocol}//${url.host}/api`;
-  }
+  fullUrl = window.location.href;
+  url = new URL(this.fullUrl);
+  BASE_URL = `${this.url.protocol}//${this.url.host}/api/`;
 
   getDocument(
     documentType?: DocumentType,
