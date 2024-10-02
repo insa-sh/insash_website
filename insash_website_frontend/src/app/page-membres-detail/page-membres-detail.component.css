@@ -1,294 +1,260 @@
-
 h2 {
-    width: min(90%, 2000px);
-    margin: 40px auto;
-    color: var(--insash-title-color);
-    opacity: 60%;
-  }
+  width: min(90%, 2000px);
+  margin: 40px auto;
+  color: var(--insash-title-color);
+  opacity: 60%;
+}
 
-  a {
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+}
 
 div.member-detail {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 div.member-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
 }
 
 div.member-identity {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 div.member-name h1 {
-    font-size: 50px;
-    text-align: center;
+  font-size: 50px;
+  text-align: center;
 }
 div.member-name h1 span {
-    font-size: 30px;
-    color: #BBBBBB;
-
+  font-size: 30px;
+  color: #bbbbbb;
 }
 /* SI LE PSEUDO EST LE SEUL IDENTIFIANT FOURNIT */
 div.member-name h1 span.pseudo-only {
-    font-size: 30px;
-    color: var(--insash-title-color);
-
+  font-size: 30px;
+  color: var(--insash-title-color);
 }
 
-
-
-div.member-surname p, div.member-surname p em {
-    color: #BBBBBB;
-    font-weight: 700;
+div.member-surname p,
+div.member-surname p em {
+  color: #bbbbbb;
+  font-weight: 700;
 }
 
 /* PHOTO DE PROFIL */
 
 div.member-image {
-    text-align: center;
-    position: relative;
-    overflow: visible;
-    margin-top: 20px;
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  margin-top: 20px;
 }
 
 div.member-image img {
-    width: 300px;
-    /* max-width: 70%; */
-    border-radius: 50%;
-    background-color: #353535;
-    aspect-ratio: 1;
-    box-shadow: none;
-    transition: box-shadow var(--global-transition-duration);
-    border: 6px solid #222222;
-
+  width: 300px;
+  /* max-width: 70%; */
+  border-radius: 50%;
+  background-color: #353535;
+  aspect-ratio: 1;
+  box-shadow: none;
+  transition: box-shadow var(--global-transition-duration);
+  border: 6px solid #222222;
 }
 
 div.member-citation {
-    position: absolute;
-    top: -10px;
-    left: 220px;
-    z-index: 1;
+  position: absolute;
+  top: -10px;
+  left: 220px;
+  z-index: 1;
 }
 
-div.member-citation p{
-    padding: 12px 20px;
-    background-color: var(--website-bg-color-light-1);
-    border: 1px solid var(--website-bg-color-light-2);
-    border-radius: 10px;
+div.member-citation p {
+  padding: 12px 20px;
+  background-color: var(--website-bg-color-light-1);
+  border: 1px solid var(--website-bg-color-light-2);
+  border-radius: 10px;
 
-    color: var(--website-alternative-color);
-    max-width: min(250px, 80vw);
-    width: max-content;
-    text-align: left;
-    /* gérer l'overflow du texte */
-    overflow: hidden;
-    text-overflow: clip; 
-    line-break:anywhere;
-    /* animation timing - delay */
-    animation: appearFromLeftCorner 0.5s ease-out 0s;
+  color: var(--website-alternative-color);
+  max-width: min(250px, 80vw);
+  width: max-content;
+  text-align: left;
+  /* gérer l'overflow du texte */
+  overflow: hidden;
+  text-overflow: clip;
+  /* animation timing - delay */
+  animation: appearFromLeftCorner 0.5s ease-out 0s;
+  opacity: 0;
+  transform: scale(0) translate(-20%, -20%);
+
+  /* garder l'état final d'animation */
+  animation-fill-mode: forwards;
+  /* centre de l'animation */
+  transform-origin: bottom left;
+}
+
+div.member-tag {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+div.member-tag div.tag {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+div.tag-retraite {
+  background-color: #7b7b7b;
+}
+
+div.tag-bureau {
+  background-color: var(--website-alternative-color);
+}
+
+div.tag-role {
+  background-color: #9a34ab;
+}
+
+div.tag-project {
+  background-color: var(--website-strong-color);
+}
+
+div.member-reseaux {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  background-color: var(--website-bg-color-light-1);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0 2vw;
+  flex-wrap: wrap;
+}
+
+div.member-reseaux a.reseau-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  font-size: 25px;
+  padding: 10px;
+  background-color: var(--website-bg-color-light-2);
+  border-radius: 7px;
+  transition: background-color var(--global-transition-duration);
+  overflow: hidden;
+}
+
+div.member-reseaux a.reseau-tag:hover {
+  background-color: rgba(239, 193, 203, 45%);
+}
+
+div.member-reseaux a.reseau-tag:active {
+  background-color: var(--insash-rose-fonce);
+}
+
+div.member-custom-website {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: var(--insash-rose-fonce);
+  /* border: 2px solid transparent; */
+  transition: background-color var(--global-transition-duration),
+    border var(--global-transition-duration),
+    color var(--global-transition-duration),
+    transform var(--global-transition-duration);
+}
+
+div.member-custom-website:hover {
+  background-color: #af6979;
+  /* border: 2px solid var(--insash-rose-fonce); */
+  transform: scale(1.02);
+}
+
+div.member-custom-website i {
+  margin-left: 20px;
+  transition: transform 0.5s;
+  transform: translateX(-6px);
+}
+
+div.member-custom-website:hover i {
+  transform: translateX(0px);
+}
+
+div.member-custom-website p {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  div.member-image {
+    margin-bottom: 0;
+    margin-top: initial;
+  }
+  div.member-image img {
+    max-width: 70vw;
+  }
+
+  div.member-reseaux {
+    max-width: 300px;
+  }
+
+  div.member-citation {
+    position: relative;
+    top: 0;
+    left: 0;
+    top: -30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  div.member-citation p {
+    font-size: 14px;
+    animation: appearFromTopCenter 0.5s ease-out 0s;
     opacity: 0;
-    transform: scale(0) translate(-20%,-20%);
-
+    transform: scale(0) translateY(-20%);
 
     /* garder l'état final d'animation */
     animation-fill-mode: forwards;
     /* centre de l'animation */
-    transform-origin: bottom left;
-
-
+    transform-origin: top center;
+  }
 }
-
-
-
-
-div.member-tag {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-}
-
-div.member-tag div.tag {
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: 700;
-}
-
-div.tag-retraite {
-    background-color: #7B7B7B;
-}
-
-div.tag-bureau {
-    background-color: var(--website-alternative-color);
-}
-
-div.tag-role {
-    background-color: #9A34AB;
-}
-
-div.tag-project {
-    background-color: var(--website-strong-color);
-}
-
-div.member-reseaux {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    background-color: var(--website-bg-color-light-1);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 0 2vw;
-    flex-wrap: wrap;
-    
-}
-
-
-div.member-reseaux a.reseau-tag {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    font-size: 25px;
-    padding: 10px;
-    background-color: var(--website-bg-color-light-2);
-    border-radius: 7px;
-    transition: background-color var(--global-transition-duration);
-    overflow: hidden;
-}
-
-
-div.member-reseaux a.reseau-tag:hover {
-    background-color: rgba(239,193,203, 45%);
-}
-
-
-div.member-reseaux a.reseau-tag:active {
-    background-color: var(--insash-rose-fonce);
-}
-
-
-div.member-custom-website {
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-radius: 7px;
-    background-color: var(--insash-rose-fonce);
-    /* border: 2px solid transparent; */
-    transition: background-color var(--global-transition-duration), border var(--global-transition-duration), color var(--global-transition-duration), transform var(--global-transition-duration); 
-}
-
-
-
-
-div.member-custom-website:hover {
-    background-color: #af6979;
-    /* border: 2px solid var(--insash-rose-fonce); */
-    transform: scale(1.02);
-}
-
-div.member-custom-website i{
-    margin-left: 20px;
-    transition: transform 0.5s;
-    transform: translateX(-6px);
-}
-
-
-div.member-custom-website:hover i{
-    transform: translateX(0px);
-    
-
-}
-
-
-
-div.member-custom-website p {
-    font-size: 16px;
-    font-weight: 700;
-}
-
-@media (max-width: 800px) {
-
-    div.member-image {
-        margin-bottom: 0;
-        margin-top: initial;
-    }
-    div.member-image img {
-        max-width: 70vw;
-    }
-
-    div.member-reseaux {
-        max-width: 300px;
-    }
-
-    div.member-citation {
-        position: relative;
-        top: 0;
-        left: 0;
-        top: -30px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-
-    }
-    div.member-citation p{
-        font-size: 14px;
-        animation: appearFromTopCenter 0.5s ease-out 0s;
-        opacity: 0;
-        transform: scale(0) translateY(-20%);
-    
-    
-        /* garder l'état final d'animation */
-        animation-fill-mode: forwards;
-        /* centre de l'animation */
-        transform-origin: top center;
-    
-    }
-
-}
-
-
-
-
-
-
-
 
 /* ANIMATIONS */
 /* animation d'apparition */
 @keyframes appearFromLeftCorner {
-    from {
-        opacity: 0;
-        transform: scale(0) translate(-20%,-20%);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translate(0,0);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0) translate(-20%, -20%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate(0, 0);
+  }
 }
 
 /* animation d'apparition */
 @keyframes appearFromTopCenter {
-    from {
-        opacity: 0;
-        transform: scale(0) translateY(-20%);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(-20%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
