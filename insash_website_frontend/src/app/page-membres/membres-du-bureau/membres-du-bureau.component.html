@@ -1,12 +1,16 @@
 <h1>L'équipe</h1>
 
 <div id="membres-du-bureau">
-    <!-- parcourir tous les membres du tableau -->
-    <ng-container *ngFor="let membre of membres">
-        <!-- si le rôle du membre fait partie des rôles associés au bureau, on l'affiche dans cette section -->
-        <ng-container *ngIf="membre.status == 'bureau' && !membre.archived">
-            <app-membre-bureau [membre]=membre></app-membre-bureau>
-        </ng-container>
-    </ng-container>
-
+  <ng-container *ngIf="president != null">
+    <app-membre-bureau [membre]="president"></app-membre-bureau>
+  </ng-container>
+  <ng-container *ngIf="tresorier != null">
+    <app-membre-bureau [membre]="tresorier"></app-membre-bureau>
+  </ng-container>
+  <ng-container *ngIf="secretaire != null">
+    <app-membre-bureau [membre]="secretaire"></app-membre-bureau>
+  </ng-container>
+  <ng-container *ngIf="responsableCommunication != null">
+    <app-membre-bureau [membre]="responsableCommunication"></app-membre-bureau>
+  </ng-container>
 </div>

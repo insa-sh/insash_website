@@ -1,90 +1,107 @@
 <div class="member-detail">
-    <div class="member-header">
+  <div class="member-header">
+    <div class="member-image">
+      <ng-container *ngIf="member.image_address.String !== ''">
+        <img
+          src="/public/images/member/{{ member.image_address.String }}"
+          alt="Photo de profil du {{ member.role.String }}"
+          (error)="imageError($event)"
+          class="profile-picture"
+        />
+      </ng-container>
+      <ng-container *ngIf="member.image_address.String === ''">
+        <img
+          src="/public/images/member/default/barr-e.png"
+          alt="Photo  de profil du {{ member.role }}"
+          class="profile-picture"
+        />
+      </ng-container>
 
+      <div class="member-citation" *ngIf="member.citation.String != ''">
+        <p>// {{ member.citation.String }}</p>
+      </div>
+    </div>
 
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        <div class="member-image">
-            <ng-container *ngIf="member.image_address.String !== ''">
-        
-            <img src="/public/images/member/{{member.image_address.String}}" alt="Photo de profil du {{member.role.String}}" (error)="imageError($event)" class="profile-picture">
-    
-        </ng-container>
-        <ng-container *ngIf="member.image_address.String === ''">
-          <img
-            src="/public/images/member/default/barr-e.png"
-            alt="Photo  de profil du {{ member.role }}"
-            class="profile-picture" 
-          />
-        </ng-container>
-        
-            <div class="member-citation" *ngIf="member.citation.String != ''"><p>// {{ member.citation.String }}</p></div></div>
-            
-        <div class="member-identity">
-            <div class="member-name">
-                <ng-container *ngIf="member.firstname.String != ''">
-            <h1>{{ member.firstname.String }} {{ member.lastname.String }} <span>({{ member.username }})</span></h1>
+    <div class="member-identity">
+      <div class="member-name">
+        <ng-container *ngIf="member.firstname.String != ''">
+          <h1>
+            {{ member.firstname.String }} {{ member.lastname.String }}
+            <span>({{ member.username }})</span>
+          </h1>
         </ng-container>
         <ng-container *ngIf="member.firstname.String == ''">
-            <h1>{{ member.username }}</h1>
+          <h1>{{ member.username }}</h1>
         </ng-container>
+      </div>
+      <div class="member-surname" *ngIf="member.surname.String != ''">
+        <p>
+          aka <em>{{ member.surname.String }}</em>
+        </p>
+      </div>
     </div>
-            <div class="member-surname" *ngIf="member.surname.String != ''">
-                <p>aka <em>{{ member.surname.String }}</em></p>
-            </div>
-        </div>
-        
-        <div class="member-tag">
 
-            <div class="tag-retraite tag" *ngIf="member.archived">
-                Retraité du club
-            </div>
-            <div class="tag-bureau tag" *ngIf="member.status == 'bureau'">
-                Bureau
-            </div>
-            <div class="tag-role tag" *ngIf="member.status == 'bureau' && member.role.String != ''">
-                {{ member.role.String}}
-            </div>
-            <div class="tag-project tag" *ngIf="project.length > 0">
-                <i class="fas fa-medal"></i> {{ project.length }} projet(s)     </div>
+    <div class="member-tag">
+      <div class="tag-retraite tag" *ngIf="member.archived">
+        Retraité du club
+      </div>
+      <div class="tag-bureau tag" *ngIf="member.status == 'bureau'">Bureau</div>
+      <div
+        class="tag-role tag"
+        *ngIf="member.status == 'bureau' && member.role.String != ''"
+      >
+        {{ member.role.String }}
+      </div>
+      <div class="tag-project tag" *ngIf="project.length > 0">
+        <i class="fas fa-medal"></i> {{ project.length }} projet(s)
+      </div>
+    </div>
 
-        </div>
-        
-        <div class="member-reseaux" *ngIf="doesHeHaveInternet()">
-                <a class="reseau-tag" href="{{ member.website.String }}" target="_blank" *ngIf="member.website.String != ''">
-                    <i class="fas fa-globe"></i>
-                </a>
-                <a class="reseau-tag" *ngIf="member.instagram.String != ''" href="{{ member.instagram.String }}" target="_blank" >
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a class="reseau-tag" *ngIf="member.github.String != ''" href="{{ member.github.String }}" target="_blank" >
-                    <i class="fab fa-github"></i>
-                </a>
-                <a  class="reseau-tag"  *ngIf="member.linkedin.String != ''"href="{{ member.linkedin.String }}" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            <a routerLink="/custom-website/{{ member.username }}" *ngIf="member.has_custom_website">
-                <div class="member-custom-website">
-                    <p>Page perso</p>
-                    <i class="fa-solid fa-play"></i>
-                </div></a>
-        </div>
+    <div class="member-reseaux" *ngIf="doesHeHaveInternet()">
+      <a
+        class="reseau-tag"
+        href="{{ member.website.String }}"
+        target="_blank"
+        *ngIf="member.website.String != ''"
+      >
+        <i class="fas fa-globe"></i>
+      </a>
+      <a
+        class="reseau-tag"
+        *ngIf="member.instagram.String != ''"
+        href="https://www.instagram.com/{{ member.instagram.String }}"
+        target="_blank"
+      >
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a
+        class="reseau-tag"
+        *ngIf="member.github.String != ''"
+        href="{{ member.github.String }}"
+        target="_blank"
+      >
+        <i class="fab fa-github"></i>
+      </a>
+      <a
+        class="reseau-tag"
+        *ngIf="member.linkedin.String != ''"
+        href="{{ member.linkedin.String }}"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a
+        routerLink="/custom-website/{{ member.username }}"
+        *ngIf="member.has_custom_website"
+      >
+        <div class="member-custom-website">
+          <p>Page perso</p>
+          <i class="fa-solid fa-play"></i></div
+      ></a>
     </div>
-    <div class="member-projects" *ngIf="project.length > 0">
-        <h2><em>Projets</em>
-        </h2>
-        <app-liste-document [documentsAndAuthors]="project"></app-liste-document>
-    </div>
+  </div>
+  <div class="member-projects" *ngIf="project.length > 0">
+    <h2><em>Projets</em></h2>
+    <app-liste-document [documentsAndAuthors]="project"></app-liste-document>
+  </div>
 </div>
