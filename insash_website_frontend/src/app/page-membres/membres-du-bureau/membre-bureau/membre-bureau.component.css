@@ -153,11 +153,11 @@ div.membre-reseau i {
 }
 
 .indent-1 {
-  margin-left: 2em;
+  /* margin-left: 2em; */
 }
 
 .indent-2 {
-  margin-left: 4em;
+  margin-left: 2em;
 }
 
 /* sur mobile */
