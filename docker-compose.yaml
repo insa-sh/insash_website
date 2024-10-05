@@ -13,14 +13,17 @@ services:
     build: insash_website_backend
     image: website-insash-backend
     container_name: website-insash-backend
-    env_file: insash_website_backend/cmd/.env
+    env_file: 
+      - path: ./.env
+      - path: ./insash_website_backend/cmd/.env
     networks:
       - website
 
   website-insash-database:
     image: postgres:16
     container_name: website-insash-database
-    env_file: ./database/.env
+    env_file: 
+      - path: ./.env
     volumes:
       - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
     networks:
