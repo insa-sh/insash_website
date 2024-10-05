@@ -24,7 +24,6 @@ export class MembreBureauComponent {
     window.open(link, '_blank');
   }
   imageError (event: any) {
-    console.log("Image load error, changing 'image_adress' to '' : " + event);
     this.membre.image_address.String = '';
   }
 

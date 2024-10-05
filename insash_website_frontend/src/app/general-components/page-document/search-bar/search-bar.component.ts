@@ -16,7 +16,7 @@ export class SearchBarComponent {
   public authors: Member[] = [];
   public tags: string[] = [];
   public dates: string[] = [];
-  public sort: string[] = ["Plus récent", "Plus ancien", "A-Z", "Z-A"];
+  public sortOptions: string[] = ["Plus récent", "Plus ancien", "A-Z", "Z-A"];
   public search: FormControl = new FormControl('');
 
   public formChangesSubscription: Subscription = new Subscription;
@@ -70,15 +70,15 @@ export class SearchBarComponent {
   }
 
   isThereEnoughYears () {
-    return this.dates.length > 0;
+    return this.dates != null && this.dates.length > 0;
   }
 
   isThereEnoughAuthors () {
-    return this.authors.length > 0;
+    return this.authors != null && this.authors.length > 0;
   }
 
   isThereEnoughTags () {
-    return this.tags.length > 0;
+    return this.authors != null && this.tags.length > 0;
   }
 
   isItAnArticle () {
@@ -86,6 +86,9 @@ export class SearchBarComponent {
   }
 
   private addCheckboxes() {
+
+    if (this.authors != null && this.tags != null && this.dates != null) {
+
     let tagsFormArray = this.filterForm.controls.tags as FormArray;
     let datesFormArray = this.filterForm.controls.dates as FormArray;
     let authorsFormArray = this.filterForm.controls.authors as FormArray;
@@ -93,6 +96,7 @@ export class SearchBarComponent {
     this.authors.forEach(() => authorsFormArray.push(this.fb.control(false)));
     this.tags.forEach(() => tagsFormArray.push(this.fb.control(false)));
     this.dates.forEach(() => datesFormArray.push(this.fb.control(false)));
+    } 
   }
 
   getSelectedAuthors() {
