@@ -38,12 +38,9 @@ export class PageAccueilComponent {
 
     this.keysPressed.push(event.key);
 
-    console.log(this.keysPressed);
-
     // Implémenter la logique pour une autre séquence
     if (this.codeSecret(['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']) || this.codeSecret(['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'B', 'A'])) {
-      console.log('Konami code detected!');
-      window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
 
     }
 

@@ -55,7 +55,6 @@ export class PageMembresDetailComponent {
   }
 
   imageError (event: any) {
-    console.log("Image load error, changing 'image_adress' to '' : " + event);
     this.member.image_address.String = '';
   }
 
