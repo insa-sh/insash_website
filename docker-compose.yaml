@@ -1,7 +1,11 @@
 services:
-  website-insash:
+  website-insash-prod:
     # nginx + frontend
-    build: .
+    build: 
+      context : .
+      dockerfile: dockerfile.prod 
+    profiles: 
+      - prod
     image: website-insash
     container_name: website-insash
     ports:
@@ -9,10 +13,44 @@ services:
     networks:
       - website
 
+  website-insash-dev:
+    # live service for dev
+    build: 
+      context : .
+      dockerfile: dockerfile.dev 
+    profiles: 
+      - dev
+    image: website-insash-dev
+    container_name: website-insash-dev
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./insash_website_frontend:/app
+      - /app/node_modules
+    networks:
+      - website
+    
+
   website-insash-backend:
     build: insash_website_backend
     image: website-insash-backend
     container_name: website-insash-backend
+    profiles:
+      - prod
+    env_file: 
+      - path: ./.env
+      - path: ./insash_website_backend/cmd/.env
+    networks:
+      - website
+
+  website-insash-backend-dev:
+    build: insash_website_backend
+    image: website-insash-backend-dev
+    container_name: website-insash-backend-dev
+    ports:
+      - "8080:8080"
+    profiles: 
+      - dev
     env_file: 
       - path: ./.env
       - path: ./insash_website_backend/cmd/.env
