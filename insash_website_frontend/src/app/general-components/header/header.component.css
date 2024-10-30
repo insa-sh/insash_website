@@ -383,8 +383,8 @@ div.calendar-icon>p.today-month {
         max-height: 0;
         transition: max-height 0.15s ease-out, padding 0.15s ease-out;
         padding: 0 10px;
-        /* on enleve le pading haut et bas car sinon, meme avec el overflow hidden, les padding restent visibles */
-        margin-top: 15px;
+        /* on enleve le pading haut et bas car sinon, meme avec le overflow hidden, les padding restent visibles */
+        margin-top: 0px;
 
     }
 
@@ -392,9 +392,11 @@ div.calendar-icon>p.today-month {
     div#nav-links>div.dropdown-menu.opened>div {
         animation: unset;
         max-height: 500px;
-        transition: max-height 0.15s ease-out, padding 0.15s ease-out;
+        transition: max-height 0.15s ease-out, padding 0.15s ease-out, margin-top 0.15s ease-out;
         padding: 10px;
         /* on remet le padding */
+        margin-top: 15px;
+
 
     }
 
