@@ -1,10 +1,13 @@
 services:
+  ## ---------- PRODUCTION
+  # App build & servie via nginx
+
   website-insash-prod:
     # nginx + frontend
-    build: 
-      context : .
-      dockerfile: dockerfile.prod 
-    profiles: 
+    build:
+      context: .
+      dockerfile: dockerfile.prod
+    profiles:
       - prod
     image: website-insash
     container_name: website-insash
@@ -13,12 +16,27 @@ services:
     networks:
       - website
 
+  website-insash-backend:
+    build: insash_website_backend
+    image: website-insash-backend
+    container_name: website-insash-backend
+    profiles:
+      - prod
+    env_file:
+      - path: ./.env
+      - path: ./insash_website_backend/cmd/.env
+    networks:
+      - website
+
+  ## ---------- DEVELOPMENT
+  # App en live server via Andular
+
   website-insash-dev:
     # live service for dev
-    build: 
-      context : .
-      dockerfile: dockerfile.dev 
-    profiles: 
+    build:
+      context: .
+      dockerfile: dockerfile.dev
+    profiles:
       - dev
     image: website-insash-dev
     container_name: website-insash-dev
@@ -29,19 +47,6 @@ services:
       - /app/node_modules
     networks:
       - website
-    
-
-  website-insash-backend:
-    build: insash_website_backend
-    image: website-insash-backend
-    container_name: website-insash-backend
-    profiles:
-      - prod
-    env_file: 
-      - path: ./.env
-      - path: ./insash_website_backend/cmd/.env
-    networks:
-      - website
 
   website-insash-backend-dev:
     build: insash_website_backend
@@ -49,9 +54,9 @@ services:
     container_name: website-insash-backend-dev
     ports:
       - "8080:8080"
-    profiles: 
+    profiles:
       - dev
-    env_file: 
+    env_file:
       - path: ./.env
       - path: ./insash_website_backend/cmd/.env
     networks:
@@ -60,7 +65,7 @@ services:
   website-insash-database:
     image: postgres:16
     container_name: website-insash-database
-    env_file: 
+    env_file:
       - path: ./.env
     volumes:
       - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
