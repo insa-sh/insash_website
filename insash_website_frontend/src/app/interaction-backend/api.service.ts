@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environments';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ApiService {
   }
 
   private getApiUrl(): string {
-    if (environment.useDynamicApiUrl) {
+    if (environment.production) {
       const fullUrl = window.location.href;
       const url = new URL(fullUrl);
       return `${url.protocol}//${url.host}/api/`;
