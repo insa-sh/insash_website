@@ -14,7 +14,9 @@ services:
     ports:
       - "10000:80"
     volumes:
-      - ./insash_website_frontend/src/public:/var/www/website/public
+      - ./insash_website_data/public/images/member/custom:/var/www/website/public/images/member/custom
+      - ./insash_website_data/public/images/document:/var/www/website/public/images/document
+      - ./insash_website_data/public/markdown:/var/www/website/public/markdown
     networks:
       - website
 
@@ -70,8 +72,8 @@ services:
     env_file:
       - path: ./.env
     volumes:
-      - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
-      - ./pgdata:/var/lib/postgresql/data 
+      - ./insash_website_data/init_database/database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./insash_website_data/postgresql/data:/var/lib/postgresql/data 
     networks:
       - website
 
