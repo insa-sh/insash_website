@@ -2,9 +2,16 @@
   <div class="box-membre">
     <div class="membre-image">
         <a routerLink="{{ membre.username }}">
-      <ng-container *ngIf="membre.image_address.String !== ''">
+      <ng-container *ngIf="membre.image_address.String !== '' && membre.custom_image == true">
         <img
-          src="/public/images/member/{{ membre.image_address.String }}"
+          src="/public/images/member/custom/{{ membre.image_address.String }}"
+          alt="Photo de profil du {{ membre.role.String }}"
+          (error)="imageError($event)"
+        />
+      </ng-container>
+      <ng-container *ngIf="membre.image_address.String !== '' && membre.custom_image == false">
+        <img
+          src="/public/images/member/default/{{ membre.image_address.String }}"
           alt="Photo de profil du {{ membre.role.String }}"
           (error)="imageError($event)"
         />

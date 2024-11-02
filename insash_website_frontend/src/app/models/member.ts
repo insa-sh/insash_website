@@ -7,6 +7,7 @@ export class Member {
         public lastname: NullString,
         public role: NullString,
         public website: NullString,
+        public custom_image: boolean,
         public image_address: NullString,
         public linkedin: NullString,
         public github: NullString,
