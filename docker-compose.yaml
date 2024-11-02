@@ -1,11 +1,22 @@
 services:
-  website-insash:
+  ## ---------- PRODUCTION
+  # App build & servie via nginx
+
+  website-insash-prod:
     # nginx + frontend
-    build: .
+    build:
+      context: .
+      dockerfile: dockerfile.prod
+    profiles:
+      - prod
     image: website-insash
     container_name: website-insash
     ports:
       - "10000:80"
+    volumes:
+      - ./insash_website_data/public/images/member/custom:/var/www/website/public/images/member/custom
+      - ./insash_website_data/public/images/document:/var/www/website/public/images/document
+      - ./insash_website_data/public/markdown:/var/www/website/public/markdown
     networks:
       - website
 
@@ -13,7 +24,43 @@ services:
     build: insash_website_backend
     image: website-insash-backend
     container_name: website-insash-backend
-    env_file: 
+    profiles:
+      - prod
+    env_file:
+      - path: ./.env
+      - path: ./insash_website_backend/cmd/.env
+    networks:
+      - website
+
+  ## ---------- DEVELOPMENT
+  # App en live server via Andular
+
+  website-insash-dev:
+    # live service for dev
+    build:
+      context: .
+      dockerfile: dockerfile.dev
+    profiles:
+      - dev
+    image: website-insash-dev
+    container_name: website-insash-dev
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./insash_website_frontend:/app
+      - /app/node_modules
+    networks:
+      - website
+
+  website-insash-backend-dev:
+    build: insash_website_backend
+    image: website-insash-backend-dev
+    container_name: website-insash-backend-dev
+    ports:
+      - "8080:8080"
+    profiles:
+      - dev
+    env_file:
       - path: ./.env
       - path: ./insash_website_backend/cmd/.env
     networks:
@@ -22,10 +69,11 @@ services:
   website-insash-database:
     image: postgres:16
     container_name: website-insash-database
-    env_file: 
+    env_file:
       - path: ./.env
     volumes:
-      - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./insash_website_data/init_database/database.sql:/docker-entrypoint-initdb.d/database.sql
+      - ./insash_website_data/postgresql/data:/var/lib/postgresql/data 
     networks:
       - website
 

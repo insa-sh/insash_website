@@ -2,15 +2,21 @@
   <div class="membre-bureau">
     <!-- si le membre a une photo de profil alors l'afficher, sinon prendre celle par défaut -->
     <a routerLink="/les-membres/{{membre.username}}">
-    <ng-container *ngIf="membre.image_address.String !== ''">
+    <ng-container *ngIf="membre.image_address.String !== '' && membre.custom_image == true">
         
-        <img src="/public/images/member/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" (error)="imageError($event)" class="profile-picture">
+        <img src="/public/images/member/custom/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" (error)="imageError($event)" class="profile-picture">
         <div class="hover-text"><p>Voir<span class="computer-only"> le profil</span></p></div>
 
     </ng-container>
+    <ng-container *ngIf="membre.image_address.String !== '' && membre.custom_image == false">
+        
+      <img src="/public/images/member/default/{{membre.image_address.String}}" alt="Photo de profil du {{membre.role.String}}" (error)="imageError($event)" class="profile-picture">
+      <div class="hover-text"><p>Voir<span class="computer-only"> le profil</span></p></div>
+
+  </ng-container>
     <ng-container *ngIf="membre.image_address.String === ''">
       <img
-        src="/public/images/member/default/barr-e.png"
+        src="/public/images/member/default/barr-e.webp"
         alt="Photo  de profil du {{ membre.role }}"
         class="profile-picture" 
       />

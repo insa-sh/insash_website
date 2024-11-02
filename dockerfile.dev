@@ -1,0 +1,10 @@
+FROM node:16
+WORKDIR /app
+
+COPY ./insash_website_frontend/package.json ./package.json
+
+RUN npm cache clean --force && npm install -g @angular/cli@16
+
+RUN npm install
+
+CMD ["ng", "serve", "--host", "0.0.0.0", "--poll", "1000"]

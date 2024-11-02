@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-
 import { Observable } from "rxjs";
 import { Member } from "../models/member";
 import { Document, DocumentType } from "../models/document";
 import { DocumentAndAuthor } from "../models/document-and-author";
+import { ApiService } from './api.service';
 
 export enum SortingBy {
   dateAsc = "date_asc",
@@ -17,11 +17,10 @@ export enum SortingBy {
   providedIn: "root",
 })
 export class DocumentService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private apiService : ApiService) {}
 
-  fullUrl = window.location.href;
-  url = new URL(this.fullUrl);
-  BASE_URL = `${this.url.protocol}//${this.url.host}/api/`;
+
+  BASE_URL = this.apiService.getBaseUrl();
 
   getDocument(
     documentType?: DocumentType,

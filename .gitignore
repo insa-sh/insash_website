@@ -3,10 +3,9 @@
 .env
 backend/cmd/*
 !backend/cmd/server.go
-backend/database/database_mock.sql
 *.sql
-environment.ts
-insash_website_frontend/src/public/images/member/*
+insash_website_frontend/src/public/images/member/custom/*
+insash_website_data/*
 
 # Compiled output
 /dist

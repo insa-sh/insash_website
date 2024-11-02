@@ -9,6 +9,7 @@ type Member struct {
 	Role             sql.NullString `json:"role" db:"role"`
 	Status           string         `json:"status" db:"status"`
 	Website          sql.NullString `json:"website" db:"website"`
+	CustomImage      bool           `json:"custom_image" db:"custom_image"`
 	Image            sql.NullString `json:"image_address" db:"image_address"`
 	LinkedIn         sql.NullString `json:"linkedin" db:"linkedin"`
 	GitHub           sql.NullString `json:"github" db:"github"`
