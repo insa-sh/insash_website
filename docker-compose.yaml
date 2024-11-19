@@ -2,15 +2,15 @@ services:
   ## ---------- PRODUCTION
   # App build & servie via nginx
 
-  website-insash-prod:
+  insash-website-prod:
     # nginx + frontend
     build:
       context: .
       dockerfile: dockerfile.prod
     profiles:
       - prod
-    image: website-insash
-    container_name: website-insash
+    image: insash-website
+    container_name: insash-website
     ports:
       - "10000:80"
     volumes:
@@ -20,57 +20,62 @@ services:
     networks:
       - website
 
-  website-insash-backend:
-    build: insash_website_backend
-    image: website-insash-backend
-    container_name: website-insash-backend
+  insash-website-backend-prod:
+    build:
+      context: ./insash_website_backend
+    image: insash-website-backend
+    container_name: insash-website-backend
     profiles:
       - prod
     env_file:
-      - path: ./.env
-      - path: ./insash_website_backend/cmd/.env
+      - path: ./insash_website_data/.env
+      - path: ./insash_website_data/backend.env
     networks:
       - website
 
   ## ---------- DEVELOPMENT
   # App en live server via Andular
 
-  website-insash-dev:
+  insash-website-dev:
     # live service for dev
     build:
       context: .
       dockerfile: dockerfile.dev
     profiles:
       - dev
-    image: website-insash-dev
-    container_name: website-insash-dev
+    image: insash-website-dev
+    container_name: insash-website-dev
     ports:
       - "4200:4200"
     volumes:
       - ./insash_website_frontend:/app
       - /app/node_modules
+      - ./insash_website_data/public/images/member/custom:/app/src/public/images/member/custom
+      - ./insash_website_data/public/images/document:/app/src/public/images/document
+      - ./insash_website_data/public/markdown:/app/src/public/markdown
     networks:
       - website
 
-  website-insash-backend-dev:
-    build: insash_website_backend
-    image: website-insash-backend-dev
-    container_name: website-insash-backend-dev
+  insash-website-backend-dev:
+    build:
+      context: ./insash_website_backend
+    image: insash-website-backend-dev
+    container_name: insash-website-backend-dev
     ports:
       - "8080:8080"
     profiles:
       - dev
     env_file:
-      - path: ./.env
-      - path: ./insash_website_backend/cmd/.env
+      - path: ./insash_website_data/.env
+      - path: ./insash_website_data/backend.env
     networks:
       - website
 
-  website-insash-database:
+  insash-website-database:
     image: postgres:16
-    container_name: website-insash-database
+    container_name: insash-website-database
     env_file:
-      - path: ./.env
+      - path: ./insash_website_data/.env
     volumes:
       - ./insash_website_data/init_database/database.sql:/docker-entrypoint-initdb.d/database.sql
       - ./insash_website_data/postgresql/data:/var/lib/postgresql/data 
