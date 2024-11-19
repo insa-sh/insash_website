@@ -50,6 +50,9 @@ services:
     volumes:
       - ./insash_website_frontend:/app
       - /app/node_modules
+      - ./insash_website_data/public/images/member/custom:/app/src/public/images/member/custom
+      - ./insash_website_data/public/images/document:/app/src/public/images/document
+      - ./insash_website_data/public/markdown:/app/src/public/markdown
     networks:
       - website
 
