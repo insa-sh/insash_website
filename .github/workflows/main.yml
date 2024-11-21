@@ -91,7 +91,7 @@ jobs:
         id: push
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
-          context: .
+          context: ./insash_website_backend/
           file: ./insash_website_backend/dockerfile 
           push: true
           tags: ${{ steps.meta.outputs.tags }}
