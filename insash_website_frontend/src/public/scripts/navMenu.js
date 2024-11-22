@@ -18,6 +18,10 @@ function toggleNavigationMenu(action = undefined) {
         menu.classList.remove('opened');
         menu.classList.add('closed');
     }
+    // dans tous les cas, quand on ouvre/ferme le menu, on ferme aussi les sous-menus
+    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.remove('opened');
+    });
 
 }
 
@@ -26,6 +30,13 @@ function toggleDropdownMenu(menu) {
     menu.parentElement.classList.toggle('opened');
     menu.parentElement.classList.toggle('closed');
 }
+
+// addevent listener : si la largeur de la fenetre change, fermer les sous-menus
+window.addEventListener('resize', function() {
+    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.remove('opened');
+    });
+});
 
 
 

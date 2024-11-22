@@ -176,15 +176,7 @@ div#nav-links>div.dropdown-menu>a>i {
 
 }
 
-div#nav-links>div.dropdown-menu.opened>a>i {
-    transform: rotate(180deg);
-    color: var(--website-strong-color);
-    
-}
 
-div#nav-links>div.dropdown-menu.opened>a {
-    color: var(--website-strong-color);
-}
 
 
 div#calendar {
@@ -249,7 +241,6 @@ div.calendar-icon>p.today-month {
 
 @media (min-width: 800px) {
 
-    div#nav-links>div.dropdown-menu.opened>div,
     div#nav-links>div.dropdown-menu:hover>div {
         animation: open-menu var(--global-transition-duration) forwards;
         animation-delay: 0.2s;
@@ -398,6 +389,19 @@ div.calendar-icon>p.today-month {
         margin-top: 15px;
 
 
+    }
+
+
+
+    /* couleur du titre de la seciton lrosque le menu est ouvert */
+    div#nav-links>div.dropdown-menu.opened>a>i {
+        transform: rotate(180deg);
+        color: var(--website-strong-color);
+        
+    }
+    
+    div#nav-links>div.dropdown-menu.opened>a {
+        color: var(--website-strong-color);
     }
 
 
