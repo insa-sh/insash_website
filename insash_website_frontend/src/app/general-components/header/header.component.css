@@ -242,7 +242,7 @@ div.calendar-icon>p.today-month {
 @media (min-width: 800px) {
 
     div#nav-links>div.dropdown-menu:hover>div {
-        animation: open-menu var(--global-transition-duration) forwards;
+        animation: open-menu var(--global-transition-duration) forwards !important;
         animation-delay: 0.2s;
     }
 }
