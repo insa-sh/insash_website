@@ -35,6 +35,8 @@ div#home-header svg:hover #logo_border {
 div#home-header svg:hover #logo_bg {
     /* decaler smooth*/
     filter :opacity(0.4) blur(4px);
+    /* version pour ios et osx */
+    -webkit-filter: opacity(0.4) blur(4px);
     
 }
 
