@@ -9,7 +9,7 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
 
-  
+
 /* variables globales pour le club Info */
 
 * {
@@ -22,31 +22,32 @@
     --website-bg-color-light-1: #353535;
     --website-bg-color-light-2: #474747;
     --website-bg-color-light-3: #727272;
-  --website-strong-color-transparent: #8f51df32;
-  --website-alternative-color: #C8930A;
+    --website-strong-color-transparent: #8f51df32;
+    --website-alternative-color: #C8930A;
 
-  --insash-text-default-font: "Roboto Mono";
-  --insash-title-default-font: "Open Sans";
+    --insash-text-default-font: "Roboto Mono";
+    --insash-title-default-font: "Open Sans";
 
-  --website-default-text-font-size: 18px;
-  --website-default-title-font-size: 26px;
+    --website-default-text-font-size: 18px;
+    --website-default-title-font-size: 26px;
 
-  --insash-title-color: #ffffff;
-  --insash-text-color: #ffffff;
+    --insash-title-color: #ffffff;
+    --insash-text-color: #ffffff;
 
-  --cheatsheet-text-color: #338C30;
-  --cheatsheet-bg-color: #338C3033;
-  --news-text-color: #C8930A;
-  --news-bg-color: #C8930A33;
-  --tips-text-color: #007AFF;
-  --tips-bg-color: #007AFF33;
+    --cheatsheet-text-color: #338C30;
+    --cheatsheet-bg-color: #338C3033;
+    --news-text-color: #C8930A;
+    --news-bg-color: #C8930A33;
+    --tips-text-color: #007AFF;
+    --tips-bg-color: #007AFF33;
 
-  --insa-red-color: #E42618;
+    --insa-red-color: #E42618;
 
 
 
-  --global-transition-duration: 0.2s;
+    --global-transition-duration: 0.2s;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -55,23 +56,43 @@
     color: var(--insash-text-color);
 
 }
+
 input[type=text] {
     outline: none;
 
 }
 
+/* booster la hauteur minimale d'une page pour que le footer ne se retrouve pas en milieu de page sur des grands écrans*/
+div#height-control {
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 623px);
+}
+
+
+
+
 
 /* mobiles */
 @media (max-width:800px) {
-    *{
+    * {
         --website-default-text-font-size: 16px;
         --website-default-title-font-size: 26px;
-      
+
     }
+
     .computer-only {
         display: none;
     }
-  
+
+    /* booster la hauteur minimale d'une page pour que le footer ne se retrouve pas en milieu de page sur des grands écrans*/
+    div#height-control {
+        width: 100%;
+        height: 100%;
+        min-height: calc(100vh - 653px);
+    }
+
+
 }
 
 
@@ -81,13 +102,16 @@ input[type=text] {
         display: none;
     }
 }
+
 body {
     overflow-x: hidden;
     background-color: var(--website-bg-color);
 }
 
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: var(--insash-title-default-font);
 }
 
@@ -98,7 +122,15 @@ h2 {
 
 
 
-span, i, b, strong, em, a, li, ul, ol {
+span,
+i,
+b,
+strong,
+em,
+a,
+li,
+ul,
+ol {
     font-family: inherit;
     color: inherit;
     font-size: inherit;
@@ -137,14 +169,15 @@ a.text-link::after {
     background-color: #956870;
     transition: height var(--global-transition-duration), color var(--global-transition-duration), background-color var(--global-transition-duration);
 }
+
 a.text-link:hover {
     color: var(--website-bg-color);
 
 }
+
 a.text-link:hover::after {
     background-color: var(--insash-rose-pale);
     height: 100%;
     border-radius: 2px;
-    
-}
 
+}
