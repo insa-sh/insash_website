@@ -128,6 +128,7 @@ markdown hr {
 markdown {
   h1 {
     margin-bottom: 1em;
+    font-size: 36px;
   }
   h2 {
     margin-bottom: 1em;
