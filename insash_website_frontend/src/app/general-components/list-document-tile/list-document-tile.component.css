@@ -35,8 +35,8 @@ div.list-document-tile:hover {
 
 div.document-image {
     height: 120px;
-    width: 120px;
-    min-width: 120px;
+    width: 214px;
+    min-width: 200px;
     border-radius: 20px;
     /* background-color: var(--website-bg-color-light-2); */
   }
