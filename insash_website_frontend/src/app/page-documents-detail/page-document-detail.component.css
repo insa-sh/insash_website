@@ -43,7 +43,7 @@ div.document-details {
     justify-content: space-evenly;
     gap: 30px;
     padding: 15px 0px;
-    margin-top: 75px;
+    margin-top: 35px;
 }
 
 div.document-detail-section {
@@ -81,7 +81,7 @@ div.document-image {
 
 div.document-image img{
   display: block;
-  max-width: 75%;
+  max-width: min(1500px,60%);
     margin: auto;
     border-radius: 20px;
 }
@@ -144,7 +144,8 @@ div.document-image img{
       background-color: transparent;
     }
 
-    div.document-top {
-        padding-top: 75px; 
+    div.document-image img{
+      max-width: 75%;
+
     }
 }
