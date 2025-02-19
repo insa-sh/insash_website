@@ -78,10 +78,70 @@ services:
       - path: ./insash_website_data/.env
     volumes:
       - ./insash_website_data/init_database/database.sql:/docker-entrypoint-initdb.d/database.sql
-      - ./insash_website_data/postgresql/data:/var/lib/postgresql/data 
+      - ./insash_website_data/postgresql/data:/var/lib/postgresql/data
     networks:
       - website
+
+  insash_website_strapi:
+    container_name: insash_website_strapi
+    build:
+      context: ./insash_website_strapi
+    image: insash_website_strapi:latest
+    restart: unless-stopped
+    env_file: ./insash_website_strapi/.env
+    volumes:
+      - ./insash_website_strapi/config:/opt/app/config
+      - ./insash_website_strapi/src:/opt/app/src
+      - ./insash_website_strapi/package.json:/opt/package.json
+      - ./insash_website_strapi/package-lock.json:/opt/package-lock.json
+
+      - ./insash_website_strapi/.env:/opt/app/.env
+      - ./insash_website_strapi/public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - insash_website_strapi
+    depends_on:
+      - insash_website_strapiDB
+
+  insash_website_strapiDB:
+    container_name: insash_website_strapiDB
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    restart: unless-stopped
+    env_file: ./insash_website_strapi/.env
+    image: postgres:14.5-alpine
+    # environment:
+    #   POSTGRES_USER: ${DATABASE_USERNAME}
+    #   POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    #   POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - insash_website_strapi-data:/var/lib/postgresql/data/ #using a volume
+      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+
+    # ports:
+    #   - "5432:5432"
+    networks:
+      - insash_website_strapi
+
+  # insash_website_strapiAdminer:
+  #   container_name: insash_website_strapiAdminer
+  #   image: adminer
+  #   restart: unless-stopped
+  #   ports:
+  #     - "9090:8080"
+  #   environment:
+  #     - ADMINER_DEFAULT_SERVER=insash_website_strapiDB
+  #   networks:
+  #     - insash_website_strapi
+  #   depends_on:
+  #     - insash_website_strapiDB
 
 networks:
   website:
     driver: bridge
+  insash_website_strapi:
+    name: Insash_website_strapi
+    driver: bridge
+
+volumes:
+  insash_website_strapi-data:
