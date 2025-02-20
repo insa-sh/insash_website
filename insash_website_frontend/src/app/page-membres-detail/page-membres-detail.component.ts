@@ -1,25 +1,29 @@
-import { Component, inject } from '@angular/core';
-import { Member } from '../models/member';
-import { DocumentService } from '../interaction-backend/document.service';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DocumentAndAuthor } from '../models/document-and-author';
+import { Component, inject } from "@angular/core";
+import { Member } from "../models/member";
+import { DocumentService } from "../interaction-backend/document.service";
+import { Title } from "@angular/platform-browser";
+import { ActivatedRoute, Router } from "@angular/router";
+import { DocumentAndAuthor } from "../models/document-and-author";
+import { ApiService } from "../interaction-backend/api.service";
 
 @Component({
-  selector: 'app-page-membres-detail',
-  templateUrl: './page-membres-detail.component.html',
-  styleUrls: ['./page-membres-detail.component.css']
+  selector: "app-page-membres-detail",
+  templateUrl: "./page-membres-detail.component.html",
+  styleUrls: ["./page-membres-detail.component.css"],
 })
 export class PageMembresDetailComponent {
-
   public member!: Member;
   public project: DocumentAndAuthor[] = [];
 
-  constructor(private documentService: DocumentService, private titleService: Title, private route: ActivatedRoute) {
-    
-  } 
+  constructor(
+    private documentService: DocumentService,
+    private titleService: Title,
+    private route: ActivatedRoute
+  ) {}
 
   private router = inject(Router);
+
+  public BASE_URL = ApiService.getBaseUrl();
 
   ngOnInit() {
     this.fetchMember();
@@ -27,35 +31,34 @@ export class PageMembresDetailComponent {
   }
 
   fetchMember() {
-    this.route.data.subscribe(
-        (data) => {
-          if (data['member'] != null) {
-
-            this.member = data['member'][0];
-            this.titleService.setTitle("./insa.sh - " + this.member.username);
-            } else {
-            this.router.navigate(['/404']);
-          }
-          
-        })
+    this.route.data.subscribe((data) => {
+      if (data["member"] != null) {
+        this.member = data["member"]["data"][0];
+        this.titleService.setTitle("./insa.sh - " + this.member.username);
+      } else {
+        this.router.navigate(["/404"]);
+      }
+    });
   }
 
   fetchProjects() {
-    this.route.data.subscribe(
-        (data) => {
-          if (data['project'] != null) {
-            this.project = data['project'];
-          }
-          
-        })
+    this.route.data.subscribe((data) => {
+      if (data["project"] != null) {
+        this.project = data["project"];
+      }
+    });
   }
 
   doesHeHaveInternet() {
-    return this.member.github.String != '' || this.member.linkedin.String != '' || this.member.instagram.String != '' || this.member.website.String != '' || this.member.has_custom_website;
+    return (
+      this.member.github ||
+      this.member.linkedin ||
+      this.member.instagram ||
+      this.member.website
+    );
   }
 
-  imageError (event: any) {
-    this.member.image_address.String = '';
+  imageError(event: any) {
+    this.member.image.url = "";
   }
-
 }

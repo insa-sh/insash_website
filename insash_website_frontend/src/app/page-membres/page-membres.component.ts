@@ -19,7 +19,8 @@ export class PageMembresComponent {
   fetchMembers() {
     this.route.data.subscribe((data) => {
       if (data["members"] != null) {
-        this.membres = data["members"];
+        this.membres = data["members"]["data"];
+        console.log(this.membres);
       }
     });
   }

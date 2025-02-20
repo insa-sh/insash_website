@@ -17,16 +17,16 @@ export class MembresDuBureauComponent {
 
   ngOnInit() {
     this.president = this.membres.find(
-      (m) => m.role.String.toLowerCase() === "président"
+      (m) => m.role.toLowerCase() === "président"
     );
     this.secretaire = this.membres.find(
-      (m) => m.role.String.toLowerCase() === "secrétaire"
+      (m) => m.role.toLowerCase() === "secrétaire"
     );
     this.tresorier = this.membres.find(
-      (m) => m.role.String.toLowerCase() === "trésorier"
+      (m) => m.role.toLowerCase() === "trésorier"
     );
     this.responsableCommunication = this.membres.find(
-      (m) => m.role.String.toLowerCase() === "responsable communication"
+      (m) => m.role.toLowerCase() === "responsable communication"
     );
   }
 }

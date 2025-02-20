@@ -1,22 +1,24 @@
-import { Component, inject } from '@angular/core';
-import { DocumentAndAuthor } from '../models/document-and-author';
-import { DocumentService } from '../interaction-backend/document.service';
-import { DocumentType } from '../models/document';
-import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs';
-import { Title } from '@angular/platform-browser';
+import { Component, inject } from "@angular/core";
+import { DocumentAndAuthor } from "../models/document-and-author";
+import { DocumentService } from "../interaction-backend/document.service";
+import { DocumentType } from "../models/document";
+import { ActivatedRoute, Router } from "@angular/router";
+import { first } from "rxjs";
+import { Title } from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-page-document-detail',
-  templateUrl: './page-document-detail.component.html',
-  styleUrls: ['./page-document-detail.component.css']
+  selector: "app-page-document-detail",
+  templateUrl: "./page-document-detail.component.html",
+  styleUrls: ["./page-document-detail.component.css"],
 })
 export class PageDocumentsDetailComponent {
   public documentAndAuthor!: DocumentAndAuthor;
 
-  constructor(private documentService: DocumentService, private titleService: Title, private route: ActivatedRoute) {
-    
-  } 
+  constructor(
+    private documentService: DocumentService,
+    private titleService: Title,
+    private route: ActivatedRoute
+  ) {}
 
   private router = inject(Router);
 
@@ -25,16 +27,20 @@ export class PageDocumentsDetailComponent {
   }
 
   getNumberArchivedAuthors() {
-    return this.documentAndAuthor.author.filter((a) => a.archived).length;
+    return this.documentAndAuthor.author.filter((a) => a.archive).length;
   }
 
-  getActiveAuthors() { 
-    return this.documentAndAuthor.author.filter((a) => !a.archived);
+  getActiveAuthors() {
+    return this.documentAndAuthor.author.filter((a) => !a.archive);
   }
 
   getDateString() {
     let date = new Date(this.documentAndAuthor.document.date);
-    return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+    return date.toLocaleDateString("fr-FR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   }
 
   isProject() {
@@ -42,17 +48,16 @@ export class PageDocumentsDetailComponent {
   }
 
   fetchDocument() {
-    this.route.data.subscribe(
-        (data) => {
-          if (data['document'] != null) {
+    this.route.data.subscribe((data) => {
+      if (data["document"] != null) {
+        this.documentAndAuthor = data["document"][0];
 
-            this.documentAndAuthor = data['document'][0];
-
-            this.titleService.setTitle("./insa.sh - " + this.documentAndAuthor.document.title);
-            } else {
-            this.router.navigate(['/404']);
-          }
-          
-        })
+        this.titleService.setTitle(
+          "./insa.sh - " + this.documentAndAuthor.document.title
+        );
+      } else {
+        this.router.navigate(["/404"]);
+      }
+    });
   }
 }

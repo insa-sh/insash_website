@@ -1,27 +1,17 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { Injectable } from "@angular/core";
+import { environment } from "../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ApiService {
-  private baseUrl: string;
-
-  constructor() {
-    this.baseUrl = this.getApiUrl();
-  }
-
-  private getApiUrl(): string {
+  static getBaseUrl(): string {
     if (environment.production) {
       const fullUrl = window.location.href;
       const url = new URL(fullUrl);
-      return `${url.protocol}//${url.host}/api/`;
+      return `${url.protocol}//${url.host}/insash-website-data`;
     } else {
-      return environment.apiUrl;
+      return "http://localhost:1337";
     }
-  }
-
-  getBaseUrl(): string {
-    return this.baseUrl;
   }
 }

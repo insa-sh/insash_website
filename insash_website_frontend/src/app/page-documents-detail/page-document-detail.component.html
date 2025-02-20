@@ -1,5 +1,8 @@
 <div *ngIf="documentAndAuthor; else loading">
-  <app-project-detail-header [project]="documentAndAuthor" *ngIf="isProject()"></app-project-detail-header>
+  <app-project-detail-header
+    [project]="documentAndAuthor"
+    *ngIf="isProject()"
+  ></app-project-detail-header>
 
   <div class="document-top">
     <h1>{{ documentAndAuthor.document.title }}</h1>
@@ -19,12 +22,16 @@
             *ngFor="let author of getActiveAuthors(); let isLast = last"
           >
             <span
-              ><a routerLink="/les-membres/{{ author.username }}" title="./insa.sh - Profil de {{ author.firstname.String }}">
-                <ng-container *ngIf="author.firstname.String !== '';else username">{{author.firstname.String}}</ng-container>
-                
-            <ng-template #username>{{
-              author.username
-            }}</ng-template></a>
+              ><a
+                routerLink="/les-membres/{{ author.username }}"
+                title="./insa.sh - Profil de {{ author.prenom }}"
+              >
+                <ng-container *ngIf="author.prenom !== ''; else username">{{
+                  author.prenom
+                }}</ng-container>
+
+                <ng-template #username>{{ author.username }}</ng-template></a
+              >
             </span>
 
             <span *ngIf="!isLast">,&nbsp;</span>
@@ -41,36 +48,36 @@
         <p>{{ getDateString() }}</p>
       </div>
 
-
-      <div class="document-description document-detail-section" *ngIf="documentAndAuthor.document.description.String !== ''">
+      <div
+        class="document-description document-detail-section"
+        *ngIf="documentAndAuthor.document.description.String !== ''"
+      >
         <i class="fa-solid fa-file"></i>
         <p>{{ documentAndAuthor.document.description.String }}</p>
-
       </div>
     </div>
   </div>
 
   <div class="document-image" *ngIf="!isProject()">
-
-  <img   src="/public/images/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.image_address }}">
-
-
-</div>
+    <img
+      src="/public/images/document/{{ documentAndAuthor.document.type }}/{{
+        documentAndAuthor.document.image_address
+      }}"
+    />
+  </div>
   <div
     class="document-content"
-    *ngIf="
-        documentAndAuthor.document.content_address.String != ''
-    "
+    *ngIf="documentAndAuthor.document.content_address.String != ''"
   >
     <markdown
       lineNumbers
       ngPreserveWhitespaces
-      src="/public/markdown/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.content_address.String }}"
-
+      src="/public/markdown/document/{{ documentAndAuthor.document.type }}/{{
+        documentAndAuthor.document.content_address.String
+      }}"
     >
     </markdown>
   </div>
-
 </div>
 
 <ng-template #loading
