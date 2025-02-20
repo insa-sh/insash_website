@@ -100,7 +100,7 @@ services:
     ports:
       - "1337:1337"
     networks:
-      - insash_website_strapi
+      - website
     depends_on:
       - insash_website_strapiDB
 
@@ -117,7 +117,7 @@ services:
     # ports:
     #   - "5432:5432"
     networks:
-      - insash_website_strapi
+      - website
 
   # insash_website_strapiAdminer:
   #   container_name: insash_website_strapiAdminer
@@ -134,9 +134,6 @@ services:
 
 networks:
   website:
-    driver: bridge
-  insash_website_strapi:
-    name: Insash_website_strapi
     driver: bridge
 
 volumes:
