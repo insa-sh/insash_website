@@ -1,7 +1,11 @@
 import type { StrapiApp } from "@strapi/strapi/admin";
+import favicon from "./extensions/favicon.ico";
 
 export default {
   config: {
+    head: {
+      favicon: favicon,
+    },
     locales: [
       // 'ar',
       "fr",
