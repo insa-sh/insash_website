@@ -65,6 +65,18 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "auteur"
+    },
+    "projets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::projet.projet",
+      "mappedBy": "auteur"
     }
   }
 }

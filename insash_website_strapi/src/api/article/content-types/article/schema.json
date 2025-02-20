@@ -76,6 +76,18 @@
       "relation": "manyToMany",
       "target": "api::tag.tag",
       "inversedBy": "articles"
+    },
+    "auteur": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::membre.membre",
+      "inversedBy": "articles"
+    },
+    "projets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::projet.projet",
+      "mappedBy": "auteur"
     }
   }
 }
