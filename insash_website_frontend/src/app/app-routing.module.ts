@@ -42,6 +42,7 @@ const routes: Routes = [
     title: "Club Info INSA Hauts-de-France",
     resolve: {
       topProjects: TopProjectResolver,
+      topDocuments: TopArticleResolver,
     },
   },
 

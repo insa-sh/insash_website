@@ -5,6 +5,8 @@ import { DocumentType } from "../models/document";
 import { ActivatedRoute, Router } from "@angular/router";
 import { first } from "rxjs";
 import { Title } from "@angular/platform-browser";
+import { Document2 } from "../models/document2";
+import { ApiService } from "../interaction-backend/api.service";
 
 @Component({
   selector: "app-page-document-detail",
@@ -12,7 +14,8 @@ import { Title } from "@angular/platform-browser";
   styleUrls: ["./page-document-detail.component.css"],
 })
 export class PageDocumentsDetailComponent {
-  public documentAndAuthor!: DocumentAndAuthor;
+  public document!: Document2;
+  public BASE_URL = ApiService.getBaseUrl();
 
   constructor(
     private documentService: DocumentService,
@@ -26,16 +29,8 @@ export class PageDocumentsDetailComponent {
     this.fetchDocument();
   }
 
-  getNumberArchivedAuthors() {
-    return this.documentAndAuthor.author.filter((a) => a.archive).length;
-  }
-
-  getActiveAuthors() {
-    return this.documentAndAuthor.author.filter((a) => !a.archive);
-  }
-
   getDateString() {
-    let date = new Date(this.documentAndAuthor.document.date);
+    let date = new Date(this.document.date);
     return date.toLocaleDateString("fr-FR", {
       year: "numeric",
       month: "long",
@@ -43,18 +38,12 @@ export class PageDocumentsDetailComponent {
     });
   }
 
-  isProject() {
-    return this.documentAndAuthor.document.type == DocumentType.project;
-  }
-
   fetchDocument() {
     this.route.data.subscribe((data) => {
       if (data["document"] != null) {
-        this.documentAndAuthor = data["document"][0];
+        this.document = data["document"]["data"][0];
 
-        this.titleService.setTitle(
-          "./insa.sh - " + this.documentAndAuthor.document.title
-        );
+        this.titleService.setTitle("./insa.sh - " + this.document.titre);
       } else {
         this.router.navigate(["/404"]);
       }

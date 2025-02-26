@@ -1,15 +1,10 @@
-<div *ngIf="documentAndAuthor; else loading">
-  <app-project-detail-header
-    [project]="documentAndAuthor"
-    *ngIf="isProject()"
-  ></app-project-detail-header>
-
+<div *ngIf="document; else loading">
   <div class="document-top">
-    <h1>{{ documentAndAuthor.document.title }}</h1>
+    <h1>{{ document.titre }}</h1>
 
     <div class="document-tags">
-      <div class="tag" *ngFor="let tag of documentAndAuthor.document.tags">
-        <p>#{{ tag }}</p>
+      <div class="tag" *ngFor="let tag of document.tags">
+        <p>#{{ tag.titre }}</p>
       </div>
     </div>
 
@@ -19,12 +14,12 @@
         <div class="document-authors">
           <div
             class="author"
-            *ngFor="let author of getActiveAuthors(); let isLast = last"
+            *ngFor="let author of document.auteur; let isLast = last"
           >
             <span
               ><a
                 routerLink="/les-membres/{{ author.username }}"
-                title="./insa.sh - Profil de {{ author.prenom }}"
+                title="./insa.sh - Profil de {{ author.username }}"
               >
                 <ng-container *ngIf="author.prenom !== ''; else username">{{
                   author.prenom
@@ -35,10 +30,6 @@
             </span>
 
             <span *ngIf="!isLast">,&nbsp;</span>
-            <span *ngIf="getActiveAuthors().length == 0">+ </span>
-            <span *ngIf="getNumberArchivedAuthors() > 0">
-              {{ getNumberArchivedAuthors() }} auteurs
-            </span>
           </div>
         </div>
       </div>
@@ -50,32 +41,20 @@
 
       <div
         class="document-description document-detail-section"
-        *ngIf="documentAndAuthor.document.description.String !== ''"
+        *ngIf="document.description !== ''"
       >
         <i class="fa-solid fa-file"></i>
-        <p>{{ documentAndAuthor.document.description.String }}</p>
+        <p>{{ document.description }}</p>
       </div>
     </div>
   </div>
 
-  <div class="document-image" *ngIf="!isProject()">
-    <img
-      src="/public/images/document/{{ documentAndAuthor.document.type }}/{{
-        documentAndAuthor.document.image_address
-      }}"
-    />
+  <div class="document-image">
+    <img src="{{ BASE_URL }}{{ document.image.url }}" />
   </div>
-  <div
-    class="document-content"
-    *ngIf="documentAndAuthor.document.content_address.String != ''"
-  >
-    <markdown
-      lineNumbers
-      ngPreserveWhitespaces
-      src="/public/markdown/document/{{ documentAndAuthor.document.type }}/{{
-        documentAndAuthor.document.content_address.String
-      }}"
-    >
+  <div class="document-content" *ngIf="document.contenu != ''">
+    <markdown lineNumbers ngPreserveWhitespaces>
+      {{ document.contenu }}
     </markdown>
   </div>
 </div>

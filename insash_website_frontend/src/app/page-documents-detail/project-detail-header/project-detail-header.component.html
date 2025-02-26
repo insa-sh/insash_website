@@ -1,27 +1,30 @@
 <div class="project-header">
   <div class="project-header-bg">
-
-    <img src="/public/images/document/{{ project.document.type }}/{{ project.document.image_address }}" alt="" />
-
+    <img src="/public/images/document/{{ project.image.url }}" alt="" />
   </div>
 
   <div class="project-header-fg">
     <div class="project-header-image">
-
-      <img src="/public/images/document/{{ project.document.type }}/{{ project.document.image_address }}" alt="" />
-
+      <img src="/public/images/document/{{ project.image.url }}" alt="" />
     </div>
 
     <div class="project-header-buttons">
-      <a href="{{ project.document.github_address.String }}" *ngIf="project.document.github_address.String != ''" target="_blank">
-
+      <a
+        href="{{ project.github_url }}"
+        *ngIf="project.github_url != ''"
+        target="_blank"
+      >
         <div class="button button-github">
           <p>Github</p>
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
       </a>
 
-      <a href="{{ project.document.project_address.String }}" *ngIf="project.document.project_address.String != ''" target="_blank">
+      <a
+        href="{{ project.project_url }}"
+        *ngIf="project.project_url != ''"
+        target="_blank"
+      >
         <div class="button button-play">
           <p>Lancer</p>
           <i class="fa-solid fa-play"></i>
