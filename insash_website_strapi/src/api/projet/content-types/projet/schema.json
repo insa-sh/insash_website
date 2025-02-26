@@ -33,7 +33,7 @@
     },
     "contenu": {
       "type": "richtext",
-      "required": true,
+      "required": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
