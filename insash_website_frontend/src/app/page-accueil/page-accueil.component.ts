@@ -3,6 +3,7 @@ import { DocumentService } from "../interaction-backend/document.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DocumentAndAuthor } from "../models/document-and-author";
 import { Projet } from "../models/projet";
+import { Article } from "../models/article";
 
 const NUMBER_OF_TOP_DOCUMENTS = 3;
 
@@ -15,6 +16,7 @@ export class PageAccueilComponent {
   public title = "Site Web du Club Info";
 
   @Input() public projects: Projet[] = [];
+  public documents: Article[] = [];
 
   private keysPressed: string[] = [];
   private keyDownListener: (() => void) | undefined;
@@ -26,10 +28,18 @@ export class PageAccueilComponent {
     private router: Router
   ) {}
 
-  fetchTopDocuments() {
+  fetchTopProjects() {
     this.route.data.subscribe((data) => {
       if (data["topProjects"] != null) {
         this.projects = data["topProjects"]["data"];
+      }
+    });
+  }
+
+  fetchTopDocuments() {
+    this.route.data.subscribe((data) => {
+      if (data["topDocuments"] != null) {
+        this.documents = data["topDocuments"]["data"];
       }
     });
   }
@@ -87,6 +97,7 @@ export class PageAccueilComponent {
 
   ngOnInit() {
     this.fetchTopDocuments();
+    this.fetchTopProjects();
     this.keyDownListener = this.renderer.listen(
       "document",
       "keydown",

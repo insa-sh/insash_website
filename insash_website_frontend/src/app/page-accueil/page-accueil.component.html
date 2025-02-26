@@ -1,7 +1,19 @@
 <app-home-social-links></app-home-social-links>
+<h2>Les derniers <span>projets </span> du club</h2>
 <app-top-project [documents]="projects"></app-top-project>
+
 <div class="more-project">
   <a routerLink="project" class="text-link">-> Plus de projets</a>
+</div>
+<h2>Jette un oeil à nos <span>derniers articles</span> &#x2728;</h2>
+<app-top-document
+  [documents]="documents"
+  [numberOfDocuments]="2"
+></app-top-document>
+<div class="more-project">
+  <a routerLink="article/actus" class="text-link"
+    >-> Check nos autres articles
+  </a>
 </div>
 
 <app-rejoindre-le-club></app-rejoindre-le-club>
