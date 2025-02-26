@@ -10,6 +10,17 @@ div#search-section {
   align-items: center;
 }
 
+div.dropdown {
+  display: flex;
+  text-align: center;
+  position: relative;
+  /* display: block; */
+  width: fit-content;
+
+  padding: 8px 10px;
+  padding-left: 5px;
+}
+
 div.dropdown:last-child {
   border-right: none;
   /* margin-left: 20px; */
