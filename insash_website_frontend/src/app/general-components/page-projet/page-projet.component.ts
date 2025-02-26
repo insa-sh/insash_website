@@ -3,26 +3,23 @@ import {
   DocumentService,
   SortingBy,
 } from "../../interaction-backend/document.service";
-import { DocumentAndAuthor } from "../../models/document-and-author";
-import { DocumentType } from "../../models/document";
 import { ActivatedRoute } from "@angular/router";
 import { TileStyle } from "../top-document/top-document.component";
 import { Document2 } from "src/app/models/document2";
 import { Article } from "src/app/models/article";
 import { Categorie } from "src/app/models/categorie";
+import { Projet } from "src/app/models/projet";
 
 @Component({
-  selector: "app-page-document",
-  templateUrl: "./page-document.component.html",
-  styleUrls: ["./page-document.component.css"],
+  selector: "app-page-projet",
+  templateUrl: "./page-projet.component.html",
+  styleUrls: ["./page-projet.component.css"],
 })
-export class PageDocumentComponent {
-  public documents: Article[] = [];
+export class PageProjetComponent {
+  public documents: Projet[] = [];
   public topDocuments: Document2[] = [];
 
-  public categorie: Categorie = new Categorie("", "", "");
-
-  public tileStyle: TileStyle = TileStyle.list;
+  public tileStyle: TileStyle = TileStyle.box;
 
   constructor(
     private documentService: DocumentService,
@@ -36,14 +33,6 @@ export class PageDocumentComponent {
     sort: "",
     search: "",
   };
-
-  fetchCategorie() {
-    this.route.data.subscribe((data) => {
-      if (data["categorie"] != null) {
-        this.categorie = data["categorie"]["data"][0];
-      }
-    });
-  }
 
   onFilterChanged(filters: any) {
     this.filters = filters;
@@ -73,8 +62,7 @@ export class PageDocumentComponent {
     let search = this.filters.search.length >= 3 ? this.filters.search : "";
 
     this.documentService
-      .getArticle(
-        this.categorie.slug,
+      .getProjet(
         this.filters.tags,
         search,
         "",
@@ -104,7 +92,6 @@ export class PageDocumentComponent {
   ngOnInit() {
     this.fetchDocumentInit();
     this.fetchTopDocuments();
-    this.fetchCategorie();
   }
 
   isThereEnoughDocuments() {

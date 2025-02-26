@@ -28,6 +28,10 @@
       "relation": "oneToMany",
       "target": "api::article.article",
       "mappedBy": "categorie"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "titre"
     }
   }
 }

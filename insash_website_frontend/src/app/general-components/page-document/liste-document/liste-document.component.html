@@ -1,13 +1,9 @@
 <div class="liste-document">
-    <ng-template *ngIf="isThereEnoughDocuments(); then documents; else noDocument"></ng-template>
-    <ng-template #documents>
-        <app-list-document-tile *ngFor="let doc of documentsAndAuthors" [documentAndAuthor]="doc"></app-list-document-tile>
-    </ng-template>
-    
-
-<ng-template #noDocument>
-    <div class="no-documents" >
-        Rien ici pour le moment ;)
-    </div>
-</ng-template>
+  <app-list-document-tile
+    *ngFor="let doc of documents"
+    [document]="doc"
+  ></app-list-document-tile>
+  <div *ngIf="documents.length === 0" class="no-documents">
+    Rien ici pour le moment ;)
+  </div>
 </div>

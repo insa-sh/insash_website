@@ -1,12 +1,5 @@
 <div class="title-container">
-  <h1
-    [ngStyle]="{
-      color: categorie.couleur,
-      'background-color': categorie.couleur + '33'
-    }"
-  >
-    {{ categorie.titre.toUpperCase() }}
-  </h1>
+  <h1>PROJETS</h1>
 </div>
 
 <div *ngIf="isThereEnoughTopDocuments()">
@@ -14,16 +7,19 @@
     <i>Nos derniers articles</i>
   </h2>
 
-  <app-top-document
+  <app-top-project
     [documents]="topDocuments"
     [numberOfDocuments]="2"
-  ></app-top-document>
+  ></app-top-project>
 </div>
 
 <h2>
   <i>Tous nos articles</i>
 </h2>
 
-<app-search-bar (filterChanged)="onFilterChanged($event)"></app-search-bar>
+<app-search-bar
+  [isItAnArticle]="false"
+  (filterChanged)="onFilterChanged($event)"
+></app-search-bar>
 
 <app-liste-document [documents]="documents"></app-liste-document>

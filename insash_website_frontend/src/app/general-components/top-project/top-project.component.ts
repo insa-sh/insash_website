@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
-import { DocumentAndAuthor } from "src/app/models/document-and-author";
 import { Document2 } from "src/app/models/document2";
+import { Projet } from "src/app/models/projet";
 
 export enum TileStyle {
   list = "list",
@@ -8,11 +8,11 @@ export enum TileStyle {
 }
 
 @Component({
-  selector: "app-top-document",
-  templateUrl: "./top-document.component.html",
-  styleUrls: ["./top-document.component.css"],
+  selector: "app-top-project",
+  templateUrl: "./top-project.component.html",
+  styleUrls: ["./top-project.component.css"],
 })
-export class TopDocumentComponent {
+export class TopProjectComponent {
   @Input() public documents: Document2[] = [];
   @Input() public numberOfDocuments: number = 3;
 

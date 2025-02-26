@@ -1,29 +1,11 @@
 <div class="bar">
   <div id="search-section">
-    <div class="dropdown" *ngIf="isItAnArticle()">
-      <button
-        class="dropdown-button"
-        onclick="this.classList.toggle('dropdown-ouvert')"
-      >
-        <div class="tag" [ngClass]="'type-tag-' + this.typeOfDocuments">
-          <p>{{ getDocumentType(this.typeOfDocuments) }}</p>
-        </div>
-
-        <i class="fa-solid fa-chevron-down"></i>
-      </button>
-      <div class="dropdown-content" id="dropdown-type">
-        <label for="dropdown-radio-sort-{{ e }}" *ngFor="let e of otherTypes">
-          <a routerLink="/{{ e }}">
-            <div class="dropdown-content-element">
-              <div class="tag" [ngClass]="'type-tag-' + e">
-                <p>{{ getDocumentType(e) }}</p>
-              </div>
-              <p></p>
-            </div>
-          </a>
-        </label>
-      </div>
-    </div>
+    <app-categories-selector
+      *ngIf="isItAnArticle"
+      [categorie]="categorie"
+      [otherCategorie]="otherCategorie"
+    >
+    </app-categories-selector>
 
     <div class="search-bar">
       <input
@@ -93,17 +75,17 @@
 
       <div class="dropdown-content">
         <label
-          for="dropdown-checkbox-tags-{{ e }}"
+          for="dropdown-checkbox-tags-{{ e.titre }}"
           *ngFor="let e of tags; let i = index"
         >
           <div class="dropdown-content-element" formArrayName="tags">
-            <p>{{ e }}</p>
+            <p>{{ e.titre }}</p>
 
             <input
               type="checkbox"
               class="custom-input"
               name="dropdown-checkbox-tags"
-              id="dropdown-checkbox-tags-{{ e }}"
+              id="dropdown-checkbox-tags-{{ e.titre }}"
               [formControlName]="i"
             />
           </div>

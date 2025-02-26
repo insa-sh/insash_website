@@ -1,25 +1,22 @@
 import { Member } from "./member";
 import { Image } from "./image";
 import { Tag } from "./tag";
+import { Document2 } from "./document2";
 
-export enum DocumentType {
-  project = "project",
-  cheatsheet = "cheatsheet",
-  tips = "tips",
-  news = "news",
-}
-export class Document {
+export class Projet extends Document2 {
   constructor(
-    public titre: string,
-    public tag: Tag[] | null,
-    public auteur: Member[],
-    public contenu: String,
-    public date: string,
-    public description: String,
-    public image: Image,
-    public slug: string,
+    titre: string,
+    tags: Tag[] | null,
+    auteur: Member[],
+    contenu: String,
+    date: string,
+    description: String,
+    image: Image,
+    slug: string,
     public project_url: String | null,
     public github_url: String | null,
-    public locale: String
-  ) {}
+    locale: String
+  ) {
+    super(titre, tags, auteur, contenu, date, description, image, slug, locale);
+  }
 }

@@ -23,6 +23,6 @@ export class MembreBureauComponent {
     window.open(link, "_blank");
   }
   imageError(event: any) {
-    this.membre.image.url = "";
+    this.membre.image!.url = "";
   }
 }

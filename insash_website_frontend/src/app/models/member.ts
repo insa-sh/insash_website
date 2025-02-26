@@ -7,7 +7,7 @@ export class Member {
     public role: String,
     public personnal_website: String | null,
     public documentId: String,
-    public image: Image,
+    public image: Image | null,
     public linkedin: String | null,
     public github: String | null,
     public instagram: String | null,

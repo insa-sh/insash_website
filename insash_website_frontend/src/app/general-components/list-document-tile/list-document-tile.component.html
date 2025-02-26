@@ -1,26 +1,29 @@
-<a routerLink="/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.slug }}"
+<a routerLink="/article/{{ getArticleCategorie() }}/{{ document.slug }}"
   ><div class="list-document-tile">
-    <div
-      class="document-image"
-      [ngClass]="{ icon: documentAndAuthor.document.is_image_icon }"
-    >
-      <img src="/public/images/document/{{ documentAndAuthor.document.type }}/{{ documentAndAuthor.document.image_address }}" alt="" />
+    <div class="document-image">
+      <img src="{{ BASE_URL }}{{ document.image.url }}" alt="" />
     </div>
     <div class="document-content">
       <div class="document-main-details">
-        <h2>{{ documentAndAuthor.document.title }}</h2>
+        <h2>{{ document.titre }}</h2>
         <div class="document-tags">
-          <div class="tag" [ngClass]="'type-tag-'+documentAndAuthor.document.type" *ngIf="documentAndAuthor.document.type != 'project'">
-            <p>{{ getDocumentType() }}</p>
+          <div
+            class="tag"
+            [ngClass]="'type-tag-' + getArticleCategorie()"
+            *ngIf="getArticleCategorie() !== 'projet'"
+          >
+            <p>{{ getArticleCategorie().toUpperCase() }}</p>
           </div>
-          <div class="tag" *ngFor="let tag of documentAndAuthor.document.tags.slice(0,3)">
-            <p>#{{ tag }}</p>
+          <div class="tag" *ngFor="let tag of getMaxTags(MAX_TAGS)">
+            <p>#{{ tag.titre }}</p>
           </div>
-          <div class="tag" *ngIf="documentAndAuthor.document.tags.length > 3">
-            <p>+{{ documentAndAuthor.document.tags.length - 3 }}</p>
+          <div class="tag" *ngIf="getNumberOfTags() > 3">
+            <p>+{{ getNumberOfTags() - 3 }}</p>
           </div>
         </div>
-        <p class="document-description" *ngIf="documentAndAuthor.document.description.String !== ''">{{ documentAndAuthor.document.description.String }}</p>
+        <p class="document-description" *ngIf="document.description !== ''">
+          {{ document.description }}
+        </p>
       </div>
       <div class="document-other-details">
         <div class="document-year">

@@ -18,7 +18,8 @@
   "attributes": {
     "slug": {
       "type": "uid",
-      "required": true
+      "required": true,
+      "targetField": "titre"
     },
     "titre": {
       "type": "string",
@@ -82,12 +83,6 @@
       "relation": "manyToMany",
       "target": "api::membre.membre",
       "inversedBy": "articles"
-    },
-    "projets": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::projet.projet",
-      "mappedBy": "auteur"
     }
   }
 }

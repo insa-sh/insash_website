@@ -5,6 +5,12 @@ import { Member } from "../models/member";
 import { Document, DocumentType } from "../models/document";
 import { DocumentAndAuthor } from "../models/document-and-author";
 import { ApiService } from "./api.service";
+import { Projet } from "../models/projet";
+import { Tag } from "../models/tag";
+import { Image } from "../models/image";
+import { map } from "rxjs/operators";
+import { Categorie } from "../models/categorie";
+import { Article } from "../models/article";
 
 export enum SortingBy {
   dateAsc = "date_asc",
@@ -22,7 +28,7 @@ export class DocumentService {
   BASE_URL = ApiService.getBaseUrl() + "/api/";
 
   getArticle(
-    categorie?: DocumentType,
+    categorie?: String,
     tags?: string[],
     search?: string,
     documentId?: string,
@@ -31,8 +37,10 @@ export class DocumentService {
     sort: SortingBy = SortingBy.dateAsc,
     username?: string[],
     nbr?: number
-  ): Observable<DocumentAndAuthor> {
-    let url: string = this.BASE_URL + "articles?";
+  ): Observable<Article> {
+    let url: string =
+      this.BASE_URL +
+      "articles?populate[image][fields][0]=url&populate=auteur&populate[tags][fields][0]=titre&populate[categorie][fields][0]=slug&";
 
     switch (sort) {
       case SortingBy.dateAsc:
@@ -55,19 +63,20 @@ export class DocumentService {
         break;
     }
 
+    // TODO : voir si le filtrage marche
     if (tags && tags.length > 0) {
-      tags.forEach((tag) => {
-        url += "tag=" + tag + "&";
+      tags.forEach((tag, i) => {
+        url += "filters[$and][" + i + "][tags][titre][$eq]=" + tag + "&";
       });
     }
 
     if (categorie && categorie != null) {
-      url += "type=" + categorie + "&";
+      url += "filters[categorie][slug][$eq]=" + categorie + "&";
     }
 
     if (username && username.length > 0) {
-      username.forEach((u) => {
-        url += "populate[auteur][filters][username][$eq]=" + u + "&";
+      username.forEach((u, i) => {
+        url += "filters[$and][" + i + "][auteur][username][$eq]=" + u + "&";
       });
     }
 
@@ -81,7 +90,7 @@ export class DocumentService {
       url += "filters[slug][$eq]=" + slug + "&";
     }
     if (nbr && nbr > 0) {
-      url += "nbr=" + nbr + "&";
+      url += "pagination[pageSize]=" + nbr + "&";
     }
     if (year && year.length > 0) {
       year.forEach((y) => {
@@ -94,7 +103,7 @@ export class DocumentService {
       });
     }
 
-    return this.http.get<DocumentAndAuthor>(url);
+    return this.http.get<Article>(url);
   }
 
   getProjet(
@@ -106,8 +115,10 @@ export class DocumentService {
     sort: SortingBy = SortingBy.dateAsc,
     username?: string[],
     nbr?: number
-  ): Observable<DocumentAndAuthor> {
-    let url: string = this.BASE_URL + "articles?";
+  ): Observable<Projet> {
+    let url: string =
+      this.BASE_URL +
+      "projets?populate[image][fields][0]=url&populate=auteur&populate[tags][fields][0]=titre&";
 
     switch (sort) {
       case SortingBy.dateAsc:
@@ -131,14 +142,14 @@ export class DocumentService {
     }
 
     if (tags && tags.length > 0) {
-      tags.forEach((tag) => {
-        url += "tag=" + tag + "&";
+      tags.forEach((tag, i) => {
+        url += "filters[$and][" + i + "][tags][titre][$eq]=" + tag + "&";
       });
     }
 
     if (username && username.length > 0) {
-      username.forEach((u) => {
-        url += "populate[auteur][filters][username][$eq]=" + u + "&";
+      username.forEach((u, i) => {
+        url += "filters[$and][" + i + "][auteur][username][$eq]=" + u + "&";
       });
     }
 
@@ -152,7 +163,7 @@ export class DocumentService {
       url += "filters[slug][$eq]=" + slug + "&";
     }
     if (nbr && nbr > 0) {
-      url += "nbr=" + nbr + "&";
+      url += "pagination[pageSize]=" + nbr + "&";
     }
     if (year && year.length > 0) {
       year.forEach((y) => {
@@ -165,74 +176,80 @@ export class DocumentService {
       });
     }
 
-    return this.http.get<DocumentAndAuthor>(url);
+    return this.http.get<Projet>(url);
   }
 
-  getDocumentTags(
-    documentType?: DocumentType,
-    archived?: boolean
-  ): Observable<String> {
-    let url = this.BASE_URL + "documents/tags?";
-
-    if (documentType && documentType != null) {
-      url += "type=" + documentType + "&";
-    }
-    if (archived != undefined) {
-      url += "archived=" + archived.toString() + "&";
-    }
-    return this.http.get<String>(url);
+  getCategorie(categorieSlug?: String): Observable<Categorie> {
+    let url: string =
+      this.BASE_URL + "categories?filters[slug][$eq]=" + categorieSlug;
+    return this.http.get<Categorie>(url);
   }
 
-  getDocumentAuthors(
-    documentType?: DocumentType,
-    slug?: String,
-    archived?: boolean
-  ): Observable<Member> {
-    let url = this.BASE_URL + "documents/authors?";
+  getArticleCategorie(): Observable<Categorie> {
+    let url: string = this.BASE_URL + "categories";
+    return this.http.get<Categorie>(url);
+  }
 
-    if (documentType && documentType != null) {
-      url += "type=" + documentType + "&";
+  getArticleTags(categorie?: String): Observable<Tag> {
+    let url = this.BASE_URL + "tags?";
+
+    if (categorie && categorie != null) {
+      url += "filters[articles][categorie][slug][$eq]=" + categorie;
+    }
+    return this.http.get<Tag>(url);
+  }
+
+  getProjetTags(): Observable<Tag> {
+    let url = this.BASE_URL + "tags?filters[projets][$notNull]=true";
+    return this.http.get<Tag>(url);
+  }
+
+  getArticleAuthors(categorie?: String, slug?: String): Observable<Member> {
+    let url = this.BASE_URL + "membres?";
+
+    if (categorie && categorie != null) {
+      url += "filters[articles][categorie][slug][$eq]=" + categorie;
     }
 
     if (slug && slug != "") {
-      url += "slug=" + slug + "&";
-    }
-    if (archived != undefined) {
-      url += "archived=" + archived.toString() + "&";
+      url += "filters[articles][slug][$eq]=" + slug + "&";
     }
 
     return this.http.get<Member>(url);
   }
 
-  getDocumentYears(
-    documentType?: DocumentType,
-    archived?: boolean
-  ): Observable<String> {
-    let url = this.BASE_URL + "documents/years?";
+  getProjetAuthors(slug?: String): Observable<Member> {
+    let url = this.BASE_URL + "membres?filters[projets][$notNull]=true&";
 
-    if (documentType && documentType != null) {
-      url += "type=" + documentType + "&";
+    if (slug && slug != "") {
+      url += "filters[articles][slug][$eq]=" + slug + "&";
     }
-    if (archived != undefined) {
-      url += "archived=" + archived.toString() + "&";
-    }
-    return this.http.get<String>(url);
+
+    return this.http.get<Member>(url);
   }
 
-  getMembre(status?: String, username?: String, archive?: boolean) {
-    let url: string = this.BASE_URL + "membres?populate[image][fields][0]=url&";
+  getArticleYears(categorie?: String): Observable<Article> {
+    let url = this.BASE_URL + "articles?fields=date&";
 
-    if (status && status != "") {
-      url += "status=" + status + "&";
+    if (categorie && categorie != null) {
+      url += "filters[categorie][slug][$eq]=" + categorie + "&";
     }
+    return this.http.get<Article>(url);
+  }
+
+  getProjetYears(): Observable<Projet> {
+    let url = this.BASE_URL + "projets?fields=date&";
+
+    return this.http.get<Projet>(url);
+  }
+
+  getMembre(username?: String) {
+    let url: string = this.BASE_URL + "membres?populate[image][fields][0]=url&";
 
     if (username && username != "") {
       url += "filters[username][$eq]=" + username + "&";
     }
 
-    if (archive != undefined) {
-      url += "filters[archive][$eq]=" + archive.toString() + "&";
-    }
     return this.http.get<Member>(url);
   }
 }

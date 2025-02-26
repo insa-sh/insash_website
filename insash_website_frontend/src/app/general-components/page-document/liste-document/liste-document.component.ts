@@ -1,16 +1,25 @@
-import { Component, Input } from '@angular/core';
-import { DocumentAndAuthor } from 'src/app/models/document-and-author';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectorRef,
+} from "@angular/core";
+import { Document2 } from "src/app/models/document2";
 
 @Component({
-  selector: 'app-liste-document',
-  templateUrl: './liste-document.component.html',
-  styleUrls: ['./liste-document.component.css']
+  selector: "app-liste-document",
+  templateUrl: "./liste-document.component.html",
+  styleUrls: ["./liste-document.component.css"],
 })
 export class ListeDocumentComponent {
-  @Input() documentsAndAuthors!: DocumentAndAuthor[];
+  @Input() documents!: Document2[];
 
-  isThereEnoughDocuments() {
-    return this.documentsAndAuthors.length > 0;
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes["documents"]) {
+      this.cdr.detectChanges();
+    }
   }
-
 }

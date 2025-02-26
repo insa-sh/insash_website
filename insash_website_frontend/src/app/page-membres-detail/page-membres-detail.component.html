@@ -2,7 +2,7 @@
   <div class="member-header">
     <div class="member-image">
       <img
-        src="{{ BASE_URL }}{{ member.image.url }}"
+        src="{{ BASE_URL }}{{ member.image!.url }}"
         alt="Photo de profil du {{ member.role }}"
         (error)="imageError($event)"
         class="profile-picture"
@@ -36,7 +36,7 @@
       <div class="tag-retraite tag" *ngIf="member.archive">
         Retraité du club
       </div>
-      <div class="tag-bureau tag" *ngIf="member.role != 'bureau'">Bureau</div>
+      <div class="tag-bureau tag" *ngIf="member.role != 'Membre'">Bureau</div>
       <div class="tag-role tag" *ngIf="member.role != 'Membre'">
         {{ member.role }}
       </div>
@@ -82,6 +82,6 @@
   </div>
   <div class="member-projects" *ngIf="project.length > 0">
     <h2><em>Projets</em></h2>
-    <app-liste-document [documentsAndAuthors]="project"></app-liste-document>
+    <app-liste-document [documents]="project"></app-liste-document>
   </div>
 </div>

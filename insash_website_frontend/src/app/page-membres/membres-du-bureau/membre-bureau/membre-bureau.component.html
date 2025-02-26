@@ -2,7 +2,7 @@
   <!-- si le membre a une photo de profil alors l'afficher, sinon prendre celle par défaut -->
   <a routerLink="/les-membres/{{ membre.username }}">
     <img
-      src="{{ BASE_URL }}{{ membre.image.url }}"
+      src="{{ BASE_URL }}{{ membre.image!.url }}"
       alt="Photo de profil du {{ membre.role }}"
       (error)="imageError($event)"
       class="profile-picture"

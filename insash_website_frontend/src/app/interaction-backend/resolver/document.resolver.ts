@@ -3,140 +3,235 @@ import {
   ActivatedRouteSnapshot,
   ResolveFn,
   RouterStateSnapshot,
+  Router,
 } from "@angular/router";
 import { DocumentService, SortingBy } from "../document.service";
-import { Observable } from "rxjs";
+import { Observable, firstValueFrom } from "rxjs";
 import { Document, DocumentType } from "../../models/document";
 import { DocumentAndAuthor } from "src/app/models/document-and-author";
 import { Member } from "src/app/models/member";
+import { Projet } from "src/app/models/projet";
+import { Article } from "src/app/models/article";
+import { Categorie } from "src/app/models/categorie";
+import { Tag } from "src/app/models/tag";
 
-const createDocumentResolver = (
-  documentType: DocumentType,
-  nbr?: number
-): ResolveFn<DocumentAndAuthor> => {
-  return (
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<DocumentAndAuthor> => {
-    let slug = "";
-    let username = [];
-    if (nbr == null) {
-      nbr = 0;
-    }
+export const ArticleResolver: ResolveFn<Article> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Article> => {
+  const userService = inject(DocumentService);
+  const router = inject(Router); // Injection du Router
 
-    if (route.paramMap.get("slug") != null) {
-      slug = route.paramMap.get("slug")!;
-    }
+  let slug = "";
+  let categorie = "";
 
-    if (route.paramMap.get("username") != null) {
-      username.push(route.paramMap.get("username")!);
-    }
+  if (route.paramMap.get("slug") != null) {
+    slug = route.paramMap.get("slug")!;
+  }
 
-    return inject(DocumentService).getArticle(
-      (documentType = documentType),
-      [],
-      "",
-      "",
-      slug,
-      [],
-      SortingBy.dateDesc,
-      username,
-      (nbr = nbr)
-    );
-  };
+  if (route.paramMap.get("categorie") != null) {
+    categorie = route.paramMap.get("categorie")!;
+    // let categoriesAccepted: Categorie[] =
+    //   userService.getArticleCategories()["data"];
+
+    // if (!categoriesAccepted.some((c) => c.titre === categorie)) {
+    //   router.navigate(["/404"]);
+    // }
+  }
+
+  return userService.getArticle(
+    categorie,
+    undefined,
+    undefined,
+    undefined,
+    slug,
+    undefined,
+    SortingBy.dateDesc,
+    undefined,
+    undefined
+  );
 };
 
-export const ProjectResolver = createDocumentResolver(DocumentType.project);
-export const CheatsheetResolver = createDocumentResolver(
-  DocumentType.cheatsheet
-);
-export const TipsResolver = createDocumentResolver(DocumentType.tips);
-export const NewsResolver = createDocumentResolver(DocumentType.news);
+export const ProjectResolver: ResolveFn<Projet> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Projet> => {
+  const userService = inject(DocumentService);
 
-export const TopProjectResolver = createDocumentResolver(
-  DocumentType.project,
-  3
-);
-export const TopCheatsheetResolver = createDocumentResolver(
-  DocumentType.cheatsheet,
-  3
-);
-export const TopTipsResolver = createDocumentResolver(DocumentType.tips, 3);
-export const TopNewsResolver = createDocumentResolver(DocumentType.news, 3);
+  let slug = "";
 
-const createDocumentTagsResolver = (
-  documentType: DocumentType
-): ResolveFn<String> => {
-  return (
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<String> => {
-    return inject(DocumentService).getDocumentTags(
-      (documentType = documentType),
-      false
-    );
-  };
+  if (route.paramMap.get("slug") != null) {
+    slug = route.paramMap.get("slug")!;
+  }
+
+  return userService.getProjet(
+    undefined,
+    undefined,
+    undefined,
+    slug,
+    undefined,
+    SortingBy.dateDesc,
+    undefined,
+    undefined
+  );
 };
 
-export const ProjectTagsResolver = createDocumentTagsResolver(
-  DocumentType.project
-);
-export const CheatsheetTagsResolver = createDocumentTagsResolver(
-  DocumentType.cheatsheet
-);
-export const TipsTagsResolver = createDocumentTagsResolver(DocumentType.tips);
-export const NewsTagsResolver = createDocumentTagsResolver(DocumentType.news);
+export const TopArticleResolver: ResolveFn<Article> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Article> => {
+  const userService = inject(DocumentService);
+  const router = inject(Router); // Injection du Router
 
-const createDocumentAuthorResolver = (
-  documentType: DocumentType
-): ResolveFn<Member> => {
-  return (
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<Member> => {
-    return inject(DocumentService).getDocumentAuthors(
-      (documentType = documentType),
-      "",
-      false
-    );
-  };
+  let slug = "";
+  let categorie = "";
+
+  if (route.paramMap.get("slug") != null) {
+    slug = route.paramMap.get("slug")!;
+  }
+
+  if (route.paramMap.get("categorie") != null) {
+    categorie = route.paramMap.get("categorie")!;
+    // let categoriesAccepted: Categorie[] =
+    //   userService.getArticleCategorie()["data"];
+
+    // if (!categoriesAccepted.some((c) => c.titre === categorie)) {
+    //   router.navigate(["/404"]);
+    // }
+  }
+
+  return userService.getArticle(
+    categorie,
+    undefined,
+    undefined,
+    undefined,
+    slug,
+    undefined,
+    SortingBy.dateDesc,
+    undefined,
+    3
+  );
 };
 
-export const ProjectAuthorResolver = createDocumentAuthorResolver(
-  DocumentType.project
-);
-export const CheatsheetAuthorResolver = createDocumentAuthorResolver(
-  DocumentType.cheatsheet
-);
-export const TipsAuthorResolver = createDocumentAuthorResolver(
-  DocumentType.tips
-);
-export const NewsAuthorResolver = createDocumentAuthorResolver(
-  DocumentType.news
-);
-
-const createDocumentYearResolver = (
-  documentType: DocumentType
-): ResolveFn<String> => {
-  return (
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<String> => {
-    return inject(DocumentService).getDocumentYears(
-      (documentType = documentType),
-      false
-    );
-  };
+export const TopProjectResolver: ResolveFn<Projet> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Projet> => {
+  const userService = inject(DocumentService);
+  return userService.getProjet(
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    SortingBy.dateDesc,
+    undefined,
+    3
+  );
 };
 
-export const ProjectYearResolver = createDocumentYearResolver(
-  DocumentType.project
-);
-export const CheatsheetYearResolver = createDocumentYearResolver(
-  DocumentType.cheatsheet
-);
-export const TipsYearResolver = createDocumentYearResolver(DocumentType.tips);
-export const NewsYearResolver = createDocumentYearResolver(DocumentType.news);
+export const ArticleTagsResolver: ResolveFn<Tag> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Tag> => {
+  const userService = inject(DocumentService);
+
+  let categorie = "";
+
+  if (route.paramMap.get("categorie") != null) {
+    categorie = route.paramMap.get("categorie")!;
+  }
+
+  return userService.getArticleTags(categorie);
+};
+
+export const ProjetTagsResolver: ResolveFn<Tag> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Tag> => {
+  const userService = inject(DocumentService);
+
+  return userService.getProjetTags();
+};
+
+export const ArticleAuthorResolver: ResolveFn<Member> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Member> => {
+  const userService = inject(DocumentService);
+  const router = inject(Router); // Injection du Router
+
+  let slug = "";
+  let categorie = "";
+
+  if (route.paramMap.get("slug") != null) {
+    slug = route.paramMap.get("slug")!;
+  }
+
+  if (route.paramMap.get("categorie") != null) {
+    categorie = route.paramMap.get("categorie")!;
+  }
+
+  return userService.getArticleAuthors(categorie, slug);
+};
+
+export const ProjetAuthorResolver: ResolveFn<Member> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Member> => {
+  const userService = inject(DocumentService);
+
+  let slug = "";
+
+  if (route.paramMap.get("slug") != null) {
+    slug = route.paramMap.get("slug")!;
+  }
+
+  return userService.getProjetAuthors(slug);
+};
+
+export const ProjetYearResolver: ResolveFn<Projet> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Projet> => {
+  const userService = inject(DocumentService);
+  return userService.getProjetYears();
+};
+
+export const ArticleCategorieResolver: ResolveFn<Categorie> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Categorie> => {
+  const userService = inject(DocumentService);
+  return userService.getArticleCategorie();
+};
+
+export const CategorieResolver: ResolveFn<Categorie> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Categorie> => {
+  const userService = inject(DocumentService);
+  let categorieSlug = "";
+
+  if (route.paramMap.get("categorie") != null) {
+    categorieSlug = route.paramMap.get("categorie")!;
+  }
+  return userService.getCategorie(categorieSlug);
+};
+
+export const ArticleYearResolver: ResolveFn<Article> = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): Observable<Article> => {
+  const userService = inject(DocumentService);
+
+  let categorie = "";
+
+  if (route.paramMap.get("categorie") != null) {
+    categorie = route.paramMap.get("categorie")!;
+  }
+  return userService.getArticleYears(categorie);
+};
 
 export const MemberResolver: ResolveFn<Member> = (
   route: ActivatedRouteSnapshot,
@@ -147,5 +242,5 @@ export const MemberResolver: ResolveFn<Member> = (
     username = route.paramMap.get("username")!;
   }
 
-  return inject(DocumentService).getMembre("", username, undefined);
+  return inject(DocumentService).getMembre(username);
 };

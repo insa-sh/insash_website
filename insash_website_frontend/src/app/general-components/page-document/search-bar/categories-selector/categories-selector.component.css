@@ -1,17 +1,3 @@
-div.bar {
-  background-color: var(--website-bg-color-light-1);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  /* width: 100%; */
-  margin: auto;
-  padding: 20px 3%;
-  border-radius: 16px;
-  max-width: min(90%, 2000px);
-  gap: 20px;
-}
-
 a {
   text-decoration: none;
 }
@@ -22,114 +8,6 @@ div#search-section {
   flex-wrap: nowrap;
   flex: 1;
   align-items: center;
-}
-
-#search-section > div.dropdown {
-  flex: 0;
-}
-
-div.search-bar {
-  display: flex;
-  align-items: stretch;
-
-  margin-left: 10px;
-  border-radius: 16px;
-  border: solid 4px var(--website-bg-color-light-2);
-  background-color: var(--website-bg-color-light-2);
-  /* pas d'encadré à la selection */
-  flex: 1;
-  transition: all var(--global-transition-duration);
-}
-
-div.search-bar-button {
-  height: 100%;
-  display: flex;
-  border-radius: 0 12px 12px 0;
-}
-
-input.search-bar-input {
-  background-color: transparent;
-  font-size: 16px;
-  border: none;
-  padding: 2% 8px;
-  /* height: 640%; */
-  border: none;
-  width: 100%;
-  min-width: 100px;
-}
-
-div.search-bar:hover,
-div.search-bar:focus-within {
-  background-color: var(--website-bg-color-light-2);
-}
-
-/* le bouton loupe de la barre de recherche */
-button#search-bar-button-search {
-  background-color: var(--website-strong-color);
-  border-radius: 12px;
-}
-button#search-bar-button-search:hover,
-button#search-bar-button-search:focus {
-  background-color: #bd6c7c;
-}
-button#search-bar-button-search:active {
-  background-color: #92525f;
-}
-
-.search-bar-button {
-  background-color: var(--website-bg-color-light-1);
-  border: none;
-  border-radius: 0 12px 12px 0;
-  padding: 11px;
-  font-size: 16px;
-  cursor: pointer;
-  /* margin-left: 10px; */
-  transition: background-color 0.3s;
-}
-
-.search-bar-button-reset {
-  display: flex;
-  flex-direction: row;
-  border: solid 2px var(--website-bg-color-light-2);
-  border-radius: 12px;
-  align-items: center;
-  justify-content: center;
-  margin-left: 15px;
-}
-
-.search-bar-button-reset > i {
-  padding: 5px 10px;
-  font-size: 24px;
-}
-
-.search-bar-button:hover {
-  background-color: var(--website-bg-color-light-2);
-  /* border: solid 2px var(--website-bg-color-light-2); */
-}
-
-form.search-filter {
-  display: flex;
-  /* margin-right: 10px; */
-  justify-content: flex-end;
-  /* width: 50%; */
-  /* flex: 1; */
-  align-items: center;
-  flex-direction: 1;
-}
-
-#search-bar-button-filter {
-  display: none;
-}
-
-div.dropdown {
-  display: flex;
-  text-align: center;
-  position: relative;
-  /* display: block; */
-  width: fit-content;
-
-  padding: 8px 10px;
-  padding-left: 5px;
 }
 
 div.dropdown:last-child {
@@ -167,23 +45,6 @@ button.dropdown-button {
 
 button.dropdown-button i {
   margin-left: 5px;
-}
-
-i.filter-selected-icon {
-  color: var(--website-strong-color);
-  /* margin-right: 10px; */
-  font-size: 10px;
-  visibility: hidden;
-  /* width: 0; */
-  overflow: hidden;
-  transform: scale(0);
-  transition: scale var(--global-transition-duration);
-}
-
-i.filter-selected-icon-hidden {
-  visibility: visible;
-  width: auto;
-  transform: scale(1);
 }
 
 div.dropdown-content,
@@ -253,28 +114,6 @@ div.dropdown-content-element:last-child {
   border-bottom: none;
 }
 
-.custom-input {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: transparent;
-  display: grid;
-  place-content: center;
-}
-
-.custom-input::before {
-  content: "";
-  width: 1em;
-  height: 1em;
-  transform: scale(0);
-  transition: 0.1s transform;
-  box-shadow: inset 1em 1em white;
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-}
-
-.custom-input:checked::before {
-  transform: scale(1);
-}
-
 .dropdown-checkbox-tags {
   padding-left: 6px;
 }
@@ -297,39 +136,6 @@ div.tag > p {
 }
 
 @media (max-width: 800px) {
-  div.bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  div.search-bar {
-    justify-content: space-between;
-  }
-
-  .search-bar-button-reset {
-    width: 100%;
-    margin: 0;
-    margin-top: 20px;
-  }
-
-  form.search-filter {
-    width: auto;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-  app-filter {
-    width: 50%;
-    padding-top: 20px;
-    border: none;
-  }
-
-  input.search-bar-input {
-    width: 100%;
-  }
-
   div.dropdown {
     border-right: none;
     flex-direction: column;

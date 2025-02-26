@@ -1,126 +1,108 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* fonts and icons */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 /* icons */
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
-
-
 /* variables globales pour le club Info */
 
 * {
-    --insash-logo-bg-color: #2D333E;
-    --insash-rose-pale: #EFC1CB;
-    --insash-rose-pale-transparent: #EFC1CB33;
-    --insash-rose-fonce: #DE7F92;
-    --website-strong-color: #DE7F92;
-    --website-bg-color: #262626;
-    --website-bg-color-light-1: #353535;
-    --website-bg-color-light-2: #474747;
-    --website-bg-color-light-3: #727272;
-    --website-strong-color-transparent: #8f51df32;
-    --website-alternative-color: #C8930A;
+  --insash-logo-bg-color: #2d333e;
+  --insash-rose-pale: #efc1cb;
+  --insash-rose-pale-transparent: #efc1cb33;
+  --insash-rose-fonce: #de7f92;
+  --website-strong-color: #de7f92;
+  --website-bg-color: #262626;
+  --website-bg-color-light-1: #353535;
+  --website-bg-color-light-2: #474747;
+  --website-bg-color-light-3: #727272;
+  --website-strong-color-transparent: #8f51df32;
+  --website-alternative-color: #c8930a;
 
-    --insash-text-default-font: "Roboto Mono";
-    --insash-title-default-font: "Open Sans";
+  --insash-text-default-font: "Roboto Mono";
+  --insash-title-default-font: "Open Sans";
 
-    --website-default-text-font-size: 18px;
-    --website-default-title-font-size: 26px;
+  --website-default-text-font-size: 18px;
+  --website-default-title-font-size: 26px;
 
-    --insash-title-color: #ffffff;
-    --insash-text-color: #ffffff;
+  --insash-title-color: #ffffff;
+  --insash-text-color: #ffffff;
 
-    --cheatsheet-text-color: #338C30;
-    --cheatsheet-bg-color: #338C3033;
-    --news-text-color: #C8930A;
-    --news-bg-color: #C8930A33;
-    --tips-text-color: #007AFF;
-    --tips-bg-color: #007AFF33;
+  --cheatsheet-text-color: #338c30;
+  --cheatsheet-bg-color: #338c3033;
+  --news-text-color: #c8930a;
+  --news-bg-color: #c8930a33;
+  --tips-text-color: #007aff;
+  --tips-bg-color: #007aff33;
 
-    --insa-red-color: #E42618;
+  --insa-red-color: #e42618;
 
-
-
-    --global-transition-duration: 0.2s;
+  --global-transition-duration: 0.2s;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--insash-text-default-font);
-    color: var(--insash-text-color);
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--insash-text-default-font);
+  color: var(--insash-text-color);
 }
 
-input[type=text] {
-    outline: none;
-
+input[type="text"] {
+  outline: none;
 }
 
 /* booster la hauteur minimale d'une page pour que le footer ne se retrouve pas en milieu de page sur des grands écrans*/
 div#height-control {
-    width: 100%;
-    height: 100%;
-    min-height: calc(100vh - 623px);
+  width: 100%;
+  height: 100%;
+  min-height: calc(100vh - 623px);
 }
-
-
-
-
 
 /* mobiles */
-@media (max-width:800px) {
-    * {
-        --website-default-text-font-size: 16px;
-        --website-default-title-font-size: 26px;
+@media (max-width: 800px) {
+  * {
+    --website-default-text-font-size: 16px;
+    --website-default-title-font-size: 26px;
+  }
 
-    }
+  .computer-only {
+    display: none;
+  }
 
-    .computer-only {
-        display: none;
-    }
-
-    /* booster la hauteur minimale d'une page pour que le footer ne se retrouve pas en milieu de page sur des grands écrans*/
-    div#height-control {
-        width: 100%;
-        height: 100%;
-        min-height: calc(100vh - 653px);
-    }
-
-
+  /* booster la hauteur minimale d'une page pour que le footer ne se retrouve pas en milieu de page sur des grands écrans*/
+  div#height-control {
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 653px);
+  }
 }
 
-
 /* grands écrans */
-@media (min-width:800px) {
-    .mobile-only {
-        display: none;
-    }
+@media (min-width: 800px) {
+  .mobile-only {
+    display: none;
+  }
 }
 
 body {
-    overflow-x: hidden;
-    background-color: var(--website-bg-color);
+  overflow-x: hidden;
+  background-color: var(--website-bg-color);
 }
-
 
 h1,
 h2,
 h3 {
-    font-family: var(--insash-title-default-font);
+  font-family: var(--insash-title-default-font);
 }
 
 h2 {
-    font-size: 26px;
-    /* margin-top: 2rem; */
+  font-size: 26px;
+  /* margin-top: 2rem; */
 }
-
-
 
 span,
 i,
@@ -131,52 +113,48 @@ a,
 li,
 ul,
 ol {
-    font-family: inherit;
-    font-size: inherit;
-
+  font-family: inherit;
+  font-size: inherit;
 }
-
 
 /* style des liens a par défaut */
 
-
 a.text-link {
-    text-decoration: none;
-    color: var(--insash-text-color);
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
+  text-decoration: none;
+  color: var(--insash-text-color);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 
-    position: relative;
-    padding: 1px 2px;
-    display: inline-block;
+  position: relative;
+  padding: 1px 2px;
+  display: inline-block;
 }
 
 a.text-link::after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
 
-    width: 100%;
-    height: 35%;
-    border-radius: 1px;
+  width: 100%;
+  height: 35%;
+  border-radius: 1px;
 
-
-    background-color: #956870;
-    transition: height var(--global-transition-duration), color var(--global-transition-duration), background-color var(--global-transition-duration);
+  background-color: #956870;
+  transition: height var(--global-transition-duration),
+    color var(--global-transition-duration),
+    background-color var(--global-transition-duration);
 }
 
 a.text-link:hover {
-    color: var(--website-bg-color);
-
+  color: var(--website-bg-color);
 }
 
 a.text-link:hover::after {
-    background-color: var(--insash-rose-pale);
-    height: 100%;
-    border-radius: 2px;
-
+  background-color: var(--insash-rose-pale);
+  height: 100%;
+  border-radius: 2px;
 }

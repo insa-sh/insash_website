@@ -1,45 +1,59 @@
-import { Component, Input } from '@angular/core';
-import { DocumentType } from 'src/app/models/document';
-import { DocumentAndAuthor } from 'src/app/models/document-and-author';
+import { Component, Input } from "@angular/core";
+import { ApiService } from "src/app/interaction-backend/api.service";
+import { Article } from "src/app/models/article";
+import { DocumentType } from "src/app/models/document";
+import { DocumentAndAuthor } from "src/app/models/document-and-author";
+import { Document2 } from "src/app/models/document2";
+import { Projet } from "src/app/models/projet";
 
 @Component({
-  selector: 'app-list-document-tile',
-  templateUrl: './list-document-tile.component.html',
-  styleUrls: ['./list-document-tile.component.css']
+  selector: "app-list-document-tile",
+  templateUrl: "./list-document-tile.component.html",
+  styleUrls: ["./list-document-tile.component.css"],
 })
 export class ListDocumentTileComponent {
-  @Input() documentAndAuthor!: DocumentAndAuthor;
+  @Input() document!: Document2;
+  public MAX_TAGS: number = 3;
+  public BASE_URL = ApiService.getBaseUrl();
 
-  getYear(documentAndAuthor: DocumentAndAuthor): string {
-    return documentAndAuthor.document.date.split('-')[0];
+  getYear(document: Document2): string {
+    return document.date.split("-")[0];
   }
 
-  getDocumentType(): String {
-    if (this.documentAndAuthor.document.type === DocumentType.project) {
-      return "PROJETS";
-    } else if (this.documentAndAuthor.document.type === DocumentType.cheatsheet) {
-      return "CHEATSHEETS";
-    } else if (this.documentAndAuthor.document.type === DocumentType.tips) {
-      return "ASTUCES";
+  getArticleCategorie() {
+    if ("categorie" in this.document) {
+      return (this.document as Article).categorie.slug;
     } else {
-      return "ACTUS";
-    } 
+      return "projet";
+    }
   }
 
   getDateString() {
-    let date = new Date(this.documentAndAuthor.document.date);
-    if (this.documentAndAuthor.document.type === DocumentType.project) {
-      return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' });
+    let date = new Date(this.document.date);
+    if (this.document instanceof Projet) {
+      return date.toLocaleDateString("fr-FR", {
+        year: "numeric",
+        month: "long",
+      });
     } else {
-      return date.toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
+      return date.toLocaleDateString("fr-FR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
     }
-    
   }
 
-  
-
-  ngOnInit() {
-    
+  getMaxTags(max: number) {
+    return this.document.tags?.slice(0, max);
   }
 
+  getNumberOfTags() {
+    if (this.document.tags === undefined) {
+      return 0;
+    }
+    return this.document.tags!.length;
+  }
+
+  ngOnInit() {}
 }

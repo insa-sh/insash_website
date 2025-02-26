@@ -2,7 +2,7 @@
   <div class="membre-image">
     <a routerLink="{{ membre.username }}">
       <img
-        src="{{ BASE_URL }}{{ membre.image.url }}"
+        src="{{ BASE_URL }}{{ membre.image!.url }}"
         alt="Photo de profil du {{ membre.role }}"
         (error)="imageError($event)"
       />

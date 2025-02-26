@@ -1,42 +1,25 @@
-<a
-  routerLink="/{{ documentAndAuthor.document.type }}/{{
-    documentAndAuthor.document.slug
-  }}"
->
+<a routerLink="/project/{{ document.slug }}">
   <div class="tile-rectangle">
-    <div
-      class="tile-image"
-      [ngClass]="{ icon: documentAndAuthor.document.is_image_icon }"
-    >
-      <img
-        src="/public/images/document/{{ documentAndAuthor.document.type }}/{{
-          documentAndAuthor.document.image_address
-        }}"
-        alt=""
-      />
+    <div class="tile-image">
+      <img src="{{ BASE_URL }}{{ document.image.url }}" alt="" />
     </div>
 
     <div class="tile-content">
-      <h1>{{ documentAndAuthor.document.title }}</h1>
+      <h1>{{ document.titre }}</h1>
       <div class="tile-authors">
         <i class="fa-solid fa-users"></i>
         <h2>
-          <span *ngFor="let author of getActiveAuthors(); let isLast = last">
-            <ng-container *ngIf="author.prenom !== ''; else username">{{
-              author.prenom
-            }}</ng-container
-            ><ng-template #username>{{ author.username }}</ng-template
+          <span *ngFor="let author of document.auteur; let isLast = last">
+            {{ author.prenom !== "" ? author.prenom : author.username
+            }}<ng-template #username>{{ author.username }}</ng-template
             ><span *ngIf="!isLast">, </span>
-          </span>
-          <span *ngIf="getNumberArchivedAuthors() > 0">
-            + {{ getNumberArchivedAuthors() }} auteurs
           </span>
         </h2>
       </div>
 
       <div class="tile-tags">
         <div class="tag" *ngFor="let tag of getMaxTags(MAX_TAGS)">
-          <p>#{{ tag }}</p>
+          <p>#{{ tag.titre }}</p>
         </div>
       </div>
     </div>

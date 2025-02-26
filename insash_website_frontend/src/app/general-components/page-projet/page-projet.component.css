@@ -6,6 +6,8 @@ h1 {
   padding: 10px;
   font-size: 30px;
   font-family: var(--insash-text-default-font);
+  color: var(--insash-rose-pale);
+  background-color: var(--insash-rose-pale-transparent);
 }
 
 div.title-container {
@@ -18,6 +20,13 @@ h2 {
   margin: 40px auto;
   color: var(--insash-title-color);
   opacity: 60%;
+}
+
+:host {
+  app-box-document-tile:nth-child(1) {
+    width: 50%;
+    max-width: 1000px;
+  }
 }
 
 @media (max-width: 800px) {

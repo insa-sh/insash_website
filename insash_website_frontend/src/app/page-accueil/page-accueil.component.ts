@@ -1,7 +1,8 @@
-import { Component, Input , Renderer2} from "@angular/core";
+import { Component, Input, Renderer2 } from "@angular/core";
 import { DocumentService } from "../interaction-backend/document.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DocumentAndAuthor } from "../models/document-and-author";
+import { Projet } from "../models/projet";
 
 const NUMBER_OF_TOP_DOCUMENTS = 3;
 
@@ -13,38 +14,60 @@ const NUMBER_OF_TOP_DOCUMENTS = 3;
 export class PageAccueilComponent {
   public title = "Site Web du Club Info";
 
-  @Input() public topDocumentsAndAuthors: DocumentAndAuthor[] = [];
+  @Input() public projects: Projet[] = [];
 
   private keysPressed: string[] = [];
   private keyDownListener: (() => void) | undefined;
 
-  constructor(private documentService: DocumentService, private route: ActivatedRoute, private renderer: Renderer2, private router: Router) {
+  constructor(
+    private documentService: DocumentService,
+    private route: ActivatedRoute,
+    private renderer: Renderer2,
+    private router: Router
+  ) {}
 
-  }
-  
   fetchTopDocuments() {
-    this.route.data.subscribe(
-        (data) => {
-          if (data['topDocumentsAndAuthors'] != null) {
-
-              this.topDocumentsAndAuthors = data['topDocumentsAndAuthors'];
-              
-
-          }
-        })
+    this.route.data.subscribe((data) => {
+      if (data["topProjects"] != null) {
+        this.projects = data["topProjects"]["data"];
+      }
+    });
   }
 
   private handleKeyPress(event: KeyboardEvent): void {
-
     this.keysPressed.push(event.key);
 
     // Implémenter la logique pour une autre séquence
-    if (this.codeSecret(['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']) || this.codeSecret(['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'B', 'A'])) {
-      window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
-
+    if (
+      this.codeSecret([
+        "ArrowUp",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowLeft",
+        "ArrowRight",
+        "b",
+        "a",
+      ]) ||
+      this.codeSecret([
+        "ArrowUp",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowLeft",
+        "ArrowRight",
+        "B",
+        "A",
+      ])
+    ) {
+      window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
     }
 
-    if (this.keysPressed.length > 9) { 
+    if (this.keysPressed.length > 9) {
       this.keysPressed.shift();
     }
   }
@@ -58,16 +81,19 @@ export class PageAccueilComponent {
       if (this.keysPressed[index] !== sequence[index]) {
         return false;
       }
-      
     }
     return true;
   }
 
   ngOnInit() {
     this.fetchTopDocuments();
-    this.keyDownListener = this.renderer.listen('document', 'keydown', (event: KeyboardEvent) => {
-      this.handleKeyPress(event);
-    });
+    this.keyDownListener = this.renderer.listen(
+      "document",
+      "keydown",
+      (event: KeyboardEvent) => {
+        this.handleKeyPress(event);
+      }
+    );
   }
 
   ngOnDestroy() {

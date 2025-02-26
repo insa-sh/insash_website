@@ -5,6 +5,7 @@ import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DocumentAndAuthor } from "../models/document-and-author";
 import { ApiService } from "../interaction-backend/api.service";
+import { Projet } from "../models/projet";
 
 @Component({
   selector: "app-page-membres-detail",
@@ -13,7 +14,7 @@ import { ApiService } from "../interaction-backend/api.service";
 })
 export class PageMembresDetailComponent {
   public member!: Member;
-  public project: DocumentAndAuthor[] = [];
+  public project: Projet[] = [];
 
   constructor(
     private documentService: DocumentService,
@@ -44,7 +45,7 @@ export class PageMembresDetailComponent {
   fetchProjects() {
     this.route.data.subscribe((data) => {
       if (data["project"] != null) {
-        this.project = data["project"];
+        this.project = data["project"]["data"];
       }
     });
   }
@@ -59,6 +60,6 @@ export class PageMembresDetailComponent {
   }
 
   imageError(event: any) {
-    this.member.image.url = "";
+    this.member.image!.url = "";
   }
 }

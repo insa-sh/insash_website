@@ -20,7 +20,6 @@ export class PageMembresComponent {
     this.route.data.subscribe((data) => {
       if (data["members"] != null) {
         this.membres = data["members"]["data"];
-        console.log(this.membres);
       }
     });
   }
