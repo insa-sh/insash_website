@@ -33,6 +33,7 @@ import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-d
 import { PageProjetComponent } from "./page-projet/page-projet.component";
 import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
 import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
+import { PageArticleComponent } from "./page-article/page-article.component";
 
 // iumporter la fonction qui permet de fermer le menu de navigation au changement de page
 declare function toggleNavigationMenu(action: any): void;
@@ -87,7 +88,7 @@ const routes: Routes = [
   },
   {
     path: "article/:categorie",
-    component: PageDocumentComponent,
+    component: PageArticleComponent,
     title: "Les cheatsheets du Club",
     resolve: {
       document: ArticleResolver,

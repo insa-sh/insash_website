@@ -20,13 +20,9 @@ export class PageDocumentComponent {
   public documents: Article[] = [];
   public topDocuments: Document2[] = [];
 
-  public categorie: Categorie = new Categorie("", "", "");
-
-  public tileStyle: TileStyle = TileStyle.list;
-
   constructor(
     private documentService: DocumentService,
-    private route: ActivatedRoute
+    protected route: ActivatedRoute
   ) {}
 
   filters = {
@@ -36,14 +32,6 @@ export class PageDocumentComponent {
     sort: "",
     search: "",
   };
-
-  fetchCategorie() {
-    this.route.data.subscribe((data) => {
-      if (data["categorie"] != null) {
-        this.categorie = data["categorie"]["data"][0];
-      }
-    });
-  }
 
   onFilterChanged(filters: any) {
     this.filters = filters;
@@ -58,7 +46,7 @@ export class PageDocumentComponent {
     });
   }
 
-  fetchDocuments() {
+  fetchDocuments(categorie?: Categorie) {
     let sort: SortingBy = SortingBy.dateDesc;
     if (this.filters.sort === "Plus récent") {
       sort = SortingBy.dateDesc;
@@ -74,7 +62,7 @@ export class PageDocumentComponent {
 
     this.documentService
       .getArticle(
-        this.categorie.slug,
+        categorie ? categorie.slug : "",
         this.filters.tags,
         search,
         "",
@@ -104,7 +92,6 @@ export class PageDocumentComponent {
   ngOnInit() {
     this.fetchDocumentInit();
     this.fetchTopDocuments();
-    this.fetchCategorie();
   }
 
   isThereEnoughDocuments() {
