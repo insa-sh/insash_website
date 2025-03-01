@@ -53,7 +53,7 @@ export const ArticleResolver: ResolveFn<Article> = (
   );
 };
 
-export const ProjectResolver: ResolveFn<Projet> = (
+export const ProjetResolver: ResolveFn<Projet> = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ): Observable<Projet> => {
@@ -117,7 +117,7 @@ export const TopArticleResolver: ResolveFn<Article> = (
   );
 };
 
-export const TopProjectResolver: ResolveFn<Projet> = (
+export const TopProjetResolver: ResolveFn<Projet> = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ): Observable<Projet> => {

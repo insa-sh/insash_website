@@ -22,7 +22,7 @@ export class PageMembresDetailComponent {
 
   ngOnInit() {
     this.fetchMember();
-    this.fetchProjects();
+    this.fetchProjets();
   }
 
   fetchMember() {
@@ -36,10 +36,10 @@ export class PageMembresDetailComponent {
     });
   }
 
-  fetchProjects() {
+  fetchProjets() {
     this.route.data.subscribe((data) => {
-      if (data["project"] != null) {
-        this.projet = data["project"]["data"];
+      if (data["projet"] != null) {
+        this.projet = data["projet"]["data"];
       }
     });
   }

@@ -40,7 +40,7 @@
       <div class="tag-role tag" *ngIf="membre.role != 'Membre'">
         {{ membre.role }}
       </div>
-      <div class="tag-project tag" *ngIf="projet.length > 0">
+      <div class="tag-projet tag" *ngIf="projet.length > 0">
         <i class="fas fa-medal"></i> {{ projet.length }} projet(s)
       </div>
     </div>
@@ -80,7 +80,7 @@
       </a>
     </div>
   </div>
-  <div class="member-projects" *ngIf="projet.length > 0">
+  <div class="member-projets" *ngIf="projet.length > 0">
     <h2><em>Projets</em></h2>
     <app-liste-document [document]="projet"></app-liste-document>
   </div>

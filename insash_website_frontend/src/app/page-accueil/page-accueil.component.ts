@@ -14,7 +14,7 @@ const NUMBER_OF_TOP_DOCUMENTS = 3;
 export class PageAccueilComponent {
   public title = "Site Web du Club Info";
 
-  @Input() public projects: Projet[] = [];
+  @Input() public projets: Projet[] = [];
   public documents: Article[] = [];
 
   private keysPressed: string[] = [];
@@ -27,10 +27,10 @@ export class PageAccueilComponent {
     private router: Router
   ) {}
 
-  fetchTopProjects() {
+  fetchTopProjets() {
     this.route.data.subscribe((data) => {
-      if (data["topProjects"] != null) {
-        this.projects = data["topProjects"]["data"];
+      if (data["topProjets"] != null) {
+        this.projets = data["topProjets"]["data"];
       }
     });
   }
@@ -96,7 +96,7 @@ export class PageAccueilComponent {
 
   ngOnInit() {
     this.fetchTopDocuments();
-    this.fetchTopProjects();
+    this.fetchTopProjets();
     this.keyDownListener = this.renderer.listen(
       "document",
       "keydown",

@@ -24,7 +24,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
 import { PageDocumentsDetailComponent } from "./general-components/page-documents-detail/page-document-detail.component";
-import { ProjectDetailHeaderComponent } from "./page-projet-detail/project-detail-header/project-detail-header.component";
+import { ProjetDetailHeaderComponent } from "./page-projet-detail/projet-detail-header/projet-detail-header.component";
 import { MarkdownModule, MarkedOptions } from "ngx-markdown";
 import { RejoindreLeClubComponent } from "./page-accueil/rejoindre-le-club/rejoindre-le-club.component";
 
@@ -35,13 +35,13 @@ import "prismjs/plugins/autoloader/prism-autoloader.js";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js";
 import "prismjs/plugins/show-language/prism-show-language.js";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
-import { TopProjectComponent } from "./general-components/top-document/top-project/top-project.component";
+import { TopProjetComponent } from "./general-components/top-document/top-projet/top-projet.component";
 import { CategoriesSelectorComponent } from "./general-components/page-document/search-bar/categories-selector/categories-selector.component";
 import { PageProjetComponent } from "./page-projet/page-projet.component";
 import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
 import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
 import { TopArticleComponent } from "./general-components/top-document/top-article/top-article.component";
-import { PageArticleComponent } from './page-article/page-article.component';
+import { PageArticleComponent } from "./page-article/page-article.component";
 
 @NgModule({
   declarations: [
@@ -66,9 +66,9 @@ import { PageArticleComponent } from './page-article/page-article.component';
     PagePolitiqueConfidentialiteComponent,
     PageMentionsLegalesComponent,
     PageDocumentsDetailComponent,
-    ProjectDetailHeaderComponent,
+    ProjetDetailHeaderComponent,
     PageMembresDetailComponent,
-    TopProjectComponent,
+    TopProjetComponent,
     CategoriesSelectorComponent,
     PageProjetComponent,
     PageProjetDetailComponent,

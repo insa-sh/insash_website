@@ -61,7 +61,7 @@
         "images"
       ]
     },
-    "project_url": {
+    "projet_url": {
       "type": "string",
       "required": false
     },
