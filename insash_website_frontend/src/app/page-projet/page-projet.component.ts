@@ -2,9 +2,9 @@ import { Component, Input } from "@angular/core";
 import {
   DocumentService,
   SortingBy,
-} from "../../interaction-backend/document.service";
+} from "../interaction-backend/document.service";
 import { ActivatedRoute } from "@angular/router";
-import { TileStyle } from "../top-document/top-document.component";
+import { TileStyle } from "../general-components/top-document/top-document.component";
 import { Document2 } from "src/app/models/document2";
 import { Article } from "src/app/models/article";
 import { Categorie } from "src/app/models/categorie";

@@ -26,7 +26,7 @@ import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-menti
 import { PageDocumentsDetailComponent } from "./general-components/page-documents-detail/page-document-detail.component";
 import { ProjectDetailHeaderComponent } from "./page-projet-detail/project-detail-header/project-detail-header.component";
 import { MarkdownModule, MarkedOptions } from "ngx-markdown";
-import { RejoindreLeClubComponent } from "./general-components/rejoindre-le-club/rejoindre-le-club.component";
+import { RejoindreLeClubComponent } from "./page-accueil/rejoindre-le-club/rejoindre-le-club.component";
 
 import "prismjs/prism";
 import "prismjs/plugins/line-numbers/prism-line-numbers.js";
@@ -37,10 +37,11 @@ import "prismjs/plugins/show-language/prism-show-language.js";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
 import { TopProjectComponent } from "./general-components/top-document/top-project/top-project.component";
 import { CategoriesSelectorComponent } from "./general-components/page-document/search-bar/categories-selector/categories-selector.component";
-import { PageProjetComponent } from "./general-components/page-projet/page-projet.component";
+import { PageProjetComponent } from "./page-projet/page-projet.component";
 import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
 import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
 import { TopArticleComponent } from "./general-components/top-document/top-article/top-article.component";
+import { PageArticleComponent } from './page-article/page-article.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { TopArticleComponent } from "./general-components/top-document/top-artic
     PageProjetDetailComponent,
     PageArticleDetailComponent,
     TopArticleComponent,
+    PageArticleComponent,
   ],
   imports: [
     BrowserModule,

@@ -30,7 +30,7 @@ import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confiden
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
 import { PageDocumentsDetailComponent } from "./general-components/page-documents-detail/page-document-detail.component";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
-import { PageProjetComponent } from "./general-components/page-projet/page-projet.component";
+import { PageProjetComponent } from "./page-projet/page-projet.component";
 import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
 import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
 
