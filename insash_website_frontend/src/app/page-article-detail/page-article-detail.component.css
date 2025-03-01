@@ -1,0 +1,17 @@
+div.document-image {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+div.document-image img {
+  display: block;
+  max-width: min(1500px, 60%);
+  margin: auto;
+  border-radius: 20px;
+}
+
+@media (max-width: 800px) {
+  div.document-image img {
+    max-width: 75%;
+  }
+}

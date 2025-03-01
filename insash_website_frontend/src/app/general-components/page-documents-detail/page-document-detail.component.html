@@ -50,9 +50,7 @@
     </div>
   </div>
 
-  <div class="document-image">
-    <img src="{{ BASE_URL }}{{ document.image.url }}" />
-  </div>
+  <ng-content select="[articleImage]"></ng-content>
   <div class="document-content" *ngIf="document.contenu != ''">
     <markdown lineNumbers ngPreserveWhitespaces>
       {{ document.contenu }}

@@ -1,12 +1,12 @@
 import { Component, inject } from "@angular/core";
-import { DocumentAndAuthor } from "../models/document-and-author";
-import { DocumentService } from "../interaction-backend/document.service";
-import { DocumentType } from "../models/document";
+import { DocumentAndAuthor } from "../../models/document-and-author";
+import { DocumentService } from "../../interaction-backend/document.service";
+import { DocumentType } from "../../models/document";
 import { ActivatedRoute, Router } from "@angular/router";
 import { first } from "rxjs";
 import { Title } from "@angular/platform-browser";
-import { Document2 } from "../models/document2";
-import { ApiService } from "../interaction-backend/api.service";
+import { Document2 } from "../../models/document2";
+import { ApiService } from "../../interaction-backend/api.service";
 
 @Component({
   selector: "app-page-document-detail",

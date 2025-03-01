@@ -28,10 +28,11 @@ import {
 } from "./interaction-backend/resolver/document.resolver";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
-import { PageDocumentsDetailComponent } from "./page-documents-detail/page-document-detail.component";
+import { PageDocumentsDetailComponent } from "./general-components/page-documents-detail/page-document-detail.component";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
 import { PageProjetComponent } from "./general-components/page-projet/page-projet.component";
 import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
+import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
 
 // iumporter la fonction qui permet de fermer le menu de navigation au changement de page
 declare function toggleNavigationMenu(action: any): void;
@@ -101,7 +102,7 @@ const routes: Routes = [
   },
   {
     path: "article/:categorie/:slug",
-    component: PageDocumentsDetailComponent,
+    component: PageArticleDetailComponent,
     title: "",
     resolve: {
       document: ArticleResolver,

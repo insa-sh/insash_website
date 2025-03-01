@@ -23,8 +23,8 @@ import { ListDocumentTileComponent } from "./general-components/list-document-ti
 import { ReactiveFormsModule } from "@angular/forms";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
-import { PageDocumentsDetailComponent } from "./page-documents-detail/page-document-detail.component";
-import { ProjectDetailHeaderComponent } from "./page-documents-detail/project-detail-header/project-detail-header.component";
+import { PageDocumentsDetailComponent } from "./general-components/page-documents-detail/page-document-detail.component";
+import { ProjectDetailHeaderComponent } from "./page-projet-detail/project-detail-header/project-detail-header.component";
 import { MarkdownModule, MarkedOptions } from "ngx-markdown";
 import { RejoindreLeClubComponent } from "./general-components/rejoindre-le-club/rejoindre-le-club.component";
 
@@ -37,8 +37,9 @@ import "prismjs/plugins/show-language/prism-show-language.js";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
 import { TopProjectComponent } from "./general-components/top-project/top-project.component";
 import { CategoriesSelectorComponent } from "./general-components/page-document/search-bar/categories-selector/categories-selector.component";
-import { PageProjetComponent } from './general-components/page-projet/page-projet.component';
-import { PageProjetDetailComponent } from './page-projet-detail/page-projet-detail.component';
+import { PageProjetComponent } from "./general-components/page-projet/page-projet.component";
+import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
+import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { PageProjetDetailComponent } from './page-projet-detail/page-projet-deta
     CategoriesSelectorComponent,
     PageProjetComponent,
     PageProjetDetailComponent,
+    PageArticleDetailComponent,
   ],
   imports: [
     BrowserModule,
