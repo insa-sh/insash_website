@@ -14,8 +14,8 @@ import { Categorie } from "src/app/models/categorie";
   styleUrls: ["./page-document.component.css"],
 })
 export class PageDocumentComponent {
-  public documents: Document[] = [];
-  public topDocuments: Document[] = [];
+  public document: Document[] = [];
+  public topDocument: Document[] = [];
 
   constructor(
     private documentService: DocumentService,
@@ -64,9 +64,9 @@ export class PageDocumentComponent {
       )
       .subscribe((data: any) => {
         if (data) {
-          this.documents = data["data"];
+          this.document = data["data"];
         } else {
-          this.documents = [];
+          this.document = [];
         }
       });
   }
@@ -74,8 +74,8 @@ export class PageDocumentComponent {
   fetchDocumentInit() {
     this.route.data.subscribe((data) => {
       if (data["document"] != null) {
-        this.documents = data["document"]["data"];
-        this.topDocuments = this.documents.slice(0, 2);
+        this.document = data["document"]["data"];
+        this.topDocument = this.document.slice(0, 2);
       }
     });
   }
@@ -85,10 +85,10 @@ export class PageDocumentComponent {
   }
 
   isThereEnoughDocuments() {
-    return this.documents.length > 0;
+    return this.document.length > 0;
   }
 
   isThereEnoughTopDocuments() {
-    return this.topDocuments.length > 0;
+    return this.topDocument.length > 0;
   }
 }

@@ -1,17 +1,17 @@
 <div class="project-header">
   <div class="project-header-bg">
-    <img src="{{ this.BASE_URL }}{{ project.image.url }}" alt="" />
+    <img src="{{ this.BASE_URL }}{{ projet.image.url }}" alt="" />
   </div>
 
   <div class="project-header-fg">
     <div class="project-header-image">
-      <img src="{{ this.BASE_URL }}{{ project.image.url }}" alt="" />
+      <img src="{{ this.BASE_URL }}{{ projet.image.url }}" alt="" />
     </div>
 
     <div class="project-header-buttons">
       <a
-        href="{{ project.github_url }}"
-        *ngIf="project.github_url"
+        href="{{ projet.github_url }}"
+        *ngIf="projet.github_url"
         target="_blank"
       >
         <div class="button button-github">
@@ -21,8 +21,8 @@
       </a>
 
       <a
-        href="{{ project.project_url }}"
-        *ngIf="project.project_url"
+        href="{{ projet.project_url }}"
+        *ngIf="projet.project_url"
         target="_blank"
       >
         <div class="button button-play">

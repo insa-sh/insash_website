@@ -11,7 +11,7 @@ import { Projet } from "src/app/models/projet";
 })
 export class ListDocumentTileComponent {
   @Input() document!: Document;
-  public MAX_TAGS: number = 3;
+  public maxTags: number = 3;
   public BASE_URL = ApiService.getBaseUrl();
 
   getYear(document: Document): string {

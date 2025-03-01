@@ -8,6 +8,6 @@ import { Projet } from "src/app/models/projet";
   styleUrls: ["./project-detail-header.component.css"],
 })
 export class ProjectDetailHeaderComponent {
-  @Input() public project!: Projet;
+  @Input() public projet!: Projet;
   public BASE_URL = ApiService.getBaseUrl();
 }

@@ -12,10 +12,10 @@ export enum TileStyle {
   styleUrls: ["./top-document.component.css"],
 })
 export class TopDocumentComponent {
-  @Input() public documents: Document[] = [];
-  @Input() public numberOfDocuments: number = 3;
+  @Input() public document: Document[] = [];
+  @Input() public numberOfDocument: number = 3;
 
   ngOnInit() {
-    this.documents = this.documents.slice(0, this.numberOfDocuments);
+    this.document = this.document.slice(0, this.numberOfDocument);
   }
 }

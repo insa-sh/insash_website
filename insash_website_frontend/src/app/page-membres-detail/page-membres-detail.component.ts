@@ -11,8 +11,8 @@ import { Projet } from "../models/projet";
   styleUrls: ["./page-membres-detail.component.css"],
 })
 export class PageMembresDetailComponent {
-  public member!: Member;
-  public project: Projet[] = [];
+  public membre!: Member;
+  public projet: Projet[] = [];
 
   constructor(private titleService: Title, private route: ActivatedRoute) {}
 
@@ -28,8 +28,8 @@ export class PageMembresDetailComponent {
   fetchMember() {
     this.route.data.subscribe((data) => {
       if (data["member"] != null) {
-        this.member = data["member"]["data"][0];
-        this.titleService.setTitle("./insa.sh - " + this.member.username);
+        this.membre = data["member"]["data"][0];
+        this.titleService.setTitle("./insa.sh - " + this.membre.username);
       } else {
         this.router.navigate(["/404"]);
       }
@@ -39,21 +39,21 @@ export class PageMembresDetailComponent {
   fetchProjects() {
     this.route.data.subscribe((data) => {
       if (data["project"] != null) {
-        this.project = data["project"]["data"];
+        this.projet = data["project"]["data"];
       }
     });
   }
 
   doesHeHaveInternet() {
     return (
-      this.member.github ||
-      this.member.linkedin ||
-      this.member.instagram ||
-      this.member.website
+      this.membre.github ||
+      this.membre.linkedin ||
+      this.membre.instagram ||
+      this.membre.website
     );
   }
 
   imageError(event: any) {
-    this.member.image!.url = "";
+    this.membre.image!.url = "";
   }
 }

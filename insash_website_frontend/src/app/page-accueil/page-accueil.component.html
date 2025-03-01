@@ -1,7 +1,7 @@
 <app-home-social-links></app-home-social-links>
 <ng-container *ngIf="projects.length > 0">
   <h2>Les derniers <span>projets </span> du club</h2>
-  <app-top-project [documents]="projects"></app-top-project>
+  <app-top-project [document]="projects"></app-top-project>
 
   <div class="more-project">
     <a routerLink="project" class="text-link">-> Plus de projets</a>
@@ -10,8 +10,8 @@
 <ng-container *ngIf="documents.length > 0">
   <h2>Jette un oeil à nos <span>derniers articles</span> &#x2728;</h2>
   <app-top-article
-    [documents]="documents"
-    [numberOfDocuments]="2"
+    [document]="documents"
+    [numberOfDocument]="2"
   ></app-top-article>
   <div class="more-project">
     <a routerLink="article/actus" class="text-link"

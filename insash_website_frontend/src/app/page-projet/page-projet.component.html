@@ -8,8 +8,8 @@
   </h2>
 
   <app-top-project
-    [documents]="topDocuments"
-    [numberOfDocuments]="2"
+    [document]="topDocument"
+    [numberOfDocument]="2"
   ></app-top-project>
 </div>
 
@@ -22,4 +22,4 @@
   (filterChanged)="onFilterChanged($event)"
 ></app-search-bar>
 
-<app-liste-document [documents]="documents"></app-liste-document>
+<app-liste-document [document]="document"></app-liste-document>

@@ -14,7 +14,7 @@
           >
             <p>{{ getArticleCategorie().toUpperCase() }}</p>
           </div>
-          <div class="tag" *ngFor="let tag of getMaxTags(MAX_TAGS)">
+          <div class="tag" *ngFor="let tag of getMaxTags(maxTags)">
             <p>#{{ tag.titre }}</p>
           </div>
           <div class="tag" *ngIf="getNumberOfTags() > 3">

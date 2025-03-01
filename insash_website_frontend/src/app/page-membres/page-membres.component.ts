@@ -8,14 +8,14 @@ import { Member } from "src/app/models/member";
   styleUrls: ["./page-membres.component.css"],
 })
 export class PageMembresComponent {
-  public membres: Member[] = [];
+  public membre: Member[] = [];
 
   constructor(private route: ActivatedRoute) {}
 
   fetchMembers() {
     this.route.data.subscribe((data) => {
       if (data["members"] != null) {
-        this.membres = data["members"]["data"];
+        this.membre = data["members"]["data"];
       }
     });
   }

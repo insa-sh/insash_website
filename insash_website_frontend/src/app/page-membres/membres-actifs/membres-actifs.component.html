@@ -2,10 +2,10 @@
 
 <div id="membres-actifs">
   <!-- parcourir tous les membres du tableau -->
-  <ng-container *ngFor="let membre of membres">
+  <ng-container *ngFor="let m of membre">
     <!-- si le rôle du membre fait partie des rôles associés au bureau, on l'affiche dans cette section -->
-    <ng-container *ngIf="membre.role == 'Membre' && !membre.archive">
-      <app-box-membre [membre]="membre"></app-box-membre>
+    <ng-container *ngIf="m.role == 'Membre' && !m.archive">
+      <app-box-membre [membre]="m"></app-box-membre>
     </ng-container>
   </ng-container>
 </div>

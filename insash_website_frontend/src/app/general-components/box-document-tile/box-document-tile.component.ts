@@ -9,7 +9,7 @@ import { Document } from "src/app/models/document";
 })
 export class BoxDocumentTileComponent {
   @Input() document!: Document;
-  public MAX_TAGS: number = 3;
+  public maxTags: number = 3;
   public BASE_URL = ApiService.getBaseUrl();
 
   getMaxTags(max: number) {

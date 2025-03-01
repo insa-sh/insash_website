@@ -29,8 +29,8 @@ export class PageArticleComponent extends PageDocumentComponent {
   override fetchDocumentInit() {
     this.route.data.subscribe((data) => {
       if (data["document"] != null) {
-        this.documents = data["document"]["data"];
-        this.topDocuments = this.documents.slice(0, 2);
+        this.document = data["document"]["data"];
+        this.topDocument = this.document.slice(0, 2);
       }
     });
   }

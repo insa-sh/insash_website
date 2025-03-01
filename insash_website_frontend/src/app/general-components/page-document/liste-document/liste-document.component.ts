@@ -13,12 +13,12 @@ import { Document } from "src/app/models/document";
   styleUrls: ["./liste-document.component.css"],
 })
 export class ListeDocumentComponent {
-  @Input() documents!: Document[];
+  @Input() document!: Document[];
 
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes["documents"]) {
+    if (changes["document"]) {
       this.cdr.detectChanges();
     }
   }
