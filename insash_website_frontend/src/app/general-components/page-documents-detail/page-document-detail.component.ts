@@ -1,11 +1,8 @@
 import { Component, inject } from "@angular/core";
-import { DocumentAndAuthor } from "../../models/document-and-author";
 import { DocumentService } from "../../interaction-backend/document.service";
-import { DocumentType } from "../../models/document";
 import { ActivatedRoute, Router } from "@angular/router";
-import { first } from "rxjs";
 import { Title } from "@angular/platform-browser";
-import { Document2 } from "../../models/document2";
+import { Document } from "../../models/document";
 import { ApiService } from "../../interaction-backend/api.service";
 
 @Component({
@@ -14,7 +11,7 @@ import { ApiService } from "../../interaction-backend/api.service";
   styleUrls: ["./page-document-detail.component.css"],
 })
 export class PageDocumentsDetailComponent {
-  public document!: Document2;
+  public document!: Document;
   public BASE_URL = ApiService.getBaseUrl();
 
   constructor(

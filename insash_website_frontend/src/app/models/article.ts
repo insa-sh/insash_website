@@ -2,10 +2,9 @@ import { Categorie } from "./categorie";
 import { Image } from "./image";
 import { Member } from "./member";
 import { Tag } from "./tag";
-import { NullString } from "./null-string";
-import { Document2 } from "./document2";
+import { Document } from "./document";
 
-export class Article extends Document2 {
+export class Article extends Document {
   constructor(
     titre: string,
     tags: Tag[] | null,

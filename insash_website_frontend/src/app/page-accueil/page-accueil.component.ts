@@ -1,7 +1,6 @@
 import { Component, Input, Renderer2 } from "@angular/core";
 import { DocumentService } from "../interaction-backend/document.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DocumentAndAuthor } from "../models/document-and-author";
 import { Projet } from "../models/projet";
 import { Article } from "../models/article";
 

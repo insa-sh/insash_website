@@ -1,9 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { ApiService } from "src/app/interaction-backend/api.service";
 import { Article } from "src/app/models/article";
-import { DocumentType } from "src/app/models/document";
-import { DocumentAndAuthor } from "src/app/models/document-and-author";
-import { Document2 } from "src/app/models/document2";
+import { Document } from "src/app/models/document";
 import { Projet } from "src/app/models/projet";
 
 @Component({
@@ -12,11 +10,11 @@ import { Projet } from "src/app/models/projet";
   styleUrls: ["./list-document-tile.component.css"],
 })
 export class ListDocumentTileComponent {
-  @Input() document!: Document2;
+  @Input() document!: Document;
   public MAX_TAGS: number = 3;
   public BASE_URL = ApiService.getBaseUrl();
 
-  getYear(document: Document2): string {
+  getYear(document: Document): string {
     return document.date.split("-")[0];
   }
 

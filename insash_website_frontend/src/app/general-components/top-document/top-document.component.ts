@@ -1,6 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { DocumentAndAuthor } from "src/app/models/document-and-author";
-import { Document2 } from "src/app/models/document2";
+import { Document } from "src/app/models/document";
 
 export enum TileStyle {
   list = "list",
@@ -13,7 +12,7 @@ export enum TileStyle {
   styleUrls: ["./top-document.component.css"],
 })
 export class TopDocumentComponent {
-  @Input() public documents: Document2[] = [];
+  @Input() public documents: Document[] = [];
   @Input() public numberOfDocuments: number = 3;
 
   ngOnInit() {

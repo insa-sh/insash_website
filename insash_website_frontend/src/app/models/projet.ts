@@ -1,9 +1,9 @@
 import { Member } from "./member";
 import { Image } from "./image";
 import { Tag } from "./tag";
-import { Document2 } from "./document2";
+import { Document } from "./document";
 
-export class Projet extends Document2 {
+export class Projet extends Document {
   constructor(
     titre: string,
     tags: Tag[] | null,

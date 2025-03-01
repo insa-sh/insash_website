@@ -3,12 +3,8 @@ import {
   DocumentService,
   SortingBy,
 } from "../../interaction-backend/document.service";
-import { DocumentAndAuthor } from "../../models/document-and-author";
-import { DocumentType } from "../../models/document";
 import { ActivatedRoute } from "@angular/router";
-import { TileStyle } from "../top-document/top-document.component";
-import { Document2 } from "src/app/models/document2";
-import { Article } from "src/app/models/article";
+import { Document } from "src/app/models/document";
 import { Categorie } from "src/app/models/categorie";
 
 @Component({
@@ -17,8 +13,8 @@ import { Categorie } from "src/app/models/categorie";
   styleUrls: ["./page-document.component.css"],
 })
 export class PageDocumentComponent {
-  public documents: Article[] = [];
-  public topDocuments: Document2[] = [];
+  public documents: Document[] = [];
+  public topDocuments: Document[] = [];
 
   constructor(
     private documentService: DocumentService,
@@ -36,14 +32,6 @@ export class PageDocumentComponent {
   onFilterChanged(filters: any) {
     this.filters = filters;
     this.fetchDocuments();
-  }
-
-  fetchTopDocuments() {
-    this.route.data.subscribe((data) => {
-      if (data["topDocumentsAndAuthors"] != null) {
-        this.topDocuments = data["topDocumentsAndAuthors"]["data"];
-      }
-    });
   }
 
   fetchDocuments(categorie?: Categorie) {
@@ -85,13 +73,13 @@ export class PageDocumentComponent {
     this.route.data.subscribe((data) => {
       if (data["document"] != null) {
         this.documents = data["document"]["data"];
+        this.topDocuments = this.documents.slice(0, 2);
       }
     });
   }
 
   ngOnInit() {
     this.fetchDocumentInit();
-    this.fetchTopDocuments();
   }
 
   isThereEnoughDocuments() {

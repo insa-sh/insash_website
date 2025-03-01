@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { Document2 } from "src/app/models/document2";
+import { Document } from "src/app/models/document";
 import { Projet } from "src/app/models/projet";
 import { TopDocumentComponent } from "../top-document.component";
 

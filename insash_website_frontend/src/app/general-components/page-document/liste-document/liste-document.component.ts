@@ -5,7 +5,7 @@ import {
   SimpleChanges,
   ChangeDetectorRef,
 } from "@angular/core";
-import { Document2 } from "src/app/models/document2";
+import { Document } from "src/app/models/document";
 
 @Component({
   selector: "app-liste-document",
@@ -13,7 +13,7 @@ import { Document2 } from "src/app/models/document2";
   styleUrls: ["./liste-document.component.css"],
 })
 export class ListeDocumentComponent {
-  @Input() documents!: Document2[];
+  @Input() documents!: Document[];
 
   constructor(private cdr: ChangeDetectorRef) {}
 

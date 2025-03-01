@@ -2,13 +2,9 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Member } from "../models/member";
-import { Document, DocumentType } from "../models/document";
-import { DocumentAndAuthor } from "../models/document-and-author";
 import { ApiService } from "./api.service";
 import { Projet } from "../models/projet";
 import { Tag } from "../models/tag";
-import { Image } from "../models/image";
-import { map } from "rxjs/operators";
 import { Categorie } from "../models/categorie";
 import { Article } from "../models/article";
 

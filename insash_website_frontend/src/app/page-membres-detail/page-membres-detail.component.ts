@@ -3,7 +3,6 @@ import { Member } from "../models/member";
 import { DocumentService } from "../interaction-backend/document.service";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
-import { DocumentAndAuthor } from "../models/document-and-author";
 import { ApiService } from "../interaction-backend/api.service";
 import { Projet } from "../models/projet";
 

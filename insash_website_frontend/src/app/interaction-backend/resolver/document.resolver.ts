@@ -7,8 +7,6 @@ import {
 } from "@angular/router";
 import { DocumentService, SortingBy } from "../document.service";
 import { Observable, firstValueFrom } from "rxjs";
-import { Document, DocumentType } from "../../models/document";
-import { DocumentAndAuthor } from "src/app/models/document-and-author";
 import { Member } from "src/app/models/member";
 import { Projet } from "src/app/models/projet";
 import { Article } from "src/app/models/article";

@@ -20,7 +20,12 @@ export class PageArticleComponent extends PageDocumentComponent {
     });
   }
 
-  override ngOnInit(): void {
+  override onFilterChanged(filters: any) {
+    this.filters = filters;
+    this.fetchDocuments(this.categorie);
+  }
+
+  override ngOnInit() {
     super.ngOnInit();
     this.fetchCategorie();
   }

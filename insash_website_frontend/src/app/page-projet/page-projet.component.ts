@@ -5,7 +5,7 @@ import {
 } from "../interaction-backend/document.service";
 import { ActivatedRoute } from "@angular/router";
 import { TileStyle } from "../general-components/top-document/top-document.component";
-import { Document2 } from "src/app/models/document2";
+import { Document } from "src/app/models/document";
 import { Article } from "src/app/models/article";
 import { Categorie } from "src/app/models/categorie";
 import { Projet } from "src/app/models/projet";
