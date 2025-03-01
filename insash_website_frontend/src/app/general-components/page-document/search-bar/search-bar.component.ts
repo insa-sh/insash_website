@@ -3,16 +3,14 @@ import {
   EventEmitter,
   Input,
   Output,
-  SimpleChanges,
   ChangeDetectorRef,
 } from "@angular/core";
-import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
 import { DocumentService } from "src/app/interaction-backend/document.service";
 import { Member } from "src/app/models/member";
 import { Tag } from "src/app/models/tag";
-import { Categorie } from "src/app/models/categorie";
 
 @Component({
   selector: "app-search-bar",

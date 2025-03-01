@@ -1,16 +1,14 @@
-import { ApplicationConfig, Injectable, NgModule } from "@angular/core";
+import { Injectable, NgModule } from "@angular/core";
 import {
   RouterModule,
   RouterStateSnapshot,
   Routes,
   TitleStrategy,
-  provideRouter,
 } from "@angular/router";
 import { PageAccueilComponent } from "./page-accueil/page-accueil.component";
 import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
-import { PageDocumentComponent } from "./general-components/page-document/page-document.component";
 import {
   ArticleAuthorResolver,
   ArticleTagsResolver,
@@ -28,7 +26,6 @@ import {
 } from "./interaction-backend/resolver/document.resolver";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
-import { PageDocumentsDetailComponent } from "./general-components/page-documents-detail/page-document-detail.component";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
 import { PageProjetComponent } from "./page-projet/page-projet.component";
 import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
@@ -89,7 +86,7 @@ const routes: Routes = [
   {
     path: "article/:categorie",
     component: PageArticleComponent,
-    title: "Les cheatsheets du Club",
+    title: "",
     resolve: {
       document: ArticleResolver,
       topDocumentsAndAuthors: TopArticleResolver,

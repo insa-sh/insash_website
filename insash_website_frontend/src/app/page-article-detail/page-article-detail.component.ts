@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { PageDocumentsDetailComponent } from "../general-components/page-documents-detail/page-document-detail.component";
-import { Article } from "../models/article";
 
 @Component({
   selector: "app-page-article-detail",

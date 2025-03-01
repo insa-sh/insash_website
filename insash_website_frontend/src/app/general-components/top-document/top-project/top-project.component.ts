@@ -1,6 +1,4 @@
 import { Component, Input } from "@angular/core";
-import { Document } from "src/app/models/document";
-import { Projet } from "src/app/models/projet";
 import { TopDocumentComponent } from "../top-document.component";
 
 export enum TileStyle {

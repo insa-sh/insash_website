@@ -1,9 +1,10 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import {
   DocumentService,
   SortingBy,
 } from "../../interaction-backend/document.service";
 import { ActivatedRoute } from "@angular/router";
+import { Title } from "@angular/platform-browser";
 import { Document } from "src/app/models/document";
 import { Categorie } from "src/app/models/categorie";
 
@@ -18,7 +19,8 @@ export class PageDocumentComponent {
 
   constructor(
     private documentService: DocumentService,
-    protected route: ActivatedRoute
+    protected route: ActivatedRoute,
+    protected titleService: Title
   ) {}
 
   filters = {

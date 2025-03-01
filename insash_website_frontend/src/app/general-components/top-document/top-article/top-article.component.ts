@@ -1,5 +1,4 @@
 import { Component, Input } from "@angular/core";
-import { Document } from "src/app/models/document";
 import { TopDocumentComponent } from "../top-document.component";
 
 @Component({

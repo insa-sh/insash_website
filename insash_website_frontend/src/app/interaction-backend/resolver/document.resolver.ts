@@ -1,4 +1,4 @@
-import { Injectable, inject } from "@angular/core";
+import { inject } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
   ResolveFn,
@@ -6,7 +6,7 @@ import {
   Router,
 } from "@angular/router";
 import { DocumentService, SortingBy } from "../document.service";
-import { Observable, firstValueFrom } from "rxjs";
+import { Observable } from "rxjs";
 import { Member } from "src/app/models/member";
 import { Projet } from "src/app/models/projet";
 import { Article } from "src/app/models/article";
@@ -29,12 +29,15 @@ export const ArticleResolver: ResolveFn<Article> = (
 
   if (route.paramMap.get("categorie") != null) {
     categorie = route.paramMap.get("categorie")!;
-    // let categoriesAccepted: Categorie[] =
-    //   userService.getArticleCategories()["data"];
-
-    // if (!categoriesAccepted.some((c) => c.titre === categorie)) {
-    //   router.navigate(["/404"]);
-    // }
+    let categoriesAccepted: Categorie[] = [];
+    userService.getArticleCategorie().subscribe((data: any) => {
+      if (data) {
+        categoriesAccepted = data["data"];
+        if (!categoriesAccepted.some((c) => c.slug == categorie)) {
+          router.navigate(["/404"]);
+        }
+      }
+    });
   }
 
   return userService.getArticle(
@@ -90,12 +93,15 @@ export const TopArticleResolver: ResolveFn<Article> = (
 
   if (route.paramMap.get("categorie") != null) {
     categorie = route.paramMap.get("categorie")!;
-    // let categoriesAccepted: Categorie[] =
-    //   userService.getArticleCategorie()["data"];
-
-    // if (!categoriesAccepted.some((c) => c.titre === categorie)) {
-    //   router.navigate(["/404"]);
-    // }
+    let categoriesAccepted: Categorie[] = [];
+    userService.getArticleCategorie().subscribe((data: any) => {
+      if (data) {
+        categoriesAccepted = data["data"];
+        if (!categoriesAccepted.some((c) => c.slug === categorie)) {
+          router.navigate(["/404"]);
+        }
+      }
+    });
   }
 
   return userService.getArticle(

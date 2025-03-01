@@ -1,6 +1,5 @@
 import { Component, inject } from "@angular/core";
 import { Member } from "../models/member";
-import { DocumentService } from "../interaction-backend/document.service";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from "../interaction-backend/api.service";
@@ -15,11 +14,7 @@ export class PageMembresDetailComponent {
   public member!: Member;
   public project: Projet[] = [];
 
-  constructor(
-    private documentService: DocumentService,
-    private titleService: Title,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private titleService: Title, private route: ActivatedRoute) {}
 
   private router = inject(Router);
 

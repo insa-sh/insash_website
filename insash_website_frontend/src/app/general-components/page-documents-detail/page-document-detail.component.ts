@@ -14,11 +14,7 @@ export class PageDocumentsDetailComponent {
   public document!: Document;
   public BASE_URL = ApiService.getBaseUrl();
 
-  constructor(
-    private documentService: DocumentService,
-    private titleService: Title,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private titleService: Title, private route: ActivatedRoute) {}
 
   private router = inject(Router);
 

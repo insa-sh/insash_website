@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
 import { Categorie } from "src/app/models/categorie";
 import { ActivatedRoute } from "@angular/router";
 

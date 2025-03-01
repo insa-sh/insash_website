@@ -1,10 +1,10 @@
 import {
   Component,
   Input,
-  OnChanges,
   SimpleChanges,
   ChangeDetectorRef,
 } from "@angular/core";
+
 import { Document } from "src/app/models/document";
 
 @Component({
