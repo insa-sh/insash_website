@@ -22,9 +22,6 @@ import { Categorie } from "src/app/models/categorie";
 export class SearchBarComponent {
   @Input() isItAnArticle: boolean = true;
 
-  public categorie = new Categorie("", "", "");
-  public otherCategorie: Categorie[] = [];
-
   public authors: Member[] = [];
   public tags: Tag[] = [];
   public dates: string[] = [];
@@ -171,33 +168,10 @@ export class SearchBarComponent {
     return this.getSelectedDates().length > 0;
   }
 
-  fetchOtherCategorie() {
-    this.route.data.subscribe((data) => {
-      if (data["categories"] != null) {
-        this.otherCategorie = data["categories"]["data"];
-      }
-    });
-  }
-
-  getCategorie() {
-    this.route.data.subscribe((data) => {
-      if (data["categorie"] != null) {
-        this.categorie = data["categorie"]["data"][0];
-      }
-    });
-  }
-
   ngOnInit() {
-    this.fetchOtherCategorie();
-
-    this.getCategorie();
-
     this.fetchAuthors();
     this.fetchTags();
     this.fetchYears();
-    this.otherCategorie = this.otherCategorie.filter(
-      (v) => v.slug != this.categorie.slug
-    );
 
     this.formChangesSubscription = this.filterForm.valueChanges.subscribe(
       () => {

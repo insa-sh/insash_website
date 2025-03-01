@@ -1,11 +1,6 @@
 <div class="bar">
   <div id="search-section">
-    <app-categories-selector
-      *ngIf="isItAnArticle"
-      [categorie]="categorie"
-      [otherCategorie]="otherCategorie"
-    >
-    </app-categories-selector>
+    <app-categories-selector *ngIf="isItAnArticle"> </app-categories-selector>
 
     <div class="search-bar">
       <input
