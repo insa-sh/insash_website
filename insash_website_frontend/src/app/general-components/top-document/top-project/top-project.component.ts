@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { Document2 } from "src/app/models/document2";
 import { Projet } from "src/app/models/projet";
+import { TopDocumentComponent } from "../top-document.component";
 
 export enum TileStyle {
   list = "list",
@@ -10,13 +11,6 @@ export enum TileStyle {
 @Component({
   selector: "app-top-project",
   templateUrl: "./top-project.component.html",
-  styleUrls: ["./top-project.component.css"],
+  styleUrls: ["./top-project.component.css", "../top-document.component.css"],
 })
-export class TopProjectComponent {
-  @Input() public documents: Document2[] = [];
-  @Input() public numberOfDocuments: number = 3;
-
-  ngOnInit() {
-    this.documents = this.documents.slice(0, this.numberOfDocuments);
-  }
-}
+export class TopProjectComponent extends TopDocumentComponent {}

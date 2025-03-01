@@ -9,10 +9,10 @@
 </ng-container>
 <ng-container *ngIf="documents.length > 0">
   <h2>Jette un oeil à nos <span>derniers articles</span> &#x2728;</h2>
-  <app-top-document
+  <app-top-article
     [documents]="documents"
     [numberOfDocuments]="2"
-  ></app-top-document>
+  ></app-top-article>
   <div class="more-project">
     <a routerLink="article/actus" class="text-link"
       >-> Check nos autres articles

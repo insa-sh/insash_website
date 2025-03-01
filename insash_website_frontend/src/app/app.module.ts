@@ -35,11 +35,12 @@ import "prismjs/plugins/autoloader/prism-autoloader.js";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js";
 import "prismjs/plugins/show-language/prism-show-language.js";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
-import { TopProjectComponent } from "./general-components/top-project/top-project.component";
+import { TopProjectComponent } from "./general-components/top-document/top-project/top-project.component";
 import { CategoriesSelectorComponent } from "./general-components/page-document/search-bar/categories-selector/categories-selector.component";
 import { PageProjetComponent } from "./general-components/page-projet/page-projet.component";
 import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
 import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
+import { TopArticleComponent } from "./general-components/top-document/top-article/top-article.component";
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { PageArticleDetailComponent } from "./page-article-detail/page-article-d
     PageProjetComponent,
     PageProjetDetailComponent,
     PageArticleDetailComponent,
+    TopArticleComponent,
   ],
   imports: [
     BrowserModule,
