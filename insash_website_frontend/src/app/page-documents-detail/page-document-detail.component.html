@@ -1,4 +1,5 @@
 <div *ngIf="document; else loading">
+  <ng-content select="[projetHeader]"></ng-content>
   <div class="document-top">
     <h1>{{ document.titre }}</h1>
 

@@ -38,6 +38,7 @@ import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-d
 import { TopProjectComponent } from "./general-components/top-project/top-project.component";
 import { CategoriesSelectorComponent } from "./general-components/page-document/search-bar/categories-selector/categories-selector.component";
 import { PageProjetComponent } from './general-components/page-projet/page-projet.component';
+import { PageProjetDetailComponent } from './page-projet-detail/page-projet-detail.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PageProjetComponent } from './general-components/page-projet/page-proje
     TopProjectComponent,
     CategoriesSelectorComponent,
     PageProjetComponent,
+    PageProjetDetailComponent,
   ],
   imports: [
     BrowserModule,

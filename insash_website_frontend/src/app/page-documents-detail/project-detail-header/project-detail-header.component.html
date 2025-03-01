@@ -1,17 +1,17 @@
 <div class="project-header">
   <div class="project-header-bg">
-    <img src="/public/images/document/{{ project.image.url }}" alt="" />
+    <img src="{{ this.BASE_URL }}{{ project.image.url }}" alt="" />
   </div>
 
   <div class="project-header-fg">
     <div class="project-header-image">
-      <img src="/public/images/document/{{ project.image.url }}" alt="" />
+      <img src="{{ this.BASE_URL }}{{ project.image.url }}" alt="" />
     </div>
 
     <div class="project-header-buttons">
       <a
         href="{{ project.github_url }}"
-        *ngIf="project.github_url != ''"
+        *ngIf="project.github_url"
         target="_blank"
       >
         <div class="button button-github">
@@ -22,7 +22,7 @@
 
       <a
         href="{{ project.project_url }}"
-        *ngIf="project.project_url != ''"
+        *ngIf="project.project_url"
         target="_blank"
       >
         <div class="button button-play">

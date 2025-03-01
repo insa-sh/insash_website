@@ -31,6 +31,7 @@ import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-menti
 import { PageDocumentsDetailComponent } from "./page-documents-detail/page-document-detail.component";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
 import { PageProjetComponent } from "./general-components/page-projet/page-projet.component";
+import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
 
 // iumporter la fonction qui permet de fermer le menu de navigation au changement de page
 declare function toggleNavigationMenu(action: any): void;
@@ -77,7 +78,7 @@ const routes: Routes = [
   },
   {
     path: "project/:slug",
-    component: PageDocumentsDetailComponent,
+    component: PageProjetDetailComponent,
     title: "",
     resolve: {
       document: ProjectResolver,
