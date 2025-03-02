@@ -101,6 +101,6 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
-          subject-name: ${{ env.REGISTRY }}/${{ github.repository_owner }}/insash-website-backend
+          subject-name: ${{ env.REGISTRY }}/${{ github.repository_owner }}/insash-website-strapi
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
