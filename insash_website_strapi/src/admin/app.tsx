@@ -1,10 +1,18 @@
 import type { StrapiApp } from "@strapi/strapi/admin";
-import favicon from "./extensions/favicon.ico";
+import favicon from "./extensions/favicon.png";
+import AuthLogo from "./extensions/frame.png";
+import MenuLogo from "./extensions/frame.png";
 
 export default {
   config: {
     head: {
       favicon: favicon,
+    },
+    auth: {
+      logo: AuthLogo,
+    },
+    menu: {
+      logo: MenuLogo,
     },
     locales: [
       // 'ar',
