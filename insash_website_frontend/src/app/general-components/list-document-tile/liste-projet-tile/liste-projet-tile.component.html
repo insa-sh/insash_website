@@ -1,0 +1,28 @@
+<a routerLink="/projet/{{ document.slug }}"
+  ><div class="list-document-tile">
+    <div class="document-image icon">
+      <img src="{{ BASE_URL }}{{ document.image.url }}" alt="" />
+    </div>
+    <div class="document-content">
+      <div class="document-main-details">
+        <h2>{{ document.titre }}</h2>
+        <div class="document-tags">
+          <div class="tag" *ngFor="let tag of getMaxTags(maxTags)">
+            <p>#{{ tag.titre }}</p>
+          </div>
+          <div class="tag" *ngIf="getNumberOfTags() > 3">
+            <p>+{{ getNumberOfTags() - 3 }}</p>
+          </div>
+        </div>
+        <p class="document-description" *ngIf="document.description !== ''">
+          {{ document.description }}
+        </p>
+      </div>
+      <div class="document-other-details">
+        <div class="document-year">
+          <h2>{{ getDateString() }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>

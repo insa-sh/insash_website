@@ -42,6 +42,10 @@ import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-deta
 import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
 import { TopArticleComponent } from "./general-components/top-document/top-article/top-article.component";
 import { PageArticleComponent } from "./page-article/page-article.component";
+import { ListArticleTileComponent } from './general-components/list-document-tile/list-article-tile/list-article-tile.component';
+import { ListeArticleComponent } from './general-components/page-document/liste-document/liste-article/liste-article.component';
+import { ListeProjetComponent } from './general-components/page-document/liste-document/liste-projet/liste-projet.component';
+import { ListeProjetTileComponent } from './general-components/list-document-tile/liste-projet-tile/liste-projet-tile.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +79,10 @@ import { PageArticleComponent } from "./page-article/page-article.component";
     PageArticleDetailComponent,
     TopArticleComponent,
     PageArticleComponent,
+    ListArticleTileComponent,
+    ListeArticleComponent,
+    ListeProjetComponent,
+    ListeProjetTileComponent,
   ],
   imports: [
     BrowserModule,

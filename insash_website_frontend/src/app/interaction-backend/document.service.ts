@@ -36,7 +36,7 @@ export class DocumentService {
   ): Observable<Article> {
     let url: string =
       this.BASE_URL +
-      "articles?populate[image][fields][0]=url&populate=auteur&populate[tags][fields][0]=titre&populate[categorie][fields][0]=slug&";
+      "articles?populate[image][fields][0]=url&populate[auteur]=true&populate[tags][fields][0]=titre&populate[categorie]=true&";
 
     switch (sort) {
       case SortingBy.dateAsc:

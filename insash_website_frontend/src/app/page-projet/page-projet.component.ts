@@ -8,6 +8,7 @@ import { TileStyle } from "../general-components/top-document/top-document.compo
 import { Document } from "src/app/models/document";
 import { Article } from "src/app/models/article";
 import { PageDocumentComponent } from "../general-components/page-document/page-document.component";
+import { Projet } from "../models/projet";
 
 @Component({
   selector: "app-page-projet",
@@ -17,4 +18,7 @@ import { PageDocumentComponent } from "../general-components/page-document/page-
     "./page-projet.component.css",
   ],
 })
-export class PageProjetComponent extends PageDocumentComponent {}
+export class PageProjetComponent extends PageDocumentComponent {
+  override document: Projet[] = [];
+  override topDocument: Projet[] = [];
+}

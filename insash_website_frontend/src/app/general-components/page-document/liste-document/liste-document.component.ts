@@ -14,12 +14,5 @@ import { Document } from "src/app/models/document";
 })
 export class ListeDocumentComponent {
   @Input() document!: Document[];
-
-  constructor(private cdr: ChangeDetectorRef) {}
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes["document"]) {
-      this.cdr.detectChanges();
-    }
-  }
+  @Input() isItAnArticle!: boolean;
 }

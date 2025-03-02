@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { PageDocumentComponent } from "../general-components/page-document/page-document.component";
 import { Categorie } from "../models/categorie";
+import { Article } from "../models/article";
 
 @Component({
   selector: "app-page-article",
@@ -10,6 +11,9 @@ import { Categorie } from "../models/categorie";
   ],
 })
 export class PageArticleComponent extends PageDocumentComponent {
+  override document: Article[] = [];
+  override topDocument: Article[] = [];
+
   public categorie: Categorie = new Categorie("", "", "");
 
   fetchCategorie() {
