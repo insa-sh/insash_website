@@ -13,27 +13,33 @@ services:
     container_name: insash-website
     ports:
       - "10000:80"
-    # volumes:
-    #   - ./insash_website_data/public/images/member/custom:/var/www/website/public/images/member/custom
-    #   - ./insash_website_data/public/images/document:/var/www/website/public/images/document
-    #   - ./insash_website_data/public/markdown:/var/www/website/public/markdown
     networks:
       - website
     depends_on:
       - insash_website_strapi
 
-  # insash-website-backend-prod:
-  #   build:
-  #     context: ./insash_website_backend
-  #   image: insash-website-backend
-  #   container_name: insash-website-backend
-  #   profiles:
-  #     - prod
-  #   env_file:
-  #     - path: ./insash_website_data/.env
-  #     - path: ./insash_website_data/backend.env
-  #   networks:
-  #     - website
+  insash_website_strapi:
+    container_name: insash_website_strapi
+    profiles:
+      - prod
+    build:
+      context: ./insash_website_strapi
+      dockerfile: Dockerfile.prod
+    image: insash_website_strapi:latest
+    env_file: ./insash_website_strapi/env/strapi.env
+    volumes:
+      - ./insash_website_strapi/config:/opt/app/config
+      - ./insash_website_strapi/src:/opt/app/src
+      - ./insash_website_strapi/package.json:/opt/package.json
+      - ./insash_website_strapi/package-lock.json:/opt/package-lock.json
+
+      - ./insash_website_strapi/env/strapi.env:/opt/app/.env
+      - ./insash_website_strapi/public/uploads:/opt/app/public/uploads
+
+    networks:
+      - website
+    depends_on:
+      - insash_website_strapiDB
 
   ## ---------- DEVELOPMENT
   # App en live server via Andular
@@ -52,39 +58,10 @@ services:
     volumes:
       - ./insash_website_frontend:/app
       - /app/node_modules
-      # - ./insash_website_data/public/images/member/custom:/app/src/public/images/member/custom
-      # - ./insash_website_data/public/images/document:/app/src/public/images/document
-      # - ./insash_website_data/public/markdown:/app/src/public/markdown
     networks:
       - website
     depends_on:
       - insash_website_strapi_dev
-
-  # insash-website-backend-dev:
-  #   build:
-  #     context: ./insash_website_backend
-  #   image: insash-website-backend-dev
-  #   container_name: insash-website-backend-dev
-  #   ports:
-  #     - "8080:8080"
-  #   profiles:
-  #     - dev
-  #   env_file:
-  #     - path: ./insash_website_data/.env
-  #     - path: ./insash_website_data/backend.env
-  #   networks:
-  #     - website
-
-  # insash-website-database:
-  #   image: postgres:16
-  #   container_name: insash-website-database
-  #   env_file:
-  #     - path: ./insash_website_data/.env
-  #   volumes:
-  #     - ./insash_website_data/init_database/database.sql:/docker-entrypoint-initdb.d/database.sql
-  #     - ./insash_website_data/postgresql/data:/var/lib/postgresql/data
-  #   networks:
-  #     - website
 
   insash_website_strapi-dev:
     container_name: insash_website_strapi_dev
@@ -93,32 +70,6 @@ services:
     build:
       context: ./insash_website_strapi
     image: insash_website_strapi_dev:latest
-    # restart: unless-stopped
-    env_file: ./insash_website_strapi/env/strapi.env
-    volumes:
-      - ./insash_website_strapi/config:/opt/app/config
-      - ./insash_website_strapi/src:/opt/app/src
-      - ./insash_website_strapi/package.json:/opt/package.json
-      - ./insash_website_strapi/package-lock.json:/opt/package-lock.json
-
-      - ./insash_website_strapi/env/strapi.env:/opt/app/.env
-      - ./insash_website_strapi/public/uploads:/opt/app/public/uploads
-    ports:
-      - "1337:1337"
-    networks:
-      - website
-    depends_on:
-      - insash_website_strapiDB
-
-  insash_website_strapi:
-    container_name: insash_website_strapi
-    profiles:
-      - prod
-    build:
-      context: ./insash_website_strapi
-      dockerfile: Dockerfile.prod
-    image: insash_website_strapi:latest
-    # restart: unless-stopped
     env_file: ./insash_website_strapi/env/strapi.env
     volumes:
       - ./insash_website_strapi/config:/opt/app/config
@@ -138,7 +89,6 @@ services:
   insash_website_strapiDB:
     container_name: insash_website_strapiDB
     platform: linux/amd64 #for platform error on Apple M1 chips
-    restart: unless-stopped
     env_file: ./insash_website_strapi/env/postgres.env
     image: postgres:14.5-alpine
     volumes:
