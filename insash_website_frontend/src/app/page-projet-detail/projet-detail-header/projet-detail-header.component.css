@@ -115,7 +115,7 @@ div.button-play:hover > * {
   color: var(--insash-rose-fonce);
 }
 
-div.list-document-tile:hover {
+div.liste-document-tile:hover {
   background-color: var(--website-bg-color-light-2);
 }
 

@@ -1,16 +1,16 @@
 import { Component, Input } from "@angular/core";
-import { ListDocumentTileComponent } from "../list-document-tile.component";
+import { ListeDocumentTileComponent } from "../liste-document-tile.component";
 import { Article } from "src/app/models/article";
 
 @Component({
-  selector: "app-list-article-tile",
-  templateUrl: "./list-article-tile.component.html",
+  selector: "app-liste-article-tile",
+  templateUrl: "./liste-article-tile.component.html",
   styleUrls: [
-    "../list-document-tile.component.css",
-    "./list-article-tile.component.css",
+    "../liste-document-tile.component.css",
+    "./liste-article-tile.component.css",
   ],
 })
-export class ListArticleTileComponent extends ListDocumentTileComponent {
+export class ListeArticleTileComponent extends ListeDocumentTileComponent {
   @Input() override document!: Article;
 
   getDateString() {

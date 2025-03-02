@@ -19,7 +19,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { PageDocumentComponent } from "./general-components/page-document/page-document.component";
 import { SearchBarComponent } from "./general-components/page-document/search-bar/search-bar.component";
 import { ListeDocumentComponent } from "./general-components/page-document/liste-document/liste-document.component";
-import { ListDocumentTileComponent } from "./general-components/list-document-tile/list-document-tile.component";
+import { ListeDocumentTileComponent } from "./general-components/liste-document-tile/liste-document-tile.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
@@ -42,10 +42,10 @@ import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-deta
 import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
 import { TopArticleComponent } from "./general-components/top-document/top-article/top-article.component";
 import { PageArticleComponent } from "./page-article/page-article.component";
-import { ListArticleTileComponent } from './general-components/list-document-tile/list-article-tile/list-article-tile.component';
-import { ListeArticleComponent } from './general-components/page-document/liste-document/liste-article/liste-article.component';
-import { ListeProjetComponent } from './general-components/page-document/liste-document/liste-projet/liste-projet.component';
-import { ListeProjetTileComponent } from './general-components/list-document-tile/liste-projet-tile/liste-projet-tile.component';
+import { ListeArticleTileComponent } from "./general-components/liste-document-tile/liste-article-tile/liste-article-tile.component";
+import { ListeArticleComponent } from "./general-components/page-document/liste-document/liste-article/liste-article.component";
+import { ListeProjetComponent } from "./general-components/page-document/liste-document/liste-projet/liste-projet.component";
+import { ListeProjetTileComponent } from "./general-components/liste-document-tile/liste-projet-tile/liste-projet-tile.component";
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { ListeProjetTileComponent } from './general-components/list-document-til
     PageDocumentComponent,
     SearchBarComponent,
     ListeDocumentComponent,
-    ListDocumentTileComponent,
+    ListeDocumentTileComponent,
     PagePolitiqueConfidentialiteComponent,
     PageMentionsLegalesComponent,
     PageDocumentsDetailComponent,
@@ -79,7 +79,7 @@ import { ListeProjetTileComponent } from './general-components/list-document-til
     PageArticleDetailComponent,
     TopArticleComponent,
     PageArticleComponent,
-    ListArticleTileComponent,
+    ListeArticleTileComponent,
     ListeArticleComponent,
     ListeProjetComponent,
     ListeProjetTileComponent,

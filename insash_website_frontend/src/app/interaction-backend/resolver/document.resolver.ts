@@ -60,9 +60,14 @@ export const ProjetResolver: ResolveFn<Projet> = (
   const userService = inject(DocumentService);
 
   let slug = "";
+  let username: string[] = [];
 
   if (route.paramMap.get("slug") != null) {
     slug = route.paramMap.get("slug")!;
+  }
+
+  if (route.paramMap.get("username") != null) {
+    username = [route.paramMap.get("username")!];
   }
 
   return userService.getProjet(
@@ -72,7 +77,7 @@ export const ProjetResolver: ResolveFn<Projet> = (
     slug,
     undefined,
     SortingBy.dateDesc,
-    undefined,
+    username,
     undefined
   );
 };

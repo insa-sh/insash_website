@@ -1,8 +1,8 @@
 <div class="liste-document">
-  <app-list-article-tile
+  <app-liste-article-tile
     *ngFor="let doc of document"
     [document]="doc"
-  ></app-list-article-tile>
+  ></app-liste-article-tile>
   <div *ngIf="document.length === 0" class="no-documents">
     Rien ici pour le moment ;)
   </div>

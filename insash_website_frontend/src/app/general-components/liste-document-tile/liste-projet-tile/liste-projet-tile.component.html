@@ -1,26 +1,12 @@
-<a routerLink="/article/{{ document.categorie.slug }}/{{ document.slug }}"
-  ><div class="list-document-tile">
-    <div class="document-image">
+<a routerLink="/projet/{{ document.slug }}"
+  ><div class="liste-document-tile">
+    <div class="document-image icon">
       <img src="{{ BASE_URL }}{{ document.image.url }}" alt="" />
     </div>
     <div class="document-content">
       <div class="document-main-details">
         <h2>{{ document.titre }}</h2>
         <div class="document-tags">
-          <div
-            class="tag"
-            [ngStyle]="{
-              'background-color': document.categorie.couleur + '33'
-            }"
-          >
-            <p
-              [ngStyle]="{
-                color: document.categorie.couleur
-              }"
-            >
-              {{ document.categorie.titre.toUpperCase() }}
-            </p>
-          </div>
           <div class="tag" *ngFor="let tag of getMaxTags(maxTags)">
             <p>#{{ tag.titre }}</p>
           </div>

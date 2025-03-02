@@ -4,7 +4,7 @@ import {
   ChangeDetectorRef,
   SimpleChanges,
 } from "@angular/core";
-import { ListDocumentTileComponent } from "src/app/general-components/list-document-tile/list-document-tile.component";
+import { ListeDocumentTileComponent } from "src/app/general-components/liste-document-tile/liste-document-tile.component";
 import { ListeDocumentComponent } from "../liste-document.component";
 import { Article } from "src/app/models/article";
 

@@ -11,17 +11,17 @@ div.top-documents {
 }
 
 div.top-documents app-box-document-tile:nth-child(1),
-div.top-documents app-list-document-tile:nth-child(1) {
+div.top-documents app-liste-document-tile:nth-child(1) {
   animation-delay: 0s;
 }
 
 div.top-documents app-box-document-tile:nth-child(2),
-div.top-documents app-list-document-tile:nth-child(2) {
+div.top-documents app-liste-document-tile:nth-child(2) {
   animation-delay: 0.1s;
 }
 
 div.top-documents app-box-document-tile:nth-child(3),
-div.top-documents app-list-document-tile:nth-child(3) {
+div.top-documents app-liste-document-tile:nth-child(3) {
   animation-delay: 0.2s;
 }
 
@@ -41,7 +41,7 @@ a {
   }
 
   app-box-document-tile,
-  app-list-document-tile {
+  app-liste-document-tile {
     margin-top: 20px;
     max-width: 90%;
     width: 90%;

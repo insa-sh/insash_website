@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { ListDocumentTileComponent } from "../list-document-tile.component";
+import { ListeDocumentTileComponent } from "../liste-document-tile.component";
 import { Projet } from "src/app/models/projet";
 
 @Component({
@@ -7,10 +7,10 @@ import { Projet } from "src/app/models/projet";
   templateUrl: "./liste-projet-tile.component.html",
   styleUrls: [
     "./liste-projet-tile.component.css",
-    "../list-document-tile.component.css",
+    "../liste-document-tile.component.css",
   ],
 })
-export class ListeProjetTileComponent extends ListDocumentTileComponent {
+export class ListeProjetTileComponent extends ListeDocumentTileComponent {
   @Input() override document!: Projet;
 
   getDateString() {

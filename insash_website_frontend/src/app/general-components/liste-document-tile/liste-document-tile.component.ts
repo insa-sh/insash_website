@@ -4,11 +4,11 @@ import { Document } from "src/app/models/document";
 import { Projet } from "src/app/models/projet";
 
 @Component({
-  selector: "app-list-document-tile",
-  templateUrl: "./list-document-tile.component.html",
-  styleUrls: ["./list-document-tile.component.css"],
+  selector: "app-liste-document-tile",
+  templateUrl: "./liste-document-tile.component.html",
+  styleUrls: ["./liste-document-tile.component.css"],
 })
-export class ListDocumentTileComponent {
+export class ListeDocumentTileComponent {
   @Input() document!: Document;
   public maxTags: number = 3;
   public BASE_URL = ApiService.getBaseUrl();

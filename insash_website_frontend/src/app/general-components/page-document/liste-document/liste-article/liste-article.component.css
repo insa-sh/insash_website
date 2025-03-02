@@ -1,7 +1,7 @@
-app-list-article-tile {
+app-liste-article-tile {
   margin-bottom: 20px;
 }
 
-app-list-article-tile:nth-last-child(1) {
+app-liste-article-tile:nth-last-child(1) {
   margin-bottom: 0px;
 }
