@@ -8,7 +8,7 @@ import { Member } from "src/app/models/member";
 })
 export class MembresDuBureauComponent {
   // tableaux d'éléments de type Member (dit 'interface')
-  @Input() membres!: Member[]; // ! -> la variable membres est obligatoire et ne sera jamais null ou undefined
+  @Input() membre!: Member[]; // ! -> la variable membres est obligatoire et ne sera jamais null ou undefined
 
   president: Member | undefined;
   secretaire: Member | undefined;
@@ -16,17 +16,17 @@ export class MembresDuBureauComponent {
   responsableCommunication: Member | undefined;
 
   ngOnInit() {
-    this.president = this.membres.find(
-      (m) => m.role.String.toLowerCase() === "président"
+    this.president = this.membre.find(
+      (m) => m.role.toLowerCase() === "président"
     );
-    this.secretaire = this.membres.find(
-      (m) => m.role.String.toLowerCase() === "secrétaire"
+    this.secretaire = this.membre.find(
+      (m) => m.role.toLowerCase() === "secrétaire"
     );
-    this.tresorier = this.membres.find(
-      (m) => m.role.String.toLowerCase() === "trésorier"
+    this.tresorier = this.membre.find(
+      (m) => m.role.toLowerCase() === "trésorier"
     );
-    this.responsableCommunication = this.membres.find(
-      (m) => m.role.String.toLowerCase() === "responsable communication"
+    this.responsableCommunication = this.membre.find(
+      (m) => m.role.toLowerCase() === "responsable communication"
     );
   }
 }

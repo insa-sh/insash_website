@@ -1,8 +1,6 @@
 import { Component, Input } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { DocumentAndAuthor } from "src/app/models/document-and-author";
-
-
+import { ApiService } from "src/app/interaction-backend/api.service";
+import { Document } from "src/app/models/document";
 
 @Component({
   selector: "app-box-document-tile",
@@ -10,20 +8,11 @@ import { DocumentAndAuthor } from "src/app/models/document-and-author";
   styleUrls: ["./box-document-tile.component.css"],
 })
 export class BoxDocumentTileComponent {
-  @Input() documentAndAuthor!: DocumentAndAuthor;
-  public MAX_TAGS: number = 3;  
+  @Input() document!: Document;
+  public maxTags: number = 3;
+  public BASE_URL = ApiService.getBaseUrl();
 
   getMaxTags(max: number) {
-    return this.documentAndAuthor.document.tags.slice(0, max);
+    return this.document.tags?.slice(0, max);
   }
-
-  getNumberArchivedAuthors() {
-    return this.documentAndAuthor.author.filter((a) => a.archived).length;
-  }
-
-  getActiveAuthors() { 
-    return this.documentAndAuthor.author.filter((a) => !a.archived);
-  }
-
-
 }

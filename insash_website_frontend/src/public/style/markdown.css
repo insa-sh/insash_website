@@ -1,5 +1,5 @@
 markdown img {
-  max-width: 100%;
+  max-width: 80%;
   height: auto;
   display: block;
   margin: 1em auto;
@@ -82,7 +82,6 @@ markdown tbody tr:nth-child(even) {
 }
 
 markdown blockquote {
-
   width: 95%;
   margin: 1em auto;
   color: #555555;
@@ -104,7 +103,7 @@ markdown blockquote::before {
 }
 
 markdown blockquote::after {
-  content: '';
+  content: "";
 }
 
 markdown blockquote span {
@@ -122,8 +121,6 @@ markdown hr {
   margin: 1em 0;
 }
 
-
-
 /* marges verticales titres */
 markdown {
   h1 {
@@ -137,7 +134,9 @@ markdown {
     margin-top: 1.5em;
     margin-bottom: 0.5em;
   }
-  h4,h5,h6 {
+  h4,
+  h5,
+  h6 {
     margin-bottom: 0.5em;
   }
 }

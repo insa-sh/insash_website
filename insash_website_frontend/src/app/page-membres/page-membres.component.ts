@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Member } from "src/app/models/member";
-import { DocumentService } from "../interaction-backend/document.service";
 
 @Component({
   selector: "app-page-membres",
@@ -9,17 +8,14 @@ import { DocumentService } from "../interaction-backend/document.service";
   styleUrls: ["./page-membres.component.css"],
 })
 export class PageMembresComponent {
-  public membres: Member[] = [];
+  public membre: Member[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private documentService: DocumentService
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   fetchMembers() {
     this.route.data.subscribe((data) => {
       if (data["members"] != null) {
-        this.membres = data["members"];
+        this.membre = data["members"]["data"];
       }
     });
   }

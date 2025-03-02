@@ -1,0 +1,11 @@
+h1 {
+  color: var(--insash-rose-pale);
+  background-color: var(--insash-rose-pale-transparent);
+}
+
+:host {
+  app-box-document-tile:nth-child(1) {
+    width: 50%;
+    max-width: 1000px;
+  }
+}

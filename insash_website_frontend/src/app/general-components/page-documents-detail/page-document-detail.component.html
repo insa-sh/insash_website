@@ -1,0 +1,64 @@
+<div *ngIf="document; else loading">
+  <ng-content select="[projetHeader]"></ng-content>
+  <div class="document-top">
+    <h1>{{ document.titre }}</h1>
+
+    <div class="document-tags">
+      <div class="tag" *ngFor="let tag of document.tags">
+        <p>#{{ tag.titre }}</p>
+      </div>
+    </div>
+
+    <div class="document-details">
+      <div class="document-detail-section">
+        <i class="fa-solid fa-user"></i>
+        <div class="document-authors">
+          <div
+            class="author"
+            *ngFor="let author of document.auteur; let isLast = last"
+          >
+            <span
+              ><a
+                routerLink="/les-membres/{{ author.username }}"
+                title="./insa.sh - Profil de {{ author.username }}"
+              >
+                <ng-container *ngIf="author.prenom !== ''; else username">{{
+                  author.prenom
+                }}</ng-container>
+
+                <ng-template #username>{{ author.username }}</ng-template></a
+              >
+            </span>
+
+            <span *ngIf="!isLast">,&nbsp;</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="document-date document-detail-section">
+        <i class="fa-solid fa-calendar-days"></i>
+        <p>{{ getDateString() }}</p>
+      </div>
+
+      <div
+        class="document-description document-detail-section"
+        *ngIf="document.description !== ''"
+      >
+        <i class="fa-solid fa-file"></i>
+        <p>{{ document.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-content select="[articleImage]"></ng-content>
+  <div class="document-content" *ngIf="document.contenu != ''">
+    <markdown lineNumbers ngPreserveWhitespaces>
+      {{ document.contenu }}
+    </markdown>
+  </div>
+</div>
+
+<ng-template #loading
+  ><div class="loader"></div>
+  <ng-template></ng-template
+></ng-template>

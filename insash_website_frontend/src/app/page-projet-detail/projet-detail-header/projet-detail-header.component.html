@@ -1,0 +1,35 @@
+<div class="projet-header">
+  <div class="projet-header-bg">
+    <img src="{{ this.BASE_URL }}{{ projet.image.url }}" alt="" />
+  </div>
+
+  <div class="projet-header-fg">
+    <div class="projet-header-image">
+      <img src="{{ this.BASE_URL }}{{ projet.image.url }}" alt="" />
+    </div>
+
+    <div class="projet-header-buttons">
+      <a
+        href="{{ projet.github_url }}"
+        *ngIf="projet.github_url"
+        target="_blank"
+      >
+        <div class="button button-github">
+          <p>Github</p>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </div>
+      </a>
+
+      <a
+        href="{{ projet.projet_url }}"
+        *ngIf="projet.projet_url"
+        target="_blank"
+      >
+        <div class="button button-play">
+          <p>Lancer</p>
+          <i class="fa-solid fa-play"></i>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

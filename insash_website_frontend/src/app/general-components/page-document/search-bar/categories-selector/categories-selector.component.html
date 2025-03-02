@@ -1,0 +1,47 @@
+<div class="dropdown">
+  <button
+    class="dropdown-button"
+    onclick="this.classList.toggle('dropdown-ouvert')"
+  >
+    <div
+      [ngStyle]="{
+                  'background-color': this.categorie.couleur + '33',}"
+      class="tag"
+    >
+      <p
+        [ngStyle]="{
+          color: this.categorie.couleur
+        }"
+      >
+        {{ this.categorie.titre.toUpperCase() }}
+      </p>
+    </div>
+
+    <i class="fa-solid fa-chevron-down"></i>
+  </button>
+  <div class="dropdown-content" id="dropdown-type">
+    <label
+      for="dropdown-radio-sort-{{ e.slug }}"
+      *ngFor="let e of otherCategorie"
+    >
+      <a routerLink="/article/{{ e.slug }}">
+        <div class="dropdown-content-element">
+          <div
+            [ngStyle]="{
+                  'background-color': e.couleur + '33',}"
+            class="tag"
+          >
+            <p
+              [ngStyle]="{
+                color: e.couleur
+              }"
+            >
+              {{ e.titre.toUpperCase() }}
+            </p>
+          </div>
+          <p></p>
+        </div>
+      </a>
+    </label>
+  </div>
+</div>

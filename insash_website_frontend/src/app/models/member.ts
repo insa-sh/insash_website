@@ -1,24 +1,20 @@
-import { NullString } from "./null-string";
+import { Image } from "./image";
 
 export class Member {
-
-    constructor(  
-        public firstname: NullString,
-        public lastname: NullString,
-        public role: NullString,
-        public website: NullString,
-        public custom_image: boolean,
-        public image_address: NullString,
-        public linkedin: NullString,
-        public github: NullString,
-        public instagram: NullString,
-        public citation: NullString,
-        public surname: NullString,
-        public username: String,
-        public status: String,
-        public archived: boolean,
-        public has_custom_website: boolean
-      ){}
-
-      
+  constructor(
+    public prenom: String | null,
+    public nom: String | null,
+    public role: String,
+    public personnal_website: String | null,
+    public documentId: String,
+    public image: Image | null,
+    public linkedin: String | null,
+    public github: String | null,
+    public instagram: String | null,
+    public citation: String | null,
+    public surnom: String | null,
+    public username: String,
+    public archive: boolean,
+    public website: String | null
+  ) {}
 }

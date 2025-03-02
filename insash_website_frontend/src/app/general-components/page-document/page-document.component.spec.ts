@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PageDocumentComponent } from './page-document.component';
+import { TestComponent } from "./page-document.component";
 
-describe('PageDocumentComponent', () => {
-  let component: PageDocumentComponent;
-  let fixture: ComponentFixture<PageDocumentComponent>;
+describe("PageDocumentComponent", () => {
+  let component: TestComponent;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageDocumentComponent]
+      declarations: [TestComponent],
     });
-    fixture = TestBed.createComponent(PageDocumentComponent);
+    fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

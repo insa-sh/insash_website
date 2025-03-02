@@ -1,0 +1,25 @@
+<div class="title-container">
+  <h1>PROJETS</h1>
+</div>
+
+<div *ngIf="isThereEnoughTopDocuments()">
+  <h2>
+    <i>Nos derniers projets</i>
+  </h2>
+
+  <app-top-projet
+    [document]="topDocument"
+    [numberOfDocument]="2"
+  ></app-top-projet>
+</div>
+
+<h2>
+  <i>Tous nos projets</i>
+</h2>
+
+<app-search-bar
+  [isItAnArticle]="false"
+  (filterChanged)="onFilterChanged($event)"
+></app-search-bar>
+
+<app-liste-projet [document]="document"></app-liste-projet>

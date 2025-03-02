@@ -1,50 +1,25 @@
 <div class="bar">
   <div id="search-section">
-    <div class="dropdown" *ngIf="isItAnArticle()">
+    <app-categories-selector *ngIf="isItAnArticle"> </app-categories-selector>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        class="search-bar-input"
+        placeholder="Rechercher..."
+        [formControl]="search"
+        (keydown.enter)="onFormChange()"
+      />
+
       <button
-        class="dropdown-button"
-        onclick="this.classList.toggle('dropdown-ouvert')"
+        class="search-bar-button"
+        id="search-bar-button-search"
+        (click)="onFormChange()"
       >
-      <div class="tag" [ngClass]="'type-tag-'+this.typeOfDocuments">
-        <p>{{ getDocumentType(this.typeOfDocuments) }}</p>
-      </div>  
-      
-      
-      <i class="fa-solid fa-chevron-down"></i>
+        <i class="fa-solid fa-magnifying-glass fa-xl"></i>
       </button>
-      <div class="dropdown-content" id="dropdown-type">
-        <label for="dropdown-radio-sort-{{ e }}" *ngFor="let e of otherTypes">
-          <a routerLink="/{{ e }}">
-          <div class="dropdown-content-element">
-            <div class="tag" [ngClass]="'type-tag-'+e">
-              <p>{{ getDocumentType(e) }}</p>
-            </div>  
-            <p></p>
-          </div>
-        </a>
-        </label>
-      </div>
     </div>
-
-  <div class="search-bar">
-    <input
-      type="text"
-      class="search-bar-input"
-      placeholder="Rechercher..."
-      [formControl]="search"
-      (keydown.enter)="onFormChange()"
-    />
-
-    <button
-      class="search-bar-button"
-      id="search-bar-button-search"
-      (click)="onFormChange()"
-    >
-      <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-    </button>
   </div>
-</div>
-
 
   <form class="search-filter" [formGroup]="filterForm">
     <div class="dropdown" *ngIf="isThereEnoughAuthors()">
@@ -65,8 +40,10 @@
           *ngFor="let e of authors; let i = index"
         >
           <div class="dropdown-content-element" formArrayName="authors">
-            <p *ngIf="e.firstname.String !== ''; else username">{{ e.firstname.String }}</p>
-            <ng-template #username><p>{{ e.username }}</p></ng-template>
+            <p *ngIf="e.prenom !== ''; else username">{{ e.prenom }}</p>
+            <ng-template #username
+              ><p>{{ e.username }}</p></ng-template
+            >
             <input
               type="checkbox"
               class="custom-input"
@@ -93,17 +70,17 @@
 
       <div class="dropdown-content">
         <label
-          for="dropdown-checkbox-tags-{{ e }}"
+          for="dropdown-checkbox-tags-{{ e.titre }}"
           *ngFor="let e of tags; let i = index"
         >
           <div class="dropdown-content-element" formArrayName="tags">
-            <p>{{ e }}</p>
+            <p>{{ e.titre }}</p>
 
             <input
               type="checkbox"
               class="custom-input"
               name="dropdown-checkbox-tags"
-              id="dropdown-checkbox-tags-{{ e }}"
+              id="dropdown-checkbox-tags-{{ e.titre }}"
               [formControlName]="i"
             />
           </div>

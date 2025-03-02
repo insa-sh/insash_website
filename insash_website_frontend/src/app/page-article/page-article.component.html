@@ -1,0 +1,29 @@
+<div class="title-container">
+  <h1
+    [ngStyle]="{
+      color: categorie.couleur,
+      'background-color': categorie.couleur + '33'
+    }"
+  >
+    {{ categorie.titre.toUpperCase() }}
+  </h1>
+</div>
+
+<div *ngIf="isThereEnoughTopDocuments()">
+  <h2>
+    <i>Nos derniers articles</i>
+  </h2>
+
+  <app-top-article
+    [document]="topDocument"
+    [numberOfDocument]="2"
+  ></app-top-article>
+</div>
+
+<h2>
+  <i>Tous nos articles</i>
+</h2>
+
+<app-search-bar (filterChanged)="onFilterChanged($event)"></app-search-bar>
+
+<app-liste-article [document]="document"></app-liste-article>

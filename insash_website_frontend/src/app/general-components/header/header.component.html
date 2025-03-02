@@ -1,34 +1,37 @@
 <div id="header">
-    <div id="header-content">
-        <a id="header-title" routerLink="/">
-            <img src="/public/images/logos/logo-insash-1.webp" alt="">
-            <h1>./insa.sh</h1>
-        </a>
+  <div id="header-content">
+    <a id="header-title" routerLink="/">
+      <img src="/public/images/logos/logo-insash-1.webp" alt="" />
+      <h1>./insa.sh</h1>
+    </a>
 
-        <div id="nav-links" class="closed">
-            <a routerLink="project">Projets</a>
-            <div class="dropdown-menu closed">
-                <a tabindex=0 onclick="toggleDropdownMenu(this);">Articles <i class="fa-solid fa-caret-down"></i></a>
-                <div>
-                    <a routerLink="news">Nos Actus</a>
-                    <a routerLink="cheatsheet">Cheatsheet</a>
-                    <a routerLink="tips">Astuces</a>
-                </div>
-            </div>
-            <a routerLink="les-membres">Les membres</a>
-            <a href="https://hebergos.insash.org" target="_blank">HebergOS</a>
-            
-            
-
+    <div id="nav-links" class="closed">
+      <a routerLink="projet">Projets</a>
+      <div class="dropdown-menu closed">
+        <a tabindex="0" onclick="toggleDropdownMenu(this);"
+          >Articles <i class="fa-solid fa-caret-down"></i
+        ></a>
+        <div>
+          <a routerLink="article/actus">Nos Actus</a>
+          <a routerLink="article/cheatsheet">Cheatsheet</a>
+          <a routerLink="article/astuces">Astuces</a>
         </div>
-        <!-- <div id="calendar" onclick="getDay();">
+      </div>
+      <a routerLink="les-membres">Les membres</a>
+      <a href="https://hebergos.insash.org" target="_blank">HebergOS</a>
+    </div>
+    <!-- <div id="calendar" onclick="getDay();">
             <div class="calendar-icon">
                 <p class="today-number">{{ day }}</p>
                 <p class="today-month">{{ month }}</p>
             </div>
         </div> -->
-        <div class="mobile-only" id="hamburger-button" onclick="toggleNavigationMenu();"><i
-                class="fa-solid fa-bars"></i>
-        </div>
+    <div
+      class="mobile-only"
+      id="hamburger-button"
+      onclick="toggleNavigationMenu();"
+    >
+      <i class="fa-solid fa-bars"></i>
     </div>
+  </div>
 </div>

@@ -1,8 +1,0 @@
-<div class="top-documents">
-  <ng-container *ngIf="this.tileStyle === 'list'">
-    <app-list-document-tile *ngFor="let doc of documentsAndAuthors" [documentAndAuthor]="doc"></app-list-document-tile>
-  </ng-container>
-  <ng-container *ngIf="this.tileStyle === 'box'">
-    <app-box-document-tile *ngFor="let doc of documentsAndAuthors" [documentAndAuthor]="doc"></app-box-document-tile>
-  </ng-container>
-</div>

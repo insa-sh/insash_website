@@ -1,31 +1,39 @@
-import { ApplicationConfig, Injectable, NgModule } from "@angular/core";
+import { Injectable, NgModule } from "@angular/core";
 import {
   RouterModule,
   RouterStateSnapshot,
   Routes,
   TitleStrategy,
-  provideRouter,
 } from "@angular/router";
 import { PageAccueilComponent } from "./page-accueil/page-accueil.component";
 import { PageMembresComponent } from "./page-membres/page-membres.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { Title } from "@angular/platform-browser";
-import { PageDocumentComponent } from "./general-components/page-document/page-document.component";
-import { CheatsheetAuthorResolver, CheatsheetResolver, CheatsheetTagsResolver, CheatsheetYearResolver, MemberResolver, NewsAuthorResolver, NewsResolver, NewsTagsResolver, NewsYearResolver, ProjectAuthorResolver, ProjectResolver, ProjectTagsResolver, ProjectYearResolver, TipsAuthorResolver, TipsResolver, TipsTagsResolver, TipsYearResolver, TopCheatsheetResolver, TopNewsResolver, TopProjectResolver, TopTipsResolver } from "./interaction-backend/resolver/document.resolver";
-import { PageProjetsComponent } from "./page-projets/page-projets.component";
-import { PageCheatsheetComponent } from "./page-cheatsheet/page-cheatsheet.component";
-import { PageTipsComponent } from "./page-tips/page-tips.component";
-import { PageNewsComponent } from "./page-news/page-news.component";
+import {
+  ArticleAuthorResolver,
+  ArticleTagsResolver,
+  ArticleYearResolver,
+  MemberResolver,
+  ProjetResolver,
+  TopArticleResolver,
+  TopProjetResolver,
+  ProjetYearResolver,
+  ArticleResolver,
+  ProjetAuthorResolver,
+  ProjetTagsResolver,
+  ArticleCategorieResolver,
+  CategorieResolver,
+} from "./interaction-backend/resolver/document.resolver";
 import { PagePolitiqueConfidentialiteComponent } from "./page-politique-confidentialite/page-politique-confidentialite.component";
 import { PageMentionsLegalesComponent } from "./page-mentions-legales/page-mentions-legales.component";
-import { PageDocumentsDetailComponent } from "./page-documents-detail/page-document-detail.component";
 import { PageMembresDetailComponent } from "./page-membres-detail/page-membres-detail.component";
-
-
+import { PageProjetComponent } from "./page-projet/page-projet.component";
+import { PageProjetDetailComponent } from "./page-projet-detail/page-projet-detail.component";
+import { PageArticleDetailComponent } from "./page-article-detail/page-article-detail.component";
+import { PageArticleComponent } from "./page-article/page-article.component";
 
 // iumporter la fonction qui permet de fermer le menu de navigation au changement de page
-declare function toggleNavigationMenu(action : any): void;
-
+declare function toggleNavigationMenu(action: any): void;
 
 const routes: Routes = [
   {
@@ -33,117 +41,84 @@ const routes: Routes = [
     component: PageAccueilComponent,
     title: "Club Info INSA Hauts-de-France",
     resolve: {
-      topDocumentsAndAuthors: TopProjectResolver,
-    }
+      topProjets: TopProjetResolver,
+      topDocuments: TopArticleResolver,
+    },
   },
-  
+
   {
-    path : "les-membres",
+    path: "les-membres",
     component: PageMembresComponent,
     title: "L'équipe du Club Info",
     resolve: {
       members: MemberResolver,
-    }
+    },
   },
   {
-    path : "les-membres/:username",
+    path: "les-membres/:username",
     component: PageMembresDetailComponent,
     title: "",
     resolve: {
       member: MemberResolver,
-      project: ProjectResolver
-    }
+      projet: ProjetResolver,
+    },
   },
   {
-    path : "project",
-    component: PageProjetsComponent,
+    path: "projet",
+    component: PageProjetComponent,
     title: "Les projets du Club",
     resolve: {
-      topDocumentsAndAuthors: TopProjectResolver,
-      documentTags: ProjectTagsResolver,
-      documentAuthors : ProjectAuthorResolver, 
-      documentYears : ProjectYearResolver,
-    }
+      document: ProjetResolver,
+      topDocumentsAndAuthors: TopProjetResolver,
+      documentTags: ProjetTagsResolver,
+      documentAuthors: ProjetAuthorResolver,
+      documentYears: ProjetYearResolver,
+    },
   },
   {
-    path : "project/:slug",
-    component: PageDocumentsDetailComponent,
+    path: "projet/:slug",
+    component: PageProjetDetailComponent,
     title: "",
     resolve: {
-      document: ProjectResolver
-    }
+      document: ProjetResolver,
+    },
   },
   {
-    path : "cheatsheet",
-    component: PageCheatsheetComponent,
-    title: "Les cheatsheets du Club",
-    resolve: {
-      topDocumentsAndAuthors: TopCheatsheetResolver,
-      documentTags: CheatsheetTagsResolver,
-      documentAuthors : CheatsheetAuthorResolver, 
-      documentYears : CheatsheetYearResolver,
-    }
-  },
-  {
-    path : "cheatsheet/:slug",
-    component: PageDocumentsDetailComponent,
+    path: "article/:categorie",
+    component: PageArticleComponent,
     title: "",
     resolve: {
-      document: CheatsheetResolver
-    }
+      document: ArticleResolver,
+      topDocumentsAndAuthors: TopArticleResolver,
+      documentTags: ArticleTagsResolver,
+      documentAuthors: ArticleAuthorResolver,
+      documentYears: ArticleYearResolver,
+      categories: ArticleCategorieResolver,
+      categorie: CategorieResolver,
+    },
+    runGuardsAndResolvers: "always",
   },
   {
-    path : "news",
-    component: PageNewsComponent,
-    title: "Les actus du Club",
-    resolve: {
-      topDocumentsAndAuthors: TopNewsResolver,
-      documentTags: NewsTagsResolver,
-      documentAuthors : NewsAuthorResolver, 
-      documentYears : NewsYearResolver,
-    }
-  },
-  {
-    path : "news/:slug",
-    component: PageDocumentsDetailComponent,
+    path: "article/:categorie/:slug",
+    component: PageArticleDetailComponent,
     title: "",
     resolve: {
-      document: NewsResolver
-    }
+      document: ArticleResolver,
+    },
   },
   {
-    path : "tips",
-    component: PageTipsComponent,
-    title: "Les astuces du Club",
-    resolve: {
-      topDocumentsAndAuthors: TopTipsResolver,
-      documentTags: TipsTagsResolver,
-      documentAuthors : TipsAuthorResolver, 
-      documentYears : TipsYearResolver,
-    }
-  },
-  {
-    path : "tips/:slug",
-    component: PageDocumentsDetailComponent,
-    title: "",
-    resolve: {
-      document: TipsResolver
-    }
-  },
-  {
-    path : "politique-confidentialite",
+    path: "politique-confidentialite",
     component: PagePolitiqueConfidentialiteComponent,
     title: "Politique de confidentialité",
   },
   {
-    path : "mentions-legales",
+    path: "mentions-legales",
     component: PageMentionsLegalesComponent,
     title: "Mentions légales",
   },
 
   // à mettre à la fin des liens sinon ça ne marche pas ("s'applique à tous les autres liens")
   { path: "**", component: PageNotFoundComponent, title: "Page not found :(" },
-
 ];
 
 @Injectable()

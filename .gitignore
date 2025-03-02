@@ -1,5 +1,4 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
+# insa.sh custom gitignore
 *.env
 backend/cmd/*
 !backend/cmd/server.go
@@ -47,3 +46,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+

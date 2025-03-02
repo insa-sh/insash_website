@@ -1,7 +1,23 @@
-<app-home-social-links ></app-home-social-links>
-<app-top-document [documentsAndAuthors]="topDocumentsAndAuthors" [numberOfDocuments]="3"></app-top-document>
-<div class="more-project">
-  <a routerLink="project" class="text-link">-> Plus de projets</a>
-</div>
+<app-home-social-links></app-home-social-links>
+<ng-container *ngIf="projets.length > 0">
+  <h2>Les derniers <span>projets </span> du club</h2>
+  <app-top-projet [document]="projets"></app-top-projet>
+
+  <div class="more-projet">
+    <a routerLink="projet" class="text-link">-> Plus de projets</a>
+  </div>
+</ng-container>
+<ng-container *ngIf="documents.length > 0">
+  <h2>Jette un oeil à nos <span>derniers articles</span> &#x2728;</h2>
+  <app-top-article
+    [document]="documents"
+    [numberOfDocument]="2"
+  ></app-top-article>
+  <div class="more-projet">
+    <a routerLink="article/actus" class="text-link"
+      >-> Check nos autres articles
+    </a>
+  </div>
+</ng-container>
 
 <app-rejoindre-le-club></app-rejoindre-le-club>

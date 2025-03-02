@@ -1,17 +1,28 @@
-div.more-project {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
+div.more-projet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
 
-  a {
-    /* color: white; */
-    /* position: relative; */
-    /* text-align: center; */
-    text-decoration: none;
-    font-weight: 600;
-    font-family: var(--insash-text-default-font);
-    font-size: 20px;
-    margin: 40px 0;
-  }
+h2 {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h2 > span {
+  color: var(--website-strong-color);
+  font-size: inherit;
+  font-family: inherit;
+}
+
+a {
+  /* color: white; */
+  /* position: relative; */
+  /* text-align: center; */
+  text-decoration: none;
+  font-weight: 600;
+  font-family: var(--insash-text-default-font);
+  font-size: 20px;
+  margin: 40px 0;
+}
