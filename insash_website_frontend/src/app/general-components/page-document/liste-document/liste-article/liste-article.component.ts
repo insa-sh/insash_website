@@ -25,7 +25,6 @@ export class ListeArticleComponent extends ListeDocumentComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes["document"]) {
-      console.log(this.document);
       this.cdr.detectChanges();
     }
   }

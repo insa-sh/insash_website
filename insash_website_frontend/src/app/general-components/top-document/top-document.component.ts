@@ -17,6 +17,5 @@ export class TopDocumentComponent {
 
   ngOnInit() {
     this.document = this.document.slice(0, this.numberOfDocument);
-    console.log(this.document);
   }
 }

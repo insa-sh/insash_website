@@ -40,7 +40,6 @@ export class PageMembresDetailComponent {
     this.route.data.subscribe((data) => {
       if (data["projet"] != null) {
         this.projet = data["projet"]["data"];
-        console.log(this.projet);
       }
     });
   }
