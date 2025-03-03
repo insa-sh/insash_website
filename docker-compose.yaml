@@ -2,15 +2,15 @@ services:
   ## ---------- PRODUCTION
   # App build & servie via nginx
 
-  insash-website-prod:
+  insash_website_prod:
     # nginx + frontend
     build:
       context: .
       dockerfile: dockerfile.prod
     profiles:
       - prod
-    image: insash-website
-    container_name: insash-website
+    image: insash_website
+    container_name: insash_website
     ports:
       - "10000:80"
     networks:
@@ -44,15 +44,15 @@ services:
   ## ---------- DEVELOPMENT
   # App en live server via Andular
 
-  insash-website-dev:
+  insash_website_dev:
     # live service for dev
     build:
       context: .
       dockerfile: dockerfile.dev
     profiles:
       - dev
-    image: insash-website-dev
-    container_name: insash-website-dev
+    image: insash_website_dev
+    container_name: insash_website_dev
     ports:
       - "4200:4200"
     volumes:
