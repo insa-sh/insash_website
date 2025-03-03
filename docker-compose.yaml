@@ -63,7 +63,7 @@ services:
     depends_on:
       - insash_website_strapi_dev
 
-  insash_website_strapi-dev:
+  insash_website_strapi_dev:
     container_name: insash_website_strapi_dev
     profiles:
       - dev

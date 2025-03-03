@@ -12,7 +12,7 @@
   <div class="membre-infos">
     <a routerLink="{{ membre.username }}">
       <div class="membre-names">
-        <ng-container *ngIf="membre.prenom !== ''; else surnom">
+        <ng-container *ngIf="membre.prenom; else surnom">
           <p class="nom">
             {{ membre.prenom }} {{ membre.nom
             }}<span>
@@ -26,13 +26,13 @@
       </div></a
     >
     <a routerLink="{{ membre.username }}">
-      <div class="membre-surname" *ngIf="membre.surnom !== ''">
+      <div class="membre-surname" *ngIf="membre.surnom">
         <p>
           aka <span>{{ membre.surnom }}</span>
         </p>
       </div>
     </a>
-    <div class="membre-citation" *ngIf="membre.citation !== ''">
+    <div class="membre-citation" *ngIf="membre.citation">
       <p>// {{ membre.citation }}</p>
     </div>
     <div class="membre-reseaux">

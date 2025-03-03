@@ -51,7 +51,7 @@
   </div>
 
   <ng-content select="[articleImage]"></ng-content>
-  <div class="document-content" *ngIf="document.contenu != ''">
+  <div class="document-content" *ngIf="document.contenu">
     <markdown lineNumbers ngPreserveWhitespaces>
       {{ document.contenu }}
     </markdown>
