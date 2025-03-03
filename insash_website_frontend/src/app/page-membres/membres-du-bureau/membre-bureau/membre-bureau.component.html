@@ -20,7 +20,7 @@
       >
         <p class="variable-name">
           {{ membre.prenom?.toLowerCase() }}{{ membre.nom?.toUpperCase()
-          }}<span>.{{ membre.surnom }}</span>
+          }}<span *ngIf="membre.surnom">.{{ membre.surnom }}</span>
         </p>
         <p class="indent-1">&#123;</p>
         <p class="indent-2">
