@@ -62,15 +62,14 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "categorie": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::categorie.categorie",
-      "inversedBy": "articles"
+      "inversedBy": "articles",
+      "required": true
     },
     "tags": {
       "type": "relation",
