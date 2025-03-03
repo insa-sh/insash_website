@@ -36,7 +36,7 @@ export class PageDocumentComponent {
     this.fetchDocuments();
   }
 
-  fetchDocuments(categorie?: Categorie) {
+  fetchDocuments(categorie?: Categorie, isItAnArticle?: boolean) {
     let sort: SortingBy = SortingBy.dateDesc;
     if (this.filters.sort === "Plus récent") {
       sort = SortingBy.dateDesc;
@@ -50,25 +50,46 @@ export class PageDocumentComponent {
 
     let search = this.filters.search.length >= 3 ? this.filters.search : "";
 
-    this.documentService
-      .getArticle(
-        categorie ? categorie.slug : "",
-        this.filters.tags,
-        search,
-        "",
-        "",
-        this.filters.dates,
-        sort,
-        this.filters.authors,
-        undefined
-      )
-      .subscribe((data: any) => {
-        if (data) {
-          this.document = data["data"];
-        } else {
-          this.document = [];
-        }
-      });
+    if (!isItAnArticle) {
+      this.documentService
+        .getProjet(
+          this.filters.tags,
+          search,
+          "",
+          "",
+          this.filters.dates,
+          sort,
+          this.filters.authors,
+          undefined
+        )
+        .subscribe((data: any) => {
+          if (data) {
+            this.document = data["data"];
+          } else {
+            this.document = [];
+          }
+        });
+    } else {
+      this.documentService
+        .getArticle(
+          categorie ? categorie.slug : "",
+          this.filters.tags,
+          search,
+          "",
+          "",
+          this.filters.dates,
+          sort,
+          this.filters.authors,
+          undefined
+        )
+        .subscribe((data: any) => {
+          if (data) {
+            this.document = data["data"];
+          } else {
+            this.document = [];
+          }
+        });
+    }
   }
 
   fetchDocumentInit() {

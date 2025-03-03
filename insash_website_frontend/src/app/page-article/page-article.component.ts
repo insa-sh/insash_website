@@ -27,7 +27,7 @@ export class PageArticleComponent extends PageDocumentComponent {
 
   override onFilterChanged(filters: any) {
     this.filters = filters;
-    this.fetchDocuments(this.categorie);
+    this.fetchDocuments(this.categorie, true);
   }
 
   override fetchDocumentInit() {
