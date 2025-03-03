@@ -31,7 +31,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "titre"
+      "targetField": "titre",
+      "required": true
     }
   }
 }

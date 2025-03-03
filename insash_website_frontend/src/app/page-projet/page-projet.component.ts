@@ -21,4 +21,9 @@ import { Projet } from "../models/projet";
 export class PageProjetComponent extends PageDocumentComponent {
   override document: Projet[] = [];
   override topDocument: Projet[] = [];
+
+  override onFilterChanged(filters: any) {
+    this.filters = filters;
+    this.fetchDocuments(undefined, false);
+  }
 }
