@@ -64,13 +64,6 @@
       "required": true,
       "allowedTypes": ["images"]
     },
-    "categorie": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::categorie.categorie",
-      "inversedBy": "articles",
-      "required": true
-    },
     "tags": {
       "type": "relation",
       "relation": "manyToMany",
@@ -81,6 +74,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::membre.membre",
+      "inversedBy": "articles"
+    },
+    "categorie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categorie.categorie",
       "inversedBy": "articles"
     }
   }
