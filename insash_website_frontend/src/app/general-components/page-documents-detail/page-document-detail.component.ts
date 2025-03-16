@@ -33,9 +33,8 @@ export class PageDocumentsDetailComponent {
 
   fetchDocument() {
     this.route.data.subscribe((data) => {
-      if (data["document"] != null) {
+      if (data["document"] != null && data["document"]["data"].length > 0) {
         this.document = data["document"]["data"][0];
-
         this.titleService.setTitle("./insa.sh - " + this.document.titre);
       } else {
         this.router.navigate(["/404"]);
