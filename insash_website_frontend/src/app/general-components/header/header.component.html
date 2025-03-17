@@ -11,8 +11,10 @@
         <a tabindex="0" onclick="toggleDropdownMenu(this);"
           >Articles <i class="fa-solid fa-caret-down"></i
         ></a>
-        <div *ngFor="let c of categories">
-          <a routerLink="article/{{ c.slug }}">{{ c.titre }}</a>
+        <div>
+          <a *ngFor="let c of categories" routerLink="article/{{ c.slug }}">{{
+            c.titre
+          }}</a>
         </div>
       </div>
       <a routerLink="les-membres">Les membres</a>
