@@ -9,12 +9,12 @@ export class HomeSocialLinksComponent {
   reseaux = [
     {
       nom: "Discord",
-      url: "https://discord.gg/rtYZMdJW7r",
+      url: "https://discord.insash.org",
       icon: "fa-brands fa-discord",
     },
     {
       nom: "Instagram",
-      url: "https://www.instagram.com/clubinfoinsahdf",
+      url: "https://instagram.insash.org",
       icon: "fa-brands fa-instagram",
     },
     {

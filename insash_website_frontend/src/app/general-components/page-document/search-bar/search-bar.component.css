@@ -85,6 +85,8 @@ button#search-bar-button-search:active {
   cursor: pointer;
   /* margin-left: 10px; */
   transition: background-color 0.3s;
+  aspect-ratio: 1;
+  min-width: 46px;
 }
 
 .search-bar-button-reset {
