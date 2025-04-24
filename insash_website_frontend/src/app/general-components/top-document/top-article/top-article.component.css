@@ -9,7 +9,7 @@ app-liste-document-tile {
 
 div.top-documents app-box-article-tile,
 div.top-documents app-liste-article-tile {
-  max-width: 40%;
+  /* max-width: 40%; */
 }
 
 @keyframes slideIn {
