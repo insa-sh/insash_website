@@ -2,7 +2,8 @@ markdown img {
   max-width: 80%;
   height: auto;
   display: block;
-  margin: 3em auto;
+  padding: 3em 0;
+  margin: 0 auto;
   border-radius: 10px;
 }
 
@@ -17,6 +18,12 @@ markdown a:hover {
 
 markdown strong {
   color: var(--insash-rose-fonce);
+}
+
+markdown iframe {
+  margin: 3em auto;
+  max-width: 100%;
+  display: block;
 }
 
 markdown em {
