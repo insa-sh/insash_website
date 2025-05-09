@@ -30,7 +30,6 @@ export class HeaderComponent {
       } else {
         this.categories = [];
       }
-      console.log(this.categories);
     });
   }
 
