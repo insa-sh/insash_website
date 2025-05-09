@@ -92,10 +92,10 @@ export class DocumentService {
       year.forEach((y) => {
         url +=
           "filters[date][$gte]=" +
-          year +
+          y +
           "-01-01&filters[date][$lte]=" +
-          year +
-          "-12-31";
+          y +
+          "-12-31&";
       });
     }
 
