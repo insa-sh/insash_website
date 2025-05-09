@@ -12,7 +12,6 @@ export class BoxMembreComponent {
   public BASE_URL = ApiService.getBaseUrl();
 
   imageError(event: any) {
-    console.log("Image load error, changing 'image_adress' to '' : " + event);
     this.membre.image!.url = "";
   }
 }

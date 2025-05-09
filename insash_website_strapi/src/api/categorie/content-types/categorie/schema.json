@@ -4,35 +4,33 @@
   "info": {
     "singularName": "categorie",
     "pluralName": "categories",
-    "displayName": "Catégorie",
-    "description": ""
+    "displayName": "Catégorie"
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
   "attributes": {
-    "couleur": {
-      "type": "customField",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
-      "customField": "plugin::color-picker.color",
-      "required": true
-    },
     "titre": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "articles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::article.article",
-      "mappedBy": "categorie"
-    },
     "slug": {
       "type": "uid",
       "targetField": "titre",
       "required": true
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "category"
+    },
+    "couleur": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": true,
+      "customField": "plugin::color-picker.color"
     }
   }
 }

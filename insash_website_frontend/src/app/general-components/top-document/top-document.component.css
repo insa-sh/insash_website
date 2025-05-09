@@ -8,6 +8,8 @@ div.top-documents {
   gap: 4vw;
   flex-wrap: wrap;
   height: max-content;
+  max-width: 90%;
+  margin: auto;
 }
 
 div.top-documents app-box-document-tile:nth-child(1),

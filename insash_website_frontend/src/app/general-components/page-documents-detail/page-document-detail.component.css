@@ -67,7 +67,7 @@ i {
 div.document-content {
   width: min(70%, 1500px);
   margin: 30px auto;
-  padding: 30px;
+  padding: 0 30px 30px;
   background-color: var(--website-bg-color-light-1);
   border-radius: 20px;
 }

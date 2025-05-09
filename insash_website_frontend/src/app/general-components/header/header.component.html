@@ -12,9 +12,9 @@
           >Articles <i class="fa-solid fa-caret-down"></i
         ></a>
         <div>
-          <a routerLink="article/actus">Nos Actus</a>
-          <a routerLink="article/cheatsheet">Cheatsheet</a>
-          <a routerLink="article/astuces">Astuces</a>
+          <a *ngFor="let c of categories" routerLink="article/{{ c.slug }}">{{
+            c.titre
+          }}</a>
         </div>
       </div>
       <a routerLink="les-membres">Les membres</a>

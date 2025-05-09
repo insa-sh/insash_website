@@ -52,7 +52,7 @@
 
   <ng-content select="[articleImage]"></ng-content>
   <div class="document-content" *ngIf="document.contenu">
-    <markdown lineNumbers ngPreserveWhitespaces>
+    <markdown lineNumbers ngPreserveWhitespaces [disableSanitizer]="true">
       {{ document.contenu }}
     </markdown>
   </div>

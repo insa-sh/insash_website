@@ -2,7 +2,8 @@ markdown img {
   max-width: 80%;
   height: auto;
   display: block;
-  margin: 1em auto;
+  padding: 3em 0;
+  margin: 0 auto;
   border-radius: 10px;
 }
 
@@ -17,6 +18,12 @@ markdown a:hover {
 
 markdown strong {
   color: var(--insash-rose-fonce);
+}
+
+markdown iframe {
+  margin: 3em auto;
+  max-width: 100%;
+  display: block;
 }
 
 markdown em {
@@ -83,7 +90,7 @@ markdown tbody tr:nth-child(even) {
 
 markdown blockquote {
   width: 95%;
-  margin: 1em auto;
+  margin: 2em auto;
   color: #555555;
   padding: 0.5em 30px 0.5em 50px;
   border-left: 8px solid var(--insash-rose-fonce);
@@ -121,22 +128,24 @@ markdown hr {
   margin: 1em 0;
 }
 
+markdown div.code-toolbar {
+  margin: 2em 0;
+}
+
 /* marges verticales titres */
 markdown {
   h1 {
-    margin-bottom: 1em;
+    padding: 0.5em 0;
     font-size: 36px;
   }
   h2 {
-    margin-bottom: 1em;
+    padding: 0.5em 0;
   }
-  h3 {
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-  }
+
+  h3,
   h4,
   h5,
   h6 {
-    margin-bottom: 0.5em;
+    padding: 1em 0;
   }
 }
