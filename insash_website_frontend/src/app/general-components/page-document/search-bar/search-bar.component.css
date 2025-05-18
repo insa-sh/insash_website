@@ -313,6 +313,9 @@ div.tag > p {
     margin: 0;
     margin-top: 20px;
   }
+  .search-bar-button {
+    aspect-ratio: unset;
+  }
 
   form.search-filter {
     width: auto;
