@@ -31,11 +31,6 @@ export class AppComponent implements OnInit {
         this.meta.updateTag({ property: 'og:image', content: 'public/images/logos/logo_pop.png' });
         // apple touch icon
         this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: './insa.sh' });
-        // <link rel="apple-touch-icon" href="touch-icon-iphone.png" />
-        // apple touche icon image
-        this.meta.updateTag({ name: 'apple-touch-icon', content: 'public/images/logos/logo_pop.png' });
-        // favicon
-        this.meta.updateTag({ rel: 'icon', type: 'image/png', href: 'public/images/logos/logo_pop.png' });
 
 
         
