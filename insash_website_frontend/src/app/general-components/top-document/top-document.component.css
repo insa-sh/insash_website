@@ -10,6 +10,7 @@ div.top-documents {
   height: max-content;
   max-width: 90%;
   margin: auto;
+  max-width: 1000px;
 }
 
 div.top-documents app-box-document-tile:nth-child(1),
