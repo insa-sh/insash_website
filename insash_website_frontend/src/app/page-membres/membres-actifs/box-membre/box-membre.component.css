@@ -17,6 +17,8 @@ div.membre-image img {
   aspect-ratio: 1;
   cursor: pointer;
   transition: transform 0.25s;
+  object-fit: cover;
+  object-position: center;
 }
 
 div.membre-image img:hover {
@@ -82,13 +84,21 @@ div.membre-reseaux {
   gap: 20px;
 }
 
+div.membre-infos a div.membre-names span,
+div.membre-infos a div.membre-names p,
+div.membre-infos a div.membre-names  em
+{
+    transition:all var(--global-transition-duration);
+
+}
 div.membre-infos a:hover div.membre-names span,
 div.membre-infos a:hover div.membre-names p,
+div.membre-infos a:hover div.membre-names  em,
 div.membre-infos a:hover div.membre-surname p,
 div.membre-infos a:hover ~ a p,
 div.membre-infos a:has(~ a:hover) p,
 div.membre-infos a:has(~ a:hover) span {
-  color: var(--website-strong-color);
+  color: var(--website-strong-color) !important;
 }
 
 div.membre-infos a:hover div.membre-surname span,
