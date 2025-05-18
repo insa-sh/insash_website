@@ -64,6 +64,7 @@ div.member-image img {
   border-radius: 50%;
   background-color: #353535;
   aspect-ratio: 1;
+  object-fit: cover;
   box-shadow: none;
   transition: box-shadow var(--global-transition-duration);
   border: 6px solid #222222;
