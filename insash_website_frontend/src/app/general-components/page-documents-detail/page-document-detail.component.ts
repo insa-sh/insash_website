@@ -39,7 +39,6 @@ export class PageDocumentsDetailComponent {
     this.route.data.subscribe((data) => {
       if (data["document"] != null && data["document"]["data"].length > 0) {
         this.document = data["document"]["data"][0];
-        console.log(this.document);
         this.titleService.setTitle("./insa.sh - " + this.document.titre);
         // Ajout SEO dynamique
         const description = this.document.description?.toString() || '';
