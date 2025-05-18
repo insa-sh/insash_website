@@ -4,7 +4,7 @@ markdown img {
   width: auto;
   height: auto;
   display: block;
-  margin: 3em auto;
+  margin: 16px auto;
   border-radius: 10px;
   object-fit: contain;
 }
@@ -56,11 +56,14 @@ markdown li {
 }
 
 markdown p {
-  margin: 1em 0;
   font-family: var(--insash-markdown-default-font), sans-serif;
   line-height: 1.6;
   /* font-size: 20px; */
   text-align: justify;
+}
+markdown>p{
+  padding: 16px 0;
+
 }
 
 .markdown-table-wrapper {
@@ -72,7 +75,7 @@ markdown p {
 markdown table {
   display: block;
   width: max-content;
-  max-width: 90vw;
+  max-width: 100%;
   overflow-x: auto;
   border-collapse: collapse;
   margin: 16px auto;
