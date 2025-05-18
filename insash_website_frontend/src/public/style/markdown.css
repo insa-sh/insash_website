@@ -29,6 +29,12 @@ markdown strong {
   color: var(--insash-rose-fonce);
 }
 
+markdown iframe {
+  margin: 1em auto;
+  max-width: 100%;
+  display: block;
+}
+
 markdown em {
   font-weight: inherit;
 }

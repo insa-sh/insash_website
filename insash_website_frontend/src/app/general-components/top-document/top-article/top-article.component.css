@@ -28,6 +28,7 @@ div.top-documents app-liste-article-tile {
 }
 
 
+
 /* mobile */
 @media (max-width: 800px) {
   div.top-documents app-box-article-tile,
@@ -35,3 +36,4 @@ div.top-documents app-liste-article-tile {
   width: 100%;
 }
 }
+
