@@ -1,9 +1,17 @@
 markdown img {
-  max-width: 80%;
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
   height: auto;
   display: block;
   margin: 3em auto;
   border-radius: 10px;
+  object-fit: contain;
+}
+
+markdown {
+  font-family: var(--insash-markdown-default-font), sans-serif;
+  font-size: var(--website-default-text-font-size);
 }
 
 markdown a {
@@ -38,15 +46,19 @@ markdown ul {
 }
 
 markdown ol {
-  margin: 1em 30px;
+  margin: 16px 30px;
 }
 
 markdown li {
-  margin: 0.5em 0;
+  margin-top: 12px;
 }
 
 markdown p {
   margin: 1em 0;
+  font-family: var(--insash-markdown-default-font), sans-serif;
+  line-height: 1.6;
+  /* font-size: 20px; */
+  text-align: justify;
 }
 
 markdown table {
@@ -123,6 +135,7 @@ markdown hr {
 
 markdown div.code-toolbar {
   margin: 2em 0;
+  font-size: 16px;
 }
 
 /* marges verticales titres */
