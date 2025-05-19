@@ -24,6 +24,7 @@ a {
     filter: blur(20px);
     opacity: 0;
   }
+
   to {
     filter: blur(10px);
     opacity: 1;
@@ -50,10 +51,12 @@ a {
   opacity: 0;
   animation: fgApparition 0.8s ease-in-out forwards;
 }
+
 @keyframes fgApparition {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -62,6 +65,8 @@ a {
 div.projet-header-image img {
   height: 200px;
   width: 200px;
+  object-fit: cover;
+  object-position: center;
 }
 
 div.projet-header-buttons {
@@ -111,7 +116,7 @@ div.button-play:hover {
   border: 2px solid var(--insash-rose-fonce);
 }
 
-div.button-play:hover > * {
+div.button-play:hover>* {
   color: var(--insash-rose-fonce);
 }
 
