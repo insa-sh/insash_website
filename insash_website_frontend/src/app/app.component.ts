@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
         this.meta.updateTag({ property: 'og:description', content: 'Découvre les projets, articles et membres du Club Info INSA Hauts-de-France.' });
         this.meta.updateTag({ property: 'og:type', content: 'website' });
         // app icon
-        this.meta.updateTag({ property: 'og:image', content: 'public/images/logos/logo_pop.png' });
+        this.meta.updateTag({ property: 'og:image', content: 'public/images/logos/app-icon.png' });
         // apple touch icon
         this.meta.updateTag({ name: 'apple-mobile-web-app-title', content: './insa.sh' });
 
