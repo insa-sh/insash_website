@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { DocumentService } from "src/app/interaction-backend/document.service";
 import { Categorie } from "src/app/models/categorie";
 
+
 // Importer la fonction toggleNavigationMenu() dans la page
 declare function toggleNavigationMenu(): void;
 declare function getDate(): String;
