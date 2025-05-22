@@ -160,3 +160,43 @@ a.text-link:hover::after {
   height: 100%;
   border-radius: 2px;
 }
+
+
+
+
+/* animations globales non renommées car pas dans des composants*/
+
+
+/* animation pour ouvrir le menu dropout*/
+@keyframes open-menu {
+    0% {
+        height: initial;
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+    }
+
+}
+
+/* animation pour fermer le menu dropout */
+@keyframes close-menu {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+
+
+}
