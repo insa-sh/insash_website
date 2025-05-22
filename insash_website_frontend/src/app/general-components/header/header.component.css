@@ -98,8 +98,12 @@ div#nav-links>div.dropdown-menu>div {
     gap: 4px;
     width: max-content;
     max-width: 60vw;
-    animation: close-menu var(--global-transition-duration) forwards;
+    /* animation: close-menu var(--global-transition-duration); */
     animation-delay: 0.2s;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
 }
 
 div#nav-links>div.dropdown-menu {
@@ -113,11 +117,6 @@ div#nav-links>div.dropdown-menu>a {
 
 
 
-div#nav-links>div.dropdown-menu>div {
-    animation: close-menu var(--global-transition-duration) forwards;
-    animation-delay: 0.4s;
-
-}
 
 
 
@@ -240,10 +239,19 @@ div.calendar-icon>p.today-month {
 /* pc uniquement  */
 
 @media (min-width: 800px) {
+    div#nav-links>div.dropdown-menu>div {
+        animation: none !important;
+    }
 
     div#nav-links>div.dropdown-menu:hover>div {
         animation: open-menu var(--global-transition-duration) forwards !important;
         animation-delay: 0.2s;
+    }
+
+    div#nav-links>div.dropdown-menu.has-hovered:not(:hover)>div {
+        animation: close-menu var(--global-transition-duration) forwards !important;
+        animation-delay: 0s;
+        visibility: visible;
     }
 }
 
@@ -295,9 +303,12 @@ div.calendar-icon>p.today-month {
         width: 0;
         overflow: hidden;
         padding: 40px 0;
-        animation: mobile-close-nav-menu 0.5s ;
+        /* pas d'animation par défaut */
+        animation: none;
     }
-
+    div#nav-links.has-opened.closed {
+        animation: mobile-close-nav-menu 0.5s;
+    }
     /* menu ouvert */
     div#nav-links.opened {
         right: 0;
@@ -387,6 +398,9 @@ div.calendar-icon>p.today-month {
         padding: 10px;
         /* on remet le padding */
         margin-top: 15px;
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
 
 
     }
@@ -397,9 +411,9 @@ div.calendar-icon>p.today-month {
     div#nav-links>div.dropdown-menu.opened>a>i {
         transform: rotate(180deg);
         color: var(--website-strong-color);
-        
+
     }
-    
+
     div#nav-links>div.dropdown-menu.opened>a {
         color: var(--website-strong-color);
     }

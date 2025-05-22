@@ -5,11 +5,12 @@ a {
 div.top-documents {
   display: flex;
   justify-content: center;
-  gap: 4vw;
+  gap: 20px;
   flex-wrap: wrap;
   height: max-content;
-  max-width: 90%;
+  max-width: min(90%,1000px);
   margin: auto;
+  
 }
 
 div.top-documents app-box-document-tile:nth-child(1),
@@ -39,7 +40,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2vw;
+    gap: 10px;
   }
 
   app-box-document-tile,

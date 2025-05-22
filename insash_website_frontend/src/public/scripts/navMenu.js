@@ -1,4 +1,3 @@
-
 function toggleNavigationMenu(action = undefined) {
     {/*  
         action : undefined -> ferme/ouvre automatiquement le menu en fonction de sa position
@@ -22,6 +21,10 @@ function toggleNavigationMenu(action = undefined) {
     document.querySelectorAll('.dropdown-menu').forEach(menu => {
         menu.classList.remove('opened');
     });
+    // Ajout : marquer que le menu principal a déjà été ouvert (pour l'animation mobile)
+    if (menu.classList.contains('opened')) {
+        menu.classList.add('has-opened');
+    }
 
 }
 
@@ -34,7 +37,9 @@ function toggleDropdownMenu(menu) {
 // addevent listener : si la largeur de la fenetre change, fermer les sous-menus
 window.addEventListener('resize', function() {
     document.querySelectorAll('.dropdown-menu').forEach(menu => {
-        menu.classList.remove('opened');
+        if (menu.classList.contains('opened')) {
+            menu.classList.remove('opened');
+        }
     });
 });
 
@@ -103,3 +108,11 @@ function generateDropdownMenu(menu) {
 
 
 */}
+
+// Ajoute la classe .has-hovered au premier hover sur chaque menu déroulant (PC)
+document.querySelectorAll('#nav-links > .dropdown-menu').forEach(menu => {
+  menu.addEventListener('mouseenter', function handler() {
+    menu.classList.add('has-hovered');
+    menu.removeEventListener('mouseenter', handler);
+  });
+});

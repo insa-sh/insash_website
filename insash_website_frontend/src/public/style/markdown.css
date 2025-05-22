@@ -1,10 +1,19 @@
 markdown img {
-  max-width: 80%;
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
   height: auto;
   display: block;
-  padding: 3em 0;
-  margin: 0 auto;
+  margin: 16px auto;
   border-radius: 10px;
+  object-fit: contain;
+}
+
+markdown {
+  font-family: var(--insash-markdown-default-font), sans-serif;
+  font-size: var(--website-default-text-font-size);
+  display: block;
+  width: 100%;
 }
 
 markdown a {
@@ -45,35 +54,79 @@ markdown ul {
 }
 
 markdown ol {
-  margin: 1em 30px;
+  margin: 16px 30px;
 }
 
 markdown li {
-  margin: 0.5em 0;
+  margin-top: 12px;
 }
 
 markdown p {
-  margin: 1em 0;
+  font-family: var(--insash-markdown-default-font), sans-serif;
+  line-height: 1.8;
+  /* font-size: 20px; */
+  text-align: justify;
+}
+markdown>p{
+  padding: 16px 0;
+
+}
+
+.markdown-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 markdown table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
   border-collapse: collapse;
-  margin: 1em auto;
+  margin: 16px auto;
+  border-radius: 16px;
+  box-shadow: 0 0 0 2px var(--insash-rose-fonce);
+}
+
+markdown table th:first-child {
+  border-top-left-radius: 16px;
+}
+markdown table th:last-child {
+  border-top-right-radius: 16px;
+}
+markdown table tr:last-child td:first-child {
+  border-bottom-left-radius: 16px;
+}
+markdown table tr:last-child td:last-child {
+  border-bottom-right-radius: 16px;
 }
 
 markdown td {
   border: 1px solid rgb(102, 102, 102);
-  padding: 0.5em 1em;
+  padding: 16px 1em;
   text-align: center;
 }
 
+markdown thead tr {
+  background-color: var(--insash-rose-fonce);
+  color: var(--website-bg-color);
+
+  
+}
+
+markdown tbody tr:hover {
+  transition: background-color 0.2s ease;
+    background-color: #de7f923a !important;
+  }
 markdown th {
-  border-bottom: 2px solid rgb(122, 122, 122);
-  border-right: 1px solid rgb(141, 141, 141);
+  /* border-bottom: 2px solid rgb(122, 122, 122); */
+  /* border-right: 1px solid white; */
   text-align: center;
   padding: 0.5em 1em;
   font-size: 1.1em;
 }
+
 
 markdown th:nth-last-child(1),
 markdown td:nth-last-child(1) {
@@ -130,6 +183,7 @@ markdown hr {
 
 markdown div.code-toolbar {
   margin: 2em 0;
+  font-size: 16px;
 }
 
 /* marges verticales titres */

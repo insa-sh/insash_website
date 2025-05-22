@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { Meta, Title } from '@angular/platform-browser';
 
 import { FooterComponent } from "./general-components/footer/footer.component";
 import { AppComponent } from "./app.component";
