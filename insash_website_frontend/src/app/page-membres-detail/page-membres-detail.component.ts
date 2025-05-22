@@ -27,7 +27,7 @@ export class PageMembresDetailComponent {
 
   fetchMember() {
     this.route.data.subscribe((data) => {
-      if (data["member"] != null) {
+      if (data["member"] != null && data["member"]["data"].length > 0) {
         this.membre = data["member"]["data"][0];
         this.titleService.setTitle("./insa.sh - " + this.membre.username);
       } else {
