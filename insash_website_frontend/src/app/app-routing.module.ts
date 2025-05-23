@@ -39,7 +39,7 @@ const routes: Routes = [
   {
     path: "",
     component: PageAccueilComponent,
-    title: "Club Info INSA Hauts-de-France",
+    title: "Club Info INSA HdF",
     resolve: {
       topProjets: TopProjetResolver,
       topDocuments: TopArticleResolver,
@@ -79,6 +79,7 @@ const routes: Routes = [
     path: "projet/:slug",
     component: PageProjetDetailComponent,
     title: "",
+    
     resolve: {
       document: ProjetResolver,
     },
