@@ -6,12 +6,19 @@ import {
   Router,
 } from "@angular/router";
 import { DocumentService, SortingBy } from "../document.service";
-import { Observable } from "rxjs";
+import { catchError, Observable, of } from "rxjs";
 import { Member } from "src/app/models/member";
 import { Projet } from "src/app/models/projet";
 import { Article } from "src/app/models/article";
 import { Categorie } from "src/app/models/categorie";
 import { Tag } from "src/app/models/tag";
+
+const emptyApiResponse = { data: [] };
+
+function fallbackOnApiError<T>() {
+  return (source: Observable<T>): Observable<T> =>
+    source.pipe(catchError(() => of(emptyApiResponse as T)));
+}
 
 export const ArticleResolver: ResolveFn<Article> = (
   route: ActivatedRouteSnapshot,
@@ -30,8 +37,8 @@ export const ArticleResolver: ResolveFn<Article> = (
   if (route.paramMap.get("categorie") != null) {
     categorie = route.paramMap.get("categorie")!;
     let categoriesAccepted: Categorie[] = [];
-    userService.getArticleCategorie().subscribe((data: any) => {
-      if (data) {
+    userService.getArticleCategorie().pipe(fallbackOnApiError<any>()).subscribe((data: any) => {
+      if (data && data["data"].length > 0) {
         categoriesAccepted = data["data"];
         if (!categoriesAccepted.some((c) => c.slug == categorie)) {
           router.navigate(["/404"]);
@@ -50,7 +57,7 @@ export const ArticleResolver: ResolveFn<Article> = (
     SortingBy.dateDesc,
     undefined,
     undefined
-  );
+  ).pipe(fallbackOnApiError<Article>());
 };
 
 export const ProjetResolver: ResolveFn<Projet> = (
@@ -79,7 +86,7 @@ export const ProjetResolver: ResolveFn<Projet> = (
     SortingBy.dateDesc,
     username,
     undefined
-  );
+  ).pipe(fallbackOnApiError<Projet>());
 };
 
 export const TopArticleResolver: ResolveFn<Article> = (
@@ -99,8 +106,8 @@ export const TopArticleResolver: ResolveFn<Article> = (
   if (route.paramMap.get("categorie") != null) {
     categorie = route.paramMap.get("categorie")!;
     let categoriesAccepted: Categorie[] = [];
-    userService.getArticleCategorie().subscribe((data: any) => {
-      if (data) {
+    userService.getArticleCategorie().pipe(fallbackOnApiError<any>()).subscribe((data: any) => {
+      if (data && data["data"].length > 0) {
         categoriesAccepted = data["data"];
         if (!categoriesAccepted.some((c) => c.slug === categorie)) {
           router.navigate(["/404"]);
@@ -119,7 +126,7 @@ export const TopArticleResolver: ResolveFn<Article> = (
     SortingBy.dateDesc,
     undefined,
     3
-  );
+  ).pipe(fallbackOnApiError<Article>());
 };
 
 export const TopProjetResolver: ResolveFn<Projet> = (
@@ -136,7 +143,7 @@ export const TopProjetResolver: ResolveFn<Projet> = (
     SortingBy.dateDesc,
     undefined,
     3
-  );
+  ).pipe(fallbackOnApiError<Projet>());
 };
 
 export const ArticleTagsResolver: ResolveFn<Tag> = (
@@ -151,7 +158,7 @@ export const ArticleTagsResolver: ResolveFn<Tag> = (
     categorie = route.paramMap.get("categorie")!;
   }
 
-  return userService.getArticleTags(categorie);
+  return userService.getArticleTags(categorie).pipe(fallbackOnApiError<Tag>());
 };
 
 export const ProjetTagsResolver: ResolveFn<Tag> = (
@@ -160,7 +167,7 @@ export const ProjetTagsResolver: ResolveFn<Tag> = (
 ): Observable<Tag> => {
   const userService = inject(DocumentService);
 
-  return userService.getProjetTags();
+  return userService.getProjetTags().pipe(fallbackOnApiError<Tag>());
 };
 
 export const ArticleAuthorResolver: ResolveFn<Member> = (
@@ -181,7 +188,7 @@ export const ArticleAuthorResolver: ResolveFn<Member> = (
     categorie = route.paramMap.get("categorie")!;
   }
 
-  return userService.getArticleAuthors(categorie, slug);
+  return userService.getArticleAuthors(categorie, slug).pipe(fallbackOnApiError<Member>());
 };
 
 export const ProjetAuthorResolver: ResolveFn<Member> = (
@@ -196,7 +203,7 @@ export const ProjetAuthorResolver: ResolveFn<Member> = (
     slug = route.paramMap.get("slug")!;
   }
 
-  return userService.getProjetAuthors(slug);
+  return userService.getProjetAuthors(slug).pipe(fallbackOnApiError<Member>());
 };
 
 export const ProjetYearResolver: ResolveFn<Projet> = (
@@ -204,7 +211,7 @@ export const ProjetYearResolver: ResolveFn<Projet> = (
   state: RouterStateSnapshot
 ): Observable<Projet> => {
   const userService = inject(DocumentService);
-  return userService.getProjetYears();
+  return userService.getProjetYears().pipe(fallbackOnApiError<Projet>());
 };
 
 export const ArticleCategorieResolver: ResolveFn<Categorie> = (
@@ -212,7 +219,7 @@ export const ArticleCategorieResolver: ResolveFn<Categorie> = (
   state: RouterStateSnapshot
 ): Observable<Categorie> => {
   const userService = inject(DocumentService);
-  return userService.getArticleCategorie();
+  return userService.getArticleCategorie().pipe(fallbackOnApiError<Categorie>());
 };
 
 export const CategorieResolver: ResolveFn<Categorie> = (
@@ -225,7 +232,7 @@ export const CategorieResolver: ResolveFn<Categorie> = (
   if (route.paramMap.get("categorie") != null) {
     categorieSlug = route.paramMap.get("categorie")!;
   }
-  return userService.getCategorie(categorieSlug);
+  return userService.getCategorie(categorieSlug).pipe(fallbackOnApiError<Categorie>());
 };
 
 export const ArticleYearResolver: ResolveFn<Article> = (
@@ -239,7 +246,7 @@ export const ArticleYearResolver: ResolveFn<Article> = (
   if (route.paramMap.get("categorie") != null) {
     categorie = route.paramMap.get("categorie")!;
   }
-  return userService.getArticleYears(categorie);
+  return userService.getArticleYears(categorie).pipe(fallbackOnApiError<Article>());
 };
 
 export const MemberResolver: ResolveFn<Member> = (
@@ -251,5 +258,5 @@ export const MemberResolver: ResolveFn<Member> = (
     username = route.paramMap.get("username")!;
   }
 
-  return inject(DocumentService).getMembre(username);
+  return inject(DocumentService).getMembre(username).pipe(fallbackOnApiError<Member>());
 };
