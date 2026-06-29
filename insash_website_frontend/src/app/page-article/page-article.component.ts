@@ -18,7 +18,7 @@ export class PageArticleComponent extends PageDocumentComponent {
 
   fetchCategorie() {
     this.route.data.subscribe((data) => {
-      if (data["categorie"] != null) {
+      if (data["categorie"] != null && data["categorie"]["data"].length > 0) {
         this.categorie = data["categorie"]["data"][0];
         this.titleService.setTitle("./insa.sh - " + this.categorie.titre);
       }

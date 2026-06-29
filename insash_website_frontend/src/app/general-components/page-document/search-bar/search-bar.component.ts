@@ -46,14 +46,14 @@ export class SearchBarComponent {
 
   fetchTags() {
     this.route.data.subscribe((data) => {
-      this.tags = data["documentTags"]["data"];
+      this.tags = data["documentTags"]?.["data"] || [];
       this.addTagsCheckboxes();
     });
   }
 
   fetchAuthors() {
     this.route.data.subscribe((data) => {
-      this.authors = data["documentAuthors"]["data"];
+      this.authors = data["documentAuthors"]?.["data"] || [];
       this.addAuthorsCheckboxes();
     });
   }
@@ -62,7 +62,9 @@ export class SearchBarComponent {
     this.route.data.subscribe((data) => {
       this.dates = Array.from(
         new Set(
-          data["documentYears"]["data"].map((d: any) => d.date.split("-")[0])
+          (data["documentYears"]?.["data"] || []).map((d: any) =>
+            d.date.split("-")[0]
+          )
         )
       );
       this.addDatesCheckboxes();
@@ -78,7 +80,7 @@ export class SearchBarComponent {
   }
 
   isThereEnoughTags() {
-    return this.authors != null && this.tags.length > 0;
+    return this.tags != null && this.tags.length > 0;
   }
 
   private addTagsCheckboxes() {

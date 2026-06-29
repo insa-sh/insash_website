@@ -68,6 +68,8 @@ export class PageDocumentComponent {
           } else {
             this.document = [];
           }
+        }, () => {
+          this.document = [];
         });
     } else {
       this.documentService
@@ -88,6 +90,8 @@ export class PageDocumentComponent {
           } else {
             this.document = [];
           }
+        }, () => {
+          this.document = [];
         });
     }
   }
