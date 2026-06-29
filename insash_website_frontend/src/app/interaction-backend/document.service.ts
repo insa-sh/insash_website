@@ -114,7 +114,7 @@ export class DocumentService {
   ): Observable<Projet> {
     let url: string =
       this.BASE_URL +
-      "projets?populate[image][fields][0]=url&populate=auteur&populate[tags][fields][0]=titre&";
+      "projets?populate[image][fields][0]=url&populate[auteur]=true&populate[tags][fields][0]=titre&";
 
     switch (sort) {
       case SortingBy.dateAsc:
@@ -165,10 +165,10 @@ export class DocumentService {
       year.forEach((y) => {
         url +=
           "filters[date][$gte]=" +
-          year +
+          y +
           "-01-01&filters[date][$lte]=" +
-          year +
-          "-12-31";
+          y +
+          "-12-31&";
       });
     }
 
@@ -215,10 +215,12 @@ export class DocumentService {
   }
 
   getProjetAuthors(slug?: String): Observable<Member> {
-    let url = this.BASE_URL + "membres?filters[projets][$notNull]=true&";
+    let url = this.BASE_URL + "membres?";
 
     if (slug && slug != "") {
-      url += "filters[articles][slug][$eq]=" + slug + "&";
+      url += "filters[projets][slug][$eq]=" + slug + "&";
+    } else {
+      url += "filters[projets][$notNull]=true&";
     }
 
     return this.http.get<Member>(url);
