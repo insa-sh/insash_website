@@ -35,6 +35,18 @@ import { PageArticleComponent } from "./page-article/page-article.component";
 // iumporter la fonction qui permet de fermer le menu de navigation au changement de page
 declare function toggleNavigationMenu(action: any): void;
 
+function formatSlugTitle(slug: string | null): string {
+  if (!slug) {
+    return "Articles";
+  }
+
+  return slug
+    .split("-")
+    .filter((word) => word.length > 0)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 const routes: Routes = [
   {
     path: "",
@@ -87,7 +99,7 @@ const routes: Routes = [
   {
     path: "article/:categorie",
     component: PageArticleComponent,
-    title: "",
+    title: (route) => formatSlugTitle(route.paramMap.get("categorie")),
     resolve: {
       document: ArticleResolver,
       topDocumentsAndAuthors: TopArticleResolver,
