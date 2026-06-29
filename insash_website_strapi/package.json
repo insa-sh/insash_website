@@ -11,10 +11,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.10.2",
-    "@strapi/plugin-color-picker": "^5.10.2",
-    "@strapi/plugin-users-permissions": "5.10.2",
-    "@strapi/strapi": "5.10.2",
+    "@strapi/plugin-cloud": "5.49.0",
+    "@strapi/plugin-color-picker": "^5.49.0",
+    "@strapi/plugin-users-permissions": "5.49.0",
+    "@strapi/strapi": "5.49.0",
     "better-sqlite3": "11.3.0",
     "pg": "^8.13.3",
     "react": "^18.0.0",
