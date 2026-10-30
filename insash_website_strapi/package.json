@@ -11,10 +11,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.49.0",
-    "@strapi/plugin-color-picker": "5.49.0",
-    "@strapi/plugin-users-permissions": "5.49.0",
-    "@strapi/strapi": "5.49.0",
+    "@strapi/plugin-cloud": "5.60.0",
+    "@strapi/plugin-color-picker": "5.60.0",
+    "@strapi/plugin-users-permissions": "5.60.0",
+    "@strapi/strapi": "5.60.0",
     "better-sqlite3": "11.3.0",
     "pg": "^8.13.3",
     "react": "^18.0.0",
@@ -34,5 +34,13 @@
   },
   "strapi": {
     "uuid": "80691c25-36c2-496c-88c3-eaafcc8a64fc"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.1": true,
+    "esbuild@0.21.5": true,
+    "@swc/core@1.15.43": true,
+    "better-sqlite3@11.3.0": true,
+    "core-js-pure@3.49.0": true
   }
 }
